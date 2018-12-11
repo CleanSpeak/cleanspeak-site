@@ -1,0 +1,213 @@
+---
+layout: doc
+title: Filtering Phrases
+description: Learn how to configure an application with filter rules within CleanSpeak
+---
+
+[NOTE.since]
+====
+Available since 3.18.0
+====
+
+[NOTE.info]
+====
+The phrase API that existed prior to 3.18.0 has been removed and will not be automatically migrated
+to this new version of phrases.
+====
+
+== Filtering Phrases
+
+The Blacklist Phrase tool is a powerful addition to CleanSpeak that allows text to be matched on
+Blacklist Tags embedded in a regex. These phrases will match similar to a normal blacklist entry
+and uses the same set of rules in the application configuration as a blacklist entry.
+
+=== Creating a Phrase by Example
+
+Consider the case where you want to prevent users from trying to sell social media likes.
+
+First, you will need a good base set of words you want blocked when viewed together. These words
+are added as standard blacklist entries with the associated tags on them. A good starting point
+would be the table below.
+
+[cols="2a,3a"]
+|===
+|Tag
+|Words
+
+|`Purchase`
+|`Buy`, `Purchase`, `Get`
+
+|`Company`
+|`Facebook`, `Twitter`, `YouTube`
+
+|`Social-Like`
+|`Likes`, `Thumbs Up`, `Retweet`
+|===
+
+A Blacklist Phrase can then be created from these tags using the tags from above. The phrase
+we will create will use regex to find any regions of code with those tags embedded.
+In order to match someone saying "Buy facebook likes", the phrase will have a regex
+of `%Purchase%\s+%Company%\s+%Social-Like%`. This will match `Purchase`, `Company`, `Social-Like`
+separated by any number (but at least one) spaces. This will cause the whole region of text
+in the input to be matched just like regex but can handle variations using the power of the
+blacklist entries on any tagged words. Aka `Buuyy FaaceeBok Likees` and many other variations
+can still be easily matched and found by the phrase.
+
+=== How to create a Phrase from the UI
+
+You can create a Phrase by going to your management interface, navigate to `Filters` -> `Blacklist` -> `Phrases`
+(Quote icon in the top right), click `Add Phrase` (plus button in the top right),
+and begin creating a phrase by clicking in the box and typing a regex. Blacklist entries can be matched on their
+tags by typing `%TagName%` where the tag name is the tag you are interested in matching that includes only the
+blacklist entries that make sense in that position of the regex. You can also click the pills below the pattern
+field to quickly add a tag to the pattern.
+
+Phrases also utilize a severity, locale, and tags to classify how they should be treated by an
+application or if they should be ignored by the minimum severity setting on the filter.
+You can then then click `Save` (Top right) and the phrase will be created.
+
+image::../images/add-phrase.png[Add Phrase,role=shadowed]
+
+=== How to create a Phrase from the API
+
+You can create a Phrase through the API by sending a <<../apis/blacklist.adoc#create-a-phrase,request>> to the
+webservice.
+
+[.endpoint]
+.URI
+--
+[method]#POST# [uri]#/filter/blacklist/phrase#
+--
+
+include::docs/3.x/tech/apis/phrase/_blacklist-phrase-postput-request.adoc[]
+
+include::docs/3.x/tech/apis/phrase/_blacklist-phrase-single-response.adoc[]
+
+=== How to configure an Application to use the Phrases
+
+Phrase application settings share the configuration of the blacklist entries. In order to automatically
+handle a phrase match you will need to create a rule that either contains no locale or has the locale
+of the phrase and must contain at least one tag from the phrase. The most severe rule matching a phrase
+will then be applied during moderation.
+
+=== Example Filter Request
+
+[.endpoint]
+.URI
+--
+[method]#POST# [uri]#/content/item/filter/#
+--
+
+[cols="3a,7a"]
+[.api]
+.Headers
+|===
+|[field]#Authorization# [type]#[String]#
+|The API Key of your application is required to make a request to the webservice. You
+can find this under `System` -> `API Keys` on the management interface.
+|===
+
+[source,json]
+.Request Body
+----
+{
+    "content": "buy facebook likes"
+}
+----
+
+[source,json]
+.Response
+----
+{
+    "matches": [
+        {
+            "blacklistResult": "phrase",
+            "length": 18,
+            "locale": "en",
+            "matched": "buy facebook likes",
+            "quality": 1,
+            "root": "%Purchase%\s+%Company%\s+%Social-Like%",
+            "severity": "mild",
+            "start": 0,
+            "tags": [
+                "Phrase"
+            ],
+            "type": "blacklist"
+        },
+        {
+            "blacklistResult": "basic",
+            "length": 3,
+            "locale": "en",
+            "matched": "buy",
+            "quality": 1,
+            "root": "buy",
+            "severity": "none",
+            "start": 0,
+            "tags": [
+                "Purchase"
+            ],
+            "type": "blacklist"
+        },
+        {
+            "blacklistResult": "basic",
+            "length": 8,
+            "locale": "en",
+            "matched": "facebook",
+            "quality": 1,
+            "root": "facebook",
+            "severity": "medium",
+            "start": 4,
+            "tags": [
+                "Company",
+                "PII"
+            ],
+            "type": "blacklist"
+        },
+        {
+            "blacklistResult": "basic",
+            "length": 5,
+            "locale": "en",
+            "matched": "likes",
+            "quality": 1,
+            "root": "like",
+            "severity": "none",
+            "start": 13,
+            "tags": [
+                "Social-Like"
+            ],
+            "type": "blacklist"
+        }
+    ],
+    "metaMatches": [],
+    "replacement": "******************"
+}
+----
+
+=== Hints
+
+* All regexes have Unicode and Ignore Case turned on by default. This matches the behavior of all of the other
+filters in CleanSpeak.
+* To match any case sensitive text you can add a regex flag `(?-i)` to disable case insensitivity
+starting at the character after that flag. To turn it back on you can use `(?i)` which turns on
+case insensitivity at the character after that flag.
+* All blacklist matches that contain tags used in the phrase will be converted to tag groups and can
+only be matched by a wildcard or tag group
+* All blacklist matches that do not contain any tags used in the phrase will be left as their original
+text and can only be matched by standard regex mechanisms.
+* All `%` signify a start or end of a tag. To use a percent literal you need to escape it. `\%` (This includes
+when inside a tag name!)
+
+////
+
+==== Advanced
+The following are to help regex power users and are not recommended for anyone else.
+
+* Any blacklist match that contains at least one tag (say a tag with Id 1) used in the phrase will be
+converted exactly to `\uE0000\uE0001\u0001\uE0000` assuming no other tags on the entry were used
+in the phrase. You can match these values in regex using `\x{E0000}\x{E0001}\x{0001}\x{E0000}`.
+* A tag group consists of a tag bookend, `\uE0000`, followed by any number of tag pairs, followed by
+another bookend. A tag pair consists of a tag prefix `\uE0001` followed by a unicode codepoint of
+the same value as the tag id. There will be a tag pair for every tag that exists in both the current pattern
+and in the blacklist entry that produced the match.
+
+////

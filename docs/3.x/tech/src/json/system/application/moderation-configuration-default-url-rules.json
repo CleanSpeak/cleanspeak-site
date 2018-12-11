@@ -1,0 +1,16 @@
+{
+  "urlRules": [
+    {
+      "score": 90,
+      "action": "allow"
+    },
+    {
+      "score": 70,
+      "action": "allow"
+    },
+    {
+      "score": 40,
+      "action": "allow"
+    }
+  ]
+}

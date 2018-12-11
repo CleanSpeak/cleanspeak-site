@@ -1,0 +1,149 @@
+{
+  "application": {
+    "moderationConfiguration": {
+      "approvalCheckOutMinutes": 10,
+      "approvalQueueSize": 30,
+      "archiveConfiguration": {
+        "deleteOnly": true,
+        "enabled": false
+      },
+      "contentAlertCheckOutMinutes": 10,
+      "contentAlertQueueSize": 30,
+      "contentDeletable": true,
+      "contentEditable": true,
+      "contentFlagAlertType": "User",
+      "contentUserActionsEnabled": true,
+      "ignorableCharacters": "qxz",
+      "imageConfiguration": {
+        "commitDelay": 45,
+        "darkMode": true,
+        "defaultTimerDuration": 2.0,
+        "speedModerationLayout": true
+      },
+      "imageOnly": false,
+      "imageFilteringEnabled": false,
+      "imageQualityFilterRules": [
+        {
+          "action": "allow",
+          "score": 70
+        },
+        {
+          "action": "allow",
+          "score": 30
+        },
+        {
+          "action": "allow",
+          "score": 0
+        }
+      ],
+      "maximumVideoFilterDurationInSeconds": 300,
+      "videoFilteringEnabled": false,
+      "videoQualityFilterRules": [
+        {
+          "action": "allow",
+          "score": 70
+        },
+        {
+          "action": "allow",
+          "score": 30
+        },
+        {
+          "action": "allow",
+          "score": 0
+        }
+      ],
+      "defaultActionIsQueueForApproval": false,
+      "dictionaryTags": [],
+      "emailOnAlerts": false,
+      "emailOnContentFlagged": false,
+      "emailOnEscalations": false,
+      "emailOnUserFlagged": false,
+      "emailRules": [
+        {
+          "action": "allow",
+          "score": 90
+        },
+        {
+          "score": 70,
+          "action": "allow"
+        },
+        {
+          "score": 40,
+          "action": "allow"
+        }
+      ],
+      "filterRules": [
+        {
+          "highAction": "authorOnly",
+          "highAlertType": "User",
+          "locales": [],
+          "mediumAction": "allow",
+          "mildAction": "allow",
+          "severeAction": "reject",
+          "severeAlertType": "User",
+          "tags": [
+            "Vulgarity"
+          ]
+        },
+        {
+          "highAction": "allow",
+          "highAlertType": "User",
+          "locales": [
+            "en"
+          ],
+          "mediumAction": "allow",
+          "mildAction": "allow",
+          "severeAction": "authorOnly",
+          "severeAlertType": "User",
+          "tags": [
+            "Bullying"
+          ]
+        }
+      ],
+      "persistent": true,
+      "phoneNumberRules": [
+        {
+          "action": "allow",
+          "score": 90,
+          "userScoreAdjustment": -10
+        },
+        {
+          "alertType": "Content",
+          "userScoreAdjustment": -5,
+          "score": 70,
+          "action": "allow"
+        },
+        {
+          "score": 40,
+          "alertType": "User",
+          "userScoreAdjustment": -1,
+          "action": "allow"
+        }
+      ],
+      "queuePersistentContent": false,
+      "returnFilterMatches": false,
+      "rules": {
+        "usernameFilterRule": {
+          "action": "reject",
+          "enabled": false
+        },
+        "whitelistFilterRules": {
+          "disallowedPhrase": {},
+          "disallowedWord": {}
+        }
+      },
+      "storeContent": true,
+      "urlRules": [],
+      "userCheckOutMinutes": 10
+    },
+    "name": "Chat",
+    "notificationServers": [
+      {
+        "connectTimeout": 1000,
+        "readTimeout": 2000,
+        "url": "http://chat.example.com/notification-handler",
+        "id": 20
+      }
+    ]
+  }
+}

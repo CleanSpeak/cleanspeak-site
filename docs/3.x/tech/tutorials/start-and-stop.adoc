@@ -1,0 +1,143 @@
+---
+layout: doc
+title: Start and Stop CleanSpeak
+description: Learn how to start and stop the CleanSpeak services
+---
+
+== Start and Stop CleanSpeak
+
+If you are using the CleanSpeak Server version, may need to manually start or stop CleanSpeak periodically. If you find yourself in this situation you'll be glad you know how.
+
+[NOTE]
+====
+If you are using CleanSpeak Cloud, these instructions do not apply to you. Inversoft monitors all CleanSpeak Cloud servers and will restart CleanSpeak if necessary.
+====
+
+
+[NOTE]
+====
+*Note* that you *MUST* start the CleanSpeak Search Engine before starting the Management Interface or Webservice. You should also shutdown the Search Engine last. CleanSpeak utilizes the Search Engine and database for persisting and retrieving content.
+====
+
+The following examples will make the assumption that all of the services are running on the same server. Based upon how you have installed CleanSpeak you may or may not have all of the services running on the same server.
+
+The Mac OS X and Windows instructions assume an installation directory of `/usr/local/inversoft` and `\inversoft` respectively. Please adjust to your specific installation directory.
+
+=== Linux
+When you install CleanSpeak using our Debian or RPM packages a service is registered. It is recommended you utilize these services to start and stop CleanSpeak. Starting in CleanSpeak version `3.4.1` if the version of Linux supports `systemd` you may use the `systemctl` command as well to manage services.
+
+The service names are as follows:
+
+* `cleanspeak-search-engine`
+* `cleanspeak-webservice`
+* `cleanspeak-management-interface`
+
+[source,shell]
+.Start CleanSpeak
+----
+$ sudo service cleanspeak-search-engine start
+$ sudo service cleanspeak-webservice start
+$ sudo service cleanspeak-management-interface start
+----
+
+[source,shell]
+.Stop CleanSpeak
+----
+$ sudo service cleanspeak-management-interface stop
+$ sudo service cleanspeak-webservice stop
+$ sudo service cleanspeak-search-engine stop
+----
+
+If you'd like to use the `systemctl` command instead, the syntax is similar to the `service` command. For example, to check the status, stop and then start the CleanSpeak Management Interface using the `systemctl` command
+
+[source,shell]
+.Check Status, then Stop and Start CleanSpeak
+----
+$ systemctl status cleanspeak-management-interface.service
+$ systemctl stop cleanspeak-management-interface.service
+$ systemctl start cleanspeak-management-interface.service
+----
+
+If you'd prefer to use the native Elastic and Tomcat scripts you may follow the Mac OS X instructions, the same scripts may be executed on Linux.
+
+=== Mac OS X
+
+*Start and Stop services using the native Elastic and Tomcat scripts*
+
+Prior to version 3.6.0 the Apache Tomcat directory will be named `apache-tomcat-8.0.12` instead of `apache-tomcat` and the ElasticSearch Engine directory will be named `elasticsearch-1.3.4` instead of `elasticsearch`.
+
+[source,shell]
+.Start CleanSpeak
+----
+$ /usr/local/inversoft/cleanspeak-search-engin`e/elasticsearch/bin/elasticsearch
+$ /usr/local/inversoft/cleanspeak-webservice/apache-tomcat/bin/catalina.bat start
+$ /usr/local/inversoft/cleanspeak-management-interface/apache-tomcat/bin/catalina.bat start
+----
+
+[source,shell]
+.Stop CleanSpeak
+----
+$ /usr/local/inversoft/cleanspeak-management-interface/apache-tomcat/bin/catalina.bat stop
+$ /usr/local/inversoft/cleanspeak-webservice/apache-tomcat/bin/catalina.bat stop
+----
+
+Elastic Search should be stopped last. If you started Elastic Search using the `elasticsearch` script then you may simply kill the terminal where the service is running to initiate shutdown.
+
+=== Windows
+
+*Start and Stop services using the native Elastic and Tomcat scripts*
+
+Prior to version 3.6.0 the Apache Tomcat directory will be named `apache-tomcat-8.0.12` instead of `apache-tomcat` and the ElasticSearch Engine directory will be named `elasticsearch-1.3.4` instead of `elasticsearch`.
+
+[source,shell]
+.Start CleanSpeak
+----
+> \inversoft\cleanspeak-search-engine\elasticsearch\bin\elasticsearch.bat
+> \inversoft\cleanspeak-webservice\apache-tomcat\bin\catalina.bat start
+> \inversoft\cleanspeak-management-interface\apache-tomcat\bin\catalina.bat start
+----
+
+[source,shell]
+.Stop CleanSpeak
+----
+> \inversoft\cleanspeak-management-interface\apache-tomcat\bin\catalina.bat stop
+> \inversoft\cleanspeak-webservice\apache-tomcat\bin\catalina.bat stop
+----
+
+Elastic Search should be stopped last. If you started Elastic Search using the `elasticsearch.bat` script then you may simply close the command window where the service is running to initiate shutdown.
+
+*Start and Stop services using Windows Services*
+
+We also provide support for running CleanSpeak as a Windows service.
+
+[source,shell]
+.Register Windows Services
+----
+> \inversoft\cleanspeak-search-engine\elasticsearch\bin\CleanSpeakSearchEngine.exe /install
+> \inversoft\cleanspeak-webservice\apache-tomcat\bin\CleanSpeakWebservice.exe /install
+> \inversoft\cleanspeak-management-interface\apache-tomcat\bin\CleanSpeakManagementInterface.exe /install
+----
+
+[source,shell]
+.Unregister Windows Services
+----
+> \inversoft\cleanspeak-management-interface\apache-tomcat\bin\CleanSpeakManagementInterface.exe /uninstall
+> \inversoft\cleanspeak-webservice\apache-tomcat\bin\CleanSpeakWebservice.exe /uninstall
+> \inversoft\cleanspeak-search-engine\elasticsearch\bin\CleanSpeakSearchEngine.exe /uninstall
+----
+
+[source,shell]
+.Start Services
+----
+> net start CleanSpeakSearchEngine
+> net start CleanSpeakWebservice
+> net start CleanSpeakManagementInterface
+----
+
+[source,shell]
+.Stop Services
+----
+> net stop CleanSpeakManagementInterface
+> net stop CleanSpeakWebservice
+> net stop CleanSpeakSearchEngine
+----

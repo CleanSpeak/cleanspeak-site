@@ -1,0 +1,15 @@
+---
+layout: doc
+title: Setup Wizard Tutorial
+description: Learn how to setup CleanSpeak and get started using the Setup Wizard
+---
+
+== Setup Wizard
+
+When you first start CleanSpeak and open the CleanSpeak Management Interface in your web browser, you will be presented with a Setup Wizard that will guide you through the initial steps of configuring CleanSpeak. The Setup Wizard screen looks like this:
+
+image::setup-wizard.png[Setup Wizard,role=shadowed]
+
+In order to ensure that you have permissions to use the Setup Wizard, you must copy your license id into this page. You can find your license id by logging into your Inversoft account at https://www.inversoft.com/account/.
+
+The rest of the Setup Wizard is fairly self-explanatory. Keep in mind that everything configured on this page can be changed later.

@@ -1,0 +1,41 @@
+---
+layout: blog-post
+title: 'Prevent Users from Sharing PII & Account Information '
+author: Marshall Bauernfeind
+author_image: "/images/blog/HeadshotMarshall.jpeg"
+excerpt_separator: "<!--more-->"
+categories:
+- Online Community
+tags:
+- Online Safety
+---
+<p>Preventing users from sharing account information is a security concern as well as a way to prevent paid accounts from being shared. When hosting a virtual environment targeted to kids, you are also required to take reasonable measures to prevent users from sharing <a title="Personal Identifiable Information" href="http://en.wikipedia.org/wiki/Personally_identifiable_information">PII</a> (Personal Identifiable Information) in accordance with <a title="COPPA" href="http://www.ftc.gov/privacy/coppafaqs.shtm">COPPA</a> (Children’s Online Privacy Protection Act). The types of personal information include, but are not limited to, phone number, email address, and home address which cannot be shared in chat rooms, forum posts, and the like. Implementing all of the following prevention techniques will dramatically reduce your risk from users sharing account credentials and PII.</p>
+<p style="text-align: center;"><img class="wp-image-837 aligncenter" title="Security" src="/images/blog/iStock_000019471697_ExtraSmall2.jpg" alt="Prevent Users from Sharing PII &amp; Account Information " width="426" height="282"></p>
+<div>
+<h2>Educate Your Users</h2>
+<p>Will your users read your terms of service and privacy policy from start to finish? What if they are children? Probably not. Periodically remind users the importance of keeping private information <em>private</em><em>. </em>First, display a notification each time users log in reminding them to never share their name, address, etc. Also, create quick and fun activities for your users to engage in informing them what not to share in the form of videos, short games, or other activities.</p>
+<p><!--more--></p>
+<h2>Prevent Users from Typing Their Own Information</h2>
+<p>Passwords typically cannot be filtered since each user’s password is <a title="Cryptographic hash function" href="http://en.wikipedia.org/wiki/Cryptographic_hash_function">One-way Encrypted</a> in your system (at least it should be!). However, you can prevent users from sharing their login names by rejecting messages that contain the login name of the user that generated the message. Without it, the password is not very useful. Note that a user’s login name cannot be the same as their public display name for this technique to work. Any personally identifiable information you store about a user (name, email, address, etc) can also be filtered on a user-by-user basis using this technique.</p>
+<h2>Open Chat: Filter Commonly Used Phrases</h2>
+<p>To identify and eliminate a majority of chat messages or forum posts that contain PII or account information, add commonly used phrases to your blacklist such as:</p>
+<ul>
+<li>My phone number is</li>
+<li>My address is</li>
+<li>What is your phone number</li>
+<li>Send me your account info</li>
+</ul>
+<p>There are a number of variations for each phrase to consider as well, such as the pound sign (#) in place of the word “number”. Keep the phrases as short as possible, but not too vague as to generate false-positives. For example, blocking the word “number” will generate too many false-positives if filtered alone. Instead, add “my phone number” to your filter blacklist.</p>
+<h2>Open Chat: Detect Email Addresses and Phone Numbers</h2>
+<p>Two of the most commonly shared pieces of personally identifiable information are email addresses and phone numbers. Simply preventing “.com”, the “@” sign, and numbers from being typed are a good start. Better yet, use a filtering solution that can detect clever attempts of getting around the filter when users spell out numbers or type “at” in place of the “@” sign (among other techniques).</p>
+<h2>Implement Restricted Chat</h2>
+<p>Restricted chat is commonly referred to as White List Filtering. Users are only allowed to type words and phrases that are on a pre-approved list. Kids have been known to be able to circumvent white list filters to share information such as their phone number, so moderation efforts still need to be in place. Read the very informative post by Izzy Neis for more details on restricted chat challenges: <a title="Is there such thing as 100% Safe Chat for kids?" href="http://izzyneis.com">Is there such thing as 100% Safe Chat for kids?</a></p>
+<h2>Keep an Eye on Repeat Offenders</h2>
+<p>This is a common moderation practice for preventing any inappropriate behavior and worth mentioning here. If a user tries to share their personal information once, keep an eye on their content to be sure they do not try again.</p>
+<p>Will these techniques be 100% effective when used together to prevent users from sharing account credentials and personal information? Most likely not, but making the effort will drastically reduce your risk and provide users a level of comfort and security while participating in your online environment. Visit the description of <a title="Profanity Filter" href="/features/profanity-filter/">Inversoft’s CleanSpeak</a> Filter and Moderation Tools to learn how integrating CleanSpeak will make the effort easy!</p>
+<p>You should follow me on <a title="Twitter" href="https://twitter.com/MarshallB10">Twitter</a></p>
+<p>Further Reading:</p>
+<p><a title="Children’s Online Privacy Protection Act (COPPA) FAQ" href="http://www.ftc.gov/privacy/coppafaqs.shtm">Children’s Online Privacy Protection Act (COPPA) FAQ</a></p>
+<p><a title="5 Online Safety Tips to Teach Your Child" href="/blog/2013/02/11/5-online-safety-tips-to-teach-your-child/">5 Online Safety Tips to Teach Your Child</a></p>
+<p> </p>
+</div>

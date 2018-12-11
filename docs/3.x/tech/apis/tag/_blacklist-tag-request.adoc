@@ -1,0 +1,13 @@
+[cols="3a,7a"]
+[.api]
+.Request Body
+|===
+|[field]#tag.name# [type]#[String]# [required]#required#
+|The unique name of the tag.
+|===
+
+[source,json]
+.Example Request JSON
+----
+include::../../src/json/blacklist/tag/request.json[]
+----

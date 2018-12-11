@@ -1,0 +1,33 @@
+
+[cols="3a,7a"]
+[.api]
+.Response Body
+|===
+|[field]#entry.exclusions# [type]#[Array<String>]#
+|An array of words NOT to include on the whitelist. These words are a subset of the inflections of the text.
+
+|[field]#entry.id# [type]#[Integer]#
+|A unique Id for the entry.
+
+|[field]#entry.inflect# [type]#[Boolean]#
+|A flag to enable all inflections of the word as whitelisted. Exclusions only apply when inflect is true as they
+only exclude inflections.
+
+|[field]#entry.locale# [type]#[String]#
+|The entry locale. See link:../reference/data-types#locales[Locale].
+
+|[field]#entry.status# [type]#[String]#
+|This will always be `ACTIVE` as this API only operates on the active filter state.
+
+|[field]#entry.tags# [type]#[Array<String>]#
+|The associated whitelist tags for this entry.
+
+|[field]#entry.text# [type]#[String]#
+|The text for the word.
+|===
+
+[source,json]
+.Example Response JSON
+----
+include::../../src/json/whitelist/allowed/single-response.json[]
+----

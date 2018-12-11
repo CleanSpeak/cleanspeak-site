@@ -1,0 +1,68 @@
+[cols="3a,7a"]
+[.api]
+.Request Body
+|===
+|[field]#user# [type]#[Object]# [required]#Required#
+|The user object.
+
+// Only allowed on a POST
+ifeval::["{http_method}" == "POST"]
+|[field]#user.id# [type]#[UUID]# [optional]#Optional#
+|The Id of the user. If omitted an Id will be generated automatically.
+endif::[]
+
+|[field]#user.applicationIds# [type]#[Array<UUID>]# [optional]#Optional#
+|The applications identifiers assigned to this user. If none are provided the user will have access to all applications in CleanSpeak.
+
+|[field]#user.email# [type]#[String]# [required]#Required#
+|The email address of the user.
+
+|[field]#user.expirationInstantUTC# [type]#[Long]# [optional]#Optional#
+|The link:../reference/data-types#instants[instants] this user will expire and will be unable to login to CleanSpeak.
+
+|[field]#user.externalId# [type]#[String]# [optional]#Optional#
+|The external identifier used to link this user to another system.
+
+// Required for POST
+ifeval::["{http_method}" == "POST"]
+|[field]#user.password# [type]#[String]# [required]#Required#
+|The password for the user.
+endif::[]
+
+// Optional for PUT
+ifeval::["{http_method}" == "PUT"]
+|[field]#user.password# [type]#[String]# [optional]#Optional#
+|The password for the user. If omitted the password will not be changed.
+endif::[]
+
+|[field]#user.roles# [type]#[Array<String>]# [optional]#Optional#
+|The roles to be assigned to the user. The possible values are:
+
+* `admin`
+* `approve_all`
+* `audit_viewer`
+* `filter`
+* `filter_manager`
+* `moderator`
+* `moderator_manager`
+* `user_admin`
+
+|===
+
+// Show POST request example
+ifeval::["{http_method}" == "POST"]
+[source,json]
+.Example Request JSON
+----
+include::../src/json/system/user/request.json[]
+----
+endif::[]
+
+// Show PUT request example
+ifeval::["{http_method}" == "PUT"]
+[source,json]
+.Example Request JSON
+----
+include::../src/json/system/user/update-request.json[]
+----
+endif::[]

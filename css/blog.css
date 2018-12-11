@@ -1,0 +1,92 @@
+/*
+Theme Name: Inversoft 10.0
+Theme URI: http://www.inversoft.com/blog/
+Author: Inversoft
+Author URI: http://www.inversoft.com/blog/
+Description: Inversoft.com website theme
+Version: 10.0
+License: Commercial
+License URI: N/A
+Tags:
+Text Domain:
+*/
+
+/* Blog pages */
+
+.alignleft {
+  float: left;
+  margin: 10px;
+}
+
+.alignright {
+  float: right;
+  margin: 10px;
+}
+
+table.thin {
+  border-collapse: collapse;
+}
+
+table.thin td {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+/* Images */
+img {
+  display: block;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+}
+
+img.aligncenter {
+  display: block;
+  margin: auto;
+}
+
+/* Images with Captions - set width to auto - the caption seems to manually set the width which is stupid. */
+div.wp-caption {
+  width: auto !important;
+}
+
+/* Hard coding these image sizes. A better fix would be to not set the width on the element but always set it through style */
+img.blog-avatar {
+  width: 70px;
+}
+
+.social-link img {
+  width: 32px;
+}
+
+/* Hack the header - can't get Product to align properly, there is some extra padding above it for some reason pushing it down. Hack This yo. */
+nav .w-dropdown-toggle {
+  /* padding-top: 20px; */
+}
+
+/* Videos */
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+  margin: auto;
+}
+
+.video-container iframe,
+.video-container object,
+.video-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* CSS Hack Social Buttons */
+
+.social-icons .fb-share-button {
+  top: -5px;
+}

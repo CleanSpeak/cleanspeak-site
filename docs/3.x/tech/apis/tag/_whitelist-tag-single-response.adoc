@@ -1,0 +1,17 @@
+
+[cols="3a,7a"]
+[.api]
+.Response Body
+|===
+|[field]#tag.id# [type]#[Integer]#
+|The Id for the tag.
+
+|[field]#tag.name# [type]#[String]#
+|The name of the tag.
+|===
+
+[source,json]
+.Response Body Example JSON
+----
+include::../../src/json/whitelist/tag/single-response.json[]
+----

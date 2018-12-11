@@ -1,0 +1,13 @@
+{
+  "type": "contentApproval",
+  "approvals": {
+    "8207bc26-f048-478d-8945-84f236cb5637": "approved",
+    "86d9e3e1-5752-41dc-aa55-2a832728ec33": "approved",
+    "a1fca416-5573-4662-a31a-a4ff808c34dd": "rejected",
+    "af777ea8-1874-463c-a97c-a1f9e494bee1": "approved",
+    "73031050-2016-44fc-b8f6-b97184793587": "approved"
+  },
+  "moderatorId": "b00916ba-f647-4e9f-b2a6-537f69f89b87",
+  "moderatorEmail": "catherine@email.com",
+  "moderatorExternalId": "foo-bar-baz"
+}

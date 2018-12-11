@@ -1,0 +1,32 @@
+{
+  "contentItems": [
+    {
+      "applicationId": "f81d4fae-7dec-11d0-a765-00a0c91e6bf6",
+      "createInstant": 13405983821,
+      "location": "threadId_42",
+      "parts": [
+        {
+          "content": "Hi",
+          "name": "Body",
+          "type": "text"
+        }
+      ],
+      "senderDisplayName": "PapaSmurf",
+      "senderId": "f6d3df91-ed4b-48ad-810f-05a367d328c2"
+    },
+    {
+      "applicationId": "f81d4fae-7dec-11d0-a765-00a0c91e6bf6",
+      "createInstant": 13405983823,
+      "location": "threadId_42",
+      "parts": [
+        {
+          "content": "Smurf off",
+          "name": "Body",
+          "type": "text"
+        }
+      ],
+      "senderDisplayName": "PapaSmurf",
+      "senderId": "f6d3df91-ed4b-48ad-810f-05a367d328c2"
+    }
+  ]
+}

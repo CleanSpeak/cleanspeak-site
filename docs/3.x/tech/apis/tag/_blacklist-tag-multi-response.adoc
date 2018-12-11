@@ -1,0 +1,17 @@
+
+[cols="3a,7a"]
+[.api]
+.Response Body
+|===
+|[field]#tag[x].id# [type]#[Integer]#
+|The unique Id of the tag.
+
+|[field]#tag[x].name# [type]#[String]#
+|The value of the tag.
+|===
+
+[source,json]
+.Example Response JSON
+----
+include::../../src/json/blacklist/tag/multiple-response.json[]
+----

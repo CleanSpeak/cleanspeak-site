@@ -1,0 +1,47 @@
+---
+layout: blog-post
+title: 'Enterprise Agile: How We Develop Software at Inversoft'
+author: Brian Pontarelli
+author_image: "/images/blog/head-shot-bw-square.jpg"
+excerpt_separator: "<!--more-->"
+categories:
+- Technology
+tags: []
+---
+<p>At Inversoft, we build on-premise, enterprise software. Customers download this software and install it on their own servers. These servers might be in a cloud hosting environment like AWS or in some other datacenter somewhere.</p>
+<p>Most of our software contains multiple components that are installed. For example, CleanSpeak has 3 separate installable applications that are shipped as RPMs, Debian packages or ZIP files. Often each of these applications are setup on multiple servers and fronted with load balancers.</p>
+<p>We release new versions of our software every 12 to 18 months. New customers always use the latest version of our software, but current customers are never forced to upgrade. Only after 2 or 3 years do we stop supporting older versions. Once a version reaches end-of-life, bug fixes for that version are no longer done and customers on that version must upgrade to a newer version if they run into problems.</p>
+<p><img class=" wp-image-6195 alignright" src="/images/blog/BrowserPreview_tmp.png" alt="Inversoft Software Dev Cycle" width="305" height="299">This software release model does not lend itself well to continuous deployment or fast iteration and release cycles. In fact, we have found that when we increased the frequency of our releases, customer got frustrated and annoyed, even though they were never required to upgrade.</p>
+<p>Keeping this in mind, let's look at how Inversoft develops and ships software.</p>
+<h2>Stories</h2>
+<p>First, we start with customer or internal requirements. We like to ensure that our features will be used and if we come up with something internally, we always ask multiple customers for input on the feature before it makes it into our product roadmap.</p>
+<p><!--more--></p>
+<p>We decide on the features that will be included in the next product release and whether or not the product release will be a major release or minor release. Last year, we added 10 high level features to the product roadmap for CleanSpeak and decided to maintain API compatibility and therefore it should be a minor release named CleanSpeak 2.3.</p>
+<p>Next, we take each feature in the product roadmap and break it into stories. Stories might be user stories that our customers might see or use, or they could be engineering stories that the customer won't know anything about.</p>
+<p>Here is one of the stories we had for CleanSpeak 2.3 that was released last year:</p>
+<p style="padding-left: 30px;">"Update content item API to accept complex content"</p>
+<p>This could have also be written in the more traditional story format like this:</p>
+<p style="padding-left: 30px;">As an API user, I want the ability to send complex content to the content item API"</p>
+<p>We use <a title="Pivotal Tracker" href="http://www.pivotaltracker.com">Pivotal Tracker</a> to store and track our stories. It allow us to do as much or as little with a story as is called for, and its simple web interface rarely gets in the way. Developers log into those in the tool. We rely on the team members to determine dependencies and work on stories in the correct order.</p>
+<p>The developer will read the story description and tasks, edit them, and then point the story. We point stories later in the process because we find that stories are hard to point up front before coding has begun.</p>
+<p>The developer works on the story until it is complete and fully tested.</p>
+<h2>Testing</h2>
+<p>We write and run 5 layers of tests for our products including unit, integration, acceptance, functional and browser tests. Here's a quick rundown of each of our testing layers:</p>
+<ul>
+<li>Unit - Tests a single method on a single class with no dependencies. All other classes (dependencies) are mocked.</li>
+<li>Integration - Tests a single method on a single class with no dependencies, including the database.</li>
+<li>Acceptance - Tests the full stack using our RequestSimulator framework. This simulates HTTP requests to the application (without needing to run the application) and returns HTTP responses.</li>
+<li>Functional - Tests the application from the outside. This requires that the application is running (inside Tomcat) and this makes real HTTP requests to the application and handles the real HTTP responses.</li>
+<li>Browser - Tests the application from the browser via type and click manual testing.</li>
+</ul>
+<p>After the developer has completed all their testing, they deliver and accept the story. We don't go through a QA cycle at this point or even a customer review cycle. Our developers are responsible for both of these steps and are empowered to make decision about a feature's usefulness and doneness that normally would be made by the customer. If a story is not complete or ends up being less useful than we originally anticipated, the developer may raise concerns to the rest of the team at anytime. The team can decide if the feature should be modified or thrown out.</p>
+<h2>Releases</h2>
+<p>After all of the stories for a release have been completed, we code freeze and push a MILESTONE release to our QA server. At this point, the entire company tests the application from as many angles as possible. Anyone can log bugs into Pivotal and developers start fixing them.</p>
+<p>This continues until the release is stable, generally 1-2 weeks. During this time period, anyone in the company can also make comments about a feature and suggest changes, fixes, or removal of the feature. We have yet to remove a feature, but it is a possibility at some point.</p>
+<p>After internal testing is complete, a new CUSTOMER PREVIEW release is cut and delivered to any customer that is waiting for a new feature. In some cases, we release numerous CUSTOMER PREVIEW releases during development and push them to customers early. We let customers use these releases and provide additional feedback and bug reports.</p>
+<p>After the CUSTOMER PREVIEW cycle is complete, we release the final version of the product. The process involves a number of steps including running all of the tests one last time, making tags and branches in our SCM, and pushing the release to our website.</p>
+<h2>Patches</h2>
+<p>After the final release is complete, bug fixes for that release follow a much shorter cycle. A bug report comes in and immediately a developer writes a test to reproduce the bug (if possible). The developer then fixes the bug and ensures the tests pass. Finally, a patch release is cut (e.g. CleanSpeak 2.3.1) and delivered to any customers that need it. These releases can happen as frequently as needed and often take less than a day to complete (sometimes just a few hours).</p>
+<h2>Summary</h2>
+<p>Thats' the high level overview of the software development process we use to ship our products. This process works well given our product release cycles and customer needs.</p>
+<p> </p>

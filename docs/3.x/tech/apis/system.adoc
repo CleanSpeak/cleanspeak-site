@@ -1,0 +1,113 @@
+---
+layout: doc
+title: System APIs
+description: System APIs for general system tasks including backup and restoring databases
+---
+
+== Backup
+
+This API is used to backup the filter state. The result will be a zip file that can be later used by the Restore API. The zip file will contain the following:
+
+* Blacklist
+** Dictionary Entries
+** Filter Entries
+** Phrase Entries
+** Username Schemes
+* Whitelist
+** Allow Entries
+** Disallowed Phrases
+** Advanced Disallowed Phrases
+* URL Whitelist Entries
+
+The following configuration is not contained in the backup and as such will also not be modified during the restore. In the future we may add additional configuration to the backup, if you have a requirement for one or more of the following send us a note at suggestions@inversoft.com and let us know about your use case.
+
+* Moderation Configuration
+** Applications
+** Content Actions
+** User Actions
+** User Action Reasons
+** Automated User Actions
+** Notification Servers
+** Email Templates
+
+* Other Configuration
+** Global Configuration
+** API Keys
+** Moderators
+** BBCodes
+
+* Verification
+** Match Cases
+** Non-Match Cases
+
+* User Generated Content
+
+
+=== Request
+
+[.endpoint]
+.URI
+--
+[method]#GET# [uri]#/system/backup#
+--
+
+[.example]
+--
+In the following cURL example a backup is requested and saved to a file named `backup.zip`. Note this example has omitted the required `Authorization` header, see link:authentication[Authentication].
+[source]
+----
+curl -XGET 'https://example-cleanspeak-api.inversoft.io/system/backup' -o backup.zip
+----
+--
+
+=== Response
+
+[NOTE]
+====
+Note that a successful response will not contain JSON but instead the response will have a `Content-Type` of `application/octet-stream`.
+====
+
+// Backup never returns 400 or 404
+:no_errors:
+:never_missing:
+:success_message: The request was successful.
+include::docs/3.x/tech/apis/_standard-get-response-codes.adoc[]
+
+// Unset the variables used in this part.
+:no_errors!:
+:never_missing!:
+:success_message!:
+
+== Restore
+
+This API is used to restore the filter state from a backup. The request takes a binary zip file as input.
+
+[WARNING]
+====
+It is recommended that if you intend to use the backup and restore APIs in a production environment that you test the process to ensure the results are as you intend. The state of your filter will be overwritten by the contents of the backup and the action can not be reversed.
+====
+
+=== Request
+
+[.endpoint]
+.URI
+--
+[method]#POST# [uri]#/system/restore#
+--
+
+[.example]
+--
+The following cURL example assumes a file named `backup.zip` exists in the current directory. Note this example has omitted the required `Authorization` header, see link:authentication[Authentication].
+[source]
+----
+curl -XPOST -H 'Content-Type: application/octet-stream' 'https://example-cleanspeak-api.inversoft.io/system/restore' --data-binary @backup.zip
+----
+--
+
+=== Response
+
+:no_body:
+include::docs/3.x/tech/apis/_standard-post-response-codes.adoc[]
+
+// Unset the variables used in this part.
+:no_body!:

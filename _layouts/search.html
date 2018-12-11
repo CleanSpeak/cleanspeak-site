@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+{% include docs/_head.html %}
+<body>
+{% include docs/_navigation.html %}
+<div class="main">
+{% include docs/_header.html %}
+<article>
+  <section>
+    {% if page.markdown == 1 %}
+      {{ content | markdownify }}
+    {% else %}
+      {{ content }}
+    {% endif %}
+  </section>
+  {% include docs/_footer.html %}
+</article>
+</div>
+</body>
+</html>

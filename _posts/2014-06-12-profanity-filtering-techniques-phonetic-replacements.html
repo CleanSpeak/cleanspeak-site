@@ -1,0 +1,24 @@
+---
+layout: blog-post
+title: 'Profanity Filtering Techniques: Phonetic Replacements'
+author: Brian Pontarelli
+author_image: "/images/blog/head-shot-bw-square.jpg"
+excerpt_separator: "<!--more-->"
+categories:
+- CleanSpeak
+tags:
+- Profanity Filtering
+---
+<p><em><strong>The third in a series of posts about the finer points of profanity filtering…</strong></em></p>
+<p><img class="alignnone wp-image-6061" src="/images/blog/th-sound-full.jpg" alt="Inversoft Phonetics" width="540" height="354"></p>
+<p>Phonetic replacement is the process of replacing characters with other alphabetic characters (or removing unnecessary characters) while still retaining the phonetic structure of the word. This tactic is often used to attack filters that do not understand phonetics:</p>
+<ol>
+<li><strong>Teech me guitar</strong></li>
+<li><strong>Attak the main castle gate</strong></li>
+</ol>
+<p>Example #1 is a simple character swap of an “a” to an “e” that still retains the same phonetic structure of the word and allows the reader to infer the original word.</p>
+<p>Example #2, on the other hand, is an example of character collapsing. In this example the “ck” in the word “Attack” has been collapsed to a single “k” character.</p>
+<p>In some cases characters can’t be collapsed without changing the meaning of the word. For example, the word “been” can’t be collapsed to “ben”. Therefore, a filter can’t simply ignore multiple characters that are phonetically the same. It has to understand if the word can be collapsed.</p>
+<p><!--more--></p>
+<p>This type of filter attack is a common tactic of users due to the fact that most filters have no knowledge of phonetics. <a title="Profanity Filter" href="/features/profanity-filter/">CleanSpeak’s Profanity Filter</a> is able to correctly identify the majority of these types of phonetic attacks. It understands that many characters can be swapped, and in some words, multiple characters can also be collapsed. It also knows which words can’t be collapsed without impacting the meaning of the word.</p>
+<p> </p>

@@ -1,0 +1,22 @@
+{
+  "generalErrors": [
+    {
+      "code": "[invalid]",
+      "message": "Your JSON was invalid"
+    }
+  ],
+  "fieldErrors" : {
+    "content.applicationId" : [
+      {
+        "code" : "[missing]content.applicationId",
+        "message" : "Your JSON request must contain a [content.applicationId] value as a UUID String."
+      }
+    ],
+    "content.parts[0].type" : [
+      {
+        "code" : "[missing]content.parts.type",
+        "message" : "Each object in the [content.parts] array must have a [type] value that is one of these values [audio, image, text, video, hyperlink, attribute]."
+      }
+    ]
+  }
+}

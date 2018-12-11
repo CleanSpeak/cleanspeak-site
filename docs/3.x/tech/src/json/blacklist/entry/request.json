@@ -1,0 +1,22 @@
+{
+  "entry": {
+    "adjective": false,
+    "adverb": false,
+    "collapseDoubles": true,
+    "filterMode": "embeddable",
+    "locale": "en",
+    "noun": false,
+    "replacePhonetics": true,
+    "severity": "medium",
+    "tags": [
+      "Grooming"
+    ],
+    "text": "your mom",
+    "variations": [
+      "ur dad",
+      "ur mom",
+      "your dad"
+    ],
+    "verb": false
+  }
+}

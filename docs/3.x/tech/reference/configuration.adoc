@@ -1,0 +1,158 @@
+---
+layout: doc
+title: Configuration Reference
+description: All of the configuration options of CleanSpeak stored in the cleanspeak.properties file
+---
+
+== Configuration
+
+Most of the CleanSpeak configuration is performed in the Management Interface. However some configuration is provided through a configuration file. You may modify this file in order to change your configuration, CleanSpeak will need to be restarted to pick up changes to this configuration. Assuming you installed in the default locations, the configuration file may be found in the following directory. If you have installed in an alternate location the path to this file will be different.
+
+[.command-line]
+.Linux and Mac OS X
+----
+/usr/local/inversoft/config/cleanspeak.properties
+----
+
+[.command-line]
+.Windows
+----
+C:\inversoft\config\cleanspeak.properties
+----
+
+This table contains all of the configuration options available in the `cleanspeak.properties` file.
+
+[cols="3a,7a"]
+[.api]
+.Properties
+|===
+|[field]#license.id# [type]#[String]#
+|Your License ID. You can find your License ID by logging into your account at https://www.inversoft.com/account/.
+
+|[field]#database.url# [type]#[String]#
+|A JDBC URL for your database.
+
+For MySQL, this URL will look something like this:
+
+[block-quote]#`database.url=jdbc:mysql://localhost:3306/cleanspeak`#
+
+For PostgreSQL, this URL will look something like this:
+
+[block-quote]#`database.url=jdbc:postgresql://localhost:5432/cleanspeak`#
+
+|[field]#database.username# [type]#[String]#
+|The username used to connect to the database.
+
+|[field]#database.password# [type]#String#
+|The password used to connect to the database.
+
+|[field]#database.mysql.enforce-utf8mb4# [type]#[String]# [default]#defaults to `true`#
+|When set to `true` and using MySQL, full 4 byte unique configuration is enforced at startup.
+
+If this validation is not desired or not it is not possible to modify your MySQL configuration so satisfy the validation, disable this check
+by setting this value to `false`.
+
+// START: Starting in 3.4 this moved to the Management Interface
+|[field]#email.host# [type]#[String]# [required]#Required# [deprecated]#Deprecated#
+|The hostname of your SMTP server. _Starting in version `3.4.0` email server configuration has moved to the Management Interface._
+
+|[field]#email.port# [type]#[Integer]# [required]#Required# [deprecated]#Deprecated#
+|The SMTP port. By default SMTP servers use port 25, 587 for SSL(TLS) connections and less commonly port 465 (SSL). _Starting in version `3.4.0` email server configuration has moved to the Management Interface._
+
+|[field]#email.ssl# [type]#[Boolean]# [required]#Required# [deprecated]#Deprecated#
+|Set to `true` to enable an SSL connection to the SMTP server. _Starting in version `3.4.0` email server configuration has moved to the Management Interface._
+
+|[field]#email.username# [type]#[String]# [required]#Required# [deprecated]#Deprecated#
+|The username used to connect to your email server. _Starting in version `3.4.0` email server configuration has moved to the Management Interface._
+
+|[field]#email.password# [type]#[String]# [optional]#Optional# [deprecated]#Deprecated#
+|The password used to connect to your email server. _Starting in version `3.4.0` email server configuration has moved to the Management Interface._
+
+|[field]#email.from# [type]#[String]# [required]#Required# [deprecated]#Deprecated#
+|The email address used as in the from field when CleanSpeak sends emails. _Starting in version `3.4.0` email server configuration has moved to the Management Interface._
+// END: Starting in 3.4 this moved to the Management Interface
+
+|[field]#cleanspeak-management-interface.management-port# [type]#[Integer]#
+|The port number that CleanSpeak Management Interface will use for internal Tomcat administration.
+
+|[field]#cleanspeak-management-interface.http-port# [type]#[Integer]#
+|The port number that CleanSpeak Management Interface will use to accept HTTP requests.
+
+|[field]#cleanspeak-management-interface.https-port# [type]#[Integer]#
+|The port number that CleanSpeak Management Interface will use to accept HTTPS requests.
+
+|[field]#cleanspeak-management-interface.memory# [type]#[String]#
+|
+include::docs/3.x/tech/reference/_property-memory.adoc[]
+
+|[field]#cleanspeak-management-interface.additional-java-args# [type]#[String]#
+|
+include::docs/3.x/tech/reference/_property-additional-jvm-args.adoc[]
+
+|[field]#cleanspeak-search-engine.transport-port# [type]#[Integer]#
+|The port that the search engine will use for optimized TCP communications instead of HTTP communications.
+
+|[field]#cleanspeak-search-engine.http-port# [type]#[Integer]#
+|The port number that the Search Engine will use to accept HTTP requests.
+
+|[field]#cleanspeak-search-engine.memory# [type]#[String]#
+|
+include::docs/3.x/tech/reference/_property-memory.adoc[]
+
+|[field]#cleanspeak-search-engine.hosts# [type]#[String]# [default]#defaults to `\_local_`#
+|This parameter indicates which address or network interfaces to bind during service startup. The default value will cause the service to bind  any
+loopback address on the system such as `127.0.0.1`.
+
+This default value is sufficient for running CleanSpeak Webservice, CleanSpeak Management Interface, and the Search Engine on the same server. If you run the Search Engine on a separate system than
+Cleanspeak Management Interface or CleanSpeak Webservice you will need to modify this value. You may specify a single hostname or IP address or one of the special values in any combination.
+
+Special values include:
+
+* `\_[networkInterface]_` - Addresses of a network interface, for example `\_en0_`
+* `\_local_` - Any loopback address on the system, for example `127.0.0.1`
+* `\_site_` - Any site-local addresses on the system, for example `192.168.0.1`.
+* `\_global_` - Any globally-scoped addresses on the system, for example `8.8.8.8`.
+
+The following is an example to bind to `localhost` as well as any site local addresses on the system such at `192.168.1.42`.
+
+[block-quote]#`cleanspeak-search-engine.hosts=\_local_,\_site_`#
+
+|[field]#cleanspeak-search-engine.servers# [type]#[String]#
+|A comma separated list of stand-alone search engine servers that will be used by CleanSpeak.
+
+The following is an example of a configuration for two separate search engines, one running on localhost and the other is on remote system.
+
+[block-quote]#`cleanspeak-search-engine.servers=localhost:8020,search2.example.com:8020`#
+
+|[field]#cleanspeak-search-engine.data-directory# [type]#[String]#
+|The location on disk where CleanSpeak Search Engine will store its data. This value is defaulted if not specified and generally should not be modified.
+
+|[field]#cleanspeak-search-engine.additional-java-args# [type]#[String]#
+|
+include::docs/3.x/tech/reference/_property-additional-jvm-args.adoc[]
+
+|[field]#cleanspeak-webservice.management-port# [type]#[Integer]#
+|The port number that CleanSpeak Webservice will use for internal Tomcat administration.
+
+|[field]#cleanspeak-webservice.http-port# [type]#[Integer]#
+|The port number that CleanSpeak Webservice will use to accept HTTP requests.
+
+|[field]#cleanspeak-webservice.https-port# [type]#[Integer]#
+|The port number that CleanSpeak Webservice will use to accept HTTPS requests.
+
+|[field]#cleanspeak-webservice.urls# [type]#[String]#
+|A comma separated list of CleanSpeak Webservice instances.
+
+The following is an example of a single webservice running on localhost.
+
+[block-quote]#`cleanspeak-webservice.urls=http://localhost:8001`#
+
+|[field]#cleanspeak-webservice.memory# [type]#[String]#
+|
+include::docs/3.x/tech/reference/_property-memory.adoc[]
+
+|[field]#cleanspeak-webservice.additional-java-args# [type]#[String]#
+|
+include::docs/3.x/tech/reference/_property-additional-jvm-args.adoc[]
+
+|===

@@ -1,0 +1,88 @@
+---
+layout: doc
+title: Handling Flags
+description: Learn how to handle user and content flags (when user's report others) in CleanSpeak
+---
+
+== Handling Flags
+
+After you complete the link:setup-wizard[Setup Wizard] steps, you should have an API key and Application Id that you will use to call the CleanSpeak WebService APIs. This API key will be sent in via the `Authorization` header. The Application Id will be passed in the JSON request body.
+
+Besides the main content filtering and moderation APIs, CleanSpeak also provides the ability to capture user's reporting (also known as flagging) other user's for inappropriate behavior. CleanSpeak can also capture user's reporting content that is inappropriate. These 2 features are split into two different API calls.
+
+=== User Flags
+
+The following is an example cURL request to the Flag a User endpoint. However, your API key, Application Id and Content User Ids will all be different. Your URL might also be different if you are running CleanSpeak on an external server. See the API documentation for link:../apis/users#flag-a-user[Flag a User] for additional details.
+
+[source,shell]
+.Example Request
+----
+curl -s -XPOST \
+     -H "Authorization: ea408a20-bc62-4d43-8c27-be5d4f93a3b8" \
+     -H "Content-Type: application/json" \
+     -d '{ \
+           "flag": { \
+             "applicationId": "f81d4fae-7dec-11d0-a765-00a0c91e6bf6", \
+             "comment": "this user keeps cheating", \
+             "createInstant": 1474496312000, \
+             "reason": "cheating", \
+             "reporterId": "91303ce2-ee40-48e7-98dc-354c051d0b78" \
+           } \
+         }' \
+     http://localhost:8011/content/user/flag/ec37ab10-9ba1-11e6-bdf4-0800200c9a66
+----
+
+The key components of this API call are as follows:
+
+* The Content User Id of the user that is being reported/flagged must be on the end of the URL
+* The *`Authorization`* header will contain your API key
+* The *`Content-Type`* header must be set to *`application/json`*
+* The body of the HTTP call must be valid JSON document that contains the following information:
+** A Flag object
+** The Id of the Application that the flag occurred in
+** Any comment from the reporting user
+** The timestamp when the report occurred (as the number of milliseconds since Epoch)
+** Any reason for the report
+** The UUID of the Content User that generated the report (reporterId)
+
+After you successfully call the Flag a User endpoint, CleanSpeak will return a status code that indicates if the flag was processed correctly or not.
+
+You can consult the link:../apis/users#flag-a-user[API documentation] for this endpoint for more information on the request and response JSON formats.
+
+
+=== Content Flags
+
+The following is an example cURL request to the Flag Content endpoint. However, your API key, Content Item Id, and Content User Ids will all be different. Your URL might also be different if you are running CleanSpeak on an external server. See the API documentation for link:../apis/content#flagging-content[Flag Content] for additional details.
+
+[source,shell]
+.Example Request
+----
+curl -s -XPOST \
+     -H "Authorization: ea408a20-bc62-4d43-8c27-be5d4f93a3b8" \
+     -H "Content-Type: application/json" \
+     -d '{ \
+           "flag": { \
+             "comment": "this content is really not appropriate for children", \
+             "createInstant": 1474496312000, \
+             "reason": "pornography", \
+             "reporterId": "91303ce2-ee40-48e7-98dc-354c051d0b78" \
+           }
+         }' \
+     http://localhost:8011/content/user/flag/ec37ab10-9ba1-11e6-bdf4-0800200c9a66
+----
+
+The key components of this API call are as follows:
+
+* The Content Id of the piece of content that is being reported/flagged must be on the end of the URL (the content *MUST* be persistent)
+* The *`Authorization`* header will contain your API key
+* The *`Content-Type`* header must be set to *`application/json`*
+* The body of the HTTP call must be valid JSON document that contains the following information:
+** A Flag object
+** Any comment from the reporting user
+** The timestamp when the report occurred (as the number of milliseconds since Epoch)
+** Any reason for the report
+** The UUID of the Content User that generated the report (reporterId)
+
+After you successfully call the Flag Content endpoint, CleanSpeak will return a status code that indicates if the flag was processed correctly or not.
+
+You can consult the link:../apis/content#flagging-content[API documentation] for this endpoint for more information on the request and response JSON formats.

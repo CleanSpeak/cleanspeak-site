@@ -1,0 +1,68 @@
+---
+layout: blog-post
+title: 'Gather API Tutorial: Understanding Search'
+author: Brian Pontarelli
+author_image: "/images/blog/head-shot-bw-square.jpg"
+excerpt_separator: "<!--more-->"
+categories:
+- Technology
+- Online Community
+- Products
+- Gather
+tags: []
+---
+<p>The Gather API enables websites, apps (desktop/smartphone), anything really, to fully interact with user generated content stored in Gather. The use cases are limitless. Here I’ll show how Gather’s search API can be integrated into a browser-based game to enhance the user experience.</p>
+<p>Let’s assume you’ve built an amazing game that has revolutionized in-browser role-playing. It’s called Candide 3D. In the first six months after launch both the game and the community website have been wildly successful. The website community allows users and administrators to create game guides, post tips, answer questions, and more. The community content has become so valuable that your users are asking for a way to access the content from inside the game. The game-play experience, best played full-screen, is hindered when users must: minimize the game, run a community search, commit relevant results to memory, and finally, return the game to full-screen. Certainly not a great user experience. Good thing you chose to build your community with Gather!</p>
+<p>Here’s an example screenshot of what we want to end up with:</p>
+<p><img class="aligncenter wp-image-7042 size-full" src="/images/blog/Gather-API-Tutorial.png" alt="Gather-API-Tutorial" width="749" height="551"></p>
+<p><!--more--></p>
+<h2>Get there with three easy steps:</h2>
+<p><em>I’m using Angular for the purpose of this demo and, assuming Gather is running at localhost:10011</em></p>
+<h3>Step 1) Build your controller code</h3>
+<p>File app.js:</p>
+<pre class="lang:java decode:true ">var App = angular.module('App', []);
+
+App.controller('GatherDemoController', function($scope, $http) {
+ $scope.gatherPosts = []
+ $scope.performSearch = function(searchTerm) {
+  $http.get('http://localhost:10011/api/search?content=' + searchTerm)
+   .success(function(res){
+    $scope.gatherPosts = res.posts;
+   });
+ };
+});</pre>
+<h3> Step 2) Integrate the search display into the view</h3>
+<p><em>Your view will probably have more code.</em></p>
+<p>File display.html:</p>
+<pre class="lang:java decode:true">&lt;!doctype html&gt;
+&lt;html ng-app="App"&gt;
+&lt;head&gt;
+ &lt;title&gt;Gather Search Demo&lt;/title&gt;
+ &lt;script type="text/javascript" 
+src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"&gt;&lt;/script&gt;
+ &lt;script type="text/javascript" src="app.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body ng-controller="GatherDemoController"&gt;
+&lt;div&gt;
+ Enter a search term:
+ &lt;input type="text" ng-model="sometext"&gt;
+ &lt;button ng-click="performSearch(some text)"&gt;Search&lt;/button&gt;
+ &lt;hr/&gt;
+ &lt;div ng-repeat="post in gatherPosts" style="border-bottom: 1px dashed #aaa;"&gt;
+ &lt;h4&gt;{{post.topic.title}} ({{post.id}})&lt;/h4&gt;
+ &lt;p style="margin-left: 
+ 10px;"&gt;{{post.content.versions[post.content.versions.length-1].value}}&lt;/p&gt;
+ &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<h3> Step 3) Try it</h3>
+<ol>
+<li>Save app.js and display.html in a directory. Make sure app.js correctly points to a running Gather instance.</li>
+<li>Fire up a server in the directory: (e.g. $ python -m SimpleHTTPServer 8000)</li>
+<li>Open browser to http://localhost:8000/display.html</li>
+<li>Type in search term and press ‘search’</li>
+</ol>
+<h2>Conclusion</h2>
+<p>This basic example takes content from Gather and pushes it to a simple Angular.js front-end. Your application/game might be written in <a href="https://developer.apple.com/swift/">Swift</a> or Java or <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html">Objective-C</a>, but the ability to integrate with Gather is just as simple.  And, your users get a great game-play experience.</p>
+<p>This example has a very narrow scope: search. With a few more calls to Gather’s API your game’s users could reply to posts, vote on posts, sort results, edit posts, and much more.</p>

@@ -1,0 +1,81 @@
+---
+layout: blog-post
+title: 'Savant Build Tool: Plugins'
+author: Brian Pontarelli
+author_image: "/images/blog/head-shot-bw-square.jpg"
+excerpt_separator: "<!--more-->"
+categories:
+- Technology
+tags:
+- Savant
+---
+<p style="text-align: center;"><img class="wp-image-6502 aligncenter" src="/images/blog/Plug-Outlet-Savants.jpg" alt="Savant Plugins" width="384" height="343"></p>
+<p>Savant is a bit different than other build tools. Savant doesn't allow plugins to define build targets. This was a major design decision that we made based on our use of various build tools over the past 10 years.</p>
+<p>Here's the reason we decided not to allow plugins to define build targets. Let's say that we are using the Java, Groovy and JRuby plugins and that our project has source code in all three languages. Let's also assume we have tests written in all three languages. The Java plugin defines two build targets: compile and test. These targets compile the Java source code in the directory src/main/java and src/test/java and then execute the tests.</p>
+<p>Now, let's assume that our Groovy and JRuby plugins also define these exact same targets. However, our project's Groovy classes use our Java classes and our JRuby classes use our Groovy classes. How do we ensure that our plugins are executed in the correct order?</p>
+<p><!--more--></p>
+<p>This is complicated and requires the build tool to have a concept of "synthetic targets". These are targets that don't actually do anything, they just delegate to other targets. Each plugin now defines a different target called _compile which is a "hidden" target. By default, the compile synthetic target calls all _compile targets in an arbitrary order. If we want to change the order, we need to change it by hand in our build file like this:</p>
+<pre class="lang:java decode:true">compile.dependentTargets.clear()
+compile.dependentTargets = [
+  javaPlugin.hiddenTargets['_compile'],
+  groovyPlugin.hiddenTargets['_compile'],
+  jrubyPlugin.hiddenTargets['_compile']
+]</pre>
+<p>This is not very obvious and as the build file maintainer, you have to understand how these plugins work and what hidden targets they have. You might also have to manage complex dependencies between plugins and plugin targets.</p>
+<p>Now, let's assume that our project needs to setup a database before the Java tests are run and reset the database before the Groovy and JRuby tests are run. We often have to inject these steps into pre and post hooks for plugin targets like this:</p>
+<pre class="lang:java decode:true">compile.pre &lt;&lt; {
+  setupDatabase()
+}
+
+javaPlugin.hiddenTargets['_compile'].post &lt;&lt; {
+  resetDatabase()
+}
+
+groovyPlugin.hiddenTargets['_compile'].post &lt;&lt; {
+  resetDatabase()
+}</pre>
+<p>This is a simple example, but it illustrates the challenges build file writers face when plugins define build targets.</p>
+<p>After using tools such as Maven and Gradle, we felt that this model was extremely complex and provided only a single benefit: standard target names. We didn't feel that this benefit was worth the complexity.</p>
+<p>Therefore, we took a different approach in Savant. Savant plugins provide isolated functionality through public methods on an object. Build targets are defined in the build file and call the plugin methods.</p>
+<p>As an example, the Savant Java plugin provides the ability to compile Java source files. The Savant Java TestNG plugin provides the ability to execute TestNG tests. The Java TestNG plugin is completely isolated from the Java plugin and it will correctly fail if your build file hasn't compiled the source code yet.</p>
+<p>Here's a simple build file that uses the Java and Java TestNG plugins:</p>
+<pre class="lang:java decode:true">project(…) {
+  …
+}
+
+java = loadPlugin("org.savantbuild.plugin:java:0.3.0")
+javaTestNG = loadPlugin("org.savantbuild.plugin:java-testng:0.3.0")
+
+target(name: "compile") {
+  java.compile()
+}
+
+target(name: "test", dependsOn: ["compile"]) {
+  javaTestNG.test()
+}</pre>
+<p>That's it! The build file defines the targets and the dependencies between them and the plugins handle all the heavy lifting of compiling the Java source files and then executing the tests. The only thing you need to ensure is that all your build files use standard names.</p>
+<p>In case you were wondering about the example above, Savant might handle it like this:</p>
+<pre class="lang:java decode:true">java = loadPlugin("org.savantbuild.plugin:java:0.3.0")
+groovy = loadPlugin("org.savantbuild.plugin:groovy:0.3.0")
+jruby = loadPlugin("org.savantbuild.plugin:jruby:0.3.0")
+javaTestNG = loadPlugin("org.savantbuild.plugin:java-testng:0.3.0")
+groovyTestNG = loadPlugin("org.savantbuild.plugin:groovy-testng:0.3.0")
+jrubyTestNG = loadPlugin("org.savantbuild.plugin:jruby-testng:0.3.0")
+database = loadPlugin("org.savantbuild.plugin:database:0.3.0")
+
+target(name: "compile") {
+  java.compile()
+  groovy.compile()
+  jruby.compile()
+}
+
+target(name: "test", dependsOn: ["compile"]) {
+  [javaTestNG, groovyTestNG, jrubyTestNG].each { plugin -&gt;
+    database.create()
+    plugin.test()
+  }
+}</pre>
+<p>This is just an example because Savant doesn't yet have a JRuby plugin, but it illustrates the power and simplicity of Savant since it leaves the job of defining build targets and order of execution up to the project build file.</p>
+<p>You can learn more about the Savant plugins, including how to write your own plugin here:</p>
+<p><a href="http://github.com/inversoft/savant-core/wiki">http://github.com/inversoft/savant-core/wiki</a></p>
+<p>Stay tuned for our next Savant blog on how Savant allows you to quickly release your project and publish your project's artifacts.</p>

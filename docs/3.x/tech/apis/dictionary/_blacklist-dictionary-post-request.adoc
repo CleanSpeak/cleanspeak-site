@@ -1,0 +1,24 @@
+
+[cols="3a,7a"]
+[.api]
+.Request Body
+|===
+|[field]#entry.locale# [type]#[String]# [required]#required#
+|The locale of the dictionary entry text. See link:../reference/data-types#locales[Locales].
+
+|[field]#tags# [type]#[Array<String>]# [since]#Available since 3.12.0#
+|A list of Blacklist Tags, used in a whitelist behavior during filtering.
+
+During filtering, if a word is EXACTLY matched against a dictionary word and both
+it and your filter configuration have the tag then the match will be removed as if
+it didn't find it.
+
+|[field]#entry.text# [type]#[String]# [required]#required#
+|The text value of the dictionary entry.
+|===
+
+[source,json]
+.Example Request JSON
+----
+include::../../src/json/blacklist/dictionary/request.json[]
+----

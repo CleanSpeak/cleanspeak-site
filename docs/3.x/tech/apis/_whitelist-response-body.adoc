@@ -1,0 +1,43 @@
+[cols="3a,7a"]
+[.api]
+.Response Body
+|===
+|[field]#whitelist# [type]#[Object]#
+|The whitelist object.
+
+|[field]#whitelist.advancedDisallowedEntries# [type]#[Array]#
+|An array of advanced disallowed entries on the whitelist.
+
+|[field]#whitelist.advancedDisallowedEntries``[x]``.parts# [type]#[Array<String>]#
+|An array of whitelist tags and optional wild cards that in the order that makes up the advanced disallowed phrase.
+
+|[field]#whitelist.allowedEntries# [type]#[Array]#
+|An array of allowed entries on the whitelist.
+
+|[field]#whitelist.allowedEntries``[x]``.exclusions# [type]#[Array<String>]#
+|An array of the inflections to be excluded for this word.
+
+|[field]#whitelist.allowedEntries``[x]``.inflect# [type]#[Boolean]#
+|When this value is true it indicates the word has been inflected and the inflections will be returned in the response.
+
+|[field]#whitelist.allowedEntries``[x]``.inflections# [type]#[Array<String>]#
+|An array of the inflections for this word.
+
+|[field]#whitelist.allowedEntries``[x]``.locale# [type]#[String]#
+|The locale of the word. See link:../reference/data-types#locales[Locales].
+
+|[field]#whitelist.allowedEntries``[x]``.text# [type]#[String]#
+|The allowed word.
+
+|[field]#whitelist.disallowedEntries# [type]#[Array]#
+|An array of disallowed entries on the whitelist.
+
+|[field]#whitelist.disallowedEntries``[x]``.parts# [type]#[Array<String>]#
+|An array of allowed entries in the order that makes up the disallowed phrase.
+|===
+
+[source,json]
+.Example Response JSON
+----
+include::../src/json/whitelist/response.json[]
+----

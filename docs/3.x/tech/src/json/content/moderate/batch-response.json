@@ -1,0 +1,26 @@
+{
+  "results": [
+    {
+      "content": {
+        "id": "99f2c4e8-961a-4a34-b9b9-43fc3f3b43ec"
+      },
+      "contentAction": "allow",
+      "moderationAction": "generatesAlert",
+      "stored": true
+    },
+    {
+      "content": {
+        "id": "99f2c4e8-961a-4a34-b9b9-43fc3f3b43ed",
+        "parts": [
+          {
+            "name": "body",
+            "replacement": "**** off"
+          }
+        ]
+      },
+      "contentAction": "replace",
+      "moderationAction": "generatesAlert",
+      "stored": true
+    }
+  ]
+}

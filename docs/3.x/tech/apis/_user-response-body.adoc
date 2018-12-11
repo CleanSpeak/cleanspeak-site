@@ -1,0 +1,53 @@
+[cols="3a,7a"]
+[.api]
+.Response Body
+|===
+|[field]#user# [type]#[Object]#
+|The user object.
+
+|[field]#user.id# [type]#[UUID]#
+|The Id of the user.
+
+|[field]#user.applicationIds# [type]#[Array<UUID>]#
+|The applications identifiers assigned to this user. If none are present the user will have access to all applications in CleanSpeak.
+
+|[field]#user.email# [type]#[String]#
+|The email address of the user.
+
+|[field]#user.expirationInstantUTC# [type]#[Long]#
+|The link:../reference/data-types#instants[instants] this user will expire and will be unable to login to CleanSpeak.
+
+|[field]#user.externalId# [type]#[String]#
+|The external identifier used to link this user to another system.
+
+|[field]#user.roles# [type]#[Array<String>]#
+|The roles assigned to the user. The possible values are:
+
+* `admin`
+* `approve_all`
+* `audit_viewer`
+* `filter`
+* `filter_manager`
+* `moderator`
+* `moderator_manager`
+* `user_admin`
+
+|===
+
+// Show POST request example
+ifeval::["{http_method}" == "POST"]
+[source,json]
+.Example Response JSON
+----
+include::../src/json/system/user/response.json[]
+----
+endif::[]
+
+// Show PUT request example
+ifeval::["{http_method}" == "PUT"]
+[source,json]
+.Example Response JSON
+----
+include::../src/json/system/user/update-response.json[]
+----
+endif::[]

@@ -1,0 +1,27 @@
+[cols="3a,7a"]
+[.api]
+.Request Body
+|===
+|[field]#flag# [type]#[Object]# [required]#Required#
+|The flag object.
+
+|[field]#flag.comment# [type]#[String]# [optional]#Optional#
+|An optional description to provide additional details for the reason the content was flagged.
+
+|[field]#flag.createInstant# [type]#[Long]# [required]#Required#
+|The link:../reference/data-types#instants[instants] the flag event occurred.
+
+|[field]#flag.reason# [type]#[String]# [optional]#Optional#
+|A free-form text field that can be used to indicate the reason the content was flagged.
+
+For example, you may use reasons such as `abuse`, `pornography`, `bullying`, `grooming`, `spam` or `violence`.
+
+|[field]#flag.reporterId# [type]#[UUID]# [required]#Required#
+|The Id of the reporting user.
+|===
+
+[source,json]
+.Example Request JSON
+----
+include::../src/json/content/flag/content-request.json[]
+----

@@ -1,0 +1,241 @@
+---
+layout: doc
+title: Content APIs
+description: APIs to moderate and filter your user-generated content with CleanSpeak
+---
+
+== Overview
+
+This page contains the APIs that are used to send content to CleanSpeak for moderation and filtering. Here are the APIs:
+
+* <<Moderate Content>>
+* <<Update Content>>
+* <<Filter Content>>
+* <<Flagging Content>>
+* <<Batch Filter Content>>
+* <<Batch Moderate Content>>
+
+
+include::docs/3.x/tech/apis/_null_warning.adoc[]
+
+
+== Moderate Content
+
+This API is used to send new content to CleanSpeak to be moderated. To make updates to content that has already been sent into CleanSpeak use the <<Update Content>> API.
+
+Like the Filter Content API the same filtering is performed on content sent to this API. The difference is that instead of returning all matches found in the content, the Application filter rules are first applied to determine what action should be taken. Using this API allows you to modify the filter behavior without changing the way you send content to the filter. This allows for a much more powerful integration.
+
+[WARNING]
+====
+*Important*
+At least one Application must be configured prior to sending content to the Moderate API. See the Applications setup page for details on configuring applications with the Management Interface or the <<Create an Application,Application>> API.
+====
+
+[NOTE]
+====
+*Transient vs Persistent Content*
+
+CleanSpeak will store all content whether it is transient or persistent so long as the Store Content? configuration is enabled for the Application. The difference in the two content types is whether the content is eligible for moderation. Moderation actions include placing the content in an Approval Queue or editing/deleting the content after it's been published.
+
+Transient content is not be eligible for moderation but the user that generated the content can be moderated (actioned). The most common example of transient content is real-time chat, which disappears from the users' perspectives after a short amount of time. This type of content can't be edited or deleted since it disappears so quickly. Also, the real-time nature of chat means it would never require pre-approval.
+
+Persistent content such as forum posts must include a content ID (UUID) in order for CleanSpeak to communicate content moderation events back to the client application with the Notification System.
+====
+
+=== Request
+
+For Transient content, do not provide a unique identifier on the API request, CleanSpeak will generate this on your behalf.
+[.endpoint]
+.URI
+--
+[method]#POST# [uri]#/content/item/moderate#
+--
+
+For persistent content you will need to provide a unique identifier (UUID) on the API request. When using this API with persistent content you'll need to first ensure your Application configuration is set to Persistent Content Type. If you have not done this the API request will fail with an error message indicating you have not yet configured your Application.
+[.endpoint]
+.URI
+--
+[method]#POST# [uri]#/content/item/moderate/`\{contentItemId\}`#
+--
+
+[cols="3a,7a"]
+[.api]
+.Request Parameters
+|===
+|[field]#contentItemId# [type]#[UUID]# [required]#Required#
+|The Id of the Content Item.
+|===
+
+include::docs/3.x/tech/apis/_moderate-content-request-body.adoc[]
+
+=== Response
+
+include::docs/3.x/tech/apis/_standard-post-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/_moderate-content-response-body.adoc[]
+
+
+== Update Content
+
+This API is used to send updates to existing content to CleanSpeak to be moderated. Only persistent content can be updated in CleanSpeak.
+
+Like the Filter Content API the same filtering is performed on content sent to this API. The difference is that instead of returning all matches found in the content, the Application filter rules are first applied to determine what action should be taken. Using this API allows you to modify the filter behavior without changing the way you send content to the filter. This allows for a much more powerful integration.
+
+=== Request
+
+You need to provide the unique identifier (UUID) of the content being updated on the API request.
+[.endpoint]
+.URI
+--
+[method]#PUT# [uri]#/content/item/moderate/`\{contentItemId\}`#
+--
+
+[cols="3a,7a"]
+[.api]
+.Request Parameters
+|===
+|[field]#contentItemId# [type]#[UUID]# [required]#Required#
+|The Id of the Content Item.
+|===
+
+include::docs/3.x/tech/apis/_moderate-content-request-body.adoc[]
+
+=== Response
+
+include::docs/3.x/tech/apis/_standard-post-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/_moderate-content-response-body.adoc[]
+
+
+== Filter Content
+
+This API is used to send content to CleanSpeak to be filtered. Content sent to this API is not persisted by CleanSpeak and does not use the CleanSpeak Application filter rules. To use Application filter rules and other more advanced features of CleanSpeak see <<Moderate Content>>.
+
+[NOTE]
+====
+This API should be avoided unless you have a very specific need to only perform filtering and want all of the filter matches back. For most situations, the <<Moderate Content>> API should be used instead.
+====
+
+=== Request
+
+[.endpoint]
+.URI
+--
+[method]#POST# [uri]#/content/item/filter#
+--
+
+include::docs/3.x/tech/apis/_filter-content-request-body.adoc[]
+
+=== Response
+
+include::docs/3.x/tech/apis/_filter-content-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/_filter-content-response-body.adoc[]
+
+
+== Flagging Content
+
+This API is used to flag content that has already been sent into CleanSpeak. Flagged content will be queued for a moderator to review in the Content Alert queue.
+
+For example, this API may be used to allow users to flag a forum post for inappropriate content or to flag reviews as containing irrelevant content.
+
+=== Request
+
+[.endpoint]
+.URI
+--
+[method]#POST# [uri]#/content/item/flag/`\{contentItemId\}`#
+--
+
+[cols="3a,7a"]
+[.api]
+.Request Parameters
+|===
+|[field]#contentItemId# [type]#[UUID]# [required]#Required#
+|The Id of the User Content Item to be flagged.
+|===
+
+include::docs/3.x/tech/apis/_flag-content-request-body.adoc[]
+
+=== Response
+
+:no_body:
+:code_404:
+include::docs/3.x/tech/apis/_standard-post-response-codes.adoc[]
+
+// Unset the variables used in this part.
+:no_body!:
+:code_404!:
+
+== Batch Filter Content
+
+[NOTE.since]
+====
+Available Since Version 3.6.0
+====
+
+This API is used to send multiple pieces of content to CleanSpeak to be filtered. It primarly uses the same API structure as the <<Filter Content>> API except that the content is an array instead of an object.
+
+[NOTE]
+====
+This API can be called synchronously or asynchronously. If the ``callbackURL`` is specified in the request, CleanSpeak will handle the request asynchronously and send the response to this URL. Otherwise, the request is handled synchronously and CleanSpeak will send the response back directly.
+====
+
+=== Request
+
+[.endpoint]
+.URI
+--
+[method]#POST# [uri]#/content/item/batch-filter#
+--
+
+include::docs/3.x/tech/apis/_batch-filter-content-request-body.adoc[]
+
+=== Response
+
+include::docs/3.x/tech/apis/_standard-post-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/_batch-filter-content-response-body.adoc[]
+
+
+== Batch Moderate Content
+
+[NOTE.since]
+====
+Available Since Version 3.6.0
+====
+
+This API is used to send multiple pieces of content to CleanSpeak to be moderated. It primarily uses the same API structure as the <<Moderate Content>> and <<Update Content>> APIs with a few differences:
+
+* For persistent content, the id of each piece of content is in the request rather than on the URL
+* For transient content, the results come back in the response in the same as they were passed into the request
+* The ``moderation`` parameter in the request is applied to each piece of content
+
+[NOTE]
+====
+This API can be called synchronously or asynchronously. If the ``callbackURL`` is specified in the request, CleanSpeak will handle the request asynchronously and send the response to this URL. Otherwise, the request is handled synchronously and CleanSpeak will send the response back directly.
+====
+
+=== Request
+
+For new content, you must use the POST request:
+[.endpoint]
+.URI
+--
+[method]#POST# [uri]#/content/item/batch-moderate#
+--
+
+For updating content, you must use the PUT request:
+[.endpoint]
+.URI
+--
+[method]#PUT# [uri]#/content/item/batch-moderate#
+--
+
+include::docs/3.x/tech/apis/_batch-moderate-content-request-body.adoc[]
+
+=== Response
+
+include::docs/3.x/tech/apis/_standard-post-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/_batch-moderate-content-response-body.adoc[]

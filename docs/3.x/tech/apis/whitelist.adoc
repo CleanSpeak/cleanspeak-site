@@ -1,0 +1,634 @@
+---
+layout: doc
+title: Whitelist APIs
+description: Whitelist APIs that allow your application to access the whitelist allowed words which can be used for suggestion widgets
+---
+
+== Overview
+
+These APIs allow you to query and modify the whitelist filter state.
+
+The whitelist is best understood as a deny first list of words people are allowed to use. Only when a user has matched
+an allowed word or phrase will the content be permitted. The whitelist also has its own set of blacklist rules called
+disallowed phrases that prevent combinations of whitelisted words being used together in ways that could be just as bad
+as using a blacklisted word.
+
+* <<Retrieve the Whitelist>>
+* Allowed Words
+** <<Retrieve an Allowed Word>>
+** <<Retrieve all Allowed Words>>
+** <<Search for Allowed Words>>
+** <<Delete an Allowed Word>>
+** <<Create an Allowed Word>>
+** <<Update an Allowed Word>>
+* Tags
+** <<Retrieve a Tag>>
+** <<Retrieve all Tags>>
+** <<Delete a Tag>>
+** <<Create a Tag>>
+* Disallowed Phrases
+** <<Retrieve a Disallowed Phrase>>
+** <<Retrieve all Disallowed Phrases>>
+** <<Delete a Disallowed Phrase>>
+** <<Create a Disallowed Phrase>>
+* Advanced Disallowed Phrases
+** <<Retrieve an Advanced Disallowed Phrase>>
+** <<Retrieve all Advanced Disallowed Phrases>>
+** <<Delete an Advanced Disallowed Phrase>>
+** <<Create an Advanced Disallowed Phrase>>
+
+== Retrieve the Whitelist
+
+This API is used to retrieve the entire whitelist. You should use this API if you intend to retrieve the entire whitelist and store it to be used for realtime feedback as a user enters content. If you only intend to send content into CleanSpeak to filter against the whitelist, use the link:content#filtering-content[Filter Content] API instead.
+
+=== Request
+
+[WARNING]
+====
+The whitelist may contain in excess of 10,000 words and disallowed phrases. This API will return the entire list in the response body which may be several megabytes in size.
+====
+
+[.endpoint]
+.URI
+--
+[method]#GET# [uri]#/filter/whitelist#
+--
+
+=== Response
+
+// Get Never returns 400 or 404
+:no_errors:
+:never_missing:
+include::docs/3.x/tech/apis/_standard-get-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/_whitelist-response-body.adoc[]
+
+// Unset the variables used in this part.
+:no_errors!:
+:never_missing!:
+
+== Retrieve an Allowed Word
+
+Retrieve a single allowed word by Id or by Text and Locale.
+
+[NOTE.since]
+====
+Available since 3.9.0
+====
+
+=== Retrieve by Id
+
+[.endpoint]
+.URI
+--
+[method]#GET# [uri]#/filter/whitelist/allowed/`\{id\}`#
+--
+
+[cols="3a,7a"]
+[.api]
+.Request Parameters
+|===
+|[field]#id# [type]#[Integer]# [required]#required#
+|The Id of the entry to retrieve.
+|===
+
+=== Retrieve by Text and Locale
+
+[.endpoint]
+.URI
+--
+[method]#GET# [uri]#/filter/whitelist/allowed``?text=\{text\}&locale=\{locale\}``#
+--
+
+[cols="3a,7a"]
+[.api]
+.Request Parameters
+|===
+|[field]#text# [type]#[String]# [required]#required#
+|The text of the entry to retrieve
+
+|[field]#locale# [type]#[Locale]# [required]#required#
+|The locale of the entry to retrieve. See link:../reference/data-types#locales[Locale].
+|===
+
+=== Response
+
+include::docs/3.x/tech/apis/_standard-get-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/allowed/_whitelist-allowed-single-response.adoc[]
+
+== Retrieve all Allowed Words
+
+[NOTE.since]
+====
+Available since 3.9.0
+====
+
+=== Request
+
+[.endpoint]
+.URI
+--
+[method]#GET# [uri]#/filter/whitelist/allowed``?startRow={startRow}&numberOfResults={numberOfResults}&sort[0].field={sort.field}&sort[0].order={sort.order}``#
+--
+
+[cols="3a,7a"]
+[.api]
+.Request Parameters
+|===
+|[field]#startRow# [type]#[Integer]# [optional]#Optional# [default]#Defaults to 0#
+|The starting offset of the results.
+
+|[field]#numberOfResults# [type]#[Integer]# [optional]#Optional# [default]#Defaults to 20#
+|The number of results you want returned.
+
+|[field]#sort# [type]#[Array]# [optional]#Optional# [default]#Defaults to sorting by `id` with `asc` order#
+|Sorts allow you to control the order that results should be returned in. This affects how startRow
+and numberOfResults work, that is why a default sort order is defined.
+
+|[field]#sort``[x]``.field# [type]#[String]# [required]#required#
+|The field to sort the results on. You can sort on multiple fields at a time by using the array offsets.
+The sort field is required for any sorts you supply.
+
+The following values are allowed:
+
+* `id`
+* `text`
+* `locale`
+
+|[field]#sort``[x]``.order# [type]#[String]# [optional]#Optional# [default]#Defaults to `asc`#
+|The order to sort the field on. Every field can have its own order.
+
+Allowed orders:
+
+* `asc` - Ascending
+* `desc` - Descending
+|===
+
+=== Response
+
+:never_missing:
+include::docs/3.x/tech/apis/_standard-get-response-codes.adoc[]
+:never_missing!:
+
+include::docs/3.x/tech/apis/allowed/_whitelist-allowed-multi-response.adoc[]
+
+== Search for Allowed Words
+
+[NOTE.since]
+====
+Available since 3.11.0
+====
+
+=== Request
+
+[.endpoint]
+.URI
+--
+[method]#GET# [uri]#/filter/whitelist/allowed/search``?text={text}&startRow={startRow}&numberOfResults={numberofResults}``#
+--
+
+[NOTE]
+====
+Only a select few options are shown in the example url above. See below for all options.
+====
+
+[cols="3a,7a"]
+[.api]
+.Request Parameters
+|===
+|[field]#locale# [type]#[String]# [optional]#Optional# [default]#Defaults to any locale#
+|Restricts results to a specific set of locales. If no locales are supplied then all will be returned.
+Locales can be provided more than once to filter on several at once.
+
+In addition to the locales listed at link:../reference/data-types#locales[Locales]
+you can use `none` to include words without a locale.
+
+|[field]#numberOfResults# [type]#[Integer]# [optional]#Optional# [default]#Defaults to `20`#
+|The number of results to return in the response. Used for paging.
+
+|[field]#sort# [type]#[Array]# [optional]#Optional#
+|An array of sort options. Defaults to sorting on `id` and `asc`. Sorts are applied recursively in order.
+
+|[field]#sort``[x]``.field# [type]#[String]# [required]#required#
+|The field to sort on. This is required for any sort supplied.
+
+|[field]#sort``[x]``.order# [type]#[String]# [optional]#Optional# [default]#Defaults to `asc`#
+|The order to sort this field.
+
+|[field]#startRow# [type]#[Integer]# [optional]#Optional# [default]#Defaults to `0`#
+|The offset of the desired results. Used for paging.
+
+|[field]#tag# [type]#[String]# [optional]#Optional# [default]#Defaults to any tag#
+|Restricts results to a specific tag. If no tags are supplied then all will be returned. Tags
+can be provided more than once to filter on several at once. `none` is allowed as a tag alias
+for no tag.
+
+Note: The tag must exist or the request will fail.
+
+|[field]#text# [type]#[String]# [optional]#Optional#
+|Text to match in the allowed words. Use stars for wildcards.
+|===
+
+=== Response
+
+:never_missing:
+include::docs/3.x/tech/apis/_standard-get-response-codes.adoc[]
+:never_missing!:
+
+include::docs/3.x/tech/apis/allowed/_whitelist-allowed-multi-response.adoc[]
+
+== Delete an Allowed Word
+
+[NOTE.since]
+====
+Available since 3.9.0
+====
+
+=== Delete by Id
+
+[.endpoint]
+.URI
+--
+[method]#DELETE# [uri]#/filter/whitelist/allowed/`\{id\}`#
+--
+
+[cols="3a,7a"]
+[.api]
+.Request Parameters
+|===
+|[field]#id# [type]#[Integer]# [required]#required#
+|The Id of the entry to delete.
+|===
+
+=== Response
+
+include::docs/3.x/tech/apis/_standard-delete-response-codes.adoc[]
+
+== Create an Allowed Word
+
+[NOTE.since]
+====
+Available since 3.9.0
+====
+
+=== Request
+
+[.endpoint]
+.URI
+--
+[method]#POST# [uri]#/filter/whitelist/allowed#
+--
+
+include::docs/3.x/tech/apis/allowed/_whitelist-allowed-request-body.adoc[]
+
+=== Response
+
+include::docs/3.x/tech/apis/_standard-post-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/allowed/_whitelist-allowed-single-response.adoc[]
+
+== Update an Allowed Word
+
+[NOTE.since]
+====
+Available since 3.9.0
+====
+
+=== Request
+
+[.endpoint]
+.URI
+--
+[method]#PUT# [uri]#/filter/whitelist/allowed/`\{id\}`#
+--
+
+[cols="3a,7a"]
+[.api]
+.Request Parameters
+|===
+|[field]#id# [type]#[Integer]# [required]#required#
+|The Id of the entry you are updating.
+|===
+
+include::docs/3.x/tech/apis/allowed/_whitelist-allowed-request-body.adoc[]
+
+=== Response
+
+include::docs/3.x/tech/apis/_standard-put-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/allowed/_whitelist-allowed-single-response.adoc[]
+
+== Retrieve a Tag
+
+[NOTE.since]
+====
+Available since 3.9.0
+====
+
+=== Retrieve by Id
+
+[.endpoint]
+.URI
+--
+[method]#GET# [uri]#/filter/whitelist/tag/``{id}``#
+--
+
+[cols="3a,7a"]
+[.api]
+.Request Parameters
+|===
+|[field]#id# [type]#[Integer]# [required]#required#
+|The Id of the tag you want.
+|===
+
+=== Retrieve by Name
+
+[.endpoint]
+.URI
+--
+[method]#GET# [uri]#/filter/whitelist/tag``?name={name}``#
+--
+
+[cols="3a,7a"]
+[.api]
+.Request Parameters
+|===
+|[field]#name# [type]#[String]# [required]#required#
+|The name of the tag you want.
+|===
+
+=== Response
+
+include::docs/3.x/tech/apis/_standard-get-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/tag/_whitelist-tag-single-response.adoc[]
+
+== Retrieve all Tags
+
+[NOTE.since]
+====
+Available since 3.9.0
+====
+
+=== Request
+
+[.endpoint]
+.URI
+--
+[method]#GET# [uri]#/filter/whitelist/tag#
+--
+
+=== Response
+
+:never_missing:
+include::docs/3.x/tech/apis/_standard-get-response-codes.adoc[]
+:never_missing!:
+
+include::docs/3.x/tech/apis/tag/_whitelist-tag-multi-response.adoc[]
+
+== Delete a Tag
+
+[NOTE.since]
+====
+Available since 3.9.0
+====
+
+=== Request
+
+[.endpoint]
+.URI
+--
+[method]#DELETE# [uri]#/filter/whitelist/tag/``{id}``#
+--
+
+=== Response
+
+include::docs/3.x/tech/apis/_standard-delete-response-codes.adoc[]
+
+== Create a Tag
+
+[NOTE.since]
+====
+Available since 3.9.0
+====
+
+=== Request
+
+[.endpoint]
+.URI
+--
+[method]#POST# [uri]#/filter/whitelist/tag#
+--
+
+include::docs/3.x/tech/apis/tag/_whitelist-tag-request.adoc[]
+
+=== Response
+
+include::docs/3.x/tech/apis/_standard-post-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/tag/_whitelist-tag-single-response.adoc[]
+
+== Retrieve a Disallowed Phrase
+
+=== Retrieve by Id
+
+Retrieve a disallowed phrase by Id.
+
+[NOTE.since]
+====
+Available since 3.10.0
+====
+
+[.endpoint]
+.URI
+--
+[method]#GET# [uri]#/filter/whitelist/disallowed-phrase/``{id}``#
+--
+
+[cols="3a,7a"]
+[.api]
+.Request Parameters
+|===
+|[field]#id# [type]#[Integer]# [required]#required#
+|The Id of the entry to retrieve.
+|===
+
+=== Response
+
+include::docs/3.x/tech/apis/_standard-get-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/phrase/_whitelist-phrase-single-response.adoc[]
+
+== Retrieve all Disallowed Phrases
+
+[NOTE.since]
+====
+Available since 3.10.0
+====
+
+This API retrieves all of the disallowed phrases at once.
+
+=== Request
+
+[.endpoint]
+.URI
+--
+[method]#GET# [uri]#/filter/whitelist/disallowed-phrase#
+--
+
+=== Response
+
+:never_missing:
+include::docs/3.x/tech/apis/_standard-get-response-codes.adoc[]
+:never_missing!:
+
+include::docs/3.x/tech/apis/phrase/_whitelist-phrase-multi-response.adoc[]
+
+== Delete a Disallowed Phrase
+
+[NOTE.since]
+====
+Available since 3.10.0
+====
+
+=== Request
+
+[.endpoint]
+.URI
+--
+[method]#GET# [uri]#/filter/whitelist/disallowed-phrase/``{id}``#
+--
+
+[cols="3a,7a"]
+[.api]
+|===
+|[field]#id# [type]#[Integer]# [required]#required#
+|The id of the entry to delete.
+|===
+
+=== Response
+
+include::docs/3.x/tech/apis/_standard-delete-response-codes.adoc[]
+
+== Create a Disallowed Phrase
+
+[NOTE.since]
+====
+Available since 3.10.0
+====
+
+=== Request
+
+[.endpoint]
+.URI
+--
+[method]#POST# [uri]#/filter/whitelist/disallowed-phrase#
+--
+
+include::docs/3.x/tech/apis/phrase/_whitelist-phrase-post-request.adoc[]
+
+=== Response
+
+include::docs/3.x/tech/apis/_standard-post-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/phrase/_whitelist-phrase-single-response.adoc[]
+
+== Retrieve an Advanced Disallowed Phrase
+
+[NOTE.since]
+====
+Available since 3.10.0
+====
+
+=== Retrieve by Id
+
+Retrieve a single advanced disallowed phrase by id.
+
+[.endpoint]
+.URI
+--
+[method]#GET# [uri]#/filter/whitelist/disallowed-phrase/advanced/``{id}``#
+--
+
+[cols="3a,7a"]
+[.api]
+.Request Parameters
+|===
+|[field]#id# [type]#[Integer]# [required]#required#
+|The Id of the entry to retrieve.
+|===
+
+=== Response
+
+include::docs/3.x/tech/apis/_standard-get-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/phrase/advanced/_whitelist-advancedPhrase-single-response.adoc[]
+
+== Retrieve all Advanced Disallowed Phrases
+
+[NOTE.since]
+====
+Available since 3.10.0
+====
+
+Retrieves all of the advanced disallowed phrases.
+
+=== Request
+
+[.endpoint]
+.URI
+--
+[method]#GET# [uri]#/filter/whitelist/disallowed-phrase/advanced#
+--
+
+=== Response
+
+:never_missing:
+include::docs/3.x/tech/apis/_standard-get-response-codes.adoc[]
+:never_missing!:
+
+include::docs/3.x/tech/apis/phrase/advanced/_whitelist-advancedPhrase-multi-response.adoc[]
+
+== Delete an Advanced Disallowed Phrase
+
+[NOTE.since]
+====
+Available since 3.10.0
+====
+
+=== Request
+
+[.endpoint]
+.URI
+--
+[method]#GET# [uri]#/filter/whitelist/disallowed-phrase/advanced/``{id}``#
+--
+
+=== Response
+
+include::docs/3.x/tech/apis/_standard-delete-response-codes.adoc[]
+
+== Create an Advanced Disallowed Phrase
+
+[NOTE.since]
+====
+Available since 3.10.0
+====
+
+=== Request
+
+[.endpoint]
+.URI
+--
+[method]#POST# [uri]#/filter/whitelist/disallowed-phrase/advanced#
+--
+
+include::docs/3.x/tech/apis/phrase/advanced/_whitelist-advancedPhrase-post-request.adoc[]
+
+=== Response
+
+include::docs/3.x/tech/apis/_standard-post-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/phrase/advanced/_whitelist-advancedPhrase-single-response.adoc[]
+

@@ -1,0 +1,29 @@
+
+[source,json]
+.Example Request JSON
+----
+include::../../src/json/blacklist/phrase/request.json[]
+----
+
+[cols="3a,7a"]
+[.api]
+.Request Body
+|===
+|[field]#phrase.locale# [type]#[String]# [required]#required#
+|The locale of the pattern/phrase. See link:../reference/data-types#locales[Locales].
+
+|[field]#phrase.pattern# [type]#[String]# [required]#requried#
+|A regex pattern that can optionally include blacklist tags to match on blacklist entry matches. Tags are of
+the form `%TagName%` in a regex.
+
+|[field]#phrase.severity# [type]#[String]# [required]#required#
+|The severity of the phrase. A severity can be any of the following:
+
+* `mild`
+* `medium`
+* `high`
+* `severe`
+
+|[field]#phrases.tags# [type]#[Array<String>]# [required]#required#
+|A list of blacklist tag names that this phrase should be associated to. At least one tag is required.
+|===

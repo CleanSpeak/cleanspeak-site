@@ -1,0 +1,60 @@
+---
+layout: blog-post
+title: 'Savant Build Tool: Dependencies & Build Targets'
+author: Brian Pontarelli
+author_image: "/images/blog/head-shot-bw-square.jpg"
+excerpt_separator: "<!--more-->"
+categories:
+- Technology
+tags:
+- Savant
+---
+<p><img class="wp-image-6337 alignright" title="Savant Build Tools" src="/images/blog/Savant.png" alt="Savant Build Files: Define Dependencies &amp; Build Targets" width="278" height="129"></p>
+<p>In this post we'll cover Savant build files and how to define your dependencies and build targets. First, let's set up a simple build file for a new project called <strong>HelloWorld</strong>. Here is how we define this project and its version:</p>
+<pre class="lang:java">project(group: "org.inversoft.savant.example", name: "HelloWorld", version: "1.0", licenses: ["ApacheV2_0"]) {
+}</pre>
+<p>To define a project you need a group, name, version and a license. You can ignore the licenses definition for now, we'll cover that in a future post. The group name is usually a reverse DNS name (notice that the org is first not last) that identifies the owners of the project. The name is the project's formal name and the version is the project’s Semantic Version.</p>
+<p>Next we can define the other libraries and frameworks that our project depends on. We place the dependencies inside the project definition and break them into groups. It looks like this:</p>
+<pre class="lang:java">project(group: "org.inversoft.savant.example", name: "HelloWorld", version: "1.0", licenses: ["ApacheV2_0"]) {
+  dependencies {
+    group(name: "compile") {
+      dependency(id: "org.apache.commons:commons-collections:3.1")
+    }
+    group(name: "test-compile") {
+      dependency(id: "org.testng:testng:6.8.7")
+    }
+  }
+}</pre>
+<p>These dependency directives tell Savant that in order to compile our source code Savant needs to include Commons Collections version 3.1. Likewise, in order to compile our test source code, Savant will need to include TestNG version 6.8.7.</p>
+<p><!--more--></p>
+<p>Savant always uses a shorthand notation for dependencies. This notation is in this form:</p>
+<pre class="lang:xml">::</pre>
+<p>There are a couple other formats for this notation, but this form is the most commonly used.</p>
+<p>Savant's dependency groups are completely freeform and we could have named the groups above <strong>compile-time</strong> and <strong>test-compile-time</strong> instead. However, there are a few standard names that are used by Savant plugins. These are:</p>
+<ul>
+<li>compile - Used during compilation</li>
+<li>provided - User during compilation, but not at runtime because these dependencies are provided by an external source (i.e. a servlet container)</li>
+<li>compile-optional - Used during compilation, but not included at runtime because they are optional</li>
+<li>runtime - Used at runtime and not included during compilation (used mostly for API implementations like implementors of the SLF4J logging API)</li>
+<li>test-compile - Used during compilation of test source code</li>
+<li>test-runtime - Used to run the tests</li>
+</ul>
+<p>Next, let's add some build targets to our project. The first target we need to add is a compile target that will compile all of our source code. Compiling everything is not a trivial task and writing the Groovy to accomplish that sounds tedious. Savant uses plugins to provide reusable features like compiling source code. In this case, we will use the Java plugin since our project is a Java project.</p>
+<p>Plugins are dependencies just like the project dependencies we added above. However, they aren't included in the same way. Instead, we simply define the plugin dependency in the loadPlugin directive. Here is how we include that plugin in our build file:</p>
+<pre class="lang:java">java = loadPlugin(id: "org.savantbuild.plugin:java:0.2.0")</pre>
+<p>This loads the Java plugin version 0.2.0 and the plugin reference is assigned to a variable named <strong>java</strong>. Now that we have loaded the plugin, we need to configure it. The Java plugin requires us to define the JDK we are using to compile. We'll start by setting the java version using the settings of the plugin like this:</p>
+<pre class="lang:java">java.settings.javaVersion = "1.8"</pre>
+<p>Next, we need to create a configuration file in our home directory that tells Savant location of JDK 1.8 on our computer. Forcing this configuration file to be in the users home directory allows you to have Java in different locations on different computers. We need to create the file <em>~/.savant/plugins/org.savantbuild.plugin.java.properties</em> and add this configuration:</p>
+<pre>1.8=/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home</pre>
+<p>This tells Savant where JDK 1.8 lives on my computer. The path to the JDK may be different on your computer.</p>
+<p>Now that the Java plugin is configured, we can use it in our build target like this:</p>
+<pre class="lang:java">target(name: "compile", description: "Compiles everything") {
+  java.compile()
+}</pre>
+<p>This will tell Savant that we have a build target named compile and that it will execute the Java plugin's <strong>compile()</strong> method. This method on the Java plugin executes the javac command using the path we configured above. It will include the dependencies we configured in our build file on the classpath when executing the javac command.</p>
+<p>Finally, we can execute our build from the command line like this:</p>
+<pre class="lang:sh">$ sb compile</pre>
+<p>This is a brief overview of how Savant build files are written. We've demonstrated the creation of the Savant project definition, defined two new dependency groups, loaded and configured the Java plugin, requested the Java plugin compile our project within a <strong>compile</strong> target and successfully executed the Savant build command to run the <strong>compile</strong> target.</p>
+<p>You can learn more about Savant at the Github project page here:</p>
+<p><a title="Inversoft Savant Core" href="https://github.com/inversoft/savant-core/wiki">https://github.com/inversoft/savant-core/wiki</a></p>
+<p>In our next blog post, we will dive into more detail about Savant Dependency Management concepts.</p>

@@ -1,0 +1,7 @@
+{
+  "phrase": {
+    "id": 1,
+    "parts": ["Drug-Verb", "Drug-Adjective"],
+    "status": "ACTIVE"
+  }
+}

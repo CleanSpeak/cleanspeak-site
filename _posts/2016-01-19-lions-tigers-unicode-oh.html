@@ -1,0 +1,89 @@
+---
+layout: blog-post
+title: Lions, Tigers and Unicode Oh My!
+author: Brian Pontarelli
+author_image: "/images/blog/head-shot-bw-square.jpg"
+excerpt_separator: "<!--more-->"
+categories:
+- CleanSpeak
+- Strategies
+tags:
+- Best Practices
+- unicode
+- code
+- filter
+- special characters
+---
+<p><a href="/blog/wp-content/uploads/2016/01/unicode-oh-my.jpg"><img class="aligncenter wp-image-7265 size-full" style="margin-bottom: 35px;" title="Unicode" src="/images/blog/unicode-oh-my.jpg" alt="" width="688" height="158"></a></p>
+<p>Recently, I was working with a customer that had a URL slip through CleanSpeak’s URL filter. The URL looked something like this:</p>
+<p style="padding-left: 30px;"><strong>LameCasinoSite。com</strong></p>
+<p>The trick this user employed to get around our URL filter was using the Unicode character “ 。”(code point 0x3002 or UTF-8 0xE38082). This character looks like a period but wasn’t in the list of valid URL separators that CleanSpeak handles.</p>
+<p>My initial thought was to simply add the character to the list. That required me to look up the Unicode code point for it first. I then realized that there were a ton of other characters that also looked like periods. In order to properly handle this, I’d need to add all of them to the list. I also noticed that there were numerous other characters someone could use to trick the URL filter like arrows, pictures and symbols.</p>
+<p><!--more--></p>
+<p>Rather than spend the next few days working my way through the entire Unicode list, I asked the customer if they were interested in blocking these characters instead. The simplest implementation of this would be to prevent users from typing in specific characters. If you think of a chat box inside a game as a controllable text field, you can prevent characters from being added to it as the user types.</p>
+<p>The added benefit in doing this inside the application is that it would also reduce a lot of other issues with blacklist and email filtering.</p>
+<p>Since the customer liked the idea, I started putting together a list of all the characters they could potentially block. It turned out there were a ton of them. I’m going to go over all of the Unicode sets that I put into my list. I built my list using a Google Sheet, which I have included a link to at the bottom of this post in case you want to use that as a reference.</p>
+<p>Before reading any further, you might find a brief overview of Unicode helpful. The Wikipedia page has a good introduction.</p>
+<p><a href="https://en.wikipedia.org/wiki/Unicode">https://en.wikipedia.org/wiki/Unicode</a></p>
+<p>All of the ranges I discuss below are identified by their full Unicode code points and not an encoding like UTF-8.</p>
+<h2>Latin-1 Sets</h2>
+<p>Inside the Latin-1 and Latin-1 supplement sets, there are a number of non-printable characters. These should always be blocked because they aren’t visible and will likely mess up rendering and processing in a bunch of nasty ways. The blocks for those are 0x000-0x0021 and 0x0080-0x00A0.</p>
+<p>The Latin-1 supplement also includes some random arrows, bars, dots, and other shapes that should probably be blocked. Those ranges are 0x00A6-0x00A8, 0x00AA-0x00AD, 0x00AF-0x00B0, 0x00B7-0x00B7, and 0x00BA-0x00BB.</p>
+<p>Above Latin-1 there are some miscellaneous punctuation sets, diacritical marks and combining marks. Without going into too much detail about how Unicode handles accents, you probably don’t need to allow these unless you are using Latin based languages or Hebrew with a collation that uses combining characters rather than single characters for accents. The ranges for these are 0x02BB-0x036F, 0x0590-0x05CF.</p>
+<h2>Language Sets</h2>
+<p>The next set of sections in my list are all language characters. Depending on the languages you want to support, you will need to determine which sets to include and exclude. The language sets start at code point 0x0700 and continue through 0x1C7F. You can refer to my spreadsheet to determine if you want to allow or block specific language sets. For most English or EFIGS applications you won’t need to allow any of these sets.</p>
+<h2>Extended Language Sets</h2>
+<p>The next sets are various supplemental and extended characters for different languages. You’ll want to do the same exercise you used for each language set for these sets as well. These sets start at code point 0x1CC0 and continue through 0x1FFF and you can refer to my spreadsheet for each language.</p>
+<h2>Punctuation Sets</h2>
+<p>Next are the punctuation, shapes, images, and other sets that you probably will want to exclude. These might be cool for letting users express themselves, but can often end up being a nightmare when users start to abuse them. These sets range from code point 0x2000 through 0x2BFF.</p>
+<p>If you want to allow users to send pictures or drawings, you could tweak your handling so that messages that only contain these characters are allowed. However, be careful allowing these characters because users can often find vulgar and pornographic drawings online and copy and paste them into your application.</p>
+<h2>High Order Sets</h2>
+<p>We are now solidly into the high order Unicode characters. These characters require 3-bytes when encoding in UTF-8 and some systems might have a hard time processing or rendering them. Therefore, it becomes less and less likely that you will actually need to allow anything except the CJK characters (Chinese, Japanese, Korean). We recommend excluding everything except these additional 3 sets:</p>
+<p>CJK and Yi characters (code points 0x3040-A4C0)<br>
+Hangul Characters (code points 0xAC00-0xD7AF)<br>
+Emoji (code points 0x1F300-0x1F6FF)</p>
+<p>If you are more of a code minded person, here’s some simple Java code that you start from to exclude messages with certain characters.</p>
+<pre class="lang:java decode:true ">boolean containsExcludedCharacter(String s) {
+  for (int i = 0; i &lt; s.length(); i++) {
+    int codePoint = s.codePointAt(i);
+    if (
+      // Non-printable
+      (codePoint &gt;= 0x0000 &amp;&amp; codePoint &lt;= 0x0021) ||
+      (codePoint &gt;= 0x0080 &amp;&amp; codePoint &lt;= 0x00A0) ||
+      // Symbols, etc.
+      (codePoint &gt;= 0x00A6 &amp;&amp; codePoint &lt;= 0x00A8) ||
+      (codePoint &gt;= 0x00AA &amp;&amp; codePoint &lt;= 0x00AD) ||
+      (codePoint &gt;= 0x00AF &amp;&amp; codePoint &lt;= 0x00B0) ||
+      (codePoint &gt;= 0x00B7 &amp;&amp; codePoint &lt;= 0x00B7) ||
+      (codePoint &gt;= 0x00BA &amp;&amp; codePoint &lt;= 0x00BB) ||
+      (codePoint &gt;= 0x02BB &amp;&amp; codePoint &lt;= 0x02FF) ||
+      // Combining marks
+      (codePoint &gt;= 0x0300 &amp;&amp; codePoint &lt;= 0x036F) ||
+      (codePoint &gt;= 0x0590 &amp;&amp; codePoint &lt;= 0x05C0) ||
+      // Language sets
+      (codePoint &gt;= 0x0700 &amp;&amp; codePoint &lt;= 0x074F) ||
+      (codePoint &gt;= 0x0780 &amp;&amp; codePoint &lt;= 0x085F) ||
+      (codePoint &gt;= 0x08A0 &amp;&amp; codePoint &lt;= 0x1C7F) ||
+      // Language supplements and punctuation
+      (codePoint &gt;= 0x1CC0 &amp;&amp; codePoint &lt;= 0x1DB0) ||
+      (codePoint &gt;= 0x1DC0 &amp;&amp; codePoint &lt;= 0x209F) ||
+      // More punctuation, symbols, shapes, etc.
+      (codePoint &gt;= 0x20D0 &amp;&amp; codePoint &lt;= 0x2E7F) ||
+      // CJK punctuation
+      (codePoint &gt;= 0x3000 &amp;&amp; codePoint &lt;= 0x303F) ||
+      // Lisu and above
+      (codePoint &gt;= 0xA4D0 &amp;&amp; codePoint &lt;= 0xABFF) ||
+      // Everything after CJK and Hangul (mostly surrogates and private use)
+      (codePoint &gt;= 0xD7B0 &amp;&amp; codePoint &lt;= 0x1F2FF) ||
+      // Everything after Emoji
+      (codePoint &gt;= 0x1F700)) {
+      return true;
+    }
+  }
+
+  return false;
+}</pre>
+<p>You can refine the code to work on a single character or reduce the exclusions, but this is a good starting point.</p>
+<p>Here is the link to the Google Sheet I used while building this list. You can use this as a reference to determine what to include and exclude as well.</p>
+<p class="p1"><a href="https://docs.google.com/spreadsheets/d/1vKj6cby8JJJ_rAEfAGjzjLjLhEXCI6fSMh4bc74SAAA/edit?usp=sharing"><span class="s1">https://docs.google.com/spreadsheets/d/1vKj6cby8JJJ_rAEfAGjzjLjLhEXCI6fSMh4bc74SAAA/edit?usp=sharing</span></a></p>
+<p>If you extend our list or use a different list, leave a comment and let us know what you excluded or if you see anything we should change in our list.</p>

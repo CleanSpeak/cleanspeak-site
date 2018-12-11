@@ -1,0 +1,1 @@
+The amount the User score is adjusted when this filter rule is applied. This value may be a positive or negative integer.

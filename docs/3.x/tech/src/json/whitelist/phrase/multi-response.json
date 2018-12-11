@@ -1,0 +1,14 @@
+{
+  "phrases": [
+    {
+      "id": 42,
+      "parts": ["do", "not", "panic"],
+      "status": "ACTIVE"
+    },
+    {
+      "id": 1337,
+      "parts": ["do", "you", "even", "lift"],
+      "status": "ACTIVE"
+    }
+  ]
+}

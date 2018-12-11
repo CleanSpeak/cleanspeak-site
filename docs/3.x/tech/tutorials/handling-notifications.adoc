@@ -1,0 +1,241 @@
+---
+layout: doc
+title: Handling Notifications
+description: Learn how to handle notifications that CleanSpeak sends back to your Webhooks.
+---
+
+== Handling Notifications
+
+The CleanSpeak Moderation Notification system is designed to provide feedback to your system when moderators perform specific actions on content or users. All notifications are sent from CleanSpeak to the notification servers (often referred to as Webhooks) you configure via the Management Interface. These notifications are sent via an HTTP POST using application/json data. This is the same style of API that the CleanSpeak WebService uses to accept requests from your application.
+
+There are four types of notifications that CleanSpeak will send:
+
+* <<Content Approvals>> - when a moderator approves or rejects content from the pre-approval queue
+* <<User Actions>> - when a moderator takes an action on a user
+* <<Content Edits>> - when a moderator edits a piece of persistent content
+* <<Content Deletes>> - when a moderator deletes a piece of persistent content
+
+Each of this notification types are covered in detail below:
+
+== Content Approvals
+
+The Pre-Approval Queue supports the approval and rejection of content. Moderators login to the CleanSpeak Management Interface and from there can approve and reject content. Once moderators have approved or rejected content, CleanSpeak will send notifications back into your system using the JSON format described below.
+
+=== Request
+
+[cols="3a,7a"]
+[.api]
+.Request Body
+|===
+|[field]#type# [type]#[String]#
+|This parameter specifies the type of notification and will always be `contentApproval` for this type of notification.
+
+|[field]#approvals# [type]#[Object]#
+|This object contains the approvals performed by a moderator.
+
+The format of the object is 1-N key-value pairs, the key is the UUID of the content item, the value is the action performed ("approved", "rejected").
+
+|[field]#moderatorEmail# [type]#[String]#
+|This parameter specifies the email of the moderator that performed the action that resulted in the notification being sent.
+
+|[field]#moderatorExternalId# [type]#[String]#
+|This parameter specifies the external id (if one is configured) of the moderator that performed the action that resulted in the notification being sent.
+
+|[field]#moderatorId# [type]#[UUID]#
+|This parameter specifies the id of the moderator that performed the action that resulted in the notification being sent.
+|===
+
+[source,json]
+.Example Request JSON
+----
+include::docs/3.x/tech/src/json/notifications/approvals.json[]
+----
+
+=== Response
+
+CleanSpeak expects that the notification request handler (the Webhook you write) will return a 200 status code if the notification was successfully handled or any other status code if it wasn't. If your notification request handler does not return a 200, CleanSpeak will place the content items back into the pre-approval queue so that they can be moderated again.
+
+
+== User Actions
+
+The User Action system provides moderators the capability to perform specific actions on users that generate content. Actions such as ban, mute, and kick are a few examples of actions that moderators can take when, for instance, users are generating inappropriate content. When actions are taken, CleanSpeak will send notifications back into your system.
+
+=== Request
+
+[cols="3a,7a"]
+[.api]
+.Request Body
+|===
+|[field]#type# [type]#[String]#
+|This parameter specifies the type of notification and will always be `userAction` for this type of notification.
+
+|[field]#applicationIds# [type]#[Array<UUID>]#
+|This parameter specifies the list of applications that the action is being performed in.
+
+|[field]#action# [type]#[String]#
+|This parameter specifies the name of the action that's occurring.
+
+|[field]#comment# [type]#[String]#
+|The comment that the moderator added when taking the action. This value will be an empty string if a comment is not added.
+
+|[field]#expiry# [type]#[Integer]#
+|The link:../reference/data-types#instant[instant] that the action will expire, if the action expires.
+
+|[field]#key# [type]#[String]#
+|This parameter specifies the name of the key that’s occurring for the given action if the key exists. *`null`* will be returned if the action is time-based.
+
+|[field]#localizedAction# [type]#[String]#
+|This parameter specifies the localized name of the action that's occurring, based on the user's preferred languages.
+
+|[field]#localizedDuration# [type]#[String]#
+|The duration of the action in a human readable format that is localized based on the user's preferred languages.
+
+|[field]#localizedKey# [type]#[String]#
+|This parameter specifies the localized key of the action that's occurring, based on the user's preferred languages.
+
+|[field]#localizedReason# [type]#[String]#
+|This parameter specifies the localized reason of the action that's occurring, based on the user's preferred languages.
+
+|[field]#moderatorEmail# [type]#[String]#
+|This parameter specifies the email of the moderator that performed the action that resulted in the notification being sent.
+
+|[field]#moderatorExternalId# [type]#[String]#
+|This parameter specifies the external id (if one is configured) of the moderator that performed the action that resulted in the notification being sent.
+
+|[field]#moderatorId# [type]#[UUID]#
+|This parameter specifies the id of the moderator that performed the action that resulted in the notification being sent.
+
+|[field]#notifyUser# [type]#[Boolean]#
+|This parameter specifies whether the user should be notified or not.
+
+|[field]#phase# [type]#[Boolean]#
+|This parameter specifies the phase for the action. It is one of the following:
+
+* start
+* modify
+* cancel
+* end
+
+When the action is started by a moderator, the phase will be "start". If a moderator changes the duration of the action, the phase will be "modify". If a moderator cancels an action it will be "cancel" or the action expires, the phase will be "end". If the action is key-based, the phase will be "start".
+
+|[field]#reason# [type]#[String]#
+|The reason the moderator selected. Reasons are configured in the management interface via System -> Moderation Configuration -> User Action Reasons. This value will be null when no reasons are selected (or configured).
+
+|[field]#reasonCode# [type]#[String]#
+|The reason code the moderator selected. Reasons are configured in the management interface via System -> Moderation Configuration -> User Action Reasons. This value will be null when no reasons are selected (or configured).
+
+|[field]#userId# [type]#[UUID]#
+|This parameter specifies the unique identifier of the user the action is being performed. This ID is equivalent to the ‘contentItem.senderId’ you provide when moderating and storing content.
+
+|[field]#email# [type]#[Object]#
+|Email object. See Example POST body below for fields.
+|===
+
+[source,json]
+.Example Request JSON
+----
+include::docs/3.x/tech/src/json/notifications/user-actions.json[]
+----
+
+=== Response
+
+CleanSpeak expects that the notification request handler will return a 200 status code if the notification was successfully handled or any other status code if it wasn't. If your notification request handler does not return a 200, CleanSpeak will assume that the action was not successful and display an error to the moderator.
+
+
+== Content Edits
+
+Depending on your Application configuration, persistent content within CleanSpeak can be edited by moderators. When content is edited, CleanSpeak will notify your system so that your system can process the edit appropriately.
+
+=== Request
+
+[cols="3a,7a"]
+[.api]
+.Request Body
+|===
+|[field]#type# [type]#[String]#
+|This parameter specifies the type of notification and will always be `contentEdit` for this type of notification.
+
+|[field]#applicationId# [type]#[UUID]#
+|The UUID of the application that owns the content item.
+
+|[field]#id# [type]#[UUID]#
+|The UUID of the content item that was edited.
+
+|[field]#moderatorEmail# [type]#[String]#
+|This parameter specifies the email of the moderator that performed the edit that resulted in the notification being sent.
+
+|[field]#moderatorExternalId# [type]#[String]#
+|This parameter specifies the external id (if one is configured) of the moderator that performed the edit that resulted in the notification being sent.
+
+|[field]#moderatorId# [type]#[UUID]#
+|This parameter specifies the id of the moderator that performed the edit that resulted in the notification being sent.
+
+|[field]#newParts# [type]#[Array<String>]#
+|The new versions of each content part.
+|===
+
+[source,json]
+.Example Request JSON
+----
+include::docs/3.x/tech/src/json/notifications/edits.json[]
+----
+
+=== Response
+
+CleanSpeak expects that the notification request handler will return a 200 status code if the notification was successfully handled or any other status code if it wasn't. If your notification request handler does not return a 200, CleanSpeak will assume that the edit was not successful and display an error to the moderator.
+
+
+== Content Deletes
+
+Depending on your Application configuration, persistent content within CleanSpeak can be deleted by moderators. When content is deleted, CleanSpeak will notify your system so that your system can process the delete appropriately.
+
+=== Request
+
+[cols="3a,7a"]
+[.api]
+.Request Body
+|===
+|[field]#type# [type]#[String]#
+|This parameter specifies the type of notification and will always be `contentDelete` for this type of notification.
+
+|[field]#applicationId# [type]#[UUID]#
+|The UUID of the application that owns the content item.
+
+|[field]#id# [type]#[UUID]#
+|The UUID of the content item that was deleted.
+
+|[field]#moderatorEmail# [type]#[String]#
+|This parameter specifies the email of the moderator that performed the delete that resulted in the notification being sent.
+
+|[field]#moderatorExternalId# [type]#[String]#
+|This parameter specifies the external id (if one is configured) of the moderator that performed the delete that resulted in the notification being sent.
+
+|[field]#moderatorId# [type]#[UUID]#
+|This parameter specifies the id of the moderator that performed the delete that resulted in the notification being sent.
+
+|[field]#newParts# [type]#[Array<String>]#
+|The new versions of each content part.
+|===
+
+[source,json]
+.Example Request JSON
+----
+include::docs/3.x/tech/src/json/notifications/deletes.json[]
+----
+
+=== Response
+
+CleanSpeak expects that the notification request handler will return a 200 status code if the notification was successfully handled or any other status code if it wasn't. If your notification request handler does not return a 200, CleanSpeak will assume that the edit was not successful and display an error to the moderator.
+
+
+== Notification Handler
+
+In order to appropriately handle requests from the CleanSpeak notification system, you must build a simple HTTP request handler that listens for requests from the CleanSpeak Moderation Notification system. Your request handler must be designed to respond to simple HTTP POST requests with a request body containing application/json data as described above.
+
+=== Responses
+
+Your notification handler must handle the RESTful request described above and send back an appropriate response. Your notification WebService must send back to CleanSpeak an HTTP response code that indicates whether or not the notification was successfully handled or not. If your WebService handled the notification properly, it must send back an HTTP response status code of 200. If there was any type of error or failure, your WebService must send back an HTTP response status code of 500.
+
+=== Configuration
+
+Once your notification handler is complete and listening for notification requests, you must configure your notification handler URL. CleanSpeak refers to notification handlers as Notification Servers and they are configured via the Management Interface under System -> Notification Servers menu option. If you have multiple notification servers configured for a single Application, they must all correctly handle the notification for the transaction to succeed.

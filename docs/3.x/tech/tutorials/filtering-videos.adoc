@@ -1,0 +1,264 @@
+---
+layout: doc
+title: Filtering Videos
+description: Learn how to configure CleanSpeak to filter videos automatically using Amazon Rekognition
+---
+
+[NOTE.since]
+====
+Available since 3.16.0
+====
+
+== Filtering Videos
+
+Using Amazon Rekognition to filter videos automatically is a huge improvement that allows videos to be handled quickly
+and efficiently by a machine learning service. This can also be used in conjunction with the existing moderation as a
+pre-moderation step to reduce the load on moderators by rejecting videos that very obviously contain adult content.
+
+=== Prerequisites
+* Your content is stored in S3 and in a region that Rekognition is supported
+* You have the ability to create new IAM users, roles, SNS Topics, SQS Queues in your Amazon account.
+
+=== How to configure CleanSpeak to use this feature
+
+[NOTE.warn]
+====
+The following steps need to be followed very closely in order to get a working solution.
+====
+
+. Go to link:https://console.aws.amazon.com/iam/[Amazon Console] and create an IAM user.
+    a. Under `Select AWS access type` choose `Programmatic access`
+    b. On that users permissions page choose `Attach existing policies directly` and add the following permissions:
+        * `AmazonSQSFullAccess`
+        * `AmazonRekognitionFullAccess`
+        * `AmazonS3ReadOnlyAccess`
+    c. Store this users _access key_ and their _secret access key_ for later.
+. Create an IAM service role - This will be used to allow Rekognition to post status messages to a SNS Topic which CleanSpeak
+will listen to through SQS. Note its ARN, you will use it in CleanSpeak settings and creating a policy within the role itself.
+    a. This role needs the following inline policy to work: (You can give the policy any name you like)
+
+[source,json]
+----
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "MySid",
+            "Effect": "Allow",
+            "Action": "iam:PassRole",
+            "Resource": "arn:Service role ARN (created above)"
+        }
+    ]
+}
+----
+
+[start=3]
+. Go to link:https://console.aws.amazon.com/sns/v2/home[SNS Console]
+    a. Create a new topic with a name prefixed with `AmazonRekognition` (This is __REQUIRED!!__ Amazon Rekognition will not post
+    messages to a topic that is not prefixed with `AmazonRekognition` and will fail silently from CleanSpeaks point of view)
+    b. Note the ARN on this topic and store it for later.
+. Go to link:https://console.aws.amazon.com/sqs/[SQS Console]
+    a. Create a new SQS queue.
+    b. link:http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-subscribe-queue-sns-topic.html[Subscribe] that queue to the SNS you created in step 3.
+    c. link:http://docs.aws.amazon.com/sns/latest/dg/SendMessageToSQS.html#SendMessageToSQS.sqs.permissions[Check] that SNS is allowed to send messages to SQS.
+    d. Keep that queues url for later.
+. Open `System` -> `Global Configuration` and click `Filter`
+    a. For `Video Filter Provider` select `Amazon Rekognition`
+    b. Insert the IAM users credentials you used in step 1
+    c. Select a region (likely the same region CleanSpeak is hosted in, but keep in mind that Rekognition does not
+    work in all regions so you may have to select a region that is not the same as CleanSpeaks)
+    d. Copy the SQS URL from step 4
+    e. Copy the SNS ARN from step 3
+    f. Copy the Role ARN from step 2
+    g. Save
+. Open `System` -> `Applications` select the application you plan to use or create a new one.
+    a. Open the `Image / Video` tab and check `Enable Video Filter`
+    b. Choose the actions, score adjustments, and alert settings you would like to use for each tier of content score. (Using all allow effectively bypasses the filter)
+    c. Save
+. Submit content with a content part type of `video` with a content body of a S3 url (See below for an example)
+
+=== How to quickly test your configuration
+
+You can quickly check your configuration and settings by going to the management interface and opening the verify tool.
+This can be reached by clicking `Filters` -> `Verification`. Now you must open the advanced menu and select Video under
+`Content Type`. If Video is not available then your AWS system settings must be missing.
+
+To test a video, remember to use an s3 url that has the same region as your aws credentials AND that the region selected
+supports Rekognition. You can now paste your s3 url into the text box and press verify. Your video will be filtered and
+the results will return when Rekognition is complete.
+
+=== Example usage of the filter
+
+[.endpoint]
+.URI
+--
+[method]#POST# [uri]#/content/item/moderate#
+--
+
+For persistent content you will need to provide a unique identifier (UUID) on the API request. When using this API with persistent content you'll need to first ensure your Application configuration is set to Persistent Content Type. If you have not done this the API request will fail with an error message indicating you have not yet configured your Application.
+[.endpoint]
+.URI
+--
+[method]#POST# [uri]#/content/item/moderate/`\{contentItemId\}`#
+--
+
+[cols="3a,7a"]
+[.api]
+.Request Parameters
+|===
+|[field]#contentItemId# [type]#[UUID]# [required]#Required#
+|The Id of the Content Item.
+|===
+
+[cols="3a,7a"]
+[.api]
+.Request Body
+|===
+|[field]#content# [type]#[Object]# [required]#Required#
+|The piece of content being moderated.
+
+|[field]#content.applicationId# [type]#[UUID]# [required]#Required#
+|The Id of the application that corresponds to the content source.
+
+|[field]#content.createInstant# [type]#[Long]# [required]#Required#
+|The link:../reference/data-types#instants[instant] that the content was generated.
+
+|[field]#content.location# [type]#[String]# [optional]#Optional#
+|Specifies the location within the application that the content was generated. For example, you might use a chat room
+ name, area Id for a game, or a thread Id for a forum. This parameter is used by CleanSpeak to display conversational
+ views of content with the <<Context View>> feature.
+
+|[field]#content.parts# [type]#[Array]# [required]#Required#
+|An array that contains one to many content parts. If your content only has a single part, such as a chat message, the
+ array will only contain a single text entry. The reason you would send in multiple content parts within a single request
+ is to ensure the moderation decision affects each part.
+
+For example, you may send in an image for moderation, the image has a title and a description field. You would send this
+ to CleanSpeak with three content parts, the image and two text parts. If the content of the image title is rejected the
+ entire content needs to be rejected wholesale, the title, description and the image. In this case it would make sense
+ to treat all three parts as an atomic unit of content.
+
+If individual content parts are not related and can be rejected or approved separately then you should send them to
+ CleanSpeak as separate requests.
+
+|[field]#content.parts``[x]``.content# [type]#[String]# [required]#Required#
+|The content to be filtered. For videos this is a fully qualified S3 URL of the video to be displayed.
+
+|[field]#content.parts``[x]``.name# [type]#[String]# [optional]#Optional#
+|The name of the content part. This value is optional an intended to better identify the context when you have more than
+ one content part. For example this could be _Title_, _Message Body_ or _Image_.
+
+|[field]#content.parts``[x]``.type# [type]#[String]# [required]#Required#
+|The type of this content part. Use `video` for this filter.
+
+Other possible values:
+
+* `text`
+* `bbcode`
+* `html` [since]#Available Since 3.19.0#
+* `attribute`
+* `hyperlink`
+* `image`
+* `video`
+* `audio`
+
+|[field]#content.receiverDisplayName# [type]#[String]# [optional]#Optional#
+|The display name of the user that received the content. This parameter should only be set if this piece of content was a private message between two users.
+
+|[field]#content.receiverId# [type]#[UUID]# [optional]#Optional#
+|The Id of the user that received of the content. This parameter should only be set if this piece of content was a private message between two users.
+
+|[field]#content.senderDisplayName# [type]#[String]# [optional]#Optional#
+|The display name (username or whatever is displayed to other users in the game/forum) that generated the content.
+
+|[field]#content.senderId# [type]#[UUID]# [required]#Required#
+|The Id of the user that generated the content. This parameter is required so that CleanSpeak can analyze and associate the content with the user that generated it.
+
+|[field]#moderation# [type]#[String]# [optional]#Optional#
+|Tells CleanSpeak to forcibly put the content into a queue (Approval, User Alert or Content Alert). This overrides the configuration you have setup for the Application in the Management Interface.
+
+* `requiresApproval`
+* `generatesAlert`
+* `generatesContentAlert`
+|===
+
+[source,json]
+.Example Request JSON
+----
+{
+  "content": {
+    "applicationId": "f81d4fae-7dec-11d0-a765-00a0c91e6bf6",
+    "createInstant": 13405983821,
+    "location": "page296",
+    "parts": [
+      {
+        "content": "https://s3-us-west-1.amazonaws.com/public-resources-us-east.inversoft.com/video-moderation/sfw/rally.mp4",
+        "name": "Body",
+        "type": "video"
+      }
+    ],
+    "senderDisplayName": "PapaSmurf",
+    "senderId": "f6d3df91-ed4b-48ad-810f-05a367d328c2"
+  }
+}
+----
+
+=== Response
+
+include::docs/3.x/tech/apis/_standard-post-response-codes.adoc[]
+
+[cols="3a,7a"]
+[.api]
+.Response Body
+|===
+|[field]#content# [type]#[Object]#
+|The piece of content being moderated.
+
+|[field]#content.id# [type]#[UUID]#
+|The id of the piece of content. This might have been passed in on the request or generated by CleanSpeak.
+
+|[field]#content.parts# [type]#[Array]#
+|The list of parts of content.
+
+|[field]#content.parts[x].name# [type]#[String]#
+|The name of the part of the content.
+
+|[field]#content.parts[x].replacement# [type]#[String]#
+|The replacement text generated by CleanSpeak after applying the filter rules to this part.
+
+|[field]#contentAction# [type]#[String]#
+|The action that the client should take with the content. Possible values:
+
+_Content Actions_
+!===
+!Action              !Description
+
+!`allow`             !The content should be allowed.
+!`authorOnly`        !The content should be allowed but only the author of the content should be allowed to view the content.
+!`replace`           !The content should be allowed, but utilize the replacement text provided in the response.
+!`queuedForApproval` !The content has been queued for approval and should not be displayed to other users until it has been approved by a moderator.
+!`reject`            !The content should be rejected.
+!===
+
+|[field]#moderationAction# [type]#[String]#
+|The action that was taken on the content. Possible values:
+
+* `requiresApproval`
+* `generatesAlert`
+* `generatesContentAlert`
+
+|[field]#stored# [type]#[Boolean]#
+|This value indicates if the content was stored by CleanSpeak.
+|===
+
+[source,json]
+.Example Response JSON
+----
+{
+  "content": {
+    "id": "99f2c4e8-961a-4a34-b9b9-43fc3f3b43ec"
+  },
+  "contentAction": "allow",
+  "stored": true
+}
+----

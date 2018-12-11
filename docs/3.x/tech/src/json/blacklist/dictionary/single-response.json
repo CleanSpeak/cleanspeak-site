@@ -1,0 +1,9 @@
+{
+  "entry": {
+    "id": 1,
+    "locale": "en",
+    "status": "ACTIVE",
+    "tags": [ "whitelist" ],
+    "text": "beer"
+  }
+}

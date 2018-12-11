@@ -1,0 +1,68 @@
+{
+  "whitelist": {
+    "allowedEntries": [
+      {
+        "locale": "en",
+        "text": "a",
+        "inflect": false,
+        "tags": [
+          "Noun"
+        ]
+      },
+      {
+        "text": "dump",
+        "inflect": true,
+        "inflections": [
+          "dumping",
+          "dumps",
+          "dumped"
+        ],
+        "tags": [
+          "Noun",
+          "Verb"
+        ],
+        "locale": "en"
+      },
+      {
+        "text": "take",
+        "tags": [
+          "Noun",
+          "Verb"
+        ],
+        "inflections": [
+          "took",
+          "taken",
+          "takes",
+          "taking"
+        ],
+        "inflect": true,
+        "locale": "en"
+      }
+    ],
+    "advancedDisallowedEntries": [
+      {
+        "parts": [
+          "Penis-Reference",
+          "Preposition",
+          "Personal-Pronoun",
+          "Vagina-Reference"
+        ]
+      }
+    ],
+    "disallowedEntries": [
+      {
+        "parts": [
+          "blue",
+          "waffle"
+        ]
+      },
+      {
+        "parts": [
+          "take",
+          "a",
+          "dump"
+        ]
+      }
+    ]
+  }
+}

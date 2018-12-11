@@ -1,0 +1,67 @@
+{
+  "entries": [
+    {
+      "adjective":false,
+      "adverb":false,
+      "collapseDoubles":true,
+      "filterMode":"embeddable",
+      "id": 1,
+      "locale":"en",
+      "noun":false,
+      "replacePhonetics":true,
+      "severity":"medium",
+      "status": "ACTIVE",
+      "tags":[
+        "Grooming"
+      ],
+      "text":"your mom",
+      "variations":[
+        "ur dad",
+        "ur mom",
+        "your dad"
+      ],
+      "verb":false
+    },
+    {
+      "adjective":false,
+      "adverb":false,
+      "collapseDoubles":true,
+      "definition":"slang for marijuana",
+      "filterMode":"embeddable",
+      "id": 2,
+      "locale":"en",
+      "noun":true,
+      "replacePhonetics":true,
+      "severity":"medium",
+      "status": "ACTIVE",
+      "tags":[
+        "Alcohol-Drug"
+      ],
+      "text":"splif",
+      "verb":false
+    },
+    {
+      "adjective":true,
+      "adverb":false,
+      "collapseDoubles":true,
+      "definition":"A woman who sleeps with lots of people, male or female or both.",
+      "filterMode":"embeddable",
+      "id": 3,
+      "locale":"en",
+      "noun":true,
+      "replacePhonetics":true,
+      "severity":"medium",
+      "status": "ACTIVE",
+      "tags":[
+        "Vulgarity"
+      ],
+      "text":"slut",
+      "variations":[
+        "slutee",
+        "sluty"
+      ],
+      "verb":false
+    }
+  ],
+  "totalResults": 3
+}

@@ -1,0 +1,23 @@
+---
+layout: blog-post
+title: PostgreSQL int to UUID
+author: Brian Pontarelli
+author_image: "/images/blog/head-shot-bw-square.jpg"
+excerpt_separator: "<!--more-->"
+categories:
+- Technology
+tags: []
+---
+<p>I've been working to convert a bunch of our database columns from integers to UUIDs. I was having a hard time figuring out how to handle this conversion easily in PostgreSQL. For some reason, the PostgreSQL developers decided that the int data type was not converted to UUID automatically. This is somewhat shocking because both of these data types are binary types with different lengths (int being 4 and UUID being 16),. Since I couldn't submit a feature request and wait 2-3 years to have it implemented, I had to find a solution that worked in an SQL script easily.</p>
+<p>After some playing around and hacking in sql, I figured out the solution. Here's a little snippet of my solution:</p>
+<pre class="lang:pgsql decode:true">CREATE TABLE foo (
+  id int
+);
+
+ALTER TABLE foo ADD COLUMN new_id UUID NULL;
+UPDATE foo SET new_id = CAST(LPAD(TO_HEX(id), 32, '0') AS UUID);
+ALTER TABLE foo DROP COLUMN id;
+ALTER TABLE foo RENAME COLUMN new_id TO id;
+ALTER TABLE foo ALTER COLUMN id SET NOT NULL;
+</pre>
+<p>The trick here is you need to convert the integer column to a hexadecimal string and then pad it with zeros. Since PostgreSQL happy converts strings to UUIDs, you can just cast the string to a UUID. Simple!</p>

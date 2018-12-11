@@ -1,0 +1,20 @@
+
+[cols="3a,7a"]
+[.api]
+.Response Body
+|===
+|[field]#phrase.id# [type]#[Integer]#
+|The Id of the phrase.
+
+|[field]#phrase.parts# [type]#[Array<String>]#
+|The associated allowed words for the phrase.
+
+|[field]#phrase.status# [type]#[String]#
+|The status of the phrase. This will always be `ACTIVE` as the APIs only operate on the active filter state.
+|===
+
+[source,json]
+.Example Resonse JSON
+----
+include::../../src/json/whitelist/phrase/single-response.json[]
+----

@@ -1,0 +1,106 @@
+---
+layout: blog-post
+title: Display YouTube Videos Safely & Save Moderation Time
+author: Marshall Bauernfeind
+author_image: "/images/blog/HeadshotMarshall.jpeg"
+excerpt_separator: "<!--more-->"
+categories:
+- Community Manager
+tags: []
+---
+<p><img class="size-full wp-image-1171 alignnone" title="You Tube " src="/images/blog/YouTube.jpeg" alt="YouTube ID Issue" width="425" height="282"></p>
+<p>YouTube is a <strong>BIG DEAL</strong> with today’s youth. Allowing users to share YouTube videos within your application increases user engagement and retention. However, consider what might happen if inappropriate content such as sex, violence, or personally identifiable information (PII) is shared. In this post I will walk you through the process to provide a safe environment that parents will trust and save precious moderator hours by building a list of already-approved and already-rejected videos.</p>
+<blockquote><p>Clip of Inversoft's Sean Bryant's puppy "Bodhi"</p></blockquote>
+<div class="video-container">
+<iframe width="560" height="315" src="//www.youtube.com/embed/KPsUveWBgYM" frameborder="0" allowfullscreen></iframe>
+</div>
+<h2>Approval Process: YouTube ID White &amp; Black List</h2>
+<p>Allowing kids to post and share videos without being reviewed first by a moderator is risky, to say the least. Even if you allow users to report inappropriate content, it would not take more than one angry parent seeing pornography on your site to ruin your reputation for good. Therefore you must watch every video before it is made public in your community.</p>
+<p>Kids love to share videos, particularly the same video over and over. Your moderation efforts will be taxed if a single video is reviewed 700 times! However, you can reduce the burden on moderators by employing a simple whitelist/blacklist technique on YouTube videos. Each YouTube video has a unique ID that can be saved after a moderator watches it. The next time the same video is posted, you can check the whitelist/blacklist to determine if it has already been moderated.</p>
+<p><!--more--></p>
+<p>The YouTube ID is embedded in the URL, but the format of the URL is not always the same. In order to extract the ID, use a regular expression such as:</p>
+<p>%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&amp;]v=)|youtu\.be/)([^"&amp;?/ ]{11})%i</p>
+<p>Source: <a href="http://stackoverflow.com/questions/2936467/parse-youtube-video-id-using-preg-match/6382259#6382259">Stack Overflow</a></p>
+<p>Create a table in your database with two columns:</p>
+<pre class="brush:sql">create table youtube_video_approvals (
+id varchar(255) not null,
+approved boolean not null,
+primary key (id)
+);</pre>
+<p>Now you can query the database to see if a moderator has already approved or rejected a video with this select statement:</p>
+<pre class="brush:sql">select approved from youtube_video_approvals where id = ‘YouTube-ID-Here’;</pre>
+<p>If the table doesn’t contain a record for a specific video, after the moderator has approved or rejected it, you can insert the result into the table like this:</p>
+<pre class="brush:sql">insert into youtube_video_approvals (id, approved) values 
+(‘YouTube-ID-Here’, true);</pre>
+<p> </p>
+<h2>Watch Out! Content Updates from the YouTube Video Editor</h2>
+<p>With the <a href="http://support.google.com/youtube/bin/answer.py?hl=en&amp;answer=183851">YouTube video editor</a>, the user that submitted the video to YouTube can change the content of the video to:</p>
+<ul>
+<ul>
+<li>Overlay a music soundtrack. (Luckily, users cannot upload their own soundtrack. They must select from a predefined list.)</li>
+<li>Trim the video length.</li>
+<li>Enhance the video by rotating it or adding visual effects such as “cinemascope”.</li>
+<li>Change the title and description.</li>
+<li>Add or update annotations.</li>
+<li>Add or update the caption.</li>
+</ul>
+</ul>
+<blockquote><p>The same video as above with the Title changed</p></blockquote>
+<div class="video-container">
+<iframe width="560" height="315" src="//www.youtube.com/embed/cdfM0qKE3j4" frameborder="0" allowfullscreen></iframe>
+</div>
+<p>When any of the above updates are made, the ID of the YouTube video <strong><em>does not change</em></strong>. Therefore, even if you review every video prior to them being public, the video content can be changed without your knowing. The <a href="https://developers.google.com/youtube/2.0/developers_guide_protocol_video_entries">YouTube API</a> provides a partial solution. When you query the API for a specific video, the response contains an element called &lt;updated&gt;. The element contains an <a href="http://www.w3.org/TR/NOTE-datetime">ISO date-time</a> value. This element changes each time a video is updated by adding a soundtrack, trimming the video length, enhancing the video, or changing the title or description. However, this value does <strong>not</strong>change when annotations are added or when the caption is modified. Don’t worry, I’ll cover annotations a little later.</p>
+<h2>Checking for Video Updates</h2>
+<p>Users cannot add video clips nor upload a custom soundtrack to an existing video. This means you can be confident that the video/audio portion will always be appropriate once it is reviewed by a moderator even after it has been edited. However, if you are displaying the <strong>title</strong> or <strong>description</strong>, you should check if either have been modified by querying the YouTube API before playing the video.  If the &lt;updated&gt; element indicates that the video has  been changed, you can run the title and description through an automated profanity filter such as <a href="/features/profanity-filter/">CleanSpeak</a> or have a moderator review the video again. In order to handle when videos are updated, we need to update our table to include the updated date returned from the YouTube API. Here is the new table definition:</p>
+<pre class="brush:sql">create table youtube_video_approvals (
+id varchar(255) not null,
+approved boolean not null,
+updated timestamp not null,
+primary key (id)
+);</pre>
+<p>When a new video is submitted or an approved video is about to be played, you must first query the YouTube API to retrieve the updated date. The following is an example cURL command  to retrieve the updated value for a YouTube video:</p>
+<pre class="brush:bash shell">% curl "https://gdata.youtube.com/feeds/api/videos/OsGY8VHVUOQ?v=2" | 
+tidy -xml</pre>
+<p>The XML result has been trimmed for brevity:</p>
+<pre class="brush:xml">&lt;updated&gt;2013-02-19T01:56:35.000Z&lt;/updated&gt;</pre>
+<p>Parse the XML and store the &lt;updated&gt; value as a timestamp. Whenever a video is played from your application, use an onplay() event to check the &lt;updated&gt; value of the video by querying the API.</p>
+<p>Once you have the updated value for the video, query the database to see if it has changed:</p>
+<pre class="brush:sql">select approved, updated from youtube_video_approvals 
+where id = ‘YouTube-ID-Here’;</pre>
+<p>If it has changed, run the title and description of the video through your profanity filter to see if it finds anything. The title and description of the video are part of the XML response from the YouTube API and are stored in these XML elements:</p>
+<pre class="brush:xml">&lt;title&gt;Bohdi-at-the-park-1&lt;/title&gt;
+&lt;media:description type='plain'&gt;Fun day at the park!&lt;/media:description&gt;</pre>
+<p>If your profanity filter finds a match, you can immediately set the approved flag of the video to false and remove the video from public display.</p>
+<p>You may also chose to have a moderator review the content again. In this case,  the type of the <strong>approved</strong> column must be a tri-state. You can use the values <em>approved</em>, <em>rejected</em>, and <em>pending </em>to indicate the approved status of a particular video. Resubmit the video for moderator approval and set the approved column to <em>pending</em>.</p>
+<h2>Disable Annotations &amp; Captions</h2>
+<p>YouTube <a href="http://support.google.com/youtube/bin/answer.py?hl=en&amp;answer=92710">Annotations</a> are a way to layer text bubbles, links, and other content over a video. <a href="http://support.google.com/youtube/bin/answer.py?hl=en&amp;answer=100079">Captions</a> provide the ability to add text for hearing-impaired or multilingual support and can be easily edited. When an annotation or caption is added/modified, the &lt;updated&gt; value <strong><em>does not change</em></strong>. To prevent inappropriate content, you must disable these features from being displayed.</p>
+<p>Added text bubbles, but the id and &lt;updated&gt; values do not change</p>
+<div class="video-container">
+<iframe width="560" height="315" src="//www.youtube.com/embed/OsGY8VHVUOQ" frameborder="0" allowfullscreen></iframe>
+</div>
+<p>When playing YouTube videos within your application, you have a choice between an <a href="https://developers.google.com/youtube/youtube_player_demo">embedded player and a chromeless player</a>. Annotations and captions are disabled in chromeless players. Since you will also be able to customize the look and feel of a chromeless player to match your interface, chromeless is a clear winner over embedded players.</p>
+<p>Building a chromeless player is beyond the scope of this article, but there are numerous sources available online. A few are listed at the end of this post.</p>
+<p><em>Note: Using an embedded player is tempting since it is very easy to add to your application compared to a chromeless player thus saving development time. You can disable annotations &amp; captions by default when using an embedded player, but the user can easily reenable them. If YouTube modified the &lt;updated&gt; date and provided the ability to query their API to retrieve the content of annotations, the technique of checking the last updated date and using a text filter above could be applied. As of this writing, YouTube does not provide this ability.</em></p>
+<h2>What about Vimeo?</h2>
+<p>As of this writing, Vimeo does not provide any type of last-updated date or versioning as part of their API. After uploading a video and an ID is associated, the entire video can be very easily changed using their <a href="https://vimeo.com/help/faq/video#replace">replace video feature</a>. Since there is no ability to monitor whether a video will be appropriate or not even after it has been reviewed by a moderator, we do <strong>NOT</strong> recommend embedding Vimeo content in your site!</p>
+<hr>
+<p>Allowing kids to engage by sharing YouTube videos within your application is a big win for user experience and repeat visitors. Be sure your brand is safe by following the steps outlined above:</p>
+<ul>
+<ul>
+<ul>
+<li>Review each video prior to being public and store the ID as approved or rejected.</li>
+<li>Immediately publish or reject new videos when they have already been reviewed to save moderator hours.</li>
+<li>If displaying the title or description of a video, use the YouTube API to be sure the &lt;updated&gt; value has not changed prior to displaying the video.</li>
+<li>If the &lt;updated&gt; value has changed, use a filter to check the title and description for inappropriate content.</li>
+<li>Use a chromeless player to show YouTube content without annotations or captions.</li>
+</ul>
+</ul>
+</ul>
+<p>Building a chromeless YouTube player</p>
+<ul>
+<ul>
+<li><a href="http://www.webmonkey.com/2010/02/youtube_tutorial_lesson_1_the_player_api/">Webmonkey tutorial with Javascript</a></li>
+<li><a href="http://tutorialzine.com/2010/07/youtube-api-custom-player-jquery-css/">Tutorialzine tutorial with jQuery</a></li>
+<li><a href="https://developers.google.com/youtube/js_api_reference">YouTube API</a></li>
+</ul>
+</ul>

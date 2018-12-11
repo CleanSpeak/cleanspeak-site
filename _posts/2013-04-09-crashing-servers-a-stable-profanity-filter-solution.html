@@ -1,0 +1,43 @@
+---
+layout: blog-post
+title: 'Crashing Servers: A Stable Profanity Filter Solution'
+author: Brian Pontarelli
+author_image: "/images/blog/head-shot-bw-square.jpg"
+excerpt_separator: "<!--more-->"
+categories:
+- CleanSpeak
+tags: []
+---
+<p>We have been hearing from prospective customers that their profanity filters have been crashing their servers. Sure there are some good <a title="Diablo 3 Error 37" href="http://www.dorktower.com/files/2012/05/DorkTower10711.gif">jokes</a> about what people tend to do when servers go down, but in reality when servers crash users get angry. Angry users can have a big impact on your business. We have compiled two lists of suggestions that will help you prevent issues with your filter.</p>
+<p><img class="aligncenter size-full wp-image-1440" title="Crashing Servers : A Stable Profanity Filter Solution" alt="Crashed Servers" src="/images/blog/Failed-Servers.jpg" width="849" height="565"></p>
+<h2 style="text-align: left;">Picking a Good Filter</h2>
+<p>Picking a good profanity filter is important. Not only should you select a filter that has good accuracy and is customizable, but you should also pick a filter that can scale. Here are the 5 things you should look for to ensure your profanity filter won't crash your servers.</p>
+<h3>1. On-premise</h3>
+<p>The best way to reduce your risk of crashes is to use a filter that can scale. On-premise filters provide the lowest latency and the highest throughput. This means that even if you have massive spikes in traffic, the filter will keep up.</p>
+<p><!--more--></p>
+<h3>2. Avoid Regular Expressions</h3>
+<p>Most naive filters use regular expressions to filter your content. <a href="http://stackoverflow.com/questions/9422648/regex-performance-issues-profanity-filter/9437935#9437935">Regular expressions are often slow and can be memory intensive</a>. If you are selecting a profanity filtering technology, be sure to verify that your preferred solution doesn't use regular expressions. Instead, look for a solution that uses a linear rule-based filter.</p>
+<h3>3. Don’t Let Watson Do Your Filtering</h3>
+<p>Similar to regular expressions, you should avoid filters that use artificial intelligence (AI).  In most cases, filters that use AI don't handle spikes or large loads well. They also require expensive hardware and constant tuning to work properly. Instead, you should find a profanity filter that scales well on value priced hardware and doesn’t require a super-computer to find f-bombs.</p>
+<h3>4. Load Test</h3>
+<p>Load testing is a vital component of any project. Verify that the filter you use has been extensively load tested. A good load test should be capable of handling hundreds of concurrent client requests and provide throughput of at least 20,000 requests per second. All of these metrics should be sustainable over long periods of time without the filter crashing. This will ensure that any spikes you encounter are easily managed by the filter.</p>
+<h3>5. Standards</h3>
+<p>Using a filter that requires a proprietary protocol and a custom built client opens you up to the possibility of crashes. If the protocol implementation or client library have bugs, they could easily crash your server. Instead, use a filter that conforms to the standards such as <a title="Hypertext Transfer Protocol" href="http://en.wikipedia.org/wiki/HTTP_protocol">HTTP</a> and <a title="Representational State Transfer" href="http://en.wikipedia.org/wiki/REST">REST</a>. These filters are much less likely to fail on you because REST and HTTP are two of the most widely used standards in the world. They have both been thoroughly tested. Most programming languages come with HTTP libraries out of the box and there are also hundreds of open source libraries for these protocols available. As an added bonus, using a filter that is built on top of HTTP and REST can reduce your development costs and integration time as well.</p>
+<h2 style="text-align: left;">Prevent Failures</h2>
+<p>Even if you use an awesome filter, the server it is running on might crash or other problems might cause it to stop working. Here are the 3 ways to ensure that your community isn't impacted on the off chance your filter crashes.</p>
+<h3>1. Timeouts</h3>
+<p>Ensure that the part of your code that calls the filter uses a timeout. Specifying a timeout will prevent filter failures from backing your server up and causing cascading failures. Depending on the filter you are using, setting timeouts to around 50ms is a good idea. Although this number might seem high to some people, remember that timeouts are the absolute upper limit for any request.</p>
+<h3>2. Automatic Throttling</h3>
+<p>In addition to adding timeouts, you should also include an automatic throttling system. This system should automatically stop sending messages to the filter if a certain number of errors occur in a specific time frame. For example, you might decide that 10 errors in 1 minute indicate a filter problem. In this case, you might want to stop sending requests to the filter for 5 minutes before trying again.</p>
+<h3>3. Kill Switches</h3>
+<p>As a last resort, you should build in a <a title="Profanity Filter: On or Off?" href="/blog/2013/03/12/profanity-filter-on-or-off/">global switch that disables chat</a> (or other social features) in your community. If for some reason you see a problem with the filter (or anything else for that matter), you might want to turn off all social features until the problem can be resolved. Also, make this switch work as quickly as possible. You don't want to wait 30 minutes for your kill switch to take effect.</p>
+<h2 style="text-align: left;">Summary</h2>
+<p>Using these suggestions and tips for picking a good filter and integrating it properly can nearly eliminate the possibility of your profanity filter crashing your servers. This will help keep your users happy and help your community thrive and grow.</p>
+<p> </p>
+<p>Further Reading:</p>
+<p><a href="http://stackoverflow.com/questions/9422648/regex-performance-issues-profanity-filter">Regex performance issues - Profanity filter</a></p>
+<p><a title="Profanity Filter: On or Off?" href="/blog/2013/03/12/profanity-filter-on-or-off/">Profanity Filter: On or Off?</a></p>
+<p><a href="/tech-specs/">CleanSpeak's Profanity Filter Tech Specs</a></p>
+<p><a href="http://stackoverflow.com/questions/8319136/profanity-filter-using-a-regular-expression-list-of-100-words">Profanity Filter using a Regular Expression</a></p>
+<p><a href="http://stackoverflow.com/questions/1521646/whats-the-best-profanity-filter-which-supports-java-integration">What's the best profanity filter which supports Java integration?</a></p>
+<p> </p>

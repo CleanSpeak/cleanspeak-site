@@ -1,0 +1,32 @@
+---
+layout: doc
+title: Status API
+description: The Status API that provides information about each CleanSpeak server and the CleanSpeak services running there
+---
+
+== Status
+
+This API provides status information about CleanSpeak with the help of the https://dropwizard.github.io/metrics/[Dropwizard Metrics] project. The status information is broken down into metrics and health checks. Metrics provide timing information, counts, meters, histograms, etc. The health checks provide information about services in CleanSpeak and whether or not they are working properly.
+
+=== Request
+
+[.endpoint]
+.URI
+--
+[method]#GET# [uri]#/status#
+--
+
+=== Response
+The JSON response from the Status API is complex and subject to change. The specific contents of the JSON body are not documented here. If you choose to use this API for monitoring purposes you should primarily use the response code to indicate server health. If you receive a `200` you may consider CleanSpeak in a healthy state. The response body is intended for use by Inversoft support.
+
+[cols="1,9"]
+.Response Codes
+|===
+|Code |Description
+
+|200
+|The CleanSpeak server is functioning properly
+
+|500
+|The CleanSpeak server is not functioning properly. This could indicate that the database connectivity failed or one or more services within CleanSpeak failed. Consult the CleanSpeak link:../troubleshooting/[Troubleshooting] to learn more about the failure or contact Inversoft support for assistance.
+|===

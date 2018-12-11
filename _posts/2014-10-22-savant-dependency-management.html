@@ -1,0 +1,176 @@
+---
+layout: blog-post
+title: 'Savant Build Tool: Dependency Management'
+author: Brian Pontarelli
+author_image: "/images/blog/head-shot-bw-square.jpg"
+excerpt_separator: "<!--more-->"
+categories:
+- Technology
+tags:
+- Savant
+---
+<p><span style="font-size: 13px;">When we first started writing Savant, we realized that the first requirement was a dependency management system. This is necessary for nearly every feature in a good build tool. We wanted Savant plugins to be resolved as dependencies and to be loaded into separate classloaders along with their dependencies. We also knew that the Java compiler plugin would need the project’s dependencies for the compiler classpath and the TestNG plugin would need the dependencies to run the tests.</span></p>
+<p><img class=" wp-image-6410 alignright" src="/images/blog/Savant-Depency-Management.png" alt="Savant Dependency Management Blocks" width="318" height="308">For years we had been using a strict versioning system that broke versions into 4 different groups:</p>
+<ul>
+<li>Major</li>
+<li>Minor</li>
+<li>Patch</li>
+<li>Pre-release</li>
+</ul>
+<p>This versioning is expressed as &lt;major&gt;.&lt;minor&gt;.&lt;patch&gt;-&lt;pre-release&gt;</p>
+<p>We found that the Semantic Versioning (SemVer) specification was nearly identical to our versioning methodology. Rather than continue to use our own system, we fully embraced SemVer. The problem was that no other dependency management system implemented SemVer.</p>
+<p><!--more--></p>
+<p>Maven and Ivy both were good initial solutions for dependency management, however they both lacked any rules with regards to version compatibility or version naming. Therefore, we couldn’t use Maven Central or the Ivy repositories we had previously been using with Gradle.</p>
+<p>This was a difficult decision because it meant that we had to start from scratch and were going to have to manually add dependencies to the repository until Savant became more widely adopted.</p>
+<p>Even though these tradeoffs were huge, we chose not to compromise on the integrity of the software and more importantly on SemVer. Rather, we implemented a semantic version compliant dependency management solution.</p>
+<p>Before we dive into how Savant’s dependency management tool works, there are three terms that require definition:</p>
+<ul>
+<li>
+<strong>artifact</strong>
+<ul>
+<li>An artifact is file that is produced by a project and available for other projects to use. Examples of artifacts include JAR files, SQL files, ZIPs, RPMs, etc.</li>
+</ul>
+</li>
+<li>
+<strong>dependency</strong>
+<ul>
+<li>A dependency is formed when a project depends on an artifact of another project.</li>
+</ul>
+</li>
+<li>
+<strong>transitive dependencies</strong>
+<ul>
+<li>Transitive dependencies are indirect dependencies of your project through a direct dependency. For example, if you project depends on library A and library A depends on library B, your project transitively depends on library B.</li>
+</ul>
+</li>
+</ul>
+<p>In Savant, dependencies are identified by an ID and a version. The ID has four parts:</p>
+<ul>
+<li><strong>Group</strong></li>
+<li><strong>Project</strong></li>
+<li><strong>Name</strong></li>
+<li><strong>Type</strong></li>
+</ul>
+<p>The <strong>Group</strong> is always a reverse DNS name that identifies the organization responsible for the artifact. The <strong>Project</strong> is the name of the project that produces the artifact. The <strong>Name</strong> is the name of the artifact and can be different than the Project, but is often the same as the Project. When a project only projects a single artifact, the Project and Name are almost always the same. The Type is the file type of the artifact. This is usually <strong>jar</strong> for Java artifacts, but can be any type. For example, Inversoft often uses <strong>tar.gz</strong> for our bundle artifacts.</p>
+<p>In addition to the ID, the dependency also requires a version. There are a couple shorthand notations for Savant dependencies:</p>
+<ul>
+<li>&lt;group&gt;:&lt;name&gt;:&lt;version&gt;
+<ul>
+<li>i.e. org.apache.commons:commons-collections:3.1.0</li>
+</ul>
+</li>
+<li>&lt;group&gt;:&lt;name&gt;:&lt;version&gt;:&lt;type&gt;
+<ul>
+<li>i.e. com.mycompany:database:1.0.1:sql</li>
+</ul>
+</li>
+<li>&lt;group&gt;:&lt;project&gt;:&lt;name&gt;:&lt;version&gt;:&lt;type&gt;
+<ul>
+<li>i.e. com.mycompany:database-project:mysql:1.0.1:sql</li>
+</ul>
+</li>
+</ul>
+<p>Dependencies are defined inside the project build file using the <strong>dependencies</strong> definition. Dependencies are broken down into named dependency groups. Here is an example:</p>
+<pre class="lang:java decode:true">project(...) {
+  dependencies {
+    group(name: "provided") {
+      dependency(id: "javax.servlet:servlet-api:3.1.0", skipCompatibilityCheck: true)
+    }
+    group(name: "compile") {
+     dependency(id: "com.fasterxml.jackson.core:jackson-annotations:2.3.0")
+      dependency(id: "com.fasterxml.jackson.core:jackson-core:2.3.0")
+      dependency(id: "com.fasterxml.jackson.core:jackson-databind:2.3.0")
+      dependency(id: "com.google.inject:guice:4.0-beta.4")
+      dependency(id: "com.jolbox:bonecp:0.8.0")
+      dependency(id: "javax.inject:javax.inject:1")
+      dependency(id: "javax.mail:mail:1.4.4")
+      dependency(id: "net.sf.trove4j:trove4j:3.0.3")
+      dependency(id: "org.apache.commons:commons-io:2.1")
+      dependency(id: "org.apache.commons:commons-lang3:3.1")
+      dependency(id: "org.mybatis:mybatis:3.2.7")
+      dependency(id: "org.mybatis:mybatis-guice:3.6")
+      dependency(id: "org.primeframework:prime-email:0.10.0")
+      dependency(id: "org.primeframework:prime-mvc:0.32.0")
+      dependency(id: "org.primeframework:prime-transformer:1.0.3")
+      dependency(id: "org.slf4j:slf4j-api:1.7.7")
+      dependency(id: "org.supercsv:supercsv:1.52")
+    }
+    group(name: "test-compile", export: false) {
+      dependency(id: "org.easymock:easymock:3.2.0")
+     dependency(id: "org.primeframework:prime-mock:0.5.0")
+      dependency(id: "org.testng:testng:6.8.7")
+    }
+    group(name: "test-runtime", export: false) {
+      dependency(id: "com.mysql:mysql-connector-java:5.1.32")
+      dependency(id: "org.postgresql:postgresql:9.3.1102+jdbc41")
+    }
+    group(name: "database", export: false) {
+      dependency(id: “com.mycompany:database:mysql:1.0.1:sql”)
+   }
+   group(name: "stopwords", export: false) {
+     dependency(id: “com.mycompany:stopwords:stopwords:3.0.1:txt”)
+    }
+  }
+}</pre>
+<p>As you can see, some of the dependency groups look familiar such as <strong>compile</strong> and <strong>test-runtime</strong>. However, the groups are completely free-form and as you can see we have defined two additional groups named <strong>database</strong> and <strong>stopwords</strong>. This project might use those artifacts to create the database and populate a table with some stop words.</p>
+<p>Next, Savant needs to know how to download the project dependencies. Savant downloads dependencies using a <strong>workflow</strong>. The workflow is also defined in the project definition. It is broken down into two sections: <strong>fetch</strong> and <strong>publish</strong>. The <strong>fetch</strong> section is how Savant locates and downloads the dependencies initially and the <strong>publish</strong> section is used to store the dependencies locally so they aren’t downloaded during each build. Each section contains 1 or more processes that define how the artifacts are fetched and stored.</p>
+<p>Here is a common <strong>workflow</strong> definition:</p>
+<pre class="lang:java decode:true">project(...) {
+  workflow {
+    fetch {
+      cache()
+      url(url: "http://savant.mycompany.com")
+    }
+    publish {
+      cache()
+    }
+  }
+}</pre>
+<p>This tells Savant to first check the local cache to see if the dependency already exists. If it doesn't, it attempts to download it using HTTP from the repository <strong>http://savant.mycompany.com</strong>. If it is found at that location, it is stored in the local cache.</p>
+<p>Savant does not provide a default workflow or attempt to download artifacts from Savant Central (currently <span style="text-decoration: underline;">http://savant.inversoft.org</span>). We feel that defaults like this rarely work in secure corporate environments and therefore decided not to include a default workflow. This requires a bit of additional work when creating your build file, but it adds clarity and control.</p>
+<p>Finally, we want to mention that by default, certain Savant plugins use specific dependency groups in specific ways. However, these settings are configurable, so most projects should not need to change these settings. Here are the dependency groups and how they are used:</p>
+<ul>
+<li>
+<strong>compile</strong>
+<ul>
+<li>These are artifacts your project depends on in order to compile your source code.</li>
+<li>The Java and Groovy plugins use this group during compilation. However, transitive dependencies are NOT included. If your project needs an artifact at compile time it must define that as a direct dependency.</li>
+</ul>
+</li>
+<li>
+<strong>provided</strong>
+<ul>
+<li>These are artifacts your project depends on in order to compile your source code, but are provided to you at runtime. The classic example of this is the servlet-api JAR.</li>
+<li>The Java and Groovy plugins use this group during compilation. However, transitive dependencies are NOT included.</li>
+</ul>
+</li>
+<li>
+<strong>runtime</strong>
+<ul>
+<li>These are artifacts your project depends on at runtime but not compile time. Usually these are implementations of an API that your project compiles against.</li>
+<li>The Java TestNG and Groovy TestNG plugin include these dependencies and all their transitive dependencies when running the tests.</li>
+<li>The Webapp plugin places all of these dependencies in the WEB-INF/lib folder.</li>
+</ul>
+</li>
+<li>
+<strong>test-compile</strong>
+<ul>
+<li>These are artifacts your project’s tests depend on in order to be compiled.</li>
+<li>The Java and Groovy plugins use this group during compilation. However, transitive dependencies are NOT included.</li>
+</ul>
+</li>
+<li>
+<strong>test-runtime</strong>
+<ul>
+<li>These are artifacts your project depends on in order to run the tests.</li>
+<li>The Java TestNG and Groovy TestNG plugin include these dependencies and all their transitive dependencies when running the tests.</li>
+</ul>
+</li>
+</ul>
+<p>This has been a brief overview of the Savant dependency management system. We have covered how dependencies are defined, downloaded, and cached by Savant. We have also briefly covered the different dependency groups and the plugins that use them. Savant has additional dependency management features and other plugins that can assist you in downloading and using dependency artifacts. You can learn more about the various features and plugins via the Savant wiki here:</p>
+<p><a href="http://github.com/inversoft/savant-core/wiki">http://github.com/inversoft/savant-core/wiki</a></p>
+<p>Stay tuned for our next blog post about Savant version compatibility and management.</p>
+<p> </p>
+<hr>
+<p style="text-align: center;">For more about Inversoft Open Source projects click on the image below.</p>
+<p><a href="http://www.inversoft.org"><img class="wp-image-6414 aligncenter" src="/images/blog/Open-Source-Logo.png" alt="Inversoft Open Source Projects" width="315" height="168"></a></p>

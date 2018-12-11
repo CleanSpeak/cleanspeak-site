@@ -1,0 +1,30 @@
+[cols="3a,7a"]
+[.api]
+.Request Body
+|===
+|[field]#flag# [type]#[Object]# [required]#Required#
+|The flag object.
+
+|[field]#flag.applicationId# [type]#[String]# [required]#Required#
+|The Id of the application the the flag was sent from. For example if the user flag originated from your chat application, you would specify the Id of the CleanSpeak application being used for your chat content.
+
+|[field]#flag.comment# [type]#[String]# [optional]#Optional#
+|An optional description to provide additional details for the reason the content user was flagged.
+
+|[field]#flag.createInstant# [type]#[Long]# [required]#Required#
+|The link:../reference/data-types#instants[instants] the flag event occurred.
+
+|[field]#flag.reason# [type]#[String]# [optional]#Optional#
+|A free-form text field that can be used to indicate the reason the content user was flagged.
+
+For example, you may use reasons such as `abuse`, `bullying`, `grooming`, `spam` or `threatening`.
+
+|[field]#flag.reporterId# [type]#[UUID]# [required]#Required#
+|The Id of the reporting user.
+|===
+
+[source,json]
+.Example Request JSON
+----
+include::../src/json/content/flag/content-user-request.json[]
+----

@@ -1,0 +1,16 @@
+{
+  "videoQualityFilterRules": [
+    {
+      "score": 70,
+      "action": "allow"
+    },
+    {
+      "score": 30,
+      "action": "allow"
+    },
+    {
+      "score": 0,
+      "action": "allow"
+    }
+  ]
+}

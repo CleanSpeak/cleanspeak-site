@@ -1,0 +1,50 @@
+---
+layout: doc
+title: Previous Versions
+description: Learn how to upgrade from older versions of CleanSpeak to 3.x
+---
+
+== Upgrading from Previous Versions
+
+The CleanSpeak database changed significantly with version 3.0 for storing content and users. Required fields, data types, and other details are different than previous versions of CleanSpeak. For this reason, a database migration script is not available to migrate from prior CleanSpeak versions to 3.0. This was an intentional decision to help us start fresh and take CleanSpeak to the next level.
+
+However, 3.0 includes a migration assistant within the management interface that will transfer data from a 2.3 database to a new 3.0 installation. For filter-only clients, this tool will make your update to CleanSpeak 3.0 seamless. If you currently use the CleanSpeak 2.x moderation platform to store content, some extra steps are involved but don't worry, you won't loss any data from your 2.3 installation of CleanSpeak during the migration or if the migration fails for any reason.
+
+However, it is possible that not all your data from CleanSpeak 2.3 will be migrated to CleanSpeak 3.0. After you run the migration assistant, you will receive an email that details what data was transferred and what data was not.
+
+[NOTE]
+====
+CleanSpeak 3.0 contains so many additional features and functionality that we recommend that you not migrate your data. Instead, you may consider running your current CleanSpeak version for a short time concurrently with a fresh 3.0 installation and updating your integration to use 3.0 only. Once the older content is no longer relevant, shut down the older CleanSpeak services entirely.
+====
+
+=== Migration Steps
+
+If you wish to try migrating your data from a 2.3 database to a 3.0 database, follow the steps below to migrate with the migration assistant:
+
+1. Back up your existing 2.3 CleanSpeak database
+2. If you are not already running CleanSpeak version 2.3, you must first migrate your database to 2.3 (skip to step 3 if you are running 2.3 now).
+  a. Go to the CleanSpeak Prior Versions downloads page, then select the latest 2.3 version.
+  b. Click the Database Schema (MySQL and PostgreSQL and includes upgrade scripts) link to download the 2.3 schema and migrations.
+  c. Unzip the downloaded file and locate the migrations folder. This folder contains every migration you will need to upgrade your database to any prior version of CleanSpeak to version 2.3.
+  d. Run each required script in order.
+3. Install CleanSpeak version 3.0 with a separate 3.0 database following the 3.0 Installation Guide.
+4. Run CleanSpeak 3.0 by following the Running CleanSpeak 3.0 guide.
+5. Login to the 3.0 management interface with the default admin user:
+  **Email:** admin@inversoft.com
+  **Password:** password
+6. Navigate to `System -> Migrate 2.3 Database` and follow the instructions.
+
+Please take note of the details listed in the migration tool page regarding UUIDs and other information for moderation clients. The filter lists, moderator accounts, and audit log will all be transferred as well for both moderation and filter-only clients.
+
+=== API Differences Quick Reference
+
+* The end-point for sending content has changed. Instead of a single /content/item end-point, there are now two end points: One for moderation requests /content/item/moderate and another for filter requests content/item/filter
+* `/content/item/moderate` - Content is still filtered with this API, but the response will not contain details of each filter match. Instead, there will be a small response body that contains the action you should take on the content. This action is defined by configuring Filter Rules per Application.
+* `/content/item/filter` - This end-point is for clients that do not have the moderation platform licensed or for filter requests that do not require storage. Content sent to this end-point will not be persisted in any way by CleanSpeak. Also, filter-only requests have been simplified and many of the options that used to be available to change the behavior of the blacklist filter have been removed, such as setting the severity, tag(s), or locale for each request. Instead, parse the response to only action filter matches that you care about based on the attributes of each match.
+* The request Content-Type for each API is now application/json.
+* Application, content, and user IDs are now all in the form of UUID. See: UUIDs, IDs, and Integers
+* Components have been removed. There are now only Applications.
+* The primary key of an Application is now the UUID and not the name. Application names are now editable.
+* SenderId (UUID) is now mandatory for all moderation requests.
+
+Be sure to check out our integration examples and all of the new features of 3.0 by browsing through the CleanSpeak API and User Guide! Please contact support@inversoft.com with any questions.

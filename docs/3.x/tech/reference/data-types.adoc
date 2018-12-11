@@ -1,0 +1,134 @@
+---
+layout: doc
+title: Data Types
+description: Learn about the different data types used by CleanSpeak
+---
+
+== Instants
+
+CleanSpeak stores all time references as the number of milliseconds since _January 1st, 1970 UTC_, this is more generally referred to as Epoch time.
+
+For example, consider the following date.
+
+[block-quote]#10:45 AM MST on July 4th, 2015#
+
+You would need to convert this date time to the number of milliseconds since epoch and then send the value `1436028300000` as an input parameter. For additional detail on obtaining time in milliseconds in different programming languages see https://currentmillis.com.
+
+
+== Locales
+
+CleanSpeak accepts and returns Locales on the API using the Java standard format of a ISO 639-1 two letter language code followed by an optional underscore and a ISO 3166-1 alpha-2 country code. Below are the currently supported language and country codes and the resulting locale string that can either be sent into an API or be expected on the API response.
+
+[cols="3*"]
+_Locale Codes_
+|===
+|Language  |Country         |Locale
+
+|Arabic    |&ndash;         |`ar`
+|Danish    |&ndash;         |`da`
+|German    |&ndash;         |`de`
+|English   |&ndash;         |`en`
+|Spanish   |&ndash;         |`es`
+|Spanish   |Mexico          |`es_MX`
+|Finish    |&ndash;         |`fi`
+|French    |&ndash;         |`fr`
+|Italian   |&ndash;         |`it`
+|Japanese  |&ndash;         |`ja`
+|Korean    |&ndash;         |`ko`
+|Dutch     |&ndash;         |`nl`
+|Norwegian |&ndash;         |`no`
+|Polish    |&ndash;         |`pl`
+|Portuguese|&ndash;         |`pt`
+|Russian   |&ndash;         |`ru`
+|Swedish   |&ndash;         |`sv`
+|Chinese   |Taiwan          |`zh_TW`
+|Chinese   |China           |`zh_CN`
+|===
+
+
+== UUIDs
+
+Data types specified as UUID are expected to be in a valid string representation of a universally unique identifier (UUID). The API specifically expects the UUID to be provided in its canonical form which is represented by 32 lowercase hexadecimal digits displayed in five groups separated by hyphens.
+
+This representation takes the form of 8-4-4-4-12 for a total of 36 characters, 32 hexadecimal characters and four hyphens. In case you are converting an array of bytes, the break down of bytes for the hexadecimal String is 4-2-2-2-6.
+
+Example of a UUID in the expected canonical string format in a JSON request or response body.
+
+[source,json]
+----
+{
+  "foo": {
+    "id": "965865ef-b17d-4153-b952-d8902e584f7d"
+  }
+}
+----
+
+Example of a UUID being provided as a URL segment for an API.
+
+
+[.endpoint]
+--
+[uri]#/system/user/`965865ef-b17d-4153-b952-d8902e584f7d`#
+--
+
+
+== Quality Score
+
+A quality score is a value between `0.0` and `1.0` that indicates how likely the match is to be relevant.
+
+For example, consider the following text.
+
+[block-quote]#I like this. It is neat.#
+
+For example, consider the following text `I like this. It is neat`. CleanSpeak will find a URL match because `.it` is an official top level domain so it appears to be the following url `http://this.it`. However, because `it` is a dictionary word, it is less likely this URL is a relevant match. For this example the URL is penalized because the top level domain is a dictionary word and the match contains a space as you can see here `this. it` CleanSpeak will return the match with a reduced quality score of `0.45`.
+
+By default, a quality score above 0.9 is considered a *high* quality match, 0.7 - 0.89 a *medium* quality, and anything under 0.7 is considered *low* quality. The score can be adjusted by modifying the default penalties and matches limited by setting a minimum quality score.
+
+== Filter Mode
+
+=== Exact Match
+This property determines if the filter should only match on the word or any of the variations or conjugations exactly.
+When this is checked, if the match contains any spaces, separators, punctuation, duplicate characters, or replacement characters (where punctuation is used for letters - also called leet speak), it will be ignored.
+For example, if this is checked and the word is `anal`, then a match such as `ana!` will be ignored.
+Likewise, matches such as `/ al` and `aaannnalll` will be ignored as well. A good example of a word that should be marked as an exact match is the word `ho`. This is because the word ho cannot be written like `hoooo` because it changes to meaning.
+
+=== Embeddable
+This property defines whether or not the filter will locate the word when it is next to other words. When entries are marked as embeddable and the filter finds the word next to another word, a few additional checks are performed. The checks are:
+Check if the entire match is in the whitelist and if so, reject the match
+Check if the words next to the match are in the whitelist and if they are, accept the match
+Here are a few examples of embedded entries and how the filter treats them:
+
+----
+"I assume you are right"
+----
+
+Here the filter found the word `ass`, but it is next to another word. The filter first checks if the entire match is in the whitelist. In this case, the word `assume` is in the whitelist and therefore the filter will ignore this match.
+----
+"You are an assjockey"
+----
+Here the filter found the word `ass`, but it is next to another word. The filter first checks if the entire match is in the whitelist. In this case, the word `assjockey` is not in the whitelist. Next, the filter checks if the word next to the match is in the whitelist. Since the word `jockey` is in the whitelist the filter will assume that this is in fact a match.
+----
+"My username is rass123"
+----
+Here the filter found the word ass, but it is next to other words. The filter first checks if the entire match is in the whitelist. In this case, the word `rass123` is not in the whitelist. Next, the filter checks if the word next to the match is in the whitelist. Neither the word `r` or `123` are in the whitelist. Therefore,the filter assumes that this is not a match.
+
+=== Non Embeddable
+Non embeddable is like exact match except that it permits character replacements and whitespace.
+
+For instance `fuck` would not match `fu<k` in exact match but would with non embeddable.
+
+=== Distinguishable
+This property defines whether or not the entry can be found when it is embedded next to other words. For example, the word fuck can generally be distinguished when it is embedded like this:
+
+----
+foofuckblahfuckblah
+----
+
+On the flip side, the word ass is almost never distinguishable. Here are some examples:
+
+----
+thasstenasshanti
+----
+
+When entries are marked as distinguishable, if the filter finds the word anywhere in the text being filtered, it will mark that word as a match. When words are not marked as distinguishable and the filter finds the word next to other words, additional checks are performed to ensure the word is actually a match. These checks are described in the definition of the `embeddable` property.
+If you select the distinguishable option, the word will also be marked as embeddable and the embeddable option will be disabled. This is because the distinguishable and embeddable options are directly linked to each other. A word cannot be distinguishable without being embeddable.

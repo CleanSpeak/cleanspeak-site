@@ -1,0 +1,8 @@
+{
+  "type": "contentDelete",
+  "applicationId": "63d797d4-0603-48f7-8fef-5008edc670dd",
+  "id": "3f8f66cb-d933-4e5e-a76d-5b3a4d9209cd",
+  "moderatorId": "b00916ba-f647-4e9f-b2a6-537f69f89b87",
+  "moderatorEmail": "catherine@email.com",
+  "moderatorExternalId": "foo-bar-baz"
+}

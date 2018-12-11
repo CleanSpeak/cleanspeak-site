@@ -1,0 +1,55 @@
+#
+# CleanSpeak Jekyll config
+#
+title: CleanSpeak
+email: dev@inversoft.com
+description: >-
+  CleanSpeak is awesome
+baseurl: ""
+url: "https://cleanspeak.com"
+twitter_username: inversoft
+github_username:  inversoft
+paginate: 5
+paginate_path: "/blog/page/:num/"
+permalink: /blog/:year/:month/:day/:title/
+host: 0.0.0.0
+
+# Build settings
+markdown: kramdown
+theme: minima
+highlighter: rouge
+plugins:
+ - jekyll-asciidoc
+ - jekyll-feed
+ - jekyll-paginate
+exclude:
+ - docs/src/templates
+ - .gitignore
+ - .ruby-version
+ - _config.yml
+ - BootstrapStudioConvert.rb
+ - build.savant
+ - cleanspeak-site.iml
+ - cleanspeak-site.ipr
+ - cleanspeak-site.iws
+ - deploy.sh
+ - DocsDevREADME.md
+ - Gemfile
+ - Gemfile.lock
+ - import.rb
+ - import-webflow.sh
+ - README.md
+asciidoctor:
+  template_dir: docs/src/templates/haml
+  attributes:
+    icons: font
+    #    attribute-missing: drop-line
+    #    attribute-undefined: drop
+    imagesdir: /images/docs
+    sectnums: ''
+    # Select Pygments for highlighting but disable the Jekyll-Asciidoc's bullshit plugin that generates the CSS file by
+    # setting the stylesheet to empty
+    source-highlighter: pygments
+    pygments-stylesheet:
+    stylesdir: /css
+    -table-caption:

@@ -1,0 +1,26 @@
+---
+layout: blog-post
+title: 'Profanity Filtering 101: Phonetics'
+author: Brian Pontarelli
+author_image: "/images/blog/head-shot-bw-square.jpg"
+excerpt_separator: "<!--more-->"
+categories:
+- CleanSpeak
+tags:
+- Profanity Filtering
+---
+<p><em><strong>The third in a series of posts about the finer points of profanity filtering...</strong></em></p>
+<p><img class=" wp-image-3291 alignnone" title="Phonetics" src="/images/blog/PHONETICS2.gif" alt="Phonetics" width="421" height="245"></p>
+<p>Phonetic replacement is the process of replacing characters with other alphabetic characters (or removing unnecessary characters) while still retaining the phonetic structure of the word. This tactic is often used to attack filters that do not understand phonetics:</p>
+<ol>
+<li><strong>Teech me guitar</strong></li>
+<li><strong>Attak the main castle gate</strong></li>
+</ol>
+<p>Example #1 is a simple character swap of an "a" to an "e" that still retains the same phonetic structure of the word and allows the reader to infer the original word.</p>
+<p>Example #2, on the other hand, is an example of character collapsing. In this example the “ck” in the word “Attack” has been collapsed to a single “k” character.</p>
+<p><!--more--></p>
+<p class="aftermore">In some cases characters can't be collapsed without changing the meaning of the word. For example, the word “been” can't be collapsed to “ben”. Therefore, a filter can't simply ignore multiple characters that are phonetically the same. It has to understand if the word can be collapsed.</p>
+<p>This type of filter attack is a common tactic of users due to the fact that most filters have no knowledge of phonetics. <a title="Profanity Filter" href="%5Bsiteurl%5D/features/profanity-filter/">CleanSpeak's Profanity Filter</a> is able to correctly identify the majority of these types of phonetic attacks. It understands that many characters can be swapped, and in some words, multiple characters can also be collapsed. It also knows which words can't be collapsed without impacting the meaning of the word.</p>
+<p><strong>Further Reading:</strong></p>
+<p><a title="Profanity Filtering 101: The Grawlix" href="/blog/2013/08/27/profanity-filtering-101-the-grawlix/">Profanity Filtering 101: The Grawlix</a></p>
+<p><a title="Profanity Filtering 101: Character Replacements &amp; Leet Speak" href="/blog/2013/08/28/profanity-filtering-101-character-replacements-leet-speak/">Profanity Filtering 101: Character Replacements &amp; Leet Speak</a></p>

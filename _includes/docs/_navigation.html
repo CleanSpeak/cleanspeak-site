@@ -1,0 +1,70 @@
+<aside class="prime-side-menu">
+  <nav>
+    <ul>
+      <li><a href="{{ '/docs/3.x/tech/getting-started/' | relative_url }}" {% if page.url == "/docs/3.x/tech/getting-started/" %}class="active"{% endif %}><i class="fa fa-road"></i>Getting Started</a></li>
+      <li>
+        <a href="#"{% if page.url contains "/installation-guide/" %} class="open"{% endif %}><i class="fa fa-download"></i>Installation Guide<i class="fa fa-angle-right sub-menu"></i></a>
+        <ul{% if page.url contains "/installation-guide/" %} class="active"{% endif %}>
+          <li><a href="{{ '/docs/3.x/tech/installation-guide/system-requirements' | relative_url }}" {% if page.url == "/docs/3.x/tech/installation-guide/system-requirements.html" %}class="active"{% endif %}>System Requirements</a></li>
+          <li><a href="{{ '/docs/3.x/tech/installation-guide/server-layout' | relative_url }}" {% if page.url == "/docs/3.x/tech/installation-guide/server-layout.html" %}class="active"{% endif %}>Server Layout</a></li>
+          <li><a href="{{ '/docs/3.x/tech/installation-guide/packages' | relative_url }}" {% if page.url == "/docs/3.x/tech/installation-guide/packages.html" %}class="active"{% endif %}>Packages</a></li>
+          <li><a href="{{ '/docs/3.x/tech/installation-guide/database' | relative_url }}" {% if page.url == "/docs/3.x/tech/installation-guide/database.html" %}class="active"{% endif %}>Database</a></li>
+          <li><a href="{{ '/docs/3.x/tech/installation-guide/cleanspeak-management-interface' | relative_url }}" {% if page.url == "/docs/3.x/tech/installation-guide/cleanspeak-management-interface.html" %}class="active"{% endif %}>Management Interface</a></li>
+          <li><a href="{{ '/docs/3.x/tech/installation-guide/cleanspeak-webservice' | relative_url }}" {% if page.url == "/docs/3.x/tech/installation-guide/cleanspeak-webservice.html" %}class="active"{% endif %}>WebService</a></li>
+          <li><a href="{{ '/docs/3.x/tech/installation-guide/cleanspeak-search-engine' | relative_url }}" {% if page.url == "/docs/3.x/tech/installation-guide/cleanspeak-search-engine.html" %}class="active"{% endif %}>Search Engine</a></li>
+          <li><a href="{{ '/docs/3.x/tech/installation-guide/securing' | relative_url }}" {% if page.url == "/docs/3.x/tech/installation-guide/securing.html" %}class="active"{% endif %}>Securing</a></li>
+    </ul>
+      </li>
+      <li>
+        <a href="#"{% if page.url contains "/tutorials/" %} class="open"{% endif %}><i class="fa fa-graduation-cap"></i>Tutorials<i class="fa fa-angle-right sub-menu"></i></a>
+        <ul{% if page.url contains "/tutorials/" %} class="active"{% endif %}>
+          <li><a href="{{ '/docs/3.x/tech/tutorials/' | relative_url }}" {% if page.url == "/docs/3.x/tech/tutorials/" %}class="active"{% endif %}>Overview</a></li>
+          <li><a href="{{ '/docs/3.x/tech/tutorials/setup-wizard' | relative_url }}" {% if page.url == "/docs/3.x/tech/tutorials/setup-wizard.html" %}class="active"{% endif %}>Setup Wizard</a></li>
+          <li><a href="{{ '/docs/3.x/tech/tutorials/integration' | relative_url }}" {% if page.url == "/docs/3.x/tech/tutorials/integration.html" %}claass="active"{% endif %}>Integration Setup</a></li>
+          <li><a href="{{ '/docs/3.x/tech/tutorials/configure-an-application' | relative_url }}" {% if page.url == "/docs/3.x/tech/tutorials/configure-an-application.html" %}class="active"{% endif %}>Configure an Application</a></li>
+          <li><a href="{{ '/docs/3.x/tech/tutorials/filtering-content' | relative_url }}" {% if page.url == "/docs/3.x/tech/tutorials/filtering-content.html" %}class="active"{% endif %}>Filtering Content</a></li>
+          <li><a href="{{ '/docs/3.x/tech/tutorials/filtering-phrases' | relative_url }}" {% if page.url == "/docs/3.x/tech/tutorials/filtering-phrases.html" %}class="active"{% endif %}>Filtering Phrases</a></li>
+          <li><a href="{{ '/docs/3.x/tech/tutorials/filtering-videos' | relative_url }}" {% if page.url == "/docs/3.x/tech/tutorials/filtering-videos.html" %}class="active"{% endif %}>Filtering Videos</a></li>
+          <li><a href="{{ '/docs/3.x/tech/tutorials/handling-flags' | relative_url }}" {% if page.url == "/docs/3.x/tech/tutorials/handling-flags.html" %}class="active"{% endif %}>Handling Flags</a></li>
+          <li><a href="{{ '/docs/3.x/tech/tutorials/handling-notifications' | relative_url }}" {% if page.url == "/docs/3.x/tech/tutorials/handling-notifications.html" %}class="active"{% endif %}>Handling Notifications</a></li>
+          <li><a href="{{ '/docs/3.x/tech/tutorials/start-and-stop' | relative_url }}" {% if page.url == "/docs/3.x/tech/tutorials/start-and-stop.html" %}class="active"{% endif %}>Start and Stop CleanSpeak</a></li>
+          <li><a href="{{ '/docs/3.x/tech/tutorials/logging-in-with-google' | relative_url }}" {% if page.url == "/docs/3.x/tech/tutorials/logging-in-with-google.html" %}class="active"{% endif %}>Logging in with Google</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#"{% if page.url contains "/apis/" %} class="open"{% endif %}><i class="fa fa-code"></i>APIs<i class="fa fa-angle-right sub-menu"></i></a>
+        <ul{% if page.url contains "/apis/" %} class="active"{% endif %}>
+          <li><a href="{{ '/docs/3.x/tech/apis/' | relative_url }}" {% if page.url == "/docs/3.x/tech/apis/" %}class="active"{% endif %}>Overview</a></li>
+          <li><a href="{{ '/docs/3.x/tech/apis/authentication' | relative_url }}" {% if page.url == "/docs/3.x/tech/apis/authentication.html" %}class="active"{% endif %}>Authentication</a></li>
+          <li><a href="{{ '/docs/3.x/tech/apis/errors' | relative_url }}" {% if page.url == "/docs/3.x/tech/apis/errors.html" %}class="active"{% endif %}>Errors</a></li>
+          <li><a href="{{ '/docs/3.x/tech/apis/content' | relative_url }}" {% if page.url == "/docs/3.x/tech/apis/content.html" %}class="active"{% endif %}>Content</a></li>
+          <li><a href="{{ '/docs/3.x/tech/apis/blacklist' | relative_url }}" {% if page.url == "/docs/3.x/tech/apis/blacklist.html" %}class="active"{% endif %}>Blacklist</a></li>
+          <li><a href="{{ '/docs/3.x/tech/apis/applications' | relative_url }}" {% if page.url == "/docs/3.x/tech/apis/applications.html" %}class="active"{% endif %}>Applications</a></li>
+          <li><a href="{{ '/docs/3.x/tech/apis/users' | relative_url }}" {% if page.url == "/docs/3.x/tech/apis/users.html" %}class="active"{% endif %}>Users</a></li>
+          <li><a href="{{ '/docs/3.x/tech/apis/admins-moderators' | relative_url }}" {% if page.url == "/docs/3.x/tech/apis/admins-moderators.html" %}class="active"{% endif %}>Admins/Moderators</a></li>
+          <li><a href="{{ '/docs/3.x/tech/apis/system' | relative_url }}" {% if page.url == "/docs/3.x/tech/apis/system.html" %}class="active"{% endif %}>System</a></li>
+          <li><a href="{{ '/docs/3.x/tech/apis/whitelist' | relative_url }}" {% if page.url == "/docs/3.x/tech/apis/whitelist.html" %}class="active"{% endif %}>Whitelist</a></li>
+          <li><a href="{{ '/docs/3.x/tech/apis/status' | relative_url }}" {% if page.url == "/docs/3.x/tech/apis/status.html" %}class="active"{% endif %}>Status</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#"{% if page.url contains "/reference/" %} class="open"{% endif %}><i class="fa fa-book"></i>Reference<i class="fa fa-angle-right sub-menu"></i></a>
+        <ul{% if page.url contains "/reference/" %} class="active"{% endif %}>
+          <li><a href="{{ '/docs/3.x/tech/reference/configuration' | relative_url }}" {% if page.url == "/docs/3.x/tech/reference/configuration.html" %}class="active"{% endif %}>Configuration</a></li>
+          <li><a href="{{ '/docs/3.x/tech/reference/data-types' | relative_url }}" {% if page.url == "/docs/3.x/tech/reference/data-types.html" %}class="active"{% endif %}>Data Types</a></li>
+          <li><a href="{{ '/docs/3.x/tech/reference/technical-overview' | relative_url }}" {% if page.url == "/docs/3.x/tech/reference/technical-overview.html" %}class="active"{% endif %}>Technical Overview</a></li>
+          <li><a href="{{ '/docs/3.x/tech/reference/url-filter-configuration' | relative_url }}" {% if page.url == "/docs/3.x/tech/reference/url-filter-configuration.html" %}class="active"{% endif %}>URL Filter Config</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#"{% if page.url contains "/upgrades-patches/" %} class="open"{% endif %}><i class="fa fa-upload"></i>Upgrades/Patches<i class="fa fa-angle-right sub-menu"></i></a>
+        <ul{% if page.url contains "/upgrades-patches/" %} class="active"{% endif %}>
+          <li><a href="{{ '/docs/3.x/tech/upgrades-patches/overview' | relative_url }}" {% if page.url == "/docs/3.x/tech/upgrades-patches/overview.html" %}class="active"{% endif %}>Overview</a></li>
+          <li><a href="{{ '/docs/3.x/tech/upgrades-patches/previous-versions' | relative_url }}" {% if page.url == "/docs/3.x/tech/upgrades-patches/previous-versions.html" %}class="active"{% endif %}>Previous Versions</a></li>
+        </ul>
+      </li>
+      <li><a href="{{ '/docs/3.x/tech/release-notes/' | relative_url }}" {% if page.url == "/docs/3.x/tech/release-notes/" %}class="active"{% endif %}><i class="fa fa-list-ol"></i>Release Notes</a></li>
+      <li><a href="{{ '/docs/3.x/tech/troubleshooting/' | relative_url }}" {% if page.url == "/docs/3.x/tech/troubleshooting/" %}class="active"{% endif %}><i class="fa fa-exclamation-circle"></i>Troubleshooting</a></li>
+    </ul>
+  </nav>
+</aside>

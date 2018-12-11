@@ -1,0 +1,15 @@
+{
+  "entry": {
+    "exclusions": [
+      "towelled",
+      "towelling"
+    ],
+    "inflect": true,
+    "locale": "en",
+    "tags": [
+      "Noun",
+      "Verb"
+    ],
+    "text": "towel"
+  }
+}

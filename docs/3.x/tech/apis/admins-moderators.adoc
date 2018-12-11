@@ -1,0 +1,118 @@
+---
+layout: doc
+title: Admin and Moderator APIs
+description: APIs for managing admins and moderators that will be using the CleanSpeak Management Interface
+---
+
+== Create an Admin/Moderator
+
+This API is used to create a new Admin or Moderator.
+
+=== Request
+
+[.endpoint]
+.URI
+--
+[method]#POST# [uri]#/system/user#
+--
+
+:http_method: POST
+include::docs/3.x/tech/apis/_user-request-body.adoc[]
+
+=== Response
+
+include::docs/3.x/tech/apis/_standard-post-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/_user-response-body.adoc[]
+
+// Unset the variables used in this part.
+:http_method!:
+
+
+== Retrieve an Admin/Moderator
+
+This API is used to retrieve an existing Admin or Moderator.
+
+=== Request
+
+[.endpoint]
+.URI
+--
+[method]#GET# [uri]#/system/user/`\{userId\}`#
+--
+
+[cols="3a,7a"]
+[.api]
+.Request Parameters
+|===
+|[field]#userId# [type]#[UUID]# [required]#Required#
+|The Id of the User to retrieve.
+|===
+
+=== Response
+
+include::docs/3.x/tech/apis/_standard-get-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/_user-response-body.adoc[]
+
+
+== Update an Admin/Moderator
+
+This API is used to update an existing Admin or Moderator.
+
+=== Request
+
+[.endpoint]
+.URI
+--
+[method]#PUT# [uri]#/system/user/`\{userId\}`#
+--
+
+[cols="3a,7a"]
+[.api]
+.Request Parameters
+|===
+|[field]#userId# [type]#[UUID]# [required]#Required#
+|The Id of the User to update.
+|===
+
+:http_method: PUT
+include::docs/3.x/tech/apis/_user-request-body.adoc[]
+
+=== Response
+
+include::docs/3.x/tech/apis/_standard-get-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/_user-response-body.adoc[]
+
+// Unset the variables used in this part.
+:http_method!:
+
+
+== Delete an Admin/Moderator
+
+This API is used to delete a Admin or Moderator. When a user is deleted they are marked as disabled.
+
+Once a user has been deleted, they may not be enabled through the use of an API. A deleted user can be enabled by a CleanSpeak admin user in the CleanSpeak Management Interface.
+
+A deleted user cannot log into CleanSpeak, be retrieved using the <<Retrieve a User,Retrieve User>> API or be updated using the <<Update a User,Update User>> API.
+
+=== Request
+
+[.endpoint]
+.URI
+--
+[method]#DELETE# [uri]#/system/user/`\{userId\}`#
+--
+
+[cols="3a,7a"]
+[.api]
+.Request Parameters
+|===
+|[field]#userId# [type]#[UUID]# [required]#Required#
+|The Id of the User to delete.
+|===
+
+=== Response
+
+include::docs/3.x/tech/apis/_standard-delete-response-codes.adoc[]

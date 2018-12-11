@@ -1,0 +1,8 @@
+{
+  "phrase": {
+    "locale": "en",
+    "pattern": "%Purchase%.+%Company%",
+    "severity": "mild",
+    "tags": [ "Phrase" ]
+  }
+}

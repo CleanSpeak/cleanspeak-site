@@ -1,0 +1,107 @@
+---
+layout: doc
+title: Getting Started
+description: Get started with CleanSpeak
+---
+
+== Introduction
+
+CleanSpeak is a platform for filtering and moderating user generated content. Integration with CleanSpeak is provided through the user of APIs. The Management Interface allows for configuration and human moderators to view and moderate content.
+
+The following is a list of some of the features that CleanSpeak provides:
+
+* Real Time Chat Filter
+* Forum content filtering
+* Filtering in 18+ Languages
+* Phone Number, Email and URL filtering
+* BBCode Filtering
+* HTML Filtering
+* Username Filtering
+* Interactive CSV Batch Filtering
+* Content Moderation
+* Image and Video moderation
+* Automated Image and Video moderation
+* Moderator User Discipline
+* Automated User Discipline
+* User Scoring
+* User Flagging
+* Historical Content Search
+* Safe Chat
+* Localized Email Support
+* Reporting
+* Content Analytics
+* Granular API Access Controls
+* Moderator Roles
+
+Don't see a feature you need? Need to filter in another language? Let us know so we can build it for you.
+
+== Overview
+
+CleanSpeak has a few concepts that are helpful to understand before beginning your integration.
+
+=== Applications
+
+A CleanSpeak Application defines a content source. Defining multiple applications allow you to customize filter behavior for each content source. For example, username filtering has a different set of requirements than filtering chat.
+
+For example, a corporate client filtering internal customer records may define a single application named *Customer Records*. A game company that has in-game chat and a user forum may define three applications: *Game Chat*, *Forum* and *Usernames*.
+
+=== Content Users
+
+A Content User is someone that generates content that is sent to CleanSpeak for moderation. Content Users are identified by an id (specifically a UUID). A Content User may not log into CleanSpeak.
+
+=== System Users
+
+A System User is either a CleanSpeak moderator or admin user. These users may log into the CleanSpeak Management Interface. An admin user can modify permissions assigned to moderators to limit their access and privilege in the CleanSpeak Management Interface.
+
+== Getting Started
+
+Getting started with CleanSpeak depends on the version of CleanSpeak you are using. Use the information in the appropriate section below based on your version of CleanSpeak.
+
+=== CleanSpeak Cloud
+
+CleanSpeak Cloud is a hosted solution that is maintained and monitored by Inversoft. When you sign up for CleanSpeak Cloud, Inversoft provisions a Private Cloud Server for you in our Cloud environment. You don't need to download or install CleanSpeak if you are using this version. Once your CleanSpeak Cloud server is setup, you can immediately access it and begin your integration.
+
+Here are some common steps you'll take to get CleanSpeak Cloud configured and integrate your application with it.
+
+* [Tutorial] link:../tutorials/setup-wizard[Setup Wizard]
+* [Tutorial] link:../tutorials/configure-an-application[Configure an Application]
+* [Tutorial] link:../tutorials/filtering-content[Filtering Content]
+* [Tutorial] link:../tutorials/handling-flags[Handling Flags]
+* [Tech Docs] link:../apis/overview[API docs]
+
+=== CleanSpeak Server
+
+CleanSpeak Server is an on-premise solution that is downloaded and installed on your servers. You can install and configure CleanSpeak however you want and can also put CleanSpeak behind a firewall or VPN. This solution requires that you download and install CleanSpeak yourself as well as maintain and monitor it as well.
+
+Here are some common steps you'll take to get CleanSpeak Cloud configured and integrate your application with it.
+
+* [Tech Docs] link:../installation-guide/system-requirements[Installation Guide]
+* [Tutorial] link:../tutorials/setup-wizard[Setup Wizard]
+* [Tutorial] link:../tutorials/configure-an-application[Configure an Application]
+* [Tutorial] link:../tutorials/filtering-content[Filtering Content]
+* [Tutorial] link:../tutorials/handling-flags[Handling Flags]
+* [Tech Docs] link:../apis/overview[API docs]
+
+=== Mobile Integrations
+
+If you are using CleanSpeak for a mobile application that has user-generated content, you will need to use 2 different APIs to comply with Apple's and Google's requirements to be approved for the App Store and Play Store. You will also need to write a Notification Handler and enable User Actions in your CleanSpeak deployment. This will allow you to cover all of these requirements:
+
+* Filter user-generated content for appropriate language, racial slurs, bullying, or other offensive content
+* Allow users to report inappropriate user-generated content of other users
+* Have a method for deleting inappropriate content (via Notification Servers)
+* Have a method for disabling user accounts that are generating the inappropriate content (via Notification Servers)
+
+Here are the APIs you will need to use as well as the features of CleanSpeak that cover all of these requirements:
+
+* [Tutorial] link:../tutorials/setup-wizard[Setup Wizard]
+* [Tutorial] link:../tutorials/configure-an-application[Configure an Application]
+* [Tutorial] link:../tutorials/filtering-content[Filtering Content]
+* [Tutorial] link:../tutorials/handling-flags[Handling Flags]
+* [Tutorial] link:../tutorials/handling-notifications[Handling Notifications]
+* [Tech Docs] link:../apis/overview[API docs]
+
+=== FAQ
+
+[qanda]
+How do I gain access to the software and my license Id?::
+  Login to our accounts section of the web site at https://www.inversoft.com/account/.

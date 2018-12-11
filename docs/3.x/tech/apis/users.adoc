@@ -1,0 +1,171 @@
+---
+layout: doc
+title: User APIs
+description: APIs for managing users that produce content within your application(s)
+---
+
+== Create a User
+
+This API is used to create a Content User. Some examples of when this API would be used:
+
+* A new user has registered with your application
+* You need to bulk import your existing users into CleanSpeak
+
+Content Users are also automatically created when content is sent to the Moderation API if the user does not yet exist.
+
+=== Request
+
+[.endpoint]
+.URI
+--
+[method]#POST# [uri]#/content/user/`\{contentUserId\}`#
+--
+
+[cols="3a,7a"]
+[.api]
+.Request Parameters
+|===
+|[field]#contentUserId# [type]#[UUID]# [required]#Required#
+|The Id of the Content User to create.
+|===
+
+:http_method: POST
+include::docs/3.x/tech/apis/_content-user-request-body.adoc[]
+
+=== Response
+
+include::docs/3.x/tech/apis/_standard-post-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/_content-user-response-body.adoc[]
+
+// Unset the variables used in this part.
+:http_method!:
+
+
+== Retrieve a User
+
+This API is used to retrieve an existing Content User.
+
+=== Request
+
+[.endpoint]
+.URI
+--
+[method]#GET# [uri]#/content/user/`\{contentUserId\}`#
+--
+
+[cols="3a,7a"]
+[.api]
+.Request Parameters
+|===
+|[field]#contentUserId# [type]#[UUID]# [required]#Required#
+|The Id of the Content User to retrieve.
+|===
+
+=== Response
+
+:http_method: GET
+include::docs/3.x/tech/apis/_standard-get-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/_content-user-response-body.adoc[]
+
+// Unset the variables used in this part.
+:http_method!:
+
+
+== Update a User
+
+This API is used to update an existing Content User.
+
+=== Request
+
+[.endpoint]
+.URI
+--
+[method]#PUT# [uri]#/content/user/`\{contentUserId\}`#
+--
+
+[cols="3a,7a"]
+[.api]
+.Request Parameters
+|===
+|[field]#contentUserId# [type]#[UUID]# [required]#Required#
+|The Id of the Content User to update.
+|===
+
+:http_method: PUT
+include::docs/3.x/tech/apis/_content-user-request-body.adoc[]
+
+=== Response
+
+include::docs/3.x/tech/apis/_standard-put-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/_content-user-response-body.adoc[]
+
+// Unset the variables used in this part.
+:http_method!:
+
+
+== Delete a User
+
+This API is used to delete an existing Content User. This API does not delete CleanSpeak Users (moderators). When a content user is deleted the content for this user is also deleted.
+
+This might be necessary for https://www.ftc.gov/enforcement/rules/rulemaking-regulatory-reform-proceedings/childrens-online-privacy-protection-rule[COPPA] compliance, or just to ensure that a user's information is completely removed. However, it is usually a good idea to keep user information in CleanSpeak even if they have closed or deleted their account in your system. Some cases where you should use this API are:
+
+* A user deletes their account
+* A user or the parent of a user requests their account information to be deleted
+
+=== Request
+
+[.endpoint]
+.URI
+--
+[method]#DELETE# [uri]#/content/user/`\{contentUserId\}`#
+--
+
+[cols="3a,7a"]
+[.api]
+.Request Parameters
+|===
+|[field]#contentUserId# [type]#[UUID]# [required]#Required#
+|The Id of the Content User to delete.
+|===
+
+=== Response
+
+include::docs/3.x/tech/apis/_standard-delete-response-codes.adoc[]
+
+
+== Flag a User
+
+This API is used to flag a content user. Once a user has been flagged they will be queued for a moderator to review in the User Alert queue.
+
+For example, a user may flag or report another user. In most forums and games, players have the option to report other players for various reasons such as _"the user is being offensive"_ or _"the user is bullying me"_.
+
+=== Request
+
+[.endpoint]
+.URI
+--
+[method]#POST# [uri]#/content/user/flag/`\{contentUserId\}`#
+--
+
+[cols="3a,7a"]
+[.api]
+.Request Parameters
+|===
+|[field]#contentUserId# [type]#[UUID]# [required]#Required#
+|The Id of the Content User to be flagged.
+|===
+
+include::docs/3.x/tech/apis/_flag-content-user-request-body.adoc[]
+
+=== Response
+
+:no_body:
+:code_404:
+  include::docs/3.x/tech/apis/_standard-post-response-codes.adoc[]
+
+// Unset the variables used in this part.
+:no_body!:
+:code_404!:

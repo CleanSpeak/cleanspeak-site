@@ -1,0 +1,20 @@
+
+[cols="3a,7a"]
+[.api]
+.Response Body
+|===
+|[field]#phrases``[x]``.id# [type]#[Integer]#
+|The Id of the phrase.
+
+|[field]#phrases``[x]``.parts# [type]#[Array<String>]#
+|The whitelist tags associated with the phrase.
+
+|[field]#phrases``[x]``.status# [type]#[String]#
+|The status will always be `ACTIVE` as these APIs only operate on the active filter state.
+|===
+
+[source,json]
+.Example Response JSON
+----
+include::../../../src/json/whitelist/phrase/advanced/multi-response.json[]
+----

@@ -1,0 +1,39 @@
+---
+layout: doc
+title: Logging in with Google
+description: Enable Google OAuth authentication for CleanSpeak
+---
+
+== Enabling Google OAuth
+
+In order to allow your admins and moderators to log into CleanSpeak with their Google accounts, you must first setup your Google account to enable Google OAuth and the People API. Here is the documentation provided by Google to setup these items:
+
+https://developers.google.com/identity/protocols/OAuth2WebServer
+
+Here is a quick overview of the steps you take based on the Google documentation plus the configuration you need to setup in CleanSpeak:
+
+. Setup a Google developer account
+. Create a Google project for this integration
+. Open the API Library and enable the People API for your project
+. Define your Allowed domains for your Google project (this is under Credentials on the "OAuth Consent Screen" tab). This might be `inversoft.io` if Inversoft is hosting. Otherwise, it will be the DNS domain your company has setup for CleanSpeak.
+. Setup credentials for OAuth by clicking "Create Credentials" and selecting "OAuth Client Id"
+.. Put in the full URL to your CleanSpeak server under "Authorized JavaScript origins". For example, `https://my-cleanspeak.inversoft.io`
+.. Put in the OAuth redirect URL to your CleanSpeak instance under "Authorized redirect URIs". This should end with `oauth-callback` which is where CleanSpeak handles the OAuth redirect. For example, `https://my-cleanspeak.inversoft.io/oauth-callback`
+. In a separate tab, open your CleanSpeak Management Interface UI and navigate to Settings -> System -> Authentication and select the "Google OAuth" option
+.. Copy the client id and client secret created by Google into the form
+.. Enter `https://accounts.google.com/o/oauth2/v2/auth` for the "Google OAuth Login URL" field on the form
+.. Enter the same redirect URL from above in the "CleanSpeak Redirect URL" field on the form
+.. Enter `https://www.googleapis.com/oauth2/v4/token` for the "Google OAuth Token URL"
+.. Click the save button (blue button with the disk icon at the top of the page)
+
+Your system should now be setup to login with Google. To test this, leave the current browser open to the CleanSpeak configuration form and then open another browser (like if you are using Chrome, open Safari or Firefox) to your CleanSpeak Management Interface UI. If something doesn't work properly, this will allow you to switch back to the original browser and fix any broken configuration.
+
+=== Skipping SSO login
+
+If you get into a state where you can't login into CleanSpeak because SSO is enabled and you can't get it working, you can skip SSO login and log into CleanSpeak directly. This assumes that you have an administrator account with a known password in CleanSpeak though. In order to skip SSO login, simply add the parameter `skipSSO=true` to the end of the login URL like this:
+
+`https://my-cleanspeak.inversoft.io/login?skipSSO=true`
+
+== Creating users
+
+CleanSpeak prevents all logins for users that do not already exists in CleanSpeak in order to prevent any security vulnerabilities. Therefore, if you wish to grant a user access to CleanSpeak using with their Google account, you must also create an account for them in CleanSpeak and grant them the privileges they require. You can create users in CleanSpeak by clicking on System -> Users.

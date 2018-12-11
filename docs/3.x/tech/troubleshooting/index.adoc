@@ -1,0 +1,32 @@
+---
+layout: doc
+title: Troubleshooting CleanSpeak
+description: Troubleshoot any issues that might arise while install or running CleanSpeak or contact Inversoft Support for assistance.
+---
+
+== Overview
+
+If any problems arise or if you are unable to access CleanSpeak, consult the CleanSpeak log files. In most cases API errors will be written out to the cleanspeak-webservice.log file. Errors that you encounter in the management interface will be found in the `cleanspeak-management-interface.log`.
+
+Please email support@inversoft.com if you need assistance. If possible, when contacting Inversoft support, zip the contents of the logs directory and attach it to the email.
+
+=== Logs
+
+The following are the default locations for each of the CleanSpeak log files. You may or may not have all of the CleanSpeak services installed on the same system so you may not have all of the following logs on your server.
+
+[source,shell]
+.Linux and Mac OS X
+----
+/usr/local/inversoft/logs/cleanspeak-management-interface.log
+/usr/local/inversoft/logs/cleanspeak-webservice.log
+/usr/local/inversoft/logs/cleanspeak-search-engine.log
+----
+
+These paths assume the suggested product location of `C:\inversoft`. This path may be different on your system depending on where you unpacked the zip files.
+[source,shell]
+.Windows
+----
+C:\inversoft\logs\cleanspeak-management-interface.log
+C:\inversoft\logs\cleanspeak-webservice.log
+C:\inversoft\logs\cleanspeak-search-engine.log
+----

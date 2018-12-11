@@ -1,0 +1,70 @@
+---
+layout: blog-post
+title: 'Facebook FAIL: How To Properly Filter Scunthorpe'
+author: Kelly Strain
+author_image: "/images/blog/AAEAAQAAAAAAAAJ5AAAAJGMxNGJjZDFiLTdlMGYtNDA4MS04ODA4LTZiYmFhMzJjMmE3Ng.jpg"
+excerpt_separator: "<!--more-->"
+categories:
+- CleanSpeak
+- Strategies
+- Products
+tags:
+- Profanity Filter
+- facebook
+- scunthorpe
+---
+<p><img class="aligncenter size-full wp-image-7348" src="/images/blog/facebook-fail-scunthorpe.jpg" alt="scunthorpe-profanity-facebook-fail" width="750" height="454"></p>
+<p><span style="font-weight: 400;">According to </span><a href="http://www.independent.co.uk/life-style/gadgets-and-tech/news/facebook-bans-users-from-promoting-posts-with-the-word-scunthorpe-in-them-a6968471.html"><span style="font-weight: 400;">The Independent</span></a><span style="font-weight: 400;">, Facebook has banned users from boosting posts with the word Scunthorpe.</span></p>
+<p>This left the band October Drift enraged when trying to promote their Scunthorpe show. John Jarman, an advertiser from Scunthorpe, also had a similar experience and shared his opinion on the topic:</p>
+<p><span style="font-weight: 400;">"My ad not approved because of the word Scunthorpe. Seriously, Facebook, are your algorithms written by 5-year-olds? I don't need to see what is and isn't approved – there's nothing wrong with the advert, it's just the fact that word Scunthorpe is in it. As soon as I type the word 'Scunthorpe' I get an immediate warning that my ad contains inappropriate language." </span></p>
+<p><span style="font-weight: 400;">This is not the first time this word has proven difficult to properly classify. In fact, Scunthorpe is rather infamous in the world of profanity filtering.</span></p>
+<p><!--more--></p>
+<h2><span style="font-weight: 400;">The Scunthorpe Problem</span></h2>
+<p><span style="font-weight: 400;">Words embedded in other words is a classic profanity filtering challenge. This is commonly referred to as the <a href="https://en.wikipedia.org/wiki/Scunthorpe_problem">Scunthorpe problem</a>. To recap, Scunthorpe is a town in England where residents have had a hard time registering for services like AOL and Google because the town’s name contains an embedded 4-letter swear word. </span></p>
+<p>AOL first encountered this problem in 1996. It appears Facebook’s profanity algorithm is still stumped in 2016. Inversoft tackled this issue by introducing a Filter Mode. Here’s how it works:</p>
+<h2><span style="font-weight: 400;">CleanSpeak Filter Mode </span></h2>
+<p><span style="font-weight: 400;">For each entry on the CleanSpeak blacklist, a Filter Mode is assigned to tell the filter how the entry should be filtered, particularly when it’s next to other letters and numbers.</span></p>
+<p>I’ll use smurf to demonstrate. For each example, the filter sees smurf and then goes through a process of elimination to decide whether to keep the match or not based on the Filter Mode of the smurf blacklist entry.</p>
+<h3><span style="font-weight: 400;">Distinguishable </span></h3>
+<p><span style="font-weight: 400;">If smurf is embedded within random letters and numbers, there is only one filter mode that can be assigned to determine a match. That filter mode is Distinguishable. This is the most aggressive filter mode as entries are matched no matter what the entry is embedded in. Entries that are distinguishable will be filtered similarly when users try various tricks to get around the filter - the stuff CleanSpeak finds for you automatically. These tactics include:</span></p>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Replacement characters such as a dollar sign for an S</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Phonetic replacements like a a ph in place of an f</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Repeat characters</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Leet speak, in this case a pipe-underscore-pipe to create a U</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Inflections from parts of speech such as smurfing when smurf is configured as a verb</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">And embedding punctuation and spaces between the letters.</span></li>
+</ul>
+<p> </p>
+<p style="text-align: center;"><span style="font-weight: 400;">abcd</span><span style="font-weight: 400; color: #ff0000;">$murf</span><span style="font-weight: 400;">efg123</span></p>
+<p style="text-align: center;"><span style="font-weight: 400;">abcd</span><span style="font-weight: 400; color: #ff0000;">smurph</span><span style="font-weight: 400;">efg123</span></p>
+<p style="text-align: center;"><span style="font-weight: 400;">abcd</span><span style="font-weight: 400; color: #ff0000;">smurrrrrrf</span><span style="font-weight: 400;">efg123</span></p>
+<p style="text-align: center;"><span style="font-weight: 400;">abcd</span><span style="font-weight: 400; color: #ff0000;">sm|_|rf</span><span style="font-weight: 400;">g123</span></p>
+<p style="text-align: center;"><span style="font-weight: 400;">abcd</span><span style="font-weight: 400; color: #ff0000;">smurfing</span><span style="font-weight: 400;">efg123</span></p>
+<p style="text-align: center;"><span style="font-weight: 400;">abcd</span><span style="font-weight: 400; color: #ff0000;">s-m-u-r-f</span><span style="font-weight: 400;">efg123</span></p>
+<p> </p>
+<p><span style="font-weight: 400;">Set entries to be Distinguishable when they are phrases, when the entry is unique, or when you simply want to filter it more aggressively and remove some of the false-positive checks that CleanSpeak provides. The latter is common with children’s applications.</span></p>
+<p><i><span style="font-weight: 400;">What is unique? </span></i><span style="font-weight: 400;">For a word to be unique, it means that the character sequence would not normally exist in user-generated messages. One trick to determine whether a word is unique is searching for it in the blacklist dictionary. As you can see, there are 550 results when searching for the word “ass” because a-s-s is embedded in many normal words. That’s hardly unique. When searching the dictionary for smurf there are zero results. Therefore, smurf is a good candidate to be Distinguishable, whereas ass is not.</span></p>
+<p>Facebook is most likely using this type of aggressive, Distinguishable filter.</p>
+<h3><span style="font-weight: 400;">Embedded </span></h3>
+<p><span style="font-weight: 400;">Lets look at smurfhead. The filter sees smurf and this time it’s embedded next to the word head. The filter returns smurfhead as a valid match when smurf is set to distinguishable OR embeddable. Embeddable treats the entry as a match when it’s embedded next to words or numbers. Since head is a word in the dictionary, smurfhead is a valid match.</span></p>
+<p><b>The Embeddable filter mode solves the original Scunthorpe issue by setting the c-u-n-t entry to Embeddable. The filter knows that scunthorpe shouldn’t be a match. It isn’t a bad word because c-u-n-t isn’t next to a word or number.</b></p>
+<p>Most entries in the blacklist should be set to Embeddable. Exceptions include phrases and unique words that should be Distinguishable and acronyms, numbers, ascii art, and some small words. For those cases, the “safety” checks for the Embeddable filter mode can still be too aggressive. That’s where Non-Embeddable and Exact Match come in.</p>
+<h3><span style="font-weight: 400;">Non-Embeddable </span></h3>
+<p><span style="font-weight: 400;">The Non-Embeddable filter mode finds a entry (and also looks for repeat characters, replacement characters/symbols and separators) as long as the entry is not embedded. </span></p>
+<h3><span style="font-weight: 400;">Exact Match</span></h3>
+<p><span style="font-weight: 400;">The Exact Match filter mode takes it another step further and only treats an entry as a match if it is found exactly as it looks. </span></p>
+<p><img class="aligncenter size-full wp-image-7341" src="/images/blog/unspecified.png" alt="scunthorpe exact match filtering " width="1024" height="413"></p>
+<h2><span style="font-weight: 400;">Scunthorpe Problem Solved</span></h2>
+<p><span style="font-weight: 400;">Facebook simply needs an intelligent profanity filter that can properly identify embedded entries so that the people of Scunthorpe and those around the world using the word in a genuine fashion can freely discuss this town. </span></p>
+<h3><span style="font-weight: 400;">More Information </span></h3>
+<p><span style="font-weight: 400;">Want a better understanding of Filter Modes? Check out our a quick CleanSpeak Tutorial:</span></p>
+<p> </p>
+<div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/U0ZXucSrI7M" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div>
+<p> </p>
+<p><span style="font-weight: 400;">You can find more detailed documentation <a href="http://docs.inversoft.com/display/CS23/Filter+Mode">here</a>.</span></p>
+<p>Related Articles:</p>
+<p><a href="http://www.ibtimes.co.uk/facebook-bans-users-posting-scunthorpe-vulgar-slang-contained-within-1553250"><span style="font-weight: 400;">http://www.ibtimes.co.uk/facebook-bans-users-posting-scunthorpe-vulgar-slang-contained-within-1553250</span></a></p>
+<p><a href="http://www.independent.co.uk/life-style/gadgets-and-tech/news/facebook-bans-users-from-promoting-posts-with-the-word-scunthorpe-in-them-a6968471.html"><span style="font-weight: 400;">http://www.independent.co.uk/life-style/gadgets-and-tech/news/facebook-bans-users-from-promoting-posts-with-the-word-scunthorpe-in-them-a6968471.html</span></a></p>
+<p><a href="http://www.cnet.com/news/facebook-censors-british-town-because-of-rude-bits-in-its-name/"><span style="font-weight: 400;">http://www.cnet.com/news/facebook-censors-british-town-because-of-rude-bits-in-its-name/</span></a></p>
+<p> </p>

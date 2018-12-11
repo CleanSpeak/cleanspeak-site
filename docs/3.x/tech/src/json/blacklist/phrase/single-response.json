@@ -1,0 +1,10 @@
+{
+  "phrase": {
+    "id": 1,
+    "locale": "en",
+    "parts": "%Purchase%.+%Company%",
+    "severity": "mild",
+    "status": "ACTIVE",
+    "tags": [ "Phrase" ]
+  }
+}

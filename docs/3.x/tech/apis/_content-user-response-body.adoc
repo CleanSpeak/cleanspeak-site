@@ -1,0 +1,70 @@
+[cols="3a,7a"]
+[.api]
+.Response Body
+|===
+|[field]#user# [type]#[Object]#
+|The Content User object.
+
+|[field]#user.id# [type]#[UUID]#
+|The Id of the user.
+
+|[field]#user.applicationIds# [type]#[Array<UUID>]#
+|The applications identifiers assigned to this user.
+
+|[field]#user.attributes# [type]#[Map<String, String>]#
+|The user attributes. This is a map of key value pairs of String, String.
+
+|[field]#user.birthDate# [type]#[String]#
+|The birth date of the user. The format is yyyy-mm-dd
+
+|[field]#user.checkOutUser# [type]#[Object]# [deprecated]#Deprecated#
+|The CleanSpeak System User that currently has this user checked out.
+
+|[field]#user.checkOutUserId# [type]#[UUID]# [since]#Available Since 3.4.11#
+|The CleanSpeak System User Id that currently has this user checked out.
+
+|[field]#user.checkoutInstant# [type]#[Long]#
+|If the user is currently checked out to a CleanSpeak System User, this is the The link:../reference/data-types#instant[instant] this user was checked out.
+
+|[field]#user.createInstant# [type]#[Long]#
+|The link:../reference/data-types#instant[instant] this user was created.
+
+|[field]#user.displayNames# [type]#[Array<String>]#
+|The list of display names, or usernames for this content user.
+
+|[field]#user.email# [type]#[String]#
+|The email address of the user.
+
+|[field]#user.imageURL# [type]#[String]#
+|The image URL for the users avatar.
+
+|[field]#user.lastLoginInstant# [type]#[Long]#
+|The link:../reference/data-types#instant[instant] this user last logged in.
+
+|[field]#user.name# [type]#[String]#
+|The name of the user.
+
+|[field]#user.preferredLanguages# [type]#[Array<String>]#
+|A list of languages this user prefers, ordered from most preferred to least. This is used in generating notifications and emails that are localized for the user. See link:../reference/data-types#locales[Locales].
+
+|[field]#user.score# [type]#[Integer]#
+|The user's score.
+|===
+
+// Show GET request example
+ifeval::["{http_method}" == "GET"]
+[source,json]
+.Example Response JSON
+----
+include::../src/json/content/user/response.json[]
+----
+endif::[]
+
+// Show POST request example
+ifeval::["{http_method}" == "POST"]
+[source,json]
+.Example Response JSON
+----
+include::../src/json/content/user/response-new-user.json[]
+----
+endif::[]

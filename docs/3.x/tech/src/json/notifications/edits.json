@@ -1,0 +1,11 @@
+{
+  "type": "contentEdit",
+  "applicationId": "4f0a7e99-f533-4b89-bb4c-eb9ab36c4841",
+  "id": "e8e93ee8-fedb-4238-8604-bd631967013c",
+  "newParts": [
+    "Multiple versions #3 changed"
+  ],
+  "moderatorId": "b00916ba-f647-4e9f-b2a6-537f69f89b87",
+  "moderatorEmail": "catherine@email.com",
+  "moderatorExternalId": "foo-bar-baz"
+}

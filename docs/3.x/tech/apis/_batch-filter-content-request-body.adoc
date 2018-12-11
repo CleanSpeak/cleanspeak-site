@@ -1,0 +1,168 @@
+[cols="3a,7a"]
+[.api]
+.Request Body
+|===
+|[field]#blacklist# [type]#[Object]# [optional]#Optional#
+|Object that defines the blacklist filter options.
+
+|[field]#blacklist.disabled# [type]#[Boolean]# [optional]#Optional# [default]#defaults to `false`#
+|This parameter disables the blacklist filter completely. No blacklist matches will be returned and the replacement value will not contain replacements for blacklist matches. When this parameter is set to `true` all other nested `blacklist` parameters will be ignored.
+
+|[field]#blacklist.locales# [type]#[Array<String>]# [optional]#Optional#
+|This parameter specifies the locales that blacklist filter matches must have in order to be included in the response. When this parameter is omitted all matches will be returned regardless of locale. See link:../reference/data-types#locales[Locales].
+
+|[field]#blacklist.minimumSeverity# [type]#[String]# [optional]#Optional#
+|This parameter specifies the minimum severity that blacklist filter matches must have to be included in the response. When this parameter is omitted all matches will be returned regardless of severity. Possible values:
+
+* `mild`
+* `medium`
+* `high`
+* `severe`
+
+|[field]#blacklist.tags# [type]#[Array<String>]# [optional]#Optional#
+|This parameter specifies the tags that blacklist filter matches must have to be included in the response.
+
+|[field]#callbackHeaders# [type]#[Object]# [optional]#Optional#
+|The key-value pair Object that contains HTTP headers that are included by CleanSpeak when it sends the response to the ``callbackURL``.
+
+|[field]#callbackURL# [type]#[String]# [optional]#Optional#
+|Indicates that the batch request should be processed asynchronously and that CleanSpeak should send the response to this URL.
+
+|[field]#contentItems# [type]#[Array<String>]# [required]#Required#
+|The individual pieces of content to be filtered.
+
+|[field]#characters# [type]#[Array<String>]# [optional]#Optional#
+|This parameter specifies the individual characters to find within the content string.
+
+{empty} +
+_Example Parameter_
+`"characters": ["A", "❢", "§"]`
+
+|[field]#contentType# [type]#[String]# [optional]#Optional#
+|This parameter specifies the content type. When this parameter is omitted the API will attempt to identify the content as one of the supported content types. Possible values:
+
+* `text`
+* `bbcode`
+* `html` [since]#Available Since 3.19.0#
+
+|[field]#emails# [type]#[Object]# [optional]#Optional#
+|Object that defines the email filter options.
+
+|[field]#emails.disabled# [type]#[Boolean]# [optional]#Optional# [default]#defaults to `false`#
+|This parameter disables the email filter completely. No email matches will be returned and the replacement value will not contain replacements for email matches. When this parameter is set to `true` all other nested `email` parameters will be ignored.
+
+|[field]#emails.domainQuality# [type]#[Array]# [optional]#Optional#
+|The list of domain quality configurations for the Email filter. Providing domain quality you may override the default behavior. CleanSpeak already adjusts domain scores of domain names that are also dictionary words such as `.design` and `.photo`. You may manually provider a lower score for a domain by providing a configuration.
+
+{empty} +
+_Example Parameter_
+`"domainQuality": [{"domain": "chat", "quality": 0.5}]`
+
+|[field]#emails.domainQuality``[x]``.domain# [type]#[String]# [required]#Required#
+|This parameter is the name of the domain. For example, for the `.chat` domain name, you would set this parameter to `chat`.
+
+|[field]#emails.domainQuality``[x]``.quality# [type]#[Double]# [required]#Required#
+|This parameter sets the initial quality score for the specified domain. This value may be between `0` and `1`. See link:../reference/data-types#quality-score[Quality Score].
+
+|[field]#emails.maximumMatchLength# [type]#[Integer]# [optional]#Optional# [default]#defaults to 50#
+|This parameter specifies the maximum length that a match can be in order to be considered an email. If the match length is greater than the maximum match length the match will be ignored.
+
+|[field]#emails.minimumQuality# [type]#[Double]# [optional]#Optional#
+|This parameters specifies the minimum quality score that email matches must have to be included in the response and replaced in the replacement value.
+
+|[field]#emails.spacePenalty# [type]#[Double]# [optional]#Optional# [default]#defaults to -0.05#
+|This parameter specifies a penalty applied to the quality score if the match contains any spaces. For example, `user@ example.com` contains a space so the space penalty value will be added to the quality score. The email space penalty is applied once regardless of the number of spaces found in the match.
+
+|[field]#phoneNumbers# [type]#[Object]# [optional]#Optional#
+|Object that defines the phone number filter options.
+
+|[field]#phoneNumbers.disabled# [type]#[Boolean]# [optional]#Optional# [default]#defaults to `false`#
+|This parameter disables the phone number filter completely. No phone number matches will be returned and the replacement value will not contain replacements for phone number matches. When this parameter is set to `true` all other nested `phoneNumbers` parameters will be ignored.
+
+|[field]#phoneNumbers.maximumMatchLength# [type]#[Integer]# [optional]#Optional# [default]#defaults to 20#
+|This parameter specifies the maximum length that a match can be in order to be considered an phone number. If the match length is greater than the maximum match length the match will be ignored.
+
+|[field]#phoneNumbers.minimumMatchLength# [type]#[Integer]# [optional]#Optional# [default]#defaults to 7#
+|This parameter specifies the minimum length that a match can be in order to be considered a phone number. The default value covers most world wide phone number formats.
+
+|[field]#phoneNumbers.minimumQuality# [type]#[Double]# [optional]#Optional#
+|This parameters specifies the minimum quality score that phone number matches must have to be included in the response and replaced in the replacement value.
+
+|[field]#phoneNumbers.separatorPenalty# [type]#[Double]# [optional]#Optional# [default]#defaults to -0.02#
+|This parameter specifies a penalty that is applied to the quality score for a match if it contains any type of separator other than a dash or parenthesis. For example, `303;555;1234` contains two penalized separators so the separator penalty will be multiplied by the number of separators and added to the quality score.
+
+|[field]#phoneNumbers.spacePenalty# [type]#[Double]# [optional]#Optional# [default]#defaults to -0.02#
+|This parameter specifies a penalty that is applied to the quality score for a match if it contains one or more spaces. For example, `303 555 1234` contains two spaces so the space penalty will be multiplied by the number of spaces and added to the quality score.
+
+|[field]#phoneNumbers.wordPenalty# [type]#[Double]# [optional]#Optional# [default]#defaults to -0.03#
+|This parameter specifies a penalty that is applied to the quality score for a match if it contains any words rather than digits. For example, `three zero three 555 1234` contains three words so the word penalty will be multiplied by the number of words and added to the quality score.
+
+|[field]#replaceChar# [type]#[Boolean]# [optional]#Optional# [default]#defaults to *#
+|The character that is used during a replace operation.
+
+|[field]#unicode# [type]#[Object]# [optional]#Optional# [since]#Available since 3.22.0#
+|Object that defines the unicode filter options.
+
+|[field]#unicode.disabled# [type]#[Boolean]# [optional]#Optional# [default]#defaults to `false`# [since]#Available since 3.22.0#
+|This parameter disables the unicode filter completely. No unicode matches will be returned if this is set to `true`.
+
+|[field]#unicode.ranges# [type]#[List<String>]# [optional]#Optional# [default]#defaults to a provided config# [since]#Available since 3.22.0#
+|The list of unicode ranges to disallow in content. Each range is a string of two json style unicode escapes separated by a dash.
+Be sure to escape the slash or else you will be sending a unicode character instead of an escaped unicode character code.
+
+{empty} +
+_Example Parameter_
+`"ranges": ["\\u0000-\\u0001", "\\uFFFF-\\u{FFFFF}"]`
+
+|[field]#usernames# [type]#[Object]# [optional]#Optional#
+|Object that defines the username filter options.
+
+|[field]#usernames.disabled# [type]#[Boolean]# [optional]#Optional# [default]#defaults to `true`#
+|This parameter disables the username filter completely. No username matches will be returned and the replacement value will not contain replacements for username matches. When this parameter is set to `true` all other nested `username` parameters will be ignored.
+
+|[field]#usernames.scheme# [type]#[String]# [required]#Required#
+|The username filter scheme to use during this filter request. See <<Username Filter Schemes>>.
+
+|[field]#urls# [type]#[Object]# [optional]#Optional#
+|Object that defines the url filter options.
+
+|[field]#urls.disabled# [type]#[Boolean]# [optional]#Optional# [default]#defaults to `false`#
+|This parameter disables the url filter completely. No url matches will be returned and the replacement value will not contain replacements for url matches. When this parameter is set to `true` all other nested `url` parameters will be ignored.
+
+|[field]#urls.domainQuality# [type]#[Array]# [optional]#Optional#
+|The list of domain quality configurations for the url filter. Providing domain quality you may override the default behavior. CleanSpeak already adjusts domain scores of domain names that are also dictionary words such as `.design` and `.photo`. You may manually provider a lower score for a domain by providing a configuration.
+
+{empty} +
+_Example Parameter_
+`"domainQuality": [{"domain": "chat", "quality": 0.5}]`
+
+|[field]#urls.domainQuality``[x]``.domain# [type]#[String]# [required]#Required#
+|This parameter is the name of the domain. For example, for the `.chat` domain name, you would set this parameter to `chat`.
+
+|[field]#urls.domainQuality``[x]``.quality# [type]#[Double]# [required]#Required#
+|This parameter sets the initial quality score for the specified domain. This value may be between `0` and `1`.
+
+|[field]#urls.maximumMatchLength# [type]#[Boolean]# [optional]#Optional# [default]#defaults to 50#
+|This parameter specifies the maximum length that a match can be in order to be considered a url. If the match length is greater than the maximum match length the match will be ignored.
+
+|[field]#urls.minimumQuality# [type]#[Double]# [optional]#Optional#
+|This parameters specifies the minimum quality score that url matches must have to be included in the response and replaced in the replacement value.
+
+|[field]#urls.spacePenalty# [type]#[Double]# [optional]#Optional# [default]#defaults to `false`#
+|This parameter specifies a penalty that is applied to the quality score for a match if it contains one or more spaces. For example, `www .ex a m ple .com` contains spaces so the space penalty will added to the quality score.
+
+|[field]#words# [type]#[Array<String>]# [optional]#Optional#
+|This parameter specifies the individual words to find within the content string. Generally words that should be filtered should be added to your blacklist. This parameter allows you to find matches without modifying your list.
+{empty} +
+_Example Parameter_
+`"words": ["Competitor", "badguy", "tuesday"]`
+
+|[field]#whitelist# [type]#[Boolean]# [optional]#Optional# [default]#defaults to `false`#
+|This parameter enables the white list filter. This parameter is unique in that when enabled by setting this parameter to `true` it implicitly disables all other filters. See <<Whitelist Filter>>.
+|===
+
+[source,json]
+.Example Request JSON
+----
+include::../src/json/content/filter/batch-request.json[]
+----

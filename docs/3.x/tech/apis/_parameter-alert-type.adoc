@@ -1,0 +1,4 @@
+The type of alert to be generated when this filter rule is applied. Omit this parameter to indicate no alert should be generated. The possible values are:
+
+* `Content`
+* `User`

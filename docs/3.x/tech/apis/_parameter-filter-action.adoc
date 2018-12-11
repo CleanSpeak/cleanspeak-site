@@ -1,0 +1,9 @@
+The action to be taken when this filter rule is applied. The possible values are:
+
+* `allow`
+* `authorOnly`
+* `replace`
+* `queuedForApproval` (Valid when `storeContent` and `persistent` are both set to `true`)
+* `reject`
+
+The filter action must be equal to or less than the action for the next highest rule. For example if the high quality rule is set to `allow` then the only valid action for medium and lower quality matches is `allow`.  This rule follows the general idea that there would be no reason to allow a high quality match but reject a low quality match.

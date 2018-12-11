@@ -1,0 +1,171 @@
+{
+  "application": {
+    "id": "f81d4fae-7dec-11d0-a765-00a0c91e6bf6",
+    "moderationConfiguration": {
+      "approvalCheckOutMinutes": 10,
+      "approvalQueueSize": 30,
+      "archiveConfiguration": {
+        "deleteOnly": true,
+        "enabled": false
+      },
+      "contentAlertCheckOutMinutes": 10,
+      "contentAlertQueueSize": 30,
+      "contentDeletable": true,
+      "contentEditable": true,
+      "contentFlagAlertType": "User",
+      "contentFlagUserScoreAdjustment": -3,
+      "contentUserActionsEnabled": true,
+      "ignorableCharacters": "qxz",
+      "imageConfiguration": {
+        "commitDelay": 45,
+        "darkMode": true,
+        "defaultTimerDuration": 2.0,
+        "speedModerationLayout": true
+      },
+      "imageFilteringEnabled": false,
+      "imageQualityFilterRules": [
+        {
+          "action": "allow",
+          "score": 70
+        },
+        {
+          "action": "allow",
+          "score": 30
+        },
+        {
+          "action": "allow",
+          "score": 0
+        }
+      ],
+      "maximumVideoFilterDurationInSeconds": 300,
+      "videoFilteringEnabled": false,
+      "videoQualityFilterRules": [
+        {
+          "action": "allow",
+          "score": 70,
+          "userScoreAdjustment": 0
+        },
+        {
+          "action": "allow",
+          "score": 30,
+          "userScoreAdjustment": 0
+        },
+        {
+          "action": "allow",
+          "score": 0,
+          "userScoreAdjustment": 0
+        }
+      ],
+      "defaultActionIsQueueForApproval": false,
+      "dictionaryTags": [
+        "whitelistA"
+      ],
+      "emailOnAlerts": false,
+      "emailOnContentFlagged": false,
+      "emailOnEscalations": false,
+      "emailOnUserFlagged": false,
+      "emailRules": [
+        {
+          "action": "allow",
+          "score": 90
+        },
+        {
+          "score": 70,
+          "action": "allow"
+        },
+        {
+          "score": 40,
+          "action": "allow"
+        }
+      ],
+      "filterRules": [
+        {
+          "severeAlertType": "User",
+          "highAction": "replace",
+          "mildAction": "allow",
+          "severeAction": "reject",
+          "tags": [
+            "Vulgarity"
+          ],
+          "mediumAction": "replace",
+          "highAlertType": "User",
+          "highUserScoreAdjustment": -25,
+          "severeUserScoreAdjustment": -50
+        },
+        {
+          "highAlertType": "User",
+          "mildAction": "allow",
+          "severeAction": "reject",
+          "tags": [
+            "Bullying"
+          ],
+          "highAction": "allow",
+          "mediumAction": "allow"
+        }
+      ],
+      "imageOnly": false,
+      "persistent": true,
+      "phoneNumberRules": [
+        {
+          "action": "allow",
+          "score": 90,
+          "userScoreAdjustment": -10
+        },
+        {
+          "alertType": "Content",
+          "userScoreAdjustment": -5,
+          "score": 70,
+          "action": "allow"
+        },
+        {
+          "score": 40,
+          "alertType": "User",
+          "userScoreAdjustment": -1,
+          "action": "allow"
+        }
+      ],
+      "queuePersistentContent": false,
+      "returnFilterMatches": false,
+      "rules": {
+        "usernameFilterRule": {
+          "action": "reject",
+          "enabled": false
+        },
+        "whitelistFilterRules": {
+          "disallowedPhrase": {
+            "action": "allow"
+          },
+          "disallowedWord": {
+            "action": "allow"
+          }
+        }
+      },
+      "storeContent": true,
+      "urlRules": [
+        {
+          "score": 90,
+          "action": "allow"
+        },
+        {
+          "action": "allow",
+          "score": 70
+        },
+        {
+          "score": 40,
+          "action": "allow"
+        }
+      ],
+      "userCheckOutMinutes": 10,
+      "userFlagUserScoreAdjustment": -3
+    },
+    "name": "Chat",
+    "notificationServers": [
+      {
+        "connectTimeout": 1000,
+        "id": 21,
+        "url": "http://chat.example.com/notification-handler",
+        "readTimeout": 2000
+      }
+    ]
+  }
+}

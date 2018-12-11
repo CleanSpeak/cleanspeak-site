@@ -1,0 +1,34 @@
+---
+layout: blog-post
+title: 3 Techniques to Protect Against Social Hacking
+author: Brian Pontarelli
+author_image: "/images/blog/head-shot-bw-square.jpg"
+excerpt_separator: "<!--more-->"
+categories:
+- Technology
+- Strategies
+tags: []
+---
+<h1><img class="size-full wp-image-5428 aligncenter" style="font-size: 13px;" title="3 Techniques to Protect Against Social Hacking" alt="Social Hacking" src="/images/blog/sticker375x360.u1.png" width="375" height="360"></h1>
+<h2 style="text-align: center;"><b>Protect Against Social Hacking</b></h2>
+<p>You might have heard about the recent a <a title="What is Social Hacking" href="http://www.cyberwarzone.com/what-social-hacking%20">social hacking</a>  incident of an established <a title="Sendgrid" href="https://chunkhost.com/blog/15/huge_security_hole_in_sendgrid">cloud-based email provider</a>. The hacker contacted a member of the support staff via phone and convinced them that they were the account owner. Once they had convinced this unsuspecting support person, they convinced them to change the email address on their account (which was of course not actually their account).</p>
+<p>This is a classic example of a social hack. Many of you might remember the scene from the movie Hackers where Zero Cool convinced the security guard that we was an employee and got him to read him the phone number for the modem. And if you don’t remember it, check it out on <a title="Hackers" href="http://youtu.be/2efhrCxI4J0">YouTube</a>.</p>
+<p><!--more--></p>
+<p>Social hacking is inevitable and almost complete impossible to protect against. Social hackers prey on human emotional responses, specifically the need to help other people. If a hacker tries a social hack and is unsuccessful, for any company of size, all they need to do is hang up and try again with the next support representative to pick up the phone.</p>
+<p>To help combat social hacking, we’ve compiled a list of 3 techniques that you can use to protect your systems from social hacking.</p>
+<h2><b>Two Step Verification</b></h2>
+<p>If you are building an application or thinking about updating an existing application, you should implement two-factor authentication. This is the only reason that the social hacker wasn’t able to gain access to the application mentioned above. That application required that any user accessing the application after a password reset was required to enter in a PIN that was texted to their cell phone. This ensures that only the original account owner can change their password.</p>
+<p>Two-factor authentication can use a PIN texted to a cell phone, a set of security questions, or some other type of security item (certificate, RSA id, etc). Anytime a change is made to an account, it should be locked until the user re-authenticates themselves uses 2 or more factors. Some applications also lock the account when the device accessing it isn’t recognized (via Mac address or something similar).</p>
+<h2><b>Control What Support Can Change</b></h2>
+<p>The option for support personnel to make changes to accounts can be more troublesome than resourceful. As noted above, if support for the e-mail provider did not have the capability or option to make changes to an active account, the hacker would have been stopped in their tracks.</p>
+<p>Creating parameters and making sure support knows their role is key, but more importantly, you must build into your support applications the constraints that don’t give support personnel too much power. For example, client emails should be just as secure as their passwords. If changes are to be made, it occurs solely on the client’s side. This means your support application should not allow a support person to change an email address or a password.</p>
+<h2><b>Computers Lack Empathy</b></h2>
+<p>Take the emotional humans out of the equation and replace them with computers. Although we need to avoid SkyNet, we know that humans find fulfillment by helping others. It’s this empathy that could become a factor in allowing invalid access or changes to a client’s account.</p>
+<p>By leveraging systems rather than humans for many support tasks, such as directing all client concerns to a most frequently asked questions resource or an online interface, it prevents many potential security risks. Similar to Amazon’s support model, the customer has to be logged in to their account, submit a question or ticket based on the issue or service requested, and only then will there be a human interaction.</p>
+<p>It’s understood that the online support interface doesn’t fit every business model. It’s merely an example of a potential technique to prevent unwanted account access or changes.</p>
+<p>Social hacking occurs on a global scale everyday. The Cyber Security market is estimated to be a booming $120 billion industry by 2017. Although the cloud based email vendor was saved because its customer employed a two-factor authentication process, this incident is a valid reminder for all companies to implement and hone their preventative strategies and techniques to protect against social hacking.</p>
+<p> </p>
+<p><strong>Further Reading:</strong></p>
+<p><a title="Security Hole in Sendgrid" href="https://chunkhost.com/blog/15/huge_security_hole_in_sendgrid">Security Hole in Sendgrid </a></p>
+<p><a title="Social Networks: A Parent's Responsibility" href="/blog/2013/03/18/social-networks-a-parents-responsibility/">Social Networks: A Parent's Responsibility</a></p>
+<p><a title="7 Ways to be More COPPA Compliant" href="/blog/2013/03/07/7-ways-to-be-more-coppa-compliant/">7 Ways to be More COPPA Compliant</a></p>

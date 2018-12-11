@@ -1,0 +1,32 @@
+{
+  "entries": [
+    {
+      "exclusions": [
+        "towelled",
+        "towelling"
+      ],
+      "id": 42,
+      "inflect": true,
+      "locale": "en",
+      "status": "ACTIVE",
+      "tags": [
+        "Noun",
+        "Verb"
+      ],
+      "text": "towel"
+    },
+    {
+      "exclusions": [],
+      "id": 43,
+      "inflect": false,
+      "locale": "en",
+      "status": "ACTIVE",
+      "tags": [
+        "Noun",
+        "Verb"
+      ],
+      "text": "guide"
+    }
+  ],
+  "totalResults": 3
+}

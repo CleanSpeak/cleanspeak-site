@@ -1,0 +1,12 @@
+{
+  "user" : {
+    "applicationIds": [
+      "6ea8f201-4a7f-47f4-900a-862234c54dd1"
+    ],
+    "email" : "moderator@example.com",
+    "password": "super-secret-password",
+    "roles" : [
+      "admin"
+    ]
+  }
+}

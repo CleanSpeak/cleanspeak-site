@@ -1,0 +1,95 @@
+/*
+ * Copyright (c) 2016-2018, Inversoft Inc., All Rights Reserved
+ */
+
+project(group: "com.cleanspeak", name: "cleanspeak-site", version: "1.0.0", licenses: ["ApacheV2_0"]) {
+  workflow {
+    standard()
+  }
+}
+
+target(name: "optimize-images", description: "Uses ImageOptim to reduce image sizes (currently PNGs only)") {
+  new File("assets/img").traverse(maxDepth: 0) {
+    if (it.getName().endsWith(".png")) {
+      output.infoln "  --> Optimizing : " + it.getName()
+      def process = new ProcessBuilder("/Applications/ImageOptim.app/Contents/MacOS/ImageOptim", it.getCanonicalPath())
+          .inheritIO()
+          .start()
+      process.consumeProcessOutput(System.out, System.err)
+      process.waitFor()
+      if (process.exitValue() != 0) {
+        fail("Unable to optimize images, are you sure you have ImageOptim installed? \n https://imageoptim.com/command-line.html")
+      }
+    }
+  }
+}
+
+target(name: "push", description: "Push the site to cleanspeak.com") {
+  // Skip checking Git if we are forced to do so (use the force Luke)
+  if (!switches.has("force")) {
+    output.infoln("Checking git")
+    proc = new ProcessBuilder("git", "diff-index", "--quiet", "origin/master", "--")
+        .inheritIO()
+        .start()
+    proc.waitFor()
+
+    if (proc.exitValue() != 0) {
+      output.infoln("You must commit and push your changes before running this command. (Use --force to skip this check, but keep in mind that your local changes won't be visible until they are pushed)")
+      exit 1
+    }
+  }
+
+  // Allow the command line switch --user to specify a different user on the SSH command
+  def host = "cleanspeak.com"
+  if (switches.has("user")) {
+    host = switches.values("user")[0] + "@" + host
+  }
+
+  output.infoln("Deploying...")
+  proc = new ProcessBuilder("ssh", "-t", host, "sudo -u www-data /var/git/cleanspeak-site/deploy.sh")
+      .inheritIO()
+      .start()
+  proc.waitFor()
+}
+
+target(name: "build", description: "builds the project") {
+  if (!cleanExecute(['bundle', 'install'])) {
+    fail("Unable to run 'bundle install' for CleanSpeak Site. Are you certain you have Jekyll installed?")
+  }
+
+  if (switches.has("drafts")) {
+    cleanExecute(["bundle", "exec", "jekyll", "build", "--drafts"])
+  } else {
+    cleanExecute(["bundle", "exec", "jekyll", "build"])
+  }
+
+}
+
+target(name: "serve", description: "Serve the project") {
+  if (!cleanExecute(['bundle', 'install'])) {
+    fail("Unable to run 'bundle install' for CleanSpeak Site. Are you certain you have Jekyll installed?")
+  }
+
+  cleanExecute(["bundle", "exec", "jekyll", "serve", "--drafts", "--incremental", "-o"])
+}
+
+boolean cleanExecute(List<String> args) {
+  ProcessBuilder pb = new ProcessBuilder(args).inheritIO().directory(new File('.'))
+  clearEnvironment(pb)
+
+  def process = pb.start()
+  process.consumeProcessOutput(System.out, System.err)
+  process.waitFor()
+  return process.exitValue() == 0
+}
+
+/**
+ * Clears out the RBENV variables in the environment.
+ *
+ * @param pb The ProcessBuilder to clear out.
+ */
+static def clearEnvironment(ProcessBuilder pb) {
+  pb.environment().remove("RBENV_VERSION")
+  pb.environment().remove("RBENV_DIR")
+  pb.environment().remove("RBENV_ROOT")
+}

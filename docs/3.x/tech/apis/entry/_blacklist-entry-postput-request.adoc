@@ -1,0 +1,66 @@
+
+[cols="3a,7a"]
+[.api]
+.Request Body
+|===
+|[field]#entry.adjective# [type]#[Boolean]# [optional]#Optional# [default]#defaults to `false`#
+|A flag to mark if the entry can be used as an adjective.
+
+|[field]#entry.adverb# [type]#[Boolean]# [optional]#Optional# [default]#defaults to `false`#
+|A flag to mark if the entry can be used as an adverb.
+
+|[field]#entry.collapseDoubles# [type]#[Boolean]# [optional]#Optional# [default]#defaults to `false`#
+|A flag to mark if the filter should collapse doubles. (Ex dd, dd. - except vowels)
+
+|[field]#entry.definition# [type]#[String]# [optional]#Optional#
+|A dictionary style definition of the entry text.
+
+|[field]#entry.filterMode# [type]#[String]# [required]#required#
+|A string describing the filter mode this entry is using. Possible values:
+
+* `exactMatch`
+* `embeddable`
+* `nonEmbeddable`
+* `distinguishable`
+
+See link:../reference/data-types#filter-mode[Filter Mode] for details.
+
+|[field]#entry.ignores# [type]#[Array<String>]# [optional]#Optional#
+|A list of ignores for the entry.
+
+|[field]#entry.locale# [type]#[String]# [required]#required#
+|The locale of the entry. See link:../reference/data-types#locale[Locale].
+
+|[field]#entry.noun# [type]#[Boolean]# [optional]#Optional# [default]#defaults to `false`#
+|A flag to determine if the entry can be used as a noun.
+
+|[field]#entry.replacePhonetics# [type]#[Boolean]# [optional]#Optional# [default]#defaults to `false`#
+|A flag informing the filter if it should try phonetic replacements to match this entry.
+
+|[field]#entry.severity# [type]#[String]# [required]#required#
+|A string representing the associated severity of the words usage. Possible values are:
+
+* `mild` - The entry is generally not offensive in most situations
+* `medium` - The entry is sometimes offensive but generally okay to use in professional situations.
+* `high` - The entry is always offensive but sometimes still used in professional situations.
+* `severe` - The entry is always offensive and never used in professional situations.
+
+|[field]#entry.text# [type]#[String]# [required]#required#
+|The entry text/word.
+
+|[field]#entry.verb# [type]#[Boolean]# [optional]#Optional# [default]#defaults to `false`#
+|A flag to tell the filter if this entry can be used as a verb.
+
+|[field]#entry.variations# [type]#[Array<String>]# [optional]#Optional#
+|A list of possible variations of the entry text.
+
+|[field]#entry.tags# [type]#[Array<String>]# [required]#required#
+|A list of associated blacklist tags. If a tag does not already exist, it will be created with the
+same locale as the entry. At least one tag must be supplied.
+|===
+
+[source,json]
+.Request Body Example JSON
+----
+include::../../src/json/blacklist/entry/request.json[]
+----

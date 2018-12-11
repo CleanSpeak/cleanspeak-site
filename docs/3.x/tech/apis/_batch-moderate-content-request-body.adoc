@@ -1,0 +1,90 @@
+[cols="3a,7a"]
+[.api]
+.Request Body
+|===
+|[field]#callbackHeaders# [type]#[Object]# [optional]#Optional#
+|The key-value pair Object that contains HTTP headers that are included by CleanSpeak when it sends the response to the ``callbackURL``.
+
+|[field]#callbackURL# [type]#[String]# [optional]#Optional#
+|Indicates that the batch request should be processed asynchronously and that CleanSpeak should send the response to this URL.
+
+|[field]#contentItems# [type]#[Array]# [required]#Required#
+|The list of the content being moderated.
+
+|[field]#contentItems``[x]``.applicationId# [type]#[UUID]# [required]#Required#
+|The Id of the application that corresponds to the content source.
+
+|[field]#contentItems``[x]``.createInstant# [type]#[Long]# [required]#Required#
+|The link:../reference/data-types#instants[instant] that the content was generated.
+
+|[field]#contentItems``[x]``.id# [type]#[UUID]# [optional]#Optional#
+|The Id for the piece of content (only required if the application for this piece of content is configured to moderate persistent content).
+
+|[field]#contentItems``[x]``.location# [type]#[String]# [optional]#Optional#
+|Specifies the location within the application that the content was generated. For example, you might use a chat room name, area Id for a game, or a thread Id for a forum. This parameter is used by CleanSpeak to display conversational views of content with the <<Context View>> feature.
+
+|[field]#contentItems``[x]``.parts# [type]#[Array]# [required]#Required#
+|An array that contains one to many content parts. If your content only has a single part, such as a chat message, the array will only contain a single text entry. The reason you would send in multiple content parts within a single request is to ensure the moderation decision affects each part.
+
+For example, you may send in an image for moderation, the image has a title and a description field. You would send this to CleanSpeak with three content parts, the image and two text parts. If the content of the image title is rejected the entire content needs to be rejected wholesale, the title, description and the image. In this case it would make sense to treat all three parts as an atomic unit of content.
+
+If individual content parts are not related and can be rejected or approved separately then you should send them to CleanSpeak as separate requests.
+
+|[field]#contentItems``[x]``.parts``[x]``.content# [type]#[String]# [required]#Required#
+|The content to be filtered. The content type will indicate what type of content is expected in this parameter.
+
+[cols="3*"]
+_Content Types_
+!===
+!Type        !Description
+
+!`text`      !The content to be filtered.
+!`bbcode`    !Text content to be filtered that may contain BBCode.
+!`html`      !Text content to be filtered that may contain HTML. [since]#Available Since 3.19.0#
+!`attribute` !A simple attribute of the content. This is an arbitrary string and will not be filtered.
+!`hyperlink` !Fully qualified URL to an external web page.
+!`image`     !Fully qualified URL of the image to be displayed.
+!`video`     !Fully qualified URL of the video to be displayed.
+!`audio`     !Fully qualified URL of the audio file to be moderated.
+!===
+
+|[field]#contentItems``[x]``.parts``[x]``.name# [type]#[String]# [optional]#Optional#
+|The name of the content part. This value is optional an intended to better identify the context when you have more than one content part. For example this could be _Title_, _Message Body_ or _Image_.
+
+|[field]#contentItems``[x]``.parts``[x]``.type# [type]#[String]# [required]#Required#
+|The type of this content part. Possible values:
+
+* `text`
+* `bbcode`
+* `html` [since]#Available Since 3.19.0#
+* `attribute`
+* `hyperlink`
+* `image`
+* `video`
+* `audio`
+
+|[field]#contentItems``[x]``.receiverDisplayName# [type]#[String]# [optional]#Optional#
+|The display name of the user that received the content. This parameter should only be set if this piece of content was a private message between two users.
+
+|[field]#contentItems``[x]``.receiverId# [type]#[UUID]# [optional]#Optional#
+|The Id of the user that received of the content. This parameter should only be set if this piece of content was a private message between two users.
+
+|[field]#contentItems``[x]``.senderDisplayName# [type]#[String]# [optional]#Optional#
+|The display name (username or whatever is displayed to other users in the game/forum) that generated the content.
+
+|[field]#contentItems``[x]``.senderId# [type]#[UUID]# [required]#Required#
+|The Id of the user that generated the content. This parameter is required so that CleanSpeak can analyze and associate the content with the user that generated it.
+
+|[field]#moderation# [type]#[String]# [optional]#Optional#
+|Tells CleanSpeak to forcibly put all the content into a queue (Approval, User Alert or Content Alert). This overrides the configuration you have setup for the Application in the Management Interface.
+
+* `requiresApproval`
+* `generatesAlert`
+* `generatesContentAlert`
+|===
+
+[source,json]
+.Example Request JSON
+----
+include::../src/json/content/moderate/batch-request.json[]
+----

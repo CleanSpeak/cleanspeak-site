@@ -1,0 +1,422 @@
+[cols="3a,7a"]
+[.api]
+.Request Body
+|===
+|[field]#application# [type]#[Object]# [required]#Required#
+|The Application object.
+
+|[field]#application.moderationConfiguration.approvalCheckOutMinutes# [type]#[Integer]# [optional]#Optional# [default]#defaults to `10`#
+|The number of minutes content is checked out for in the Approval Queue before it is automatically released to be eligible for another moderator to check out.
+
+|[field]#application.moderationConfiguration.approvalQueueSize# [type]#[Integer]# [optional]#Optional# [default]#defaults to `30`#
+|The number of items checked out of the Approval Queue at a time for a moderator.
+
+|[field]#application.moderationConfiguration.archiveConfiguration# [type]#[Object]# [optional]#Optional#
+|The archive configuration object.
+
+|[field]#application.moderationConfiguration.archiveConfiguration.enabled# [type]#[Boolean]# [optional]#Optional# [default]#defaults to `false`#
+|Setting this value to true enables content deletion. This is false by default which means no content is deleted. If you'll be sending in high volumes of content content deletion should be enabled. CleanSpeak is not designed to store content indefinitely.
+
+|[field]#application.moderationConfiguration.archiveConfiguration.storeDuration# [type]#[Integer]# [required]#Required#
+|The number of units content should be kept. The unit value is determined by the `storeTimeUnit`.
+
+|[field]#application.moderationConfiguration.archiveConfiguration.storeOffsetDuration# [type]#[Integer]# [required]#Required#
+|The number of units to be added to the `storeDuration`. The offset unit is determined by the `storeOffsetTimeUnit`.
+
+|[field]#application.moderationConfiguration.archiveConfiguration.storeOffsetTimeUnit# [type]#[String]# [required]#Required#
+|The time unit for the offset. The possible values are:
+
+* `minutes`
+* `hours`
+* `days`
+* `months`
+* `years`
+
+|[field]#application.moderationConfiguration.archiveConfiguration.storeTimeUnit# [type]#[String]# [required]#Required#
+|The time unit for the duration. The possible values are:
+
+* `minutes`
+* `hours`
+* `days`
+* `months`
+* `years`
+
+|[field]#application.moderationConfiguration.contentAlertCheckOutMinutes# [type]#[Integer]# [optional]#Optional# [default]#defaults to `10`#
+|The number of minutes content is checked out for in the Alert Queue before it is automatically released to be eligible for another moderator to check out.
+
+|[field]#application.moderationConfiguration.contentAlertQueueSize# [type]#[Integer]# [optional]#Optional# [default]#defaults to `30`#
+|The number of items checked out of the Alert Queue at a time for a moderator.
+
+|[field]#application.moderationConfiguration.contentDeletable# [type]#[Boolean]# [optional]#Optional# [default]#defaults to `false`#
+|Set to true if you want the ability to delete content. Enabling this feature allows a moderator to delete content which in turn sends a notification of type `contentDelete` to be consumed by the CleanSpeak event handler.
+
+|[field]#application.moderationConfiguration.contentEditable# [type]#[Boolean]# [optional]#Optional# [default]#defaults to `false`#
+|Set to true if you want the ability to edit content. Enabling this feature allows a moderator to edit content which in turn sends a notification of type `contentEdit` to be consumed by the CleanSpeak event handler.
+
+|[field]#application.moderationConfiguration.contentFlagAlertType# [type]#[String]# [optional]#Optional# [default]#defaults to `User`#
+|By default when content is flagged a `User` alert is generated. Setting this to `Content` changes the behavior such that a `Content` alert is sent instead. The possible values are:
+
+ * `Content`
+ * `User`
+
+|[field]#application.moderationConfiguration.contentFlagUserScoreAdjustment# [type]#[Integer]# [optional]#Optional#
+|The amount the User score is adjusted when content is flagged. This value may be a positive or negative integer.
+
+|[field]#application.moderationConfiguration.contentUserActionsEnabled# [type]#[Boolean]# [optional]#Optional# [default]#defaults to `false`#
+|Set to true if you want user actions enabled. Enable this if you intend to allow moderators to action users, for example mute, ban, kick users. When disabled you will not be able to select this application as a target for a user action.
+
+|[field]#application.moderationConfiguration.defaultActionIsQueueForApproval# [type]#[Boolean]# [optional]#Optional# [default]#defaults to `false`#
+|Set to true if you want content to be queued for approval when no filter rules are hit. This includes content that matched a rule set to `allow`.
+
+For example, when this parameter is set to `true` and the content
+
+* did not match any filter rules, [underline]#do# queue for approval.
+* did not match any filter rules, but the moderate request parameter for `moderation` is set to `generateAlert` or `generatesContentAlert`, [underline]#do not# queue for approval.
+* did match one or more filters with an action other than `allow`, [underline]#do not# queue for approval.
+
+This feature may be used way to ensure all content is reviewed in some fashion by a moderator.
+
+|[field]#application.moderationConfiguration.dictionaryTags# [type]#[Array<String>]# [optional]#Optional# [since]#Available since 3.12.0#
+|A list of dictionary tags to apply to moderation actions using this application.
+
+Tags will cause the filter to throw out matches that exactly match dictionary words
+with any of the tags in this list.
+
+|[field]#application.moderationConfiguration.emailFilterMaxLength# [type]#[Integer]# [optional]#Optional# [default]#defaults to `50`#
+|This parameter specifies the maximum length that a match can be in order to be considered an email. If the match length is greater than the maximum match length the match will be ignored.
+
+|[field]#application.moderationConfiguration.emailFilterSpacePenalty# [type]#[Double]# [optional]#Optional# [default]#defaults to `-0.05`#
+|This parameter specifies a penalty applied to the quality score if the match contains any spaces. For example, `user@ example.com` contains a space so the space penalty value will be added to the quality score. The email space penalty is applied once regardless of the number of spaces found in the match.
+
+|[field]#application.moderationConfiguration.emailOnAlerts# [type]#[Boolean]# [optional]#Optional# [default]#defaults to `false`#
+|Set this parameter to `true` to email moderators for content alerts.
+
+|[field]#application.moderationConfiguration.emailOnContentFlagged# [type]#[Boolean]# [optional]#Optional# [default]#defaults to `false`#
+|Set this parameter to `true` to email moderators when content is flagged.
+
+|[field]#application.moderationConfiguration.emailOnUserFlagged# [type]#[Boolean]# [optional]#Optional# [default]#defaults to `false`#
+|Set this parameter to `true` to email moderators when users are flagged.
+
+|[field]#application.moderationConfiguration.emailRules# [type]#[Array]# [optional]#Optional#
+|The email filter rules. [underline]#You must supply exactly three rules.# Each rule must provide a `score` value which is the inclusive cutoff score for an email match. The rules correspond to a High, Medium and Low quality filter rule. In the Management Interface these rules are referenced as High, Medium and Low.
+
+For example, the following are the default email rules:
+
+[source,json]
+----
+include::../src/json/system/application/moderation-configuration-default-email-rules.json[]
+----
+
+|[field]#application.moderationConfiguration.emailRules``[x]``.action# [type]#[String]# [required]#Required#
+|
+include::_parameter-filter-action.adoc[]
+
+|[field]#application.moderationConfiguration.emailRules``[x]``.alertType# [type]#[String]# [optional]#Optional#
+|
+include::_parameter-alert-type.adoc[]
+
+|[field]#application.moderationConfiguration.emailRules``[x]``.score# [type]#[Integer]# [required]#Required#
+|The quality score threshold for this rule. If a match score is greater than or equal to this number and less then the next highest filter rule score the rule will be applied.
+
+|[field]#application.moderationConfiguration.emailRules``[x]``.userScoreAdjustment# [type]#[Integer]# [optional]#Optional#
+|The amount the User score is adjusted when this filter rule is applied. This value may be a positive or negative integer.
+
+|[field]#application.moderationConfiguration.filterRules# [type]#[Array]# [optional]#Optional#
+|The list of blacklist filter rules.
+
+|[field]#application.moderationConfiguration.filterRules``[x]``.tags# [type]#[Array<String>]# [required]#Required#
+|The blacklist tags for this filter rule. A filter rule may have one or more tags.
+
+|[field]#application.moderationConfiguration.filterRules``[x]``.locales# [type]#[Array<String>]# [optional]#Optional#
+|The match locales. If this parameter is omitted the filter rule will apply to all locales. See link:../reference/data-types#locales[Locales].
+
+|[field]#application.moderationConfiguration.filterRules``[x]``.mildAction# [type]#[String]# [required]#Required#
+|
+include::_parameter-filter-action.adoc[]
+
+|[field]#application.moderationConfiguration.filterRules``[x]``.mildAlertType# [type]#[String]# [optional]#Optional#
+|
+include::_parameter-alert-type.adoc[]
+
+|[field]#application.moderationConfiguration.filterRules``[x]``.mildUserScoreAdjustment# [type]#[String]# [optional]#Optional#
+|
+include::_parameter-user-score-adjustment.adoc[]
+
+|[field]#application.moderationConfiguration.filterRules``[x]``.mediumAction# [type]#[String]# [required]#Required#
+|
+include::_parameter-filter-action.adoc[]
+
+|[field]#application.moderationConfiguration.filterRules``[x]``.mediumAlertType# [type]#[String]# [optional]#Optional#
+|
+include::_parameter-alert-type.adoc[]
+
+|[field]#application.moderationConfiguration.filterRules``[x]``.mediumUserScoreAdjustment# [type]#[String]# [optional]#Optional#
+|
+include::_parameter-user-score-adjustment.adoc[]
+
+|[field]#application.moderationConfiguration.filterRules``[x]``.highAction# [type]#[String]# [required]#Required#
+|
+include::_parameter-filter-action.adoc[]
+
+|[field]#application.moderationConfiguration.filterRules``[x]``.highAlertType# [type]#[String]# [optional]#Optional#
+|
+include::_parameter-alert-type.adoc[]
+
+|[field]#application.moderationConfiguration.filterRules``[x]``.highUserScoreAdjustment# [type]#[String]# [optional]#Optional#
+|
+include::_parameter-user-score-adjustment.adoc[]
+
+|[field]#application.moderationConfiguration.filterRules``[x]``.severeAction# [type]#[String]# [required]#Required#
+|
+include::_parameter-filter-action.adoc[]
+
+|[field]#application.moderationConfiguration.filterRules``[x]``.severeAlertType# [type]#[String]# [optional]#Optional#
+|
+include::_parameter-alert-type.adoc[]
+
+|[field]#application.moderationConfiguration.filterRules``[x]``.severeUserScoreAdjustment# [type]#[String]# [optional]#Optional#
+|
+include::_parameter-user-score-adjustment.adoc[]
+
+|[field]#application.moderationConfiguration.ignorableCharacters# [type]#[String]# [optional]#Optional# [default]#Defaults to `"qxz"`# [since]#Available since 3.22.0#
+|Set this parameter to a list of characters the filter can skip over to find a match. Only the letters `a` through `z` are permitted.
+
+Specifically, this feature will catch any blacklist word even if separated by a single character on this list. Example: `SxMxUxRxF` Note: only the same letter may be used to separate the characters throughout the word and only one ignored character in a row is permitted.
+
+|[field]#application.moderationConfiguration.imageConfiguration# [type]#[Object]# [optional]#Optional#
+|The image moderation configuration object. This parameter and all nested parameters are only valid when `imageOnly` is set to `true`.
+
+|[field]#application.moderationConfiguration.imageConfiguration.commitDelay# [type]#[Integer]# [optional]#Optional# [default]#defaults to `45`#
+|The number of seconds to wait before a moderation decision made from the enhanced image moderation queue is committed.
+
+|[field]#application.moderationConfiguration.imageConfiguration.darkMode# [type]#[Boolean]# [optional]#Optional# [default]#defaults to `true`#
+|Set this parameter to 'false' to disable the dark mode theme when viewing the enhanced image moderation queue.
+
+|[field]#application.moderationConfiguration.imageConfiguration.defaultTimerDuration# [type]#[Integer]# [optional]#Optional# [default]#defaults to `2`#
+|The number of seconds each image will be displayed in the queue before advancing to the next image when the queue is set to automatically advance without keyboard interaction. This value is the default value for this application for all moderators. A moderator may change this value for their own user preference.
+
+|[field]#application.moderationConfiguration.imageConfiguration.speedModerationLayout# [type]#[Boolean]# [optional]#Optional# [default]#defaults to `true`#
+|Set this parameter to `false` to disable the enhanced image moderation queue layout and use the legacy mode.
+
+|[field]#application.moderationConfiguration.imageOnly# [type]#[Boolean]# [optional]#Optional# [default]#defaults to `false`#
+|Set this parameter to `true` to enable this application for image only moderation. When this parameter is set to `true` the `imageConfiguration` parameters are used to provide additional configuration.
+
+|[field]#application.moderationConfiguration.imageFilteringEnabled# [type]#[Integer]# [optional]#Optinoal#
+|Set to true if you want to enable third party image filtering. (The provider and credentials must be configured in the system configuration first!)
+
+|[field]#application.moderationConfiguration.imageQualityFilterRules# [type]#[Array]# [optional]#Optional#
+|A list of 3 quality filter rules corresponding to high, medium, and low quality.
+
+For example, the following are the default imageQualityFilterRules:
+
+[source,json]
+----
+include::../src/json/system/application/moderation-configuration-default-imageQualityFilterRules.json[]
+----
+
+|[field]#application.moderationConfiguration.imageQualityFilterRules``[x]``.action# [type]#[String]# [required]#Required#
+|
+include::_parameter-filter-action.adoc[]
+
+|[field]#application.moderationConfiguration.imageQualityFilterRules``[x]``.alertType# [type]#[String]# [optional]#Optional#
+|
+include::_parameter-alert-type.adoc[]
+
+|[field]#application.moderationConfiguration.imageQualityFilterRules``[x]``.score# [type]#[Integer]# [required]#Required#
+|The quality score threshold for this rule. If a match score is greater than or equal to this number and less then the next highest filter rule score the rule will be applied.
+
+|[field]#application.moderationConfiguration.imageQualityFilterRules``[x]``.userScoreAdjustment# [type]#[Integer]# [optional]#Optional#
+|The amount the User score is adjusted when this filter rule is applied. This value may be a positive or negative integer.
+
+|[field]#application.moderationConfiguration.maximumVideoFilterDurationInSeconds# [type]#[Integer]# [optional]#Optional# [default]#defaults to `300`#
+|The maximum amount of time a video filter request is allowed to take in seconds.
+
+|[field]#application.moderationConfiguration.noRuleUserScoreAdjustment# [type]#[Integer]# [optional]#Optional#
+|This score adjustment is used when the content did not match any rules. This value may be a positive or negative integer.
+
+This may be used to increase a user score based upon good behavior, i.e. sending in content that did not contain any profanity. In this use case, you would provide a positive value for the adjustment.
+
+This adjustment will only affect the user score while it is below 0. Once the user score is raised to 0 this adjustment will be ignored.
+
+|[field]#application.moderationConfiguration.persistent# [type]#[Boolean]# [optional]#Optional# [default]#defaults to `false`#
+|Set this parameter to `true` to indicate the content type is persistent, `false` indicates this content is transient.
+
+Persistent content is defined as content that is likely displayed indefinitely. A user can go and look at this content in the future by browsing a forum or performing a content search. Examples of persistent content include forum posts, profile pictures, etc. Persist content can be edited, deleted and pre-approved.
+
+Transient content is defined as content that is displayed for a short period of time and then is likely gone forever. Transient content is usually synonymous  with chat. This content cannot be pre-approved, edited or deleted.
+
+Please note that both transient and persistent content in this context are persisted to the database.
+
+|[field]#application.moderationConfiguration.phoneNumberFilterMaxLength# [type]#[Integer]# [optional]#Optional# [default]#defaults to `20`#
+|This parameter specifies the maximum length that a match can be in order to be considered an phone number. If the match length is greater than the maximum match length the match will be ignored.
+
+|[field]#application.moderationConfiguration.phoneNumberFilterMinLength# [type]#[Integer]# [optional]#Optional# [default]#defaults to `7`#
+|This parameter specifies the minimum length that a match can be in order to be considered a phone number. The default value covers most world wide phone number formats.
+
+|[field]#application.moderationConfiguration.phoneNumberFilterSeparatorPenalty# [type]#[Double]# [optional]#Optional# [default]#defaults to `-0.02`#
+|This parameter specifies a penalty that is applied to the quality score for a match if it contains any type of separator other than a dash or parenthesis. For example, `303;555;1234` contains two penalized separators so the separator penalty will be multiplied by the number of separators and added to the quality score.
+
+|[field]#application.moderationConfiguration.phoneNumberFilterSpacePenalty# [type]#[Double]# [optional]#Optional# [default]#defaults to `-0.02`#
+|This parameter specifies a penalty that is applied to the quality score for a match if it contains one or more spaces. For example, `303 555 1234` contains two spaces so the space penalty will be multiplied by the number of spaces and added to the quality score.
+
+|[field]#application.moderationConfiguration.phoneNumberFilterWordPenalty# [type]#[Double]# [optional]#Optional# [default]#defaults to `-0.03`#
+|This parameter specifies a penalty that is applied to the quality score for a match if it contains any words rather than digits. For example, `three zero three 555 1234` contains three words so the word penalty will be multiplied by the number of words and added to the quality score.
+
+|[field]#application.moderationConfiguration.phoneNumberRules# [type]#[Array]# [optional]#Optional#
+|The phone number filter rules. [underline]#You must supply exactly three rules.# Each rule must provide a `score` value which is the inclusive cutoff score for a phone number match. The rules correspond to a High, Medium and Low quality filter rule. In the Management Interface these rules are referenced as High, Medium and Low.
+
+For example, the following are the default phone number rules:
+
+[source,json]
+----
+include::../src/json/system/application/moderation-configuration-default-phone-number-rules.json[]
+----
+
+|[field]#application.moderationConfiguration.phoneNumberRules``[x]``.action# [type]#[String]# [required]#Required#
+|
+include::_parameter-filter-action.adoc[]
+
+|[field]#application.moderationConfiguration.phoneNumberRules``[x]``.alertType# [type]#[String]# [optional]#Optional#
+|
+include::_parameter-alert-type.adoc[]
+
+|[field]#application.moderationConfiguration.phoneNumberRules``[x]``.score# [type]#[Integer]# [required]#Required#
+|The quality score threshold for this rule. If a match score is greater than or equal to this number and less then the next highest filter rule score the rule will be applied.
+
+|[field]#application.moderationConfiguration.phoneNumberRules``[x]``.userScoreAdjustment# [type]#[Integer]# [optional]#Optional#
+|
+include::_parameter-user-score-adjustment.adoc[]
+
+|[field]#application.moderationConfiguration.queuePersistentContent# [type]#[Boolean]# [optional]#Optional# [default]#defaults to `false`#
+|Set this to `true` in order to asynchronously store persistent content. This may improve performance but there is a potential for data loss if an outage occurs before all content is committed to the database. Please consult with Inversoft Support if you are unsure how to use this feature.
+
+|[field]#application.moderationConfiguration.replacementCharacter# [type]#[String]# [optional]#Optional#
+|The character used during match replacement. If this value is set it will take precedence over `replacementString`.
+
+|[field]#application.moderationConfiguration.replacementString# [type]#[String]# [optional]#Optional#
+|The string used during match replacement. If neither `replacementString` or `replacementCharacter` are defined the default replacement character `*` will be utilized.
+
+|[field]#application.moderationConfiguration.returnFilterMatches# [type]#[Boolean]# [optional]#Optional# [default]#defaults to `false`# [since]#Available since 3.9.1#
+|Set this parameter to `true` in order to receive filter matches in the link:content#moderate-content[Moderate Content] API response.
+
+|[field]#application.moderationConfiguration.rules# [type]#[Object]# [optional]#Optional#
+|The rules object. This object contains the Username Filter and Whitelist Filter rules.
+
+|[field]#application.moderationConfiguration.storeContent# [type]#[Boolean]# [optional]#Optional# [default]#defaults to `false`#
+|Set this parameter to `true` in order to store content in the database. In order to take advantage of many of the advanced CleanSpeak moderation features you'll need to store content.
+
+|[field]#application.moderationConfiguration.unicodeFilterRule.action# [type]#[String]# [optional]#Optional# [default]#defaults to `allow`# [since]#Available since 3.22.0#
+|The filter action for the unicode filter. Allowed options are `allow` or `reject`.
+
+The unicode filter rejects content if it contains prohibited unicode ranges.
+
+|[field]#application.moderationConfiguration.unicodeFilterRule.data# [type]#[String]# [optional]#Optional# [default]#defaults to a provided config# [since]#Available since 3.22.0#
+|The unicode filter configuration represented as a dsl of ranges.
+
+The ranges are described as a string of lines that may contain
+* Empty lines
+* Comments (a line starting with `#`)
+* Unicode ranges (A unicode codepoint is of the form \u0000 or \u{0} (Json unicode notation)) Ex: `\u0000-\u{F}`
+
+A special condition is that the final unicode range may be an open range meaning the second unicode point is omitted.
+
+Note: The ranges are inclusive so \u0000-\u000F includes the character \u000F
+
+Note 2: The provided config may change between versions.
+
+|[field]#application.moderationConfiguration.urlFilterMaxLength# [type]#[Integer]# [optional]#Optional# [default]#defaults to `50`#
+|This parameter specifies the maximum length that a match can be in order to be considered a url. If the match length is greater than the maximum match length the match will be ignored.
+
+|[field]#application.moderationConfiguration.urlFilterSpacePenalty# [type]#[Double]# [optional]#Optional# [default]#defaults to `-0.05`#
+|This parameter specifies a penalty that is applied to the quality score for a match if it contains one or more spaces. For example, `www .ex a m ple .com` contains spaces so the space penalty will added to the quality score.
+
+|[field]#application.moderationConfiguration.urlRules# [type]#[Array]# [optional]#Optional#
+|The url filter rules. [underline]#You must supply exactly three rules.# Each rule must provide a `score` value which is the inclusive cutoff score for a url match. The rules correspond to a High, Medium and Low quality filter rule. In the Management Interface these rules are referenced as High, Medium and Low.
+
+For example, the following are the default url rules:
+
+[source,json]
+----
+include::../src/json/system/application/moderation-configuration-default-url-rules.json[]
+----
+
+|[field]#application.moderationConfiguration.urlRules``[x]``.action# [type]#[String]# [required]#Required#
+|
+include::_parameter-filter-action.adoc[]
+
+|[field]#application.moderationConfiguration.urlRules``[x]``.alertType# [type]#[String]# [optional]#Optional#
+|
+include::_parameter-alert-type.adoc[]
+
+|[field]#application.moderationConfiguration.urlRules``[x]``.score# [type]#[Integer]# [required]#Required#
+|The quality score threshold for this rule. If a match score is greater than or equal to this number and less then the next highest url filter rule score the rule will be applied.
+
+|[field]#application.moderationConfiguration.urlRules``[x]``.userScoreAdjustment# [type]#[Integer]# [optional]#Optional#
+|
+include::_parameter-user-score-adjustment.adoc[]
+
+|[field]#application.moderationConfiguration.userCheckOutMinutes# [type]#[Integer]# [optional]#Optional# [default]#defaults to `10`#
+|The number of minutes a Content User is checked out for before it is automatically released to be eligible for another moderator to check out.
+
+|[field]#application.moderationConfiguration.userFlagUserScoreAdjustment# [type]#[Integer]# [optional]#Optional#
+|The amount the User score is adjusted when the user is flagged. This value may be a positive or negative integer.
+
+|[field]#application.moderationConfiguration.videoFilteringEnabled# [type]#[Integer]# [optional]#Optinoal#
+|Set to true if you want to enable third party video filtering. (The provider and credentials must be configured in the system configuration first!)
+
+|[field]#application.moderationConfiguration.videoQualityFilterRules# [type]#[Array]# [optional]#Optional#
+|A list of 3 quality filter rules corresponding to high, medium, and low quality.
+
+For example, the following are the default videoQualityFilterRules:
+
+[source,json]
+----
+include::../src/json/system/application/moderation-configuration-default-videoQualityFilterRules.json[]
+----
+
+|[field]#application.moderationConfiguration.videoQualityFilterRules``[x]``.action# [type]#[String]# [required]#Required#
+|
+include::_parameter-filter-action.adoc[]
+
+|[field]#application.moderationConfiguration.videoQualityFilterRules``[x]``.alertType# [type]#[String]# [optional]#Optional#
+|
+include::_parameter-alert-type.adoc[]
+
+|[field]#application.moderationConfiguration.videoQualityFilterRules``[x]``.score# [type]#[Integer]# [required]#Required#
+|The quality score threshold for this rule. If a match score is greater than or equal to this number and less then the next highest filter rule score the rule will be applied.
+
+|[field]#application.moderationConfiguration.videoQualityFilterRules``[x]``.userScoreAdjustment# [type]#[Integer]# [optional]#Optional#
+|The amount the User score is adjusted when this filter rule is applied. This value may be a positive or negative integer.
+
+|[field]#applicaiton.notificationServers# [type]#[Array]# [optional]#Optional#
+|A list of notification servers to use on an application. (This will create new notification servers every time)
+
+Note: In the frontend, Notification Servers are now called Webhooks.
+
+(See link:../tutorials/handling-notifications.html[Handling Notifications] for more details)
+
+|[field]#applicaiton.notificationServers``[x]``.connectTimeout# [type]#[Integer]# [optional]#Optional# [default]#Defaults to `1000`#
+|The maximum amount of time a server will take to try to connect in milliseconds.
+
+|[field]#application.notificationServers``[x]``.readTimeout# [type]#[Integer]# [optional]#Optional# [default]#Defaults to `2000`#
+|The maximum amount of time any read call will wait for data to flow.
+
+|[field]#application.notificationServers``[x]``.httpAuthenticationPassword# [type]#[String]# [optional]#Optional#
+|A password to supply on the notification request.
+
+|[field]#application.notificationServers``[x]``.httpAuthenticationUsername# [type]#[String]# [optional]#Optional#
+|A username to supply on the notification request.
+
+|[field]#applicaiton.notificationServers``[x]``.sslCertificate# [type]#[String]# [optional]#Optional#
+|An ssl client certificate to present on the notification request.
+
+|[field]#application.notificationServers``[x]``.url# [type]#[String]# [required]#required#
+|The url of a server listening for notifications.
+
+|===
+
+[source,json]
+.Example Request JSON
+----
+include::../src/json/system/application/request.json[]
+----

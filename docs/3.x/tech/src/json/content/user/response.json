@@ -1,0 +1,20 @@
+{
+  "user": {
+    "score": 0,
+    "attributes": {
+      "Help Desk ID": "13"
+    },
+    "createInstant": 1473178111759,
+    "checkOutInstant": 1474664616928,
+    "checkOutUserId": "c4be9117-8cb9-46bb-b805-0f0e612cd0c6",
+    "email": "jsmith@example.com",
+    "name": "John Smith",
+    "id": "3044fae2-575b-492a-b5da-0216644559a1",
+    "imageURL": "http://www.avatarsdb.com/avatars/yoda_star_wars.gif",
+    "displayNames": [
+      "mr_smith"
+    ],
+    "birthDate": "1989-02-14",
+    "lastLoginInstant": 1474300531759
+  }
+}

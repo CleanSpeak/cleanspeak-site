@@ -1,0 +1,14 @@
+{
+  "phrases": [
+    {
+      "id": 1,
+      "parts": ["Drug-Verb", "Drug-Noun"],
+      "status": "ACTIVE"
+    },
+    {
+      "id": 2,
+      "parts": ["Penis-Reference", "*", "Vagina-Reference"],
+      "status": "ACTIVE"
+    }
+  ]
+}

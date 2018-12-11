@@ -1,0 +1,54 @@
+---
+layout: doc
+title: CleanSpeak Server Layout
+description: Various server layouts for CleanSpeak that will help you determine how to install and deploy each component
+---
+
+== Server Layouts
+
+To help you determine the best server layout, look over the diagrams below and determine which layout works best for your dev, staging and production environments
+
+=== One Server
+
+image::one-server.png[]
+
+This configuration uses a single server to host all of the components for CleanSpeak.
+
+This setup is ideal for these uses:
+
+* Development machines or servers
+* QA environments
+* Some staging and production setups
+
+=== Two Servers
+
+image::two-servers.png[]
+
+This configuration uses two separate servers to host CleanSpeak Management Interface and CleanSpeak WebService. The server that hosts the CleanSpeak WebService also hosts the database to improve on the latency between the two servers. The server that hosts the CleanSpeak Management Interface also hosts the CleanSpeak Search Engine. In a high availability system, this separates the two services with the highest load (WebService and Search Engine).
+
+This setup is ideal for these uses:
+
+* Staging environments
+* Production environments
+
+=== Three Servers
+
+image::three-servers.png[]
+
+This configuration uses two separate servers to host CleanSpeak Management Interface and CleanSpeak WebService and also puts the database on its own server. The server that hosts CleanSpeak WebService also hosts the CleanSpeak Search Engine.
+
+This setup is ideal for these uses:
+
+* Staging environments
+* Production environments
+
+=== Four or More Servers
+
+image::four-servers.png[]
+
+This configuration uses separate servers to host CleanSpeak Management Interface, CleanSpeak WebService, CleanSpeak Search Engine and the database. This allows each service to have its own CPU and RAM which will provide the best performance possible.
+
+This setup is ideal for these uses:
+
+* Staging environments
+* Production environments

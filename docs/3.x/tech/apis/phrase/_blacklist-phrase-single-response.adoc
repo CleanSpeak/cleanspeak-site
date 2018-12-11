@@ -1,0 +1,36 @@
+
+[cols="3a,7a"]
+[.api]
+.Response Body
+|===
+|[field]#phrase.id# [type]#[Integer]#
+|The Id of the phrase.
+
+|[field]#phrases.locale# [type]#[String]#
+|The locale of the phrase. See link:../reference/data-types#locales[Locales].
+
+|[field]#phrases.pattern# [type]#[String]#
+|A regex pattern that can optionally include blacklist tags to match on blacklist entry matches. Tags are of
+the form `%TagName%` in a regex.
+
+|[field]#phrase.severity# [type]#[String]#
+|The severity of the phrase. A severity can be any of the following:
+
+* `mild`
+* `medium`
+* `high`
+* `severe`
+
+|[field]#phrase.status# [type]#[String]#
+|The status of the phrase in the filter. The API always returns `ACTIVE`
+ entries as the APIs only operate on the active filter state.
+
+|[field]#phrases.tags# [type]#[Array<String>]#
+|A list of blacklist tag names that this phrase should be associated to.
+|===
+
+[source,json]
+.Example Response JSON
+----
+include::../../src/json/blacklist/phrase/single-response.json[]
+----

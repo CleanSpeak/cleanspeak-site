@@ -1,0 +1,20 @@
+{
+  "phrases": [
+    {
+      "id": 1,
+      "locale": "en",
+      "pattern": "%Purchase%.+%Company%",
+      "severity": "mild",
+      "status": "ACTIVE",
+      "tags": [ "Phrase" ]
+    },
+    {
+      "id": 2,
+      "locale": "en",
+      "pattern": "%Purchase%.+%Social-Like%\\s+%Company%",
+      "severity": "mild",
+      "status": "ACTIVE",
+      "tags": [ "Phrase" ]
+    }
+  ]
+}

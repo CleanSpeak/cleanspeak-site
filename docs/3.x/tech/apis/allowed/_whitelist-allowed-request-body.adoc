@@ -1,0 +1,27 @@
+
+[cols="3a,7a"]
+[.api]
+.Request Body
+|===
+|[field]#entry.exclusions# [type]#[Array<String>]# [optional]#Optional#
+|An array of words NOT to include on the whitelist. These words are a subset of the inflections of the text.
+
+|[field]#entry.inflect# [type]#[Boolean]# [optional]#Optional# [default]#defaults to `false`#
+|A flag to enable automatic inflections of a word. Ex: `agree` -> `agreed`, `agreeing`, `agrees`. This must
+be enabled to use exclusions.
+
+|[field]#entry.locale# [type]#[String]# [required]#required#
+|The entry locale. See link:../reference/data-types#locales[Locale].
+
+|[field]#entry.tags# [type]#[Array<String>]# [optional]#Optional#
+|The associated whitelist tags for this entry.
+
+|[field]#entry.text# [type]#[String]# [required]#required#
+|The text for the word
+|===
+
+[source,json]
+.Request Body JSON Example
+----
+include::../../src/json/whitelist/allowed/request.json[]
+----

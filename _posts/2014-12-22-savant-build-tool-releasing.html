@@ -1,0 +1,56 @@
+---
+layout: blog-post
+title: 'Savant Build Tool: Releasing'
+author: Brian Pontarelli
+author_image: "/images/blog/head-shot-bw-square.jpg"
+excerpt_separator: "<!--more-->"
+categories:
+- Technology
+tags:
+- Savant
+---
+<p>One of the main concepts in software development is releasing. There is a distinct lack of good solutions for releasing software as most build tools drop the ball when it comes to releasing.</p>
+<p><img class="alignright wp-image-6669 size-full" src="/images/blog/Savant-Release.jpg" alt="Savant release inversoft" width="202" height="202">Before we dive into how you configure Savant to perform a release, let's first talk about publishing artifacts. Savant defines a repository structure that is similar to the Maven repository structure. This structure uses the artifact group and project names as well as the project version to define the target directory and the artifact name, version and type form the file name.</p>
+<p>Here's an example for the artifact <strong>com.mycompany:database-project:mysql:3.0.1:sql</strong>:</p>
+<p style="padding-left: 30px;">com/mycompany/database-project/3.0.1/mysql-3.0.1.sql</p>
+<p>In order to configure your Savant project to publish artifacts, you must include a <strong>publications</strong> definition. This definition is broken into two groups. The first is the <strong>main</strong> group and the second is the <strong>test</strong> group. The <strong>main</strong> group are the primary publications of your project that are used at runtime. The <strong>test</strong> group are the publications of your project that are used at test time.</p>
+<p><!--more--></p>
+<p>Here's how you define a publication for your project:</p>
+<pre class="lang:java decode:true">project(...) {
+ publications {
+  main {
+   publication(name: "myproject", type: "jar", file: "build/jars/myproject.jar", sourceFile: "build/jars/myproject-src.jar")
+  }
+ }
+}</pre>
+<p>This example defines a single publication named "myproject" of type JAR. The <strong>file</strong> and <strong>sourceFile</strong> define the artifact file and the source file for the publication. When this artifact is published, these files are uploaded to the Savant repository. Most IDEs have source JAR support, which can make debugging and coding much simpler. Therefore, we suggest you include source with all of your artifacts.</p>
+<p>The next step is to configure the <strong>publishWorkflow</strong> that will be used to publish your artifacts. This is similar to the workflow definitions we covered in the dependency management blog post, but does not include the <strong>fetch</strong> and <strong>publish</strong> sections. Instead, it includes only the processes that are used to publish the artifacts. Here's an example:</p>
+<pre class="lang:java decode:true">project(...) {
+ ...
+ publishWorkflow {
+  subversion(repository: "http://svn.example.com", username: "savant", password: "tooManySecrets")
+ }
+}</pre>
+<p>This <strong>publishWorkflow</strong> tells Savant that artifacts should be published into a Subversion repository under the username <strong>savant</strong> and the password provided. There is also an <strong>scp</strong> publish process you can use for publishing artifacts.</p>
+<p>Let's look at a standard release process. Say your release process looks something like this:</p>
+<ol>
+<li>Check that your project doesn't depend on integration builds</li>
+<li>Ensure all changes are committed to source control</li>
+<li>Ensure everything is pushed to the remote source control</li>
+<li>Run all of the project's tests</li>
+<li>Create a release tag</li>
+<li>Push the tag to the remote source control</li>
+<li>Create the project artifacts</li>
+<li>Publish the artifacts to a repository</li>
+</ol>
+<p>Savant makes that as simple as this:</p>
+<pre class="lang:java decode:true">release = loadPlugin("org.savantbuild.plugin:release-git:0.2.0")
+
+target(name: "release", description: "Release the project") {
+ release.release()
+}</pre>
+<p>Using our Release Git plugin, you can release the artifacts from any project that is stored in a git repository, which will include creating the necessary tags.</p>
+<p>Even if your release process is different, writing a custom release plugin is very simple and you can even reuse a lot of the code from our Release Git plugin.</p>
+<p>We've covered a lot of ground in this post including how to define publications, publish workflows and also using the Savant Release Git plugin. You can learn more about releasing projects and writing custom plugins here:</p>
+<p><a title="Savant release project" href="http://github.com/inversoft/savant-core/wiki">http://github.com/inversoft/savant-core/wiki</a></p>
+<p>This concludes our initial blog posts on Savant. We will publish new posts as we continue to expand on the features of Savant and gain more users.</p>

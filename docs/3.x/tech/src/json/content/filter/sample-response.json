@@ -1,0 +1,18 @@
+{
+  "matches": [
+    {
+      "length": 4,
+      "locale": "en",
+      "matched": "beer",
+      "quality": 1.0,
+      "root": "beer",
+      "severity": "medium",
+      "start": 17,
+      "tags": [
+        "Alcohol-Drug"
+      ],
+      "type": "blacklist"
+    }
+  ],
+  "replacement": "We like Colorado ****."
+}

@@ -1,0 +1,24 @@
+{
+  "totalResults": 3,
+  "entries": [
+    {
+      "id": 1,
+      "locale": "en",
+      "status": "ACTIVE",
+      "text": "hi"
+    },
+    {
+      "id": 2,
+      "locale": "en_CA",
+      "status": "ACTIVE",
+      "text": "ey"
+    },
+    {
+      "id": 3,
+      "locale": "en_GB",
+      "status": "ACTIVE",
+      "tags": [ "whitelist" ],
+      "text": "oi"
+    }
+  ]
+}

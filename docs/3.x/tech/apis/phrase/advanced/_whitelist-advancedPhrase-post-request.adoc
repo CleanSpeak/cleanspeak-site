@@ -1,0 +1,14 @@
+
+[cols="3a,7a"]
+[.api]
+.Request Body
+|===
+|[field]#phrase.parts# [type]#[Array<String>]# [required]#required#
+|The list of whitelist tags to create the phrase with. At least one is required and the whitelist tag must already exist.
+|===
+
+[source,json]
+.Example Request JSON
+----
+include::../../../src/json/whitelist/phrase/advanced/request.json[]
+----
