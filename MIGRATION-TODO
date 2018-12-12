@@ -11,15 +11,17 @@ TODO WWW
 X Remove all Webflow crap from WWW
 X Make sure WWW doesn't have any links to the brochure site and if it does, make them go to cleanspeak.com for now
 X Add a nav link in WWW to both product websites
-- Move WWW code to accounts.inversoft.com in git
-- Stand up new server for WWW (vanilla) and CleanSpeak.com with PostgreSQL RDS (no more MySQL yay!)
+X Move WWW code to accounts.inversoft.com in git
+X Stand up new server for WWW (vanilla) and CleanSpeak.com with PostgreSQL RDS (no more MySQL yay!)
 - Figure out if there is anything that needs to be setup for the server (like symlinks, Google CLI, Knife, Chef, Certs, init.d, etc)
+X Stand up login.fusionauth.io and copy the database from the current einstein
 
 TODO for launch (on new server)
-- Add redirect for docs such that the new location doesn't have 'cleanspeak' in the URL
-- Add redirect for the inversoft.com pages directly to cleanspeak.com
-X Stand up login.fusionauth.io and copy the database from the current einstein
-- Add redirects for nested tag and category pages (i.e. the old site was /blog/tag/foo/bar and the new site is /blog/tag/bar)
+- Copy certs over and then after launch update them with certbot
+X Add redirect for docs such that the new location doesn't have 'cleanspeak' in the URL
+X Add redirect for the inversoft.com pages directly to cleanspeak.com
+X Add redirects for nested tag and category pages (i.e. the old site was /blog/tag/foo/bar and the new site is /blog/tag/bar)
 - Setup metrics.inversoft.com, license.inversoft.com, etc.
-- Add redirect that strips the final slash off old blog post URLs
+- Setup redirect on https://inversoft.com (with certs)
+X Add redirect that strips the final slash off old blog post URLs
 

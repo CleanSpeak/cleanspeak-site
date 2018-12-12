@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://cleanspeak.com/sitemap.xml

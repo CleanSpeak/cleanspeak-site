@@ -19,7 +19,7 @@
                     <li class="blog-avatar-list-items">By {{ page.author }}</li>
                     <li class="blog-avatar-list-items">
                       {% for category in page.categories %}
-                      <a class="link" href="/blog/category/{{ category | downcase | urlencode }}/" rel="category tag">{{ category}}</a>{% if forloop.last != true %},{% endif %}
+                      <a class="link" href="/blog/category/{{ category | downcase | replace: ' ', '-' | urlencode }}/" rel="category tag">{{ category}}</a>{% if forloop.last != true %},{% endif %}
                       {% endfor %}
                     </li>
                     <li class="blog-avatar-list-items">{{ page.date | date: "%B %e, %Y" }}</li>
@@ -49,7 +49,7 @@
               <div class="blog-tags">
                 <div class="w-inline-block"><strong>Tags:</strong></div>
                 {% for tag in page.tags %}
-                <a class="link-tags" href="/blog/tag/{{ tag | downcase | urlencode }}/" rel="category tag">{{ tag }}</a>
+                <a class="link-tags" href="/blog/tag/{{ tag | downcase | replace: ' ', '-' | urlencode }}/" rel="category tag">{{ tag }}</a>
                 {% endfor %}
               </div>
             </div>
@@ -59,7 +59,7 @@
           <h4><strong>Tags</strong></h4>
           <div class="tagcloud">
             {% for tag in site.tags %}
-            <a href="/blog/tag/{{ tag[0] | downcase | urlencode }}/" class="tag-cloud-link tag-link-44 tag-link-position-1" aria-label="{{ tag[0] }}">{{ tag[0] }}</a>
+            <a href="/blog/tag/{{ tag[0] | downcase | replace: ' ', '-' | urlencode }}/" class="tag-cloud-link tag-link-44 tag-link-position-1" aria-label="{{ tag[0] }}">{{ tag[0] }}</a>
             {% endfor %}
           </div>
         </div>

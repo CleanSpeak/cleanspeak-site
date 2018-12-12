@@ -21,10 +21,10 @@ module Jekyll
       (1..pages).each do |num_page|
         # Change the pagination path so this works
         old_paginate_path = site.config["paginate_path"]
-        site.config["paginate_path"] = "/blog/#{type}/#{posts[0].downcase}/page/:num/"
+        site.config["paginate_path"] = "/blog/#{type}/#{posts[0].downcase.gsub(/ /, "-")}/page/:num/"
 
         pager = Paginate::Pager.new(site, num_page, posts[1], pages)
-        path = "/blog/#{type}/#{posts[0].downcase}"
+        path = "/blog/#{type}/#{posts[0].downcase.gsub(/ /, "-")}"
         if num_page > 1
           path = path + "/page/#{num_page}"
         end
