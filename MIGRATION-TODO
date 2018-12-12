@@ -27,3 +27,5 @@ X Add redirect that strips the final slash off old blog post URLs
 X Fix blog category redirect
 
 - Update old certs with certbot after launch
+- Delete old Google+ brand accounts
+-
