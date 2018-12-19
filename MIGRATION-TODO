@@ -13,7 +13,7 @@ X Make sure WWW doesn't have any links to the brochure site and if it does, make
 X Add a nav link in WWW to both product websites
 X Move WWW code to accounts.inversoft.com in git
 X Stand up new server for WWW (vanilla) and CleanSpeak.com with PostgreSQL RDS (no more MySQL yay!)
-- Figure out if there is anything that needs to be setup for the server (like symlinks, Google CLI, Knife, Chef, Certs, init.d, etc)
+X Figure out if there is anything that needs to be setup for the server (like symlinks, Google CLI, Knife, Chef, Certs, init.d, etc)
 X Stand up login.fusionauth.io and copy the database from the current einstein
 
 TODO for launch (on new server)
@@ -26,6 +26,4 @@ X Setup redirect on https://inversoft.com (with certs)
 X Add redirect that strips the final slash off old blog post URLs
 X Fix blog category redirect
 
-- Update old certs with certbot after launch
-- Delete old Google+ brand accounts
--
+X Update old certs with certbot after launch

@@ -2,6 +2,11 @@
   <title>{{ page.title }} - {{ site.title }}</title>
   <meta name="description" content="{{ page.description }}"/>
   <meta name="viewport" content="initial-scale=1, width=device-width"/>
+  <meta name="twitter:card" content="summary">
+  <meta property="og:description" content="{{ page.description }}">
+  <meta property="og:image" content="{{ page.image | default: '/images/cleanspeak-share-image.png' }}">
+  <meta property="og:title" content="{{ page.title }}">
+
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400" >
   <link rel="stylesheet" href="{{ '/css/normalize-4.1.1.css' | relative_url }}"/>

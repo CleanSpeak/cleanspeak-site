@@ -3,12 +3,12 @@
   <meta charset="utf-8">
   <title>{{ page.title }}</title>
 
-  <meta name="description" content="{{ page.description }}">
-  <meta name="generator" content="Webflow">
-  <meta name="twitter:card" content="summary">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="generator" content="Webflow">
+  <meta name="description" content="{{ page.description }}">
+  <meta name="twitter:card" content="summary">
   <meta property="og:description" content="{{ page.description }}">
-  <meta property="og:image" content="{{ page.image }}">
+  <meta property="og:image" content="{{ page.image | default: '/images/cleanspeak-share-image.png' }}">
   <meta property="og:title" content="{{ page.title }}">
 
   <meta name="google-site-verification" content="Epn5XWHL4473Q6HyCltu81l6OinGImAyfg0B3CKZpTg" />
