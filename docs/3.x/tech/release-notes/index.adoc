@@ -11,6 +11,12 @@ description: Release notes for each version of CleanSpeak
 Hide Stuff here
 ////
 
+== Version 3.22.1
+_Pending Release_
+
+=== Fixed
+* Click event bindings were broken for some blacklist entry revert buttons. (Broken in 3.17.0 during the UI update)
+
 == Version 3.22.0
 _Released Tuesday October 23rd, 2018_
 
