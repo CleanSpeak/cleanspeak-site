@@ -8,11 +8,16 @@ description: Release notes for each version of CleanSpeak
 
 ////
 
+== In Development
+
+=== New
+* Artificial intelligence assisted filtering of content.
+
 Hide Stuff here
 ////
 
 == Version 3.22.1
-_Pending Release_
+_Released Friday December 28th, 2018_
 
 === Fixed
 * Click event bindings were broken for some blacklist entry revert buttons. (Broken in 3.17.0 during the UI update)
