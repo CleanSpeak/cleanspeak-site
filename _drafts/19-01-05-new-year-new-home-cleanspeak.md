@@ -1,6 +1,6 @@
 ---
 layout: blog-post
-title: New Year, New Home: CleanSpeak.com!
+title: "New Year, New Home: CleanSpeak.com!"
 author: Bryan Giese
 author_image: "/images/blog/BugfrogMoab.jpeg"
 excerpt_separator: "<!--more-->"
@@ -12,6 +12,8 @@ tags:
 - CleanSpeak
 image: /images/blog/welcome-to-cleanspeak-2019-2.jpg
 ---
+<p><img class="alignnone size-full" title="Kids Online Safety" src="/images/blog/welcome-to-cleanspeak-2019-2.jpg" alt="CleanSpeak New URL" width="670" ></p>
+
 Since 2007 CleanSpeak has been the best profanity filter & moderation platform trusted by companies like Comcast, Ubisoft, YouNow, Fiverr and many more. All this time you’ve been able to find us at Inversoft.com, our parent company whose talented developers build both CleanSpeak and [FusionAuth, a free web-scale authentication and user identity management platform](https://fusionauth.io 'Fusionauth Home'). As of 2019, that’s changed. We now stand proudly at our own URL - [**CleanSpeak.com!**](https://cleanspeak.com "CleanSpeak Home") Why the change?
 <!--more-->
 
@@ -47,4 +49,4 @@ A customer support representative gets frustrated with an angry customer and edi
 
 For over a decade CleanSpeak has been protecting startups to Fortune 500 companies against profanity, racial slurs, hate speech, pornography, violence, trolls, bullies and much more.  Headquartered in Denver, Colorado, we serve a wide range of industries including gaming, financial services, healthcare, education, entertainment and consumer goods. CleanSpeak is designed to be flexible and powerful, protecting your brand without getting in the way of your business goals. Find out more about CleanSpeak and sign up for a free trial today.
 
-<a href="../try-cleanspeak" class="orange-button-material big _1 w-button">14 Day Free Trial</a>
+<a href="https://cleanspeak.com/try-cleanspeak" class="orange-button-material big _1 w-button">14 Day Free Trial</a>
