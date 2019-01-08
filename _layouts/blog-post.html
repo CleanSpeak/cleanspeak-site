@@ -19,7 +19,7 @@
                     <li class="blog-avatar-list-items">By {{ page.author }}</li>
                     <li class="blog-avatar-list-items">
                       {% for category in page.categories %}
-                      <a class="link" href="/blog/category/{{ category | downcase | replace: ' ', '-' | urlencode }}/" rel="category tag">{{ category}}</a>{% if forloop.last != true %},{% endif %}
+                      <a class="link" href="/blog/category/{{ category | downcase | replace: ' ', '-' | urlencode }}/" rel="category tag">{{ category }}</a>{% if forloop.last != true %},{% endif %}
                       {% endfor %}
                     </li>
                     <li class="blog-avatar-list-items">{{ page.date | date: "%B %e, %Y" }}</li>
@@ -40,6 +40,9 @@
               </div>
             </div>
             <br/>
+            {% if page.image %}
+              <p><img class="alignnone size-full" title="{{ page.title }}" src="/images/{{ page.image }}" alt="{{ page.title }}"></p>
+            {% endif %}
             {% if page.markdown == 1 %}
               {{ content | markdownify }}
             {% else %}
