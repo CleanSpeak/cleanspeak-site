@@ -12,12 +12,12 @@ tags:
 - CleanSpeak
 image: blog/welcome-to-cleanspeak-2019-2.jpg
 ---
-Since 2007 CleanSpeak has been the best profanity filter & moderation platform trusted by companies like Comcast, Ubisoft, YouNow, Fiverr and many more. All this time you’ve been able to find us at Inversoft.com, our parent company whose talented developers build both CleanSpeak and [FusionAuth, a free web-scale authentication and user identity management platform](https://fusionauth.io 'Fusionauth Home'). As of 2019, that’s changed. We now stand proudly at our own URL - [**CleanSpeak.com!**](https://cleanspeak.com "CleanSpeak Home") Why the change?
+Since 2007 CleanSpeak has been the best profanity filter & moderation platform trusted by companies like Comcast, Ubisoft, YouNow, Fiverr and many more. All this time you’ve been able to find us at Inversoft.com, our parent company whose talented developers build both CleanSpeak and [FusionAuth, a free web-scale authentication and user identity management platform](https://fusionauth.io 'Fusionauth Home'). As of 2019, we stand proudly at our own URL - [**CleanSpeak.com!**](https://cleanspeak.com "CleanSpeak Home") Why the change?
 <!--more-->
 
 ## What Happened?
 
-Was there some sort of corporate restructuring? A vicious IP battle? A venture-capitalist backed stockholder overthrow? No, sorry, nothing that dramatic—we just wanted to simplify things. It doesn’t make sense to tell people who are interested in CleanSpeak to go to the Inversoft site, so we won’t anymore. Now when you need the best profanity filtering & user moderation platform in the known universe, you can come straight here: [CleanSpeak.com](https://cleanspeak.com "CleanSpeak Home").
+Was there some sort of corporate restructuring? A vicious IP battle? A venture-capitalist backed stockholder overthrow? No, sorry, nothing that dramatic—we just wanted to simplify things.  It didn’t make sense to tell people who were interested in CleanSpeak to go to the Inversoft site, so we won’t anymore. Nothing else has changed–we have the same talented developers, same office, and even the same coffee maker. So from now on when you need the best profanity filtering & user moderation platform in the known universe, you can come straight here: CleanSpeak.com. Now when you need the best profanity filtering & user moderation platform in the known universe, come straight here: [CleanSpeak.com](https://cleanspeak.com "CleanSpeak Home").
 
 ## Do Need A Profanity Filter?
 
@@ -29,15 +29,15 @@ In addition, we can filter and moderate input most companies never consider a ri
 
 ### Profanity Delivered - Papa John's
 
-{% include _image.html src="/images/pizza-box-full-shadowed.png" alt="Papa John's case study" class="float-left mr-md-4" figure=false %}
+{% include _image.html src="/images/blog/pizza-box-full-shadowed-240.jpg" alt="Papa John's case study" class="float-left img-thumbnail " style="width:200px;margin-right:10px;"  figure=false %}
 
-An employee's mistake helped Papa John's deliver hate speech on a customer’s receipt. Again. As soon as it hit social media it became a publicity nightmare. Now they use CleanSpeak to protect their internal system from profanity and hate speech and have dramatically reduced their issues and risk.
+An employee's mistake unintentionally allowed Papa John's to deliver offensive remarks on a customer’s receipt. Again. As soon as it hit social media it became a publicity nightmare. Now they use CleanSpeak to protect their internal system from offensive content and have dramatically reduced their issues and risk.
 
-[Read the Papa John's case study]( https://cleanspeak.com/resources/papa-john-case-study.pdf "Read the case study")
+[Read the Papa John's case study]( https://cleanspeak.com/resources/papa-john-case-study.pdf "Read the case study")  
 
 ### Billing Statement Insults - Massive Media Co.
 
-{% include _image.html src="/images/media-bill-full-shadowed.png" alt="Massive Media Company case study" class="float-right mr-md-4" figure=false %}
+{% include _image.html src="/images/blog/media-bill-shadowed-240.jpg" alt="Massive Media Company case study" class="float-left" style="width:200px;margin-right:10px;" figure=false %}
 
 A customer support representative gets frustrated with an angry customer and edits their account. Read how insults in a billing statement at a well-known media conglomerate cost millions to recover from the bad PR and lawsuits. Now they save millions using CleanSpeak's enterprise-scale filtering and moderation and the risk of frustrated employee input is eliminated.
 
