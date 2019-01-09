@@ -43,6 +43,9 @@
               </div>
             </div>
             <br/>
+            {% if post.image %}
+              <p><img class="alignnone size-full" title="{{ post.title }}" src="/images/{{ post.image }}" alt="{{ post.title }}"></p>
+            {% endif %}
             {{ post.excerpt }}
             <a role="button" href="{{ post.url }}">Continue reading <span class="meta-nav">&rarr;</span></a>
             <div class="blog-divider">
