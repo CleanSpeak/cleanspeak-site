@@ -35,7 +35,7 @@
     <orderEntry type="library" scope="PROVIDED" name="minima (v2.5.0, rbenv: 2.3.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="multi_json (v1.13.1, rbenv: 2.3.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.8.4, rbenv: 2.3.1) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="pathutil (v0.16.1, rbenv: 2.3.1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="pathutil (v0.16.2, rbenv: 2.3.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="public_suffix (v3.0.3, rbenv: 2.3.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="pygments.rb (v1.2.1, rbenv: 2.3.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rb-fsevent (v0.10.3, rbenv: 2.3.1) [gem]" level="application" />
@@ -43,7 +43,7 @@
     <orderEntry type="library" scope="PROVIDED" name="rouge (v3.2.1, rbenv: 2.3.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ruby_dep (v1.5.0, rbenv: 2.3.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="safe_yaml (v1.0.4, rbenv: 2.3.1) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="sass (v3.5.7, rbenv: 2.3.1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="sass (v3.6.0, rbenv: 2.3.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sass-listen (v4.0.0, rbenv: 2.3.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="thread_safe (v0.3.6, rbenv: 2.3.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tilt (v2.0.8, rbenv: 2.3.1) [gem]" level="application" />
