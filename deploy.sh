@@ -9,9 +9,14 @@ fi
 
 set -e
 
+export GEM_HOME=/var/git/cleanspeak-site/.gems
+
 cd /var/git/cleanspeak-site
 
 git pull
+
+# Update to latest
+bundle update
 
 # Prevent dirty builds
 bundle exec jekyll clean
