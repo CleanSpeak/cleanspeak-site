@@ -8,13 +8,19 @@ description: Release notes for each version of CleanSpeak
 
 ////
 
-== In Development
-
-=== New
-* Artificial intelligence assisted filtering of content.
 
 Hide Stuff here
 ////
+
+== 3.23.0
+_Pending Release_
+
+=== New
+* Artificial intelligence assisted false positive detection
+
+=== Fixed
+* Missing message in moderation could cause a page not to render properly in some cases
+* Calling an api with the wrong method now returns 405 instead of 501
 
 == Version 3.22.1
 _Released Friday December 28th, 2018_
