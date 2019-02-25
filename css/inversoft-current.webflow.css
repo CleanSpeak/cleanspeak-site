@@ -750,9 +750,11 @@ blockquote {
 }
 
 .social-icons {
-  display: block;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  display: flex;
+}
+
+.social-icons > .w-inline-block {
+  margin-right: 5px;
 }
 
 .blog-tags {
