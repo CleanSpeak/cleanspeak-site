@@ -12,7 +12,7 @@ description: Release notes for each version of CleanSpeak
 Hide Stuff here
 ////
 
-== 3.23.0
+== Version 3.23.0
 _Pending Release_
 
 === New
@@ -20,6 +20,13 @@ _Pending Release_
 
 === Fixed
 * Missing message in moderation could cause a page not to render properly in some cases
+
+== Version 3.22.2
+_Pending Release_
+
+=== Fixed
+* Tweaked an internal filter to prevent matches from being all digits if they contain replacements. If you want a match to contain only digits
+then it must have an explicit variation or filter entry.
 * Calling an api with the wrong method now returns 405 instead of 501
 
 == Version 3.22.1
