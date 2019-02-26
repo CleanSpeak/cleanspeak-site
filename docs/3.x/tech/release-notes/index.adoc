@@ -22,11 +22,11 @@ _Pending Release_
 * Missing message in moderation could cause a page not to render properly in some cases
 
 == Version 3.22.2
-_Pending Release_
+_Released Tuesday February 26th, 2019_
 
 === Fixed
 * Tweaked an internal filter to prevent matches from being all digits if they contain replacements. If you want a match to contain only digits
-then it must have an explicit variation or filter entry.
+then it must have an explicit variation or filter entry with that exact text.
 * Calling an api with the wrong method now returns 405 instead of 501
 
 == Version 3.22.1
