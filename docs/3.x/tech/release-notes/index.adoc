@@ -12,7 +12,7 @@ description: Release notes for each version of CleanSpeak
 Hide Stuff here
 ////
 
-== Version 3.23.0
+== Version 3.24.0 (Tech Preview)
 _Pending Release_
 
 === New
@@ -20,6 +20,16 @@ _Pending Release_
 
 === Fixed
 * Missing message in moderation could cause a page not to render properly in some cases
+
+== Version 3.23.0
+_Pending Release_
+
+=== New
+* Added a hard whitelist for the blacklist. Anything that matches a whitelist entry will never get matched by the blacklist.
+* Added the ability to bulk duplicate blacklist entries into another locale for per locale entry settings.
+
+=== Fixed
+* Fixed replacement behavior when only meta matches exist
 
 == Version 3.22.2
 _Released Tuesday February 26th, 2019_
