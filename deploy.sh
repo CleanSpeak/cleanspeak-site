@@ -16,7 +16,7 @@ cd /var/git/cleanspeak-site
 git pull
 
 # Update to latest
-bundle update
+bundle install
 
 # Prevent dirty builds
 bundle exec jekyll clean
