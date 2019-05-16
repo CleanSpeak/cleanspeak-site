@@ -80,6 +80,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  asciidoctor (= 1.5.8)
   haml (= 4.0.7)
   jekyll (= 3.8.5)
   jekyll-asciidoc (= 2.1.1)
@@ -93,4 +94,4 @@ DEPENDENCIES
   tzinfo-data
 
 BUNDLED WITH
-   1.16.2
+   2.0.1
