@@ -12,11 +12,11 @@ The CleanSpeak APIs are also synchronous. When you call an API, CleanSpeak will 
 
 There are 7 primary groups of APIs:
 
-* link:content[Content] - These APIs are the primary integration point where you will send content to be filtered, analyzed and moderated.
-* link:blacklist[Blacklist] - These APIs allow you to modify the blacklist filter behavior.
-* link:applications[Applications] - These are system level APIs that allows you to manage filter rules for content different sources.
-* link:users[Users] - These APIs are the secondary integration point where you will manage your end-users that are generating content.
 * link:admins-moderators[Admins/Moderators] - These are system level APIs that allows you to manage CleanSpeak Moderators and Administrators.
-* link:system[System] - These are system level APIs that allows you to backup and restore CleanSpeak data.
-* link:whitelist[Whitelist] - These APIs allow you to download the whitelist for use in auto-correct or suggestion features of your application.
+* link:applications[Applications] - These are system level APIs that allows you to manage filter rules for content different sources.
+* link:blacklist[Blacklist] - These APIs allow you to modify the blacklist filter behavior.
+* link:content[Content] - These APIs are the primary integration point where you will send content to be filtered, analyzed and moderated.
+* link:kids-chat[Kids Chat] - These APIs allow you to download the whitelist for use in auto-correct or suggestion features of your application.
+* link:users[Users] - These APIs are the secondary integration point where you will manage your end-users that are generating content.
 * link:status[Status] - This API provides you status information about CleanSpeak.
+* link:system[System] - These are system level APIs that allows you to backup and restore CleanSpeak data.

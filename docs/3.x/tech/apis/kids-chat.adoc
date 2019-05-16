@@ -1,10 +1,15 @@
 ---
 layout: doc
-title: Whitelist APIs
+title: Kids Chat APIs
 description: Whitelist APIs that allow your application to access the whitelist allowed words which can be used for suggestion widgets
 ---
 
 == Overview
+
+[NOTE.info]
+--
+The whitelist is known as the kids chat on the frontend. In this document it will still be referred to as the whitelist.
+--
 
 These APIs allow you to query and modify the whitelist filter state.
 

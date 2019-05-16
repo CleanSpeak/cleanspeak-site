@@ -22,7 +22,7 @@ _Pending Release_
 * Missing message in moderation could cause a page not to render properly in some cases
 
 == Version 3.23.0
-_Pending Release_
+_Released Wednesday May 15th, 2019_
 
 === New
 * Added a hard whitelist for the blacklist. Anything that matches a whitelist entry will never get matched by the blacklist.

@@ -53,6 +53,14 @@ Phrases
 * <<Update a Phrase>>
 * <<Delete a Phrase>>
 
+Whitelist
+
+* <<Retrieve a Whitelist Entry>>
+* <<Retrieve all Whitelist Entries>>
+* <<Create a Whitelist Entry>>
+* <<Update a Whitelist Entry>>
+* <<Delete a Whitelist Entry>>
+
 == Retrieve a Dictionary Entry
 
 === Retrieve by Id
@@ -729,6 +737,116 @@ Available since 3.18.0
 |===
 |[field]#id# [type]#[Integer]# [required]#required#
 |The Id of the phrase to delete.
+|===
+
+=== Response
+
+include::docs/3.x/tech/apis/_standard-delete-response-codes.adoc[]
+
+== Retrieve a Whitelist Entry
+
+[NOTE.since]
+====
+Available since 3.23.0
+====
+
+=== Request
+
+[.endpoint]
+.URI
+--
+[method]#GET# [uri]#/filter/blacklist/whitelist/`\{id\}`#
+--
+
+[cols="3a,7a"]
+[.api]
+|===
+|[field]#id# [type]#[Integer]# [required]#required#
+|The Id of the entry to retrieve.
+|===
+
+=== Response
+
+include::docs/3.x/tech/apis/_standard-get-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/whitelist/_whitelist-entry-single-response.adoc[]
+
+== Retrieve all Whitelist Entries
+
+=== Request
+
+[.endpoint]
+.URI
+--
+[method]#GET# [uri]#/filter/blacklist/whitelist/#
+--
+
+=== Response
+
+:never_missing:
+include::docs/3.x/tech/apis/_standard-get-response-codes.adoc[]
+:never_missing!:
+
+include::docs/3.x/tech/apis/whitelist/_whitelist-entry-multiple-response.adoc[]
+
+== Create a Whitelist Entry
+
+=== Request
+
+[.endpoint]
+.URI
+--
+[method]#POST# [uri]#/filter/blacklist/whitelist/#
+--
+
+include::docs/3.x/tech/apis/whitelist/_whitelist-entry-postput-request.adoc[]
+
+=== Response
+
+include::docs/3.x/tech/apis/_standard-post-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/whitelist/_whitelist-entry-single-response.adoc[]
+
+== Update a Whitelist Entry
+
+=== Request
+
+[.endpoint]
+.URI
+--
+[method]#PUT# [uri]#/filter/blacklist/whitelist/`\{id\}`#
+--
+
+[cols="3a,7a"]
+[.api]
+|===
+|[field]#id# [type]#[Integer]# [required]#required#
+|The Id of the entry to update.
+|===
+
+include::docs/3.x/tech/apis/whitelist/_whitelist-entry-postput-request.adoc[]
+
+=== Response
+
+include::docs/3.x/tech/apis/_standard-put-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/whitelist/_whitelist-entry-single-response.adoc[]
+
+== Delete a Whitelist Entry
+
+=== Request
+
+[.endpoint]
+.URI
+--
+[method]#DELETE# [uri]#/filter/blacklist/whitelist/`\{id\}`#
+--
+
+[cols="3a,7a"]
+[.api]
+|===
+|[field]#id# [type]#[Integer]# [required]#required#
+|The Id of the entry to delete.
 |===
 
 === Response

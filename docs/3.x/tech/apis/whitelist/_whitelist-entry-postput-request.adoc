@@ -1,0 +1,13 @@
+[cols="3a,7a"]
+[.api]
+.Response Body
+|===
+|[field]#entry.pattern# [type]#[String]#
+|A regular expression that defines text that should never contain blacklist matches.
+|===
+
+[source,json]
+.Example Response JSON
+----
+include::../../src/json/blacklist/whitelist/request.json[]
+----
