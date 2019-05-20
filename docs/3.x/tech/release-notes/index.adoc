@@ -24,6 +24,8 @@ _Pending Release_
 == Version 3.23.0
 _Released Wednesday May 15th, 2019_
 
+include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
+
 === New
 * Added a hard whitelist for the blacklist. Anything that matches a whitelist entry will never get matched by the blacklist.
 * Added the ability to bulk duplicate blacklist entries into another locale for per locale entry settings.
