@@ -21,6 +21,15 @@ _Pending Release_
 === Fixed
 * Missing message in moderation could cause a page not to render properly in some cases
 
+== Version 3.23.1
+_Pending Release_
+
+include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
+
+=== Fixed
+* Fixed edge case for whitelist
+* Internal security improvements
+
 == Version 3.23.0
 _Released Wednesday May 15th, 2019_
 
