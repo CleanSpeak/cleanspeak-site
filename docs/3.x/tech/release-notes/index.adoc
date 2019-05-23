@@ -28,6 +28,7 @@ include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 
 === Fixed
 * Fixed edge case for whitelist
+* Updated jackson to fix link:https://www.cvedetails.com/cve/CVE-2019-12086/[CVE-2019-12086]
 * Internal security improvements
 
 == Version 3.23.0
