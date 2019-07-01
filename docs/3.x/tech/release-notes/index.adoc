@@ -12,7 +12,7 @@ description: Release notes for each version of CleanSpeak
 Hide Stuff here
 ////
 
-== Version 3.24.0 (Tech Preview)
+== Future Version (Tech Preview)
 _Pending Release_
 
 === New
@@ -21,10 +21,26 @@ _Pending Release_
 === Fixed
 * Missing message in moderation could cause a page not to render properly in some cases
 
+== Version 3.23.2
+_Pending Release_
+
+include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
+
+=== New
+* OpenID Connect authentication method - Allows for easy login to the majority of external identity providers.
+
+=== Removed
+* Google Authentication - Use OpenID Connect instead
+* SAML2 - Use OpenID Connect directly OR use OpenID Connect to link:https://fusionauth.io[FusionAuth] which provides SAML
+* Passport - Use OpenID Connect instead (and consider upgrading to link:https://fusionauth.io[FusionAuth])
+
 == Version 3.23.1
 _Pending Release_
 
 include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
+
+=== New
+* Upgraded maintenance mode for a better workflow and better edge case handling
 
 === Fixed
 * Fixed edge case for whitelist
