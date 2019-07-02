@@ -35,7 +35,7 @@ include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 * Passport - Use OpenID Connect instead (and consider upgrading to link:https://fusionauth.io[FusionAuth])
 
 == Version 3.23.1
-_Pending Release_
+_Released Monday July 1st, 2019_
 
 include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 
