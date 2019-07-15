@@ -21,8 +21,11 @@ _Pending Release_
 === Fixed
 * Missing message in moderation could cause a page not to render properly in some cases
 
-== Version 3.23.2
-_Pending Release_
+== Version 3.24.0
+_Released Monday, July 15th, 2019_
+
+:warning_message: This migration erases any existing external authentication configuration. It is highly recommended to make a database backup in case you need to roll back.
+include::docs/3.x/tech/release-notes/__general-migration-warning.adoc[]
 
 include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 
@@ -31,7 +34,7 @@ include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 
 === Removed
 * Google Authentication - Use OpenID Connect instead
-* SAML2 - Use OpenID Connect directly OR use OpenID Connect to link:https://fusionauth.io[FusionAuth] which provides SAML
+* SAML2 - Use OpenID Connect instead OR use OpenID Connect to link:https://fusionauth.io[FusionAuth] which provides SAML
 * Passport - Use OpenID Connect instead (and consider upgrading to link:https://fusionauth.io[FusionAuth])
 
 == Version 3.23.1
