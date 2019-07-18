@@ -18,7 +18,11 @@ _Pending Release_
 === New
 * Artificial intelligence assisted false positive detection
 
-=== Fixed
+== Version 3.24.1
+_Pending Release_
+
+== Fixed
+* Fixed setenv.sh so that commented lines are properly ignored in the cleanspeak.properties file
 * Missing message in moderation could cause a page not to render properly in some cases
 
 == Version 3.24.0
