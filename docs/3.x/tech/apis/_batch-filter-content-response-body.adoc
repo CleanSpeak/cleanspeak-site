@@ -70,7 +70,7 @@ This field will only be present on a `unicode` type match.
 Consider the following example content.
 ```
 {
-  "content": "[url=https://www.inversoft.com]Hello[/url]",
+  "content": "[url=https://cleanspeak.com]Hello[/url]",
   "contentType": "bbcode"
 }
 ```

@@ -27,7 +27,7 @@ This table contains all of the configuration options available in the `cleanspea
 .Properties
 |===
 |[field]#license.id# [type]#[String]#
-|Your License ID. You can find your License ID by logging into your account at https://www.inversoft.com/account/.
+|Your License ID. You can find your License ID by logging into your account at https://account.inversoft.com/account/.
 
 |[field]#database.url# [type]#[String]#
 |A JDBC URL for your database.

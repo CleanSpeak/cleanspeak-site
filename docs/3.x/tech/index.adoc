@@ -14,12 +14,12 @@ icon:graduation-cap[] link:tutorials/[Tutorials]
 
 icon:newspaper-o[] link:release-notes/[Release Notes]
 
-icon:book[] https://www.inversoft.com/docs/user-guides/cleanspeak-3.x.pdf[User Guide [PDF\]] ::
+icon:book[] https://cleanspeak.com/docs/user-guides/cleanspeak-3.x.pdf[User Guide [PDF\]] ::
 
 Older Versions
-** https://www.inversoft.com/docs/old-versions/cleanspeak-2.3.pdf[2.3]
-** https://www.inversoft.com/docs/old-versions/cleanspeak-2.2.pdf[2.2]
-** https://www.inversoft.com/docs/old-versions/cleanspeak-2.1.pdf[2.1]
-** https://www.inversoft.com/docs/old-versions/cleanspeak-2.0.pdf[2.0]
-** https://www.inversoft.com/docs/old-versions/cleanspeak-1.0.pdf[1.0]
+** https://cleanspeak.com/docs/old-versions/cleanspeak-2.3.pdf[2.3]
+** https://cleanspeak.com/docs/old-versions/cleanspeak-2.2.pdf[2.2]
+** https://cleanspeak.com/docs/old-versions/cleanspeak-2.1.pdf[2.1]
+** https://cleanspeak.com/docs/old-versions/cleanspeak-2.0.pdf[2.0]
+** https://cleanspeak.com/docs/old-versions/cleanspeak-1.0.pdf[1.0]
 

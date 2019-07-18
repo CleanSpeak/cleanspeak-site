@@ -6,7 +6,7 @@ description: Learn how to upgrade and patch CleanSpeak using our bundles and mig
 
 == CleanSpeak Updates and Patches
 
-To download or check on the latest updates, please visit your https://www.inversoft.com/account/[Inversoft Account] and find the Download link for your license.
+To download or check on the latest updates, please visit your https://account.inversoft.com/account/[Inversoft Account] and find the Download link for your license.
 
 [WARNING]
 ====
@@ -59,7 +59,7 @@ In most cases, you will not need to upgrade you database manually using the info
 You should always backup your database prior to using Maintenance Mode.
 ====
 
-Depending on your current version and the new version you will be updating to you might need to execute one or more SQL scripts to update your database. These scripts are located in the migrations folder inside the Database Schema ZIP file. This file can be downloaded by logging into your https://www.inversoft.com/account/[Inversoft Account] and find the Download link for your license, there you will find a package under Database Downloads.
+Depending on your current version and the new version you will be updating to you might need to execute one or more SQL scripts to update your database. These scripts are located in the migrations folder inside the Database Schema ZIP file. This file can be downloaded by logging into your https://account.inversoft.com/account/[Inversoft Account] and find the Download link for your license, there you will find a package under Database Downloads.
 
 [WARNING]
 ====
@@ -105,4 +105,7 @@ cleanspeak-database-schema
       |- 3.17.2.sql
       |- 3.18.0.sql
       |- 3.20.0.sql
+      |- 3.23.0.sql
+      |- 3.23.1.sql
+      |- 3.24.0.sql
 ----

@@ -10,7 +10,7 @@ This guide will assist you with installing a CleanSpeak Search Engine on your ow
 
 In most circumstances you will not need to install CleanSpeak Search Engine on a separate server and can skip this section.
 
-Log into the Inversoft website at https://www.inversoft.com/account/ and navigate to the Licenses section and click on Download CleanSpeak. You will need to download one of the CleanSpeak Search Engine package that matches the operating system you will be installing CleanSpeak on.
+Log into the Inversoft website at https://account.inversoft.com/account/ and navigate to the Licenses section and click on Download CleanSpeak. You will need to download one of the CleanSpeak Search Engine package that matches the operating system you will be installing CleanSpeak on.
 
 == Red Hat
 

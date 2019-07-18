@@ -8,7 +8,7 @@ description: Install the CleanSpeak WebService bundle to use the CleanSpeak filt
 
 This guide will assist you with installing CleanSpeak WebService on your own server (Linux, Mac OS, or Windows) and also works equally well for development environments.
 
-Log into the Inversoft website at https://www.inversoft.com/account/ and navigate to the Licenses section and click on Download CleanSpeak. You will need to download one of the CleanSpeak WebService package that matches the operating system you will be installing CleanSpeak on.
+Log into the Inversoft website at https://account.inversoft.com/account/ and navigate to the Licenses section and click on Download CleanSpeak. You will need to download one of the CleanSpeak WebService package that matches the operating system you will be installing CleanSpeak on.
 
 == Red Hat
 
@@ -121,7 +121,7 @@ C:\> net start CleanSpeakWebService
 
 You will access CleanSpeak WebService's Maintenance Mode setup via the browser. If you installed CleanSpeak WebService on your local machine, you'll access this interface by opening http://localhost:8011 in your browser. If CleanSpeak is running on a remote server, change the server name in the URL to match your server's name.
 
-The first step of Maintenance Mode will prompt you to enter your license Id. You can retrieve your license Id from the Inversoft website by logging into your account here: https://www.inversoft.com/account/
+The first step of Maintenance Mode will prompt you to enter your license Id. You can retrieve your license Id from the Inversoft website by logging into your account here: https://account.inversoft.com/account/
 
 You should see a screen that looks like this:
 
@@ -197,7 +197,7 @@ Mac OS X or Linux::
 
 For more information about the other configuration options found in this file, see the link:../reference/configuration[Configuration Reference] section.
 
-Find the license Id field at the top of this configuration file and enter your license Id. You can find your License Id by logging into your account at https://www.inversoft.com/account/.
+Find the license Id field at the top of this configuration file and enter your license Id. You can find your License Id by logging into your account at https://account.inversoft.com/account/.
 
 [source,ini]
 .License Id

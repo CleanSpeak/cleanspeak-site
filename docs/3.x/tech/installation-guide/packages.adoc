@@ -6,7 +6,7 @@ description: Determine which of the CleanSpeak packages you need to install
 
 == Packages
 
-When you've navigated to the CleanSpeak Downloads page after logging into your Inversoft account https://www.inversoft.com/account you'll be presented with several packages to download. Review the following information to understand which packages you need to download. If your target platform is Linux, using the RPM or DEB packages is preferred and provides the simples installation process. Only ZIP files are provided for Windows and Mac OS X.
+When you've navigated to the CleanSpeak Downloads page after logging into your Inversoft account https://account.inversoft.com/account you'll be presented with several packages to download. Review the following information to understand which packages you need to download. If your target platform is Linux, using the RPM or DEB packages is preferred and provides the simples installation process. Only ZIP files are provided for Windows and Mac OS X.
 
 === Database Downloads
 

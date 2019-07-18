@@ -21,7 +21,7 @@ An important field to pay attention to here is the store content toggle. If you 
 of all content flowing through CleanSpeak using this application at a increased cost of latency and storage. It would be
 a good idea to test with this enabled before using in production.
 
-You should read through the https://www.inversoft.com/docs/user-guides/cleanspeak-3.x.pdf[User Guide section on Applications]
+You should read through the https://cleanspeak.com/docs/user-guides/cleanspeak-3.x.pdf[User Guide section on Applications]
 to learn about all of the configuration options available to you.
 
 [NOTE]
