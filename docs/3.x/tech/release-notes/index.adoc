@@ -21,7 +21,7 @@ _Contact Us for early access_
 [role=release-note]
 
 == Version 3.24.1
-_Pending Release_
+_Released Monday, July 22nd, 2019_
 
 === Fixed
 * A missing translated message in the Moderation queue could cause a page not to render properly in some cases. If you encounter this symptom contact support and we can assist you with a work around.
