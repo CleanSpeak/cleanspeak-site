@@ -28,11 +28,11 @@ _Released Monday, July 22nd, 2019_
 * When using a `cleanspeak.properties` file without the `cleanspeak-app.search-servers` property defined the value defined during the Search Engine configuration step of Maintenance Mode may not be persisted. The symptom may be noticed because the URL used to connect to the search engine will be defaulted to `http://localhost:8021` and not the value displayed to you in maintenance mode. If you encounter this issue, it can be worked around by adding `cleanspeak-app.search-servers=` to the CleanSpeak configuration file. Once this value has been added the configuration step in the UI will work as expected.
 
 === Enhancement
-* The CleanSpeak Management Interface and CleanSpeak Webservice Linux processes will create a directory in the `/tmp` filesystem during startup. This directory is expected to exist for the duration of the service process. In some environments this directory may deleted while the service process is still running. If this occurs and you attempt an action that requires this temporary directory to exist such as Import list or Generate Weekly Report an exception will occur. Additional safe guards have been put into place to protect against the possibility of this directory being removed during the process runtime.
+* The CleanSpeak Management Interface and CleanSpeak Webservice Linux processes will create a named directory in the `/tmp` filesystem during startup. This directory is expected to exist for the duration of the service process. In some environments this directory may deleted while the service process is still running. If this occurs and you attempt an action that requires this temporary directory to exist such as Import list or Generate Weekly Report an exception will occur. Additional safe guards have been put into place to protect against the possibility of this directory being removed during the process runtime.
 
 === Internal
 * Enhance processing of the `cleanspeak.properties` during initial parsing to ignored lines that begin with a `#` indicating they have been commented out.
-* Removed custom `java.io.tmpdir` environment variable in linux init script.
+* Removed custom `java.io.tmpdir` environment variable in Linux init script. This change is related to the temporary directory enhancement described above.
 
 [role=release-note]
 
