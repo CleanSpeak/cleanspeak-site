@@ -20,6 +20,16 @@ _Contact Us for early access_
 
 [role=release-note]
 
+== Version 3.24.2
+_Pending Release_
+
+=== Enhancement
+* Silent mode startup. You can now startup CleanSpeak without ever hitting maintenance mode via environment variables.
+
+=== Fixed
+* Removed revert button on blacklist whitelist entries pattern property (It was redundant since it was the only property)
+* Fixed the UI for blacklist whitelist entries not showing the correct state.
+
 == Version 3.24.1
 _Released Monday, July 22nd, 2019_
 
