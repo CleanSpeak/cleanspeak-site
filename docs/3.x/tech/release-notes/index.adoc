@@ -21,10 +21,11 @@ _Contact Us for early access_
 [role=release-note]
 
 == Version 3.24.2
-_Pending Release_
+_Released Wednesday, August 7th, 2019_
 
 === Enhancement
-* Silent mode startup. You can now startup CleanSpeak without ever hitting maintenance mode via environment variables.
+* Silent mode startup. Added remaining required environment variables to allow silent mode to work. See link:/docs/3.x/tech/installation-guide/docker#silent-configuration[Docker installation guide#Silent Configuration]
+** Added `LICENSE_ID` and `CLEANSPEAK_MEMORY` environment variables for overriding `cleanspeak.properties` variables
 
 === Fixed
 * Removed revert button on blacklist whitelist entries pattern property (It was redundant since it was the only property)
