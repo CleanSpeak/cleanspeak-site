@@ -20,7 +20,7 @@ _Contact Us for early access_
 
 [role=release-note]
 
-== Version 3.24.2
+== Version 3.24.3
 _Released Wednesday, August 7th, 2019_
 
 === Enhancement
