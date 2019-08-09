@@ -20,6 +20,24 @@ _Contact Us for early access_
 
 [role=release-note]
 
+== Version 3.24.5
+_Pending Release_
+
+include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
+
+=== Enhancement
+* Application conditional reloading. Application cache will now only reload if a change has been made to reduce load on the database for situations where lots of applications may be desired. (Affects webservice)
+* Application UI conditional paging. If you have more than 25 applications, paging controls will appear and restrict the number of applications visible at any given time. (Configurable)
+
+== Version 3.24.4
+_Released Thursday, August 8th, 2019_
+
+=== Fixed
+* Fixed sight engine integration. The JSON returned from the API has changed since the first implementation
+
+=== Enhancement
+* Added partial nudity toggle to sight engine configuration in the System Settings. If enabled, the filter will be more strict about things like bikinis.
+
 == Version 3.24.3
 _Released Wednesday, August 7th, 2019_
 
