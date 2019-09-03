@@ -21,13 +21,13 @@ _Contact Us for early access_
 [role=release-note]
 
 == Version 3.24.6
-_Pending Release_
+_Released September 3rd, 2019_
 
 === Enhancements
 * Upgraded Tomcat to `8.5.43`
 
 === Fixed
-* Fixed the application preload issue in this version
+* The application cache would not preload the applications and would cause errors on the filter endpoint.
 * In rare conditions non blacklist entries would inherit the replace filter action.
 ** The entry must be non blacklist entry
 ** The match list must contain a blacklist entry match with mode replace
