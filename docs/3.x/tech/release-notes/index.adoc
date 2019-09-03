@@ -20,14 +20,36 @@ _Contact Us for early access_
 
 [role=release-note]
 
+== Version 3.24.6
+_Pending Release_
+
+=== Enhancements
+* Upgraded Tomcat to `8.5.43`
+
+=== Fixed
+* Fixed the application preload issue in this version
+* In rare conditions non blacklist entries would inherit the replace filter action.
+** The entry must be non blacklist entry
+** The match list must contain a blacklist entry match with mode replace
+** No match in the results can return anything higher than replace
+** The current match must be allow or author only with a user or content action enabled
+
 == Version 3.24.5
 _Released Wednesday, August 14th, 2019_
+
+[WARNING.general-warning]
+====
+*Please Read*
+
+If you upgraded to this version please upgrade. This version has a flaw in the application cache that was fixed in 3.24.6.
+====
 
 include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 
 === Enhancement
 * Application conditional reloading. Application cache will now only reload if a change has been made to reduce load on the database for situations where lots of applications may be desired. (Only affects webservice)
 * Application UI conditional paging. If you have more than 25 applications, paging controls will appear and restrict the number of applications visible at any given time. (Configurable)
+
 
 == Version 3.24.4
 _Released Thursday, August 8th, 2019_
