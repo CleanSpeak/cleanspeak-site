@@ -12,29 +12,33 @@ To configure OpenID Connect you need 3 things
 
 . Client ID
 . Client Secret (Sometimes empty/not required)
-. Issuer (99% of the time this is just the domain of the provider) Ex: http://demo.fusionauth.io is a valid issuer.
+. Issuer (99% of the time this is just the domain of the provider) Ex: http://login.example.com.
 
 === FusionAuth Example
 
-In the following example we will setup a FusionAuth OpenID Connect configuration. We need to give it a name and a tenant. Then click save.
+In the following example we will setup a FusionAuth OpenID Connect configuration. We need to give it a name and a tenant (if there is a tenant other than the default). Then click save.
 
 . First we need to create a FusionAuth application.
 +
-image::create-fusionauth-app.png[Create FusionAuth app, role=shadowed]
+image::fusionauth-app-create.png[Create FusionAuth app, role=shadowed]
 
-. You will need to immediately edit the application and set the redirect URL to your CleanSpeak URL with a path of `/oauth` for example: `https://demo-cleanspeak.inversoft.io/oauth`. You can also optionally set the logout URL to your CleanSpeak URL so that after a logout the users will be redirected back to the login page. You also will only need the authorization grant if you would like to lock down some of your security settings.
+. You will need to immediately edit the application
+.. Set the redirect URL to your CleanSpeak URL with a path of `/oauth` for example: `https://example-cleanspeak.inversoft.io/oauth`.
+.. Copy your client id and client secret for later
+.. (Optional) Set the logout URL to your CleanSpeak URL so that after a logout the users will be redirected back to the login page.
+.. (Optional) Remove the refresh token grant to lock down the security.
 +
-image::fusionauth-app-redirect-settings.png[FusionAuth app redirect settings, role=shadowed]
-
-. Next we can view the details of that app by clicking the green magnifying glass next to our application. We will need to copy the `Client Id` and `Client Secret` from the `OAuth configuration` section and the current domain of our FusionAuth instance.
-+
-image::fusionauth-app-details.png[FusionAuth app details, role=shadowed]
+image::fusionauth-app-settings.png[FusionAuth app redirect settings, role=shadowed]
 
 . Now we need to copy the values from the last step into the CleanSpeak configuration.
+.. Copy client id and client secret
+.. Set the issuer to the domain of your fusionauth domain. Ex: `https://local.fusionauth.io`
+.. Set the button text. Ex: `Login with FusionAuth`
+.. (Optional) Set the button image. Ex: `https://local.fusionauth.io/images/icon.png` (Hint: there is a fusionauth icon available at `/images/icon.png` on every instance of FusionAuth)
+.. (Optional) Set the logout url so that a user is logged out of FusionAuth globally. Ex: `https://local.fusionauth.io/oauth2/logout`
+.. Save
 +
 image::openid-settings.png[OpenID settings, role=shadowed]
-
-. You can also set the button text and image for the login button.
 +
 image::openid-login.png[OpenID login, role=shadowed]
 
@@ -68,5 +72,5 @@ image::azure-application-details.png[Azure application details, role=shadowed]
 .. Click save
 . You can now login with Azure
 +
-image::azure-login.gif[Azure login, role="shadowed force-rounded"]
+image::azure-login.gif[Azure login, role="box-shadowed force-rounded fit"]
 
