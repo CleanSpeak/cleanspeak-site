@@ -4,6 +4,11 @@ title: Logging in with Google
 description: Enable Google OAuth authentication for CleanSpeak
 ---
 
+[WARNING]
+====
+This is deprecated at version `3.24.0`. Use the link:configure-openid[OpenID Connect] workflow instead.
+====
+
 == Enabling Google OAuth
 
 In order to allow your admins and moderators to log into CleanSpeak with their Google accounts, you must first setup your Google account to enable Google OAuth and the People API. Here is the documentation provided by Google to setup these items:

@@ -1,0 +1,72 @@
+---
+layout: doc
+title: Configuring OpenID Connect
+description: Learn how to configure an OpenID Connect within CleanSpeak
+---
+
+== Configure OpenID Connect
+
+OpenID Connect is an extension that adds identity to OAuth2.
+
+To configure OpenID Connect you need 3 things
+
+. Client ID
+. Client Secret (Sometimes empty/not required)
+. Issuer (99% of the time this is just the domain of the provider) Ex: http://demo.fusionauth.io is a valid issuer.
+
+=== FusionAuth Example
+
+In the following example we will setup a FusionAuth OpenID Connect configuration. We need to give it a name and a tenant. Then click save.
+
+. First we need to create a FusionAuth application.
++
+image::create-fusionauth-app.png[Create FusionAuth app, role=shadowed]
+
+. You will need to immediately edit the application and set the redirect URL to your CleanSpeak URL with a path of `/oauth` for example: `https://demo-cleanspeak.inversoft.io/oauth`. You can also optionally set the logout URL to your CleanSpeak URL so that after a logout the users will be redirected back to the login page. You also will only need the authorization grant if you would like to lock down some of your security settings.
++
+image::fusionauth-app-redirect-settings.png[FusionAuth app redirect settings, role=shadowed]
+
+. Next we can view the details of that app by clicking the green magnifying glass next to our application. We will need to copy the `Client Id` and `Client Secret` from the `OAuth configuration` section and the current domain of our FusionAuth instance.
++
+image::fusionauth-app-details.png[FusionAuth app details, role=shadowed]
+
+. Now we need to copy the values from the last step into the CleanSpeak configuration.
++
+image::openid-settings.png[OpenID settings, role=shadowed]
+
+. You can also set the button text and image for the login button.
++
+image::openid-login.png[OpenID login, role=shadowed]
+
+=== Azure Example
+
+Azure OpenID has a slightly different workflow because it uses a slightly different path for the issuer. This is because Azure uses tenant specific OpenID URLs.
+
+. First we again need to create an application.
+.. First navigate to your portal
+.. Open `Azure Active Directory`
+.. Open `App registrations` on the new inner left menu. (The screen should look like the image below)
++
+image::azure-create-app.png[Azure create app screen, role=shadowed]
+.. Click `New registration`
+.. Choose a name and set the redirect URI
++
+image::azure-create-app-pt2.png[Azure create app ptII, role=shadowed]
+.. Click register
+. You should now see a screen like the following.
++
+image::azure-application-details.png[Azure application details, role=shadowed]
+. Now open CleanSpeak System Settings
+.. Paste `https://login.microsoftonline.com/{tenantId}` into the issuer field of your. (With `{tenantId}` replaced with your own)
+.. Copy the Client ID from your azure application and paste that in the Client ID field of CleanSpeak
+. Now we need a client secret (which is required for all web based applications on Azure)
+.. Go to your Azure app
+.. Open certificates and secrets
+.. Click `New client secret`
+.. Choose a name for this secret and create it
+.. Copy the secret value to your CleanSpeak OpenID Settings
+.. Click save
+. You can now login with Azure
++
+image::azure-login.gif[Azure login, role="shadowed force-rounded"]
+

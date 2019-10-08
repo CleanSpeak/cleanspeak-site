@@ -86,11 +86,16 @@ table {
 }
 
 img {
-  max-width: 100%;
+  width: 100%;
 
   /* recreate for the drop shadow on Mac OS X screenshots in css */
   &.shadowed {
-    box-shadow: 0 37.125px 70px -12.125px rgba(0,0,0,0.3);
+    filter: drop-shadow(0 25px 45px rgba(#000, .35)) drop-shadow(0 0 1px rgba(#000, .50));
+    margin: 50px 60px;
+    width: calc(100% - 60px * 2);
+  }
+
+  &.force-rounded {
     border-radius: 5px;
   }
 }
