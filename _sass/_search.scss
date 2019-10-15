@@ -1,3 +1,6 @@
+
+@import 'variables';
+
 /* Google Search Results
 ====================================================*/
 .search-results {
@@ -14,29 +17,49 @@
 /* Search Field
 ====================================================*/
 .search {
-  width: 270px;
+  display: block;
+  width: 100%;
 
   button {
-    width: 35px;
-    margin-right: 5px;
+    background-color: transparent;
+    height: 55px;
+    margin: 0;
+    padding-left: 15px;
   }
 
-  form > input {
-    font-size: 18px;
-    line-height: 18px;
-    height: 30px;
-    color: #696d74;
+  form {
+    background-color: rgb(234, 234, 234);
+    align-items: center;
+    display: flex;
+  }
+
+  form > div {
+    display: flex;
+    width: 100%;
+  }
+
+  form input {
     background-color: transparent;
+    color: #000;
+    border: none;
+    font-size: 22px;
+    font-weight: 300;
     outline: none;
-    border: 0 none;
-    border-right: 1px solid #999;
-    border-left: 1px solid #999;
-    padding-left: 10px;
-    font-weight: 400;
+    padding-left: 1rem;
+    width: 100%;
   }
 
   .fa {
+    color: rgba(0, 0, 0, 0.5);
     font-size: 20px;
-    color: #aaa;
+  }
+
+  @media only screen and (min-width: $media-md) {
+    width: initial;
+
+    form > div {
+      padding-left: 10px;
+    }
   }
 }
+

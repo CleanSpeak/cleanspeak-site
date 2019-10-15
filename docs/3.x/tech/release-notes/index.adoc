@@ -193,22 +193,28 @@ is intended to allow more accurate detection of embedded words. The default conf
 == Version 3.21.1
 _Released Saturday September 29th, 2018_
 
-* Fixed. Oauth error handling bugs.
+=== Fixed
+
+* Oauth error handling bugs.
 
 [role=release-note]
 
 == Version 3.21.0
 _Released Tuesday September 11th, 2018_
 
-* Feature. Added link:https://sightengine.com/[Sightengine] as an image filter provider.
-* Enhancement. Add back the variations column in the Blacklist filter listing in the UI.
+=== New
+
+* Added link:https://sightengine.com/[Sightengine] as an image filter provider.
+* Add back the variations column in the Blacklist filter listing in the UI.
 
 [role=release-note]
 
 == Version 3.20.2
 _Released Monday August 20th, 2018_
 
-* Fixed. When a complex input string containing many numbers is filtered, if your filter configuration has one to many distinguishable
+=== Fixed
+
+* When a complex input string containing many numbers is filtered, if your filter configuration has one to many distinguishable
 numbers an increased CPU load may occur which could cause performance degradation.
 
 [role=release-note]
@@ -216,7 +222,9 @@ numbers an increased CPU load may occur which could cause performance degradatio
 == Version 3.20.1
 _Released Friday August 17th, 2018_
 
-* Fixed. A CSS issue caused maintenance mode and the Filter test interface in the CleanSpeak webservice UI to render poorly. This
+=== Fixed
+
+* A CSS issue caused maintenance mode and the Filter test interface in the CleanSpeak webservice UI to render poorly. This
 was only a cosmetic issue and did not affect the CleanSpeak Management Interface. This issue was introduced in version `3.20.0`.
 
 [role=release-note]
@@ -228,38 +236,56 @@ include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 :elastic_message: A major version upgrade of Elastic Search requires a full rebuild of the search index. This will be done automatically on startup, this may cause additional load on the system until completed. Content and user search will be incomplete until the process is complete.
 include::docs/3.x/tech/release-notes/__search-index-warning.adoc[]
 
-* Feature. Added sorting to user search and extended content search sorting options
-* Feature. Added query string searching to both content and user search
-* Fixed. When using PostgreSQL with a large amount of content stored in CleanSpeak, the performance may be degraded as moderates enter the queue.
-* Internal. Upgraded Elastic Search to 6.3.1
-* Fixed. URL whitelist entries were not approved after a Backup / Restore
-* Fixed. Duplicate key violation when importing with new phrases
-* Fixed. English was (almost) always selected for verify tool even if all locales was a better default.
-* Fixed. Several display issues in the UI
+=== New
+
+* Added sorting to user search and extended content search sorting options
+* Added query string searching to both content and user search
+
+=== Fixed
+
+* When using PostgreSQL with a large amount of content stored in CleanSpeak, the performance may be degraded as moderates enter the queue.
+* Upgraded Elastic Search to 6.3.1
+* URL whitelist entries were not approved after a Backup / Restore
+* Duplicate key violation when importing with new phrases
+* English was (almost) always selected for verify tool even if all locales was a better default.
+* Several display issues in the UI
 
 [role=release-note]
 
 == Version 3.19.0
 _Released Thursday July 28th, 2018_
 
-* Feature. Added HTML parsing to support `html` as a valid filter content type.
-* Feature. Added content type selector to Verify tool (Includes HTML, Video, Image, BBCode, and text)
-* Feature. Added CSV export option to the filter list export feature. The CSV option was removed in version 3.4.4 along with the CSV import feature.
-* Change. The `contentType` parameter on the link:../apis/content#filter-content[Filter Content] API now defaults to `text` instead of detecting type. This may enhance performance when filtering large content.
-* Enhancement. Improved match highlighting accuracy when filter matches are displayed for content.
-* Enhancement. Add &#x438; (Cyrillic small letter i) as a possible replacement for the letter u. Example: f&#x438;ck.
-* Fixed. Duplicate named sections in moderation queues for content types other than text.
-* Fixed. Audit log reporting null for new dictionary entries.
-* Fixed. Possible redirect loop during login when authenticating with an expired user, and then immediately authenticating with a different user who is not expired.
-* Fixed. Edited content may not show the edited icon in the history column when viewed in the content search results.
-* Fixed. When a very deep chain of users flagging other users, when the user is retrieved an exception may occur.
-* Internal. Upgraded JRE to 1.8.0+171
-* Internal. Upgraded Apache Tomcat to 8.5.31
+=== New
+
+* Added HTML parsing to support `html` as a valid filter content type.
+* Added content type selector to Verify tool (Includes HTML, Video, Image, BBCode, and text)
+* Added CSV export option to the filter list export feature. The CSV option was removed in version 3.4.4 along with the CSV import feature.
+
+=== Changed
+
+* The `contentType` parameter on the link:../apis/content#filter-content[Filter Content] API now defaults to `text` instead of detecting type. This may enhance performance when filtering large content.
+
+=== Enhancement
+
+* Improved match highlighting accuracy when filter matches are displayed for content.
+* Add &#x438; (Cyrillic small letter i) as a possible replacement for the letter u. Example: f&#x438;ck.
+
+=== Fixed
+
+* Duplicate named sections in moderation queues for content types other than text.
+* Audit log reporting null for new dictionary entries.
+* Possible redirect loop during login when authenticating with an expired user, and then immediately authenticating with a different user who is not expired.
+* Edited content may not show the edited icon in the history column when viewed in the content search results.
+* When a very deep chain of users flagging other users, when the user is retrieved an exception may occur.
+* Upgraded JRE to 1.8.0+171
+* Upgraded Apache Tomcat to 8.5.31
 
 [role=release-note]
 
 == Version 3.18.1
 _Released Tuesday June 5th, 2018_
+
+=== Fixed
 
 * Fixed bug that caused the content alert queue actions to fail
 
@@ -273,10 +299,18 @@ include::docs/3.x/tech/release-notes/__general-migration-warning.adoc[]
 
 include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 
-* Feature. Full support of regular expressions in Blacklist phrases. This feature supercedes the phrase feature introduced in version `3.15.0`. For details see <<../tutorials/filtering-phrases.adoc#,Blacklist Phrases>>.
+=== New
+
+* Full support of regular expressions in Blacklist phrases. This feature supercedes the phrase feature introduced in version `3.15.0`. For details see <<../tutorials/filtering-phrases.adoc#,Blacklist Phrases>>.
 This feature overwrites the existing phrases entirely.
-* Enhancement. Additional API validation has been added to CRUD operations.
-* Fixed. Filter changes were not reloaded by the webservice after using the link:../apis/system#restore[Restore] API.
+
+=== Enhancement
+
+* Additional API validation has been added to CRUD operations.
+
+=== Fixed
+
+* Filter changes were not reloaded by the webservice after using the link:../apis/system#restore[Restore] API.
 
 [role=release-note]
 
@@ -285,11 +319,16 @@ _Released Thursday May 10th, 2018_
 
 include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 
-* Enhancement. More validation on the batch filter
-* Enhancement. Embedding behavior is improved when surrounded by numbers and punctuation
-* Enhancement. Embedding behavior is improved when finding the actual start of a blacklisted entry
-* Internal. Updates caching (bug fixes)
-* Internal. Improved logging for license issues
+=== Enhancement
+
+* More validation on the batch filter
+* Embedding behavior is improved when surrounded by numbers and punctuation
+* Embedding behavior is improved when finding the actual start of a blacklisted entry
+* Improved logging for license issues
+
+=== Fixed
+
+* Updates caching (bug fixes)
 
 [role=release-note]
 
@@ -327,7 +366,9 @@ include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 == Version 3.16.1
 _Released Saturday April 14th, 2018_
 
-* Enhancement. Improved filter accuracy by handling embedded numbers and dictionary checks more effectively.
+=== Enhancement
+
+* Improved filter accuracy by handling embedded numbers and dictionary checks more effectively.
 
 [role=release-note]
 
@@ -336,7 +377,9 @@ _Released Tuesday March 20th, 2018_
 
 include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 
-* Feature. Video Filtering added using Amazon Rekognition. See link:../tutorials/filtering-videos[how to setup video] filtering for details.
+=== New
+
+* Video Filtering added using Amazon Rekognition. See link:../tutorials/filtering-videos[how to setup video] filtering for details.
 
 [role=release-note]
 
@@ -356,9 +399,17 @@ _Released Monday January 21st, 2018_
 
 include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 
-* Feature. <<../tutorials/filtering-phrases.adoc#,Blacklist Phrases>>
-* Fixed. Minor bugs
-* Internal. Upgraded prime.js
+=== New
+
+* <<../tutorials/filtering-phrases.adoc#,Blacklist Phrases>>
+
+=== Enhancement
+
+* Upgraded prime.js
+
+=== Fixed
+
+* Minor bugs
 
 [role=release-note]
 
@@ -367,12 +418,16 @@ _Released Monday December 11th, 2017_
 
 include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 
-* Fixed. JavaScript bug in Application Filter Rules may cause the username filter changes to not be saved.
+=== Enhancement
+
 * Internal. Relax MySQL `utf8mb4` enforcement to only `character_set_server` and `collation_server`. This should now pass validation on Google
 Cloud when `character_set_server` is configured to use `utf8mb4`.
 * Internal. Reduce log noise when webservices are on public networks. No external impacts.
 * Internal. Db schema null constraint corrected. No external impacts.
 
+=== Fixed
+
+* JavaScript bug in Application Filter Rules may cause the username filter changes to not be saved.
 
 [role=release-note]
 
@@ -381,13 +436,21 @@ _Released Friday November 24th, 2017_
 
 include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 
-* Changed. API JSON response bodies now return empty objects. For example, the link:../apis/content#filter-content[Filter API] response will return an empty `matches` array even when no matches are returned.
-* Enhancement. The Test a Notification Server feature provides better feedback when the notification server returns an unexpected status code.
-* Enhancement. The verify text feature has been redesigned to use the same display as the queue for better information on matches.
-* Removed. Removed locale from verification cases as the interface allows you to choose/override this option anyways.
-* Fixed. The configured list of Whitelist Disallowed Phrases now properly displays a tag when it contains a space.
-* Fixed. `MaximumMatchLength` on Email and URL filter wasn't being honored when provided on the link:../apis/content#filter-content[Filter API].
-* Fixed. During filtering, blacklist entry ignores only considered a full token instead of just the original match text. This now checks both.
+=== Changed
+
+* API JSON response bodies now return empty objects. For example, the link:../apis/content#filter-content[Filter API] response will return an empty `matches` array even when no matches are returned.
+* Removed locale from verification cases as the interface allows you to choose/override this option anyways.
+
+=== Enhancement
+
+* The Test a Notification Server feature provides better feedback when the notification server returns an unexpected status code.
+* The verify text feature has been redesigned to use the same display as the queue for better information on matches.
+
+=== Fixed
+
+* The configured list of Whitelist Disallowed Phrases now properly displays a tag when it contains a space.
+* `MaximumMatchLength` on Email and URL filter wasn't being honored when provided on the link:../apis/content#filter-content[Filter API].
+* During filtering, blacklist entry ignores only considered a full token instead of just the original match text. This now checks both.
 
 [role=release-note]
 
@@ -396,10 +459,12 @@ _Released Tuesday October 24th, 2017_
 
 include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 
-* Fixed. Sending an integer or other non UUID string representation for the `contentItems[x].id` field on the link:../apis/content#batch-moderate-content[Batch Moderate] API returned `500` instead of a `400` with an error message.
-* Fixed. Support sending an integer for the `contentItems[x].id` field on the link:../apis/content#batch-moderate-content[Batch Moderate] API.
-* Fixed. Omitting the `callbackHeaders` caused the call to the `callbackURL` to fail on the link:../apis/content#batch-moderate-content[Batch Moderate] API.
-* Fixed. Creating a Whitelist allowed entry without a locale was permitted on the Management Interface which will break the filter reload. This issue has been resolved and entries in this state will be corrected during upgrade. This issue was introduced in link:#version-3-11-0[Version 3.11.0]
+=== Fixed
+
+* Sending an integer or other non UUID string representation for the `contentItems[x].id` field on the link:../apis/content#batch-moderate-content[Batch Moderate] API returned `500` instead of a `400` with an error message.
+* Support sending an integer for the `contentItems[x].id` field on the link:../apis/content#batch-moderate-content[Batch Moderate] API.
+* Omitting the `callbackHeaders` caused the call to the `callbackURL` to fail on the link:../apis/content#batch-moderate-content[Batch Moderate] API.
+* Creating a Whitelist allowed entry without a locale was permitted on the Management Interface which will break the filter reload. This issue has been resolved and entries in this state will be corrected during upgrade. This issue was introduced in link:#version-3-11-0[Version 3.11.0]
 
 [role=release-note]
 
@@ -408,25 +473,40 @@ _Released Thursday October 5th, 2017_
 
 include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 
-* Feature. Integrated Image Filtering technology preview using Amazon Rekognition. Additional providers in plan for a future release.
-* Enhancement. The Content Delete service has been enhanced to handle large data sets without adding excessive database load.
-* Fixed. Minor UI Application configuration bugs.
+=== New
+
+* Integrated Image Filtering technology preview using Amazon Rekognition. Additional providers in plan for a future release.
+
+=== Enhancement
+
+* The Content Delete service has been enhanced to handle large data sets without adding excessive database load.
+
+=== Fixed
+
+* Minor UI Application configuration bugs.
 
 [role=release-note]
 
 == Version 3.13.0-RC.1
 _Released Thursday September 7th, 2017_
 
-* Enhancement. The filter now returns at least one match from every root word found. This means that all fully contained matches with separate entries will now be returned. (Both "you suck", and "suck" could be returned instead of just "you suck")
-* Fixed. When using CleanSpeak Moderation queues on a secured connection, YouTube URLs starting with `http://` may not display correctly when using the embedded video player.
+=== Enhancement
+
+* The filter now returns at least one match from every root word found. This means that all fully contained matches with separate entries will now be returned. (Both "you suck", and "suck" could be returned instead of just "you suck")
+
+=== Fixed
+
+* When using CleanSpeak Moderation queues on a secured connection, YouTube URLs starting with `http://` may not display correctly when using the embedded video player.
 
 [role=release-note]
 
 == Version 3.12.1
 _Released Wednesday August 30th, 2017_
 
-* Enhancement. Setup wizard no longer prompts the user for License Id when coming from their Inversoft account page.
-* Enhancement. Better embedded video player support for  vimeo.com, ted.com videos in the moderation queue.
+=== Enhancement
+
+* Setup wizard no longer prompts the user for License Id when coming from their Inversoft account page.
+* Better embedded video player support for  vimeo.com, ted.com videos in the moderation queue.
 
 [role=release-note]
 
@@ -435,36 +515,46 @@ _Released Wednesday August 23rd, 2017_
 
 include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 
-* Feature. Added the ability to make dictionary entries conditional and behave like a whitelist.
-* Feature. Filter search now includes dictionary tags.
-* Feature. Applications now can have dictionary tags to modify filter behavior (API/Management Interface)
+=== New
 
-* Fixed. Whitelist allowed entry sorting on tags.
+* Added the ability to make dictionary entries conditional and behave like a whitelist.
+* Filter search now includes dictionary tags.
+* Applications now can have dictionary tags to modify filter behavior (API/Management Interface)
+
+=== Fixed
+
+* Whitelist allowed entry sorting on tags.
 
 [role=release-note]
 
 == Version 3.11.0
 _Released Wednesday June 21st, 2017_
 
-* Feature. Added link:../apis/whitelist#search-for-allowed-words[Search for Allowed Words] API
-* Feature. Added link:../apis/blacklist#bulk-delete-dictionary-entries-by-locale[Bulk Delete Dictionary Entries by Locale] API
-* Feature. Added link:../apis/blacklist#bulk-delete-filter-entries-by-locale[Bulk Delete Filter Entries by Locale] API
+=== New
+
+* Added link:../apis/whitelist#search-for-allowed-words[Search for Allowed Words] API
+* Added link:../apis/blacklist#bulk-delete-dictionary-entries-by-locale[Bulk Delete Dictionary Entries by Locale] API
+* Added link:../apis/blacklist#bulk-delete-filter-entries-by-locale[Bulk Delete Filter Entries by Locale] API
 
 [role=release-note]
 
 == Version 3.10.0
 _Released Wednesday June 7th, 2017_
 
-* Feature. Added link:../apis/whitelist#retrieve-a-disallowed-phrase[Retrieve a Disallowed Phrase] API
-* Feature. Added link:../apis/whitelist#retrieve-all-disallowed-phrases[Retrieve all Disallowed Phrases] API
-* Feature. Added link:../apis/whitelist#delete-a-disallowed-phrase[Delete a Disallowed Phrase] API
-* Feature. Added link:../apis/whitelist#create-a-disallowed-phrase[Create a Disallowed Phrase] API
-* Feature. Added link:../apis/whitelist#retrieve-an-advanced-disallowed-phrase[Retrieve an Advanced Disallowed Phrase] API
-* Feature. Added link:../apis/whitelist#retrieve-all-advanced-disallowed-phrases[Retrieve all Advanced Disallowed Phrases] API
-* Feature. Added link:../apis/whitelist#delete-an-advanced-disallowed-phrase[Delete an Advanced Disallowed Phrase] API
-* Feature. Added link:../apis/whitelist#create-an-advanced-disallowed-phrase[Create an Advanced Disallowed Phrase] API
+=== New
 
-* Fixed. Added missing APIs to the API key endpoint configuration.
+* Added link:../apis/whitelist#retrieve-a-disallowed-phrase[Retrieve a Disallowed Phrase] API
+* Added link:../apis/whitelist#retrieve-all-disallowed-phrases[Retrieve all Disallowed Phrases] API
+* Added link:../apis/whitelist#delete-a-disallowed-phrase[Delete a Disallowed Phrase] API
+* Added link:../apis/whitelist#create-a-disallowed-phrase[Create a Disallowed Phrase] API
+* Added link:../apis/whitelist#retrieve-an-advanced-disallowed-phrase[Retrieve an Advanced Disallowed Phrase] API
+* Added link:../apis/whitelist#retrieve-all-advanced-disallowed-phrases[Retrieve all Advanced Disallowed Phrases] API
+* Added link:../apis/whitelist#delete-an-advanced-disallowed-phrase[Delete an Advanced Disallowed Phrase] API
+* Added link:../apis/whitelist#create-an-advanced-disallowed-phrase[Create an Advanced Disallowed Phrase] API
+
+=== Fixed
+
+* Added missing APIs to the API key endpoint configuration.
 
 [role=release-note]
 
@@ -473,9 +563,13 @@ _Released Wednesday May 31st, 2017_
 
 include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 
-* Fixed. Added additional validation to Whitelist and Blacklist APIs.
+=== New
 
-* Feature. Added CORS filter for webservice API requests.
+* Added CORS filter for webservice API requests.
+
+=== Fixed
+
+* Added additional validation to Whitelist and Blacklist APIs.
 
 [role=release-note]
 
@@ -484,88 +578,110 @@ _Released Friday May 27th, 2017_
 
 include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 
-* Feature. Added link:../apis/blacklist#retrieve-a-filter-entry[Retrieve a Filter Entry] API
-* Feature. Added link:../apis/blacklist#search-for-filter-entries[Search for Filter Entries] API
-* Feature. Added link:../apis/blacklist#create-a-filter-entry[Create a Filter Entry] API
-* Feature. Added link:../apis/blacklist#delete-a-filter-entry[Delete a Filter Entry] API
-* Feature. Added link:../apis/blacklist#update-a-filter-entry[Update a Filter Entry] API
-* Feature. Added link:../apis/whitelist#retrieve-an-allowed-word[Retrieve an Allowed Word] API
-* Feature. Added link:../apis/whitelist#retrieve-all-allowed-words[Retrieve all Allowed Words] API
-* Feature. Added link:../apis/whitelist#delete-an-allowed-word[Delete an Allowed Word] API
-* Feature. Added link:../apis/whitelist#create-an-allowed-word[Create an Allowed Word] API
-* Feature. Added link:../apis/whitelist#update-an-allowed-word[Update an Allowed Word] API
-* Feature. Added link:../apis/whitelist#retrieve-a-tag[Retrieve a Tag] API
-* Feature. Added link:../apis/whitelist#retrieve-all-tags[Retrieve All Tags] API
-* Feature. Added link:../apis/whitelist#delete-a-tag[Delete a Tag] API
-* Feature. Added link:../apis/whitelist#create-a-tag[Create a Tag] API
-* Feature. Added link:../apis/whitelist#update-a-tag[Update a Tag] API
-* Feature. Optionally return filter matches on the link:../apis/content#moderate-content[Moderate Content] API response.
+=== New
+
+* Added link:../apis/blacklist#retrieve-a-filter-entry[Retrieve a Filter Entry] API
+* Added link:../apis/blacklist#search-for-filter-entries[Search for Filter Entries] API
+* Added link:../apis/blacklist#create-a-filter-entry[Create a Filter Entry] API
+* Added link:../apis/blacklist#delete-a-filter-entry[Delete a Filter Entry] API
+* Added link:../apis/blacklist#update-a-filter-entry[Update a Filter Entry] API
+* Added link:../apis/whitelist#retrieve-an-allowed-word[Retrieve an Allowed Word] API
+* Added link:../apis/whitelist#retrieve-all-allowed-words[Retrieve all Allowed Words] API
+* Added link:../apis/whitelist#delete-an-allowed-word[Delete an Allowed Word] API
+* Added link:../apis/whitelist#create-an-allowed-word[Create an Allowed Word] API
+* Added link:../apis/whitelist#update-an-allowed-word[Update an Allowed Word] API
+* Added link:../apis/whitelist#retrieve-a-tag[Retrieve a Tag] API
+* Added link:../apis/whitelist#retrieve-all-tags[Retrieve All Tags] API
+* Added link:../apis/whitelist#delete-a-tag[Delete a Tag] API
+* Added link:../apis/whitelist#create-a-tag[Create a Tag] API
+* Added link:../apis/whitelist#update-a-tag[Update a Tag] API
+* Added ability to optionally return filter matches on the link:../apis/content#moderate-content[Moderate Content] API response.
 
 [role=release-note]
 
 == Version 3.8.1
 _Released Wednesday May 3rd, 2017_
 
-* Enhancement. Added totalResults to blacklist search api results.
-* Fixed. Blacklist APIs now only return entries that are active in the filter.
+=== Enhancement
+
+* Added totalResults to blacklist search api results.
+
+=== Fixed
+
+* Blacklist APIs now only return entries that are active in the filter.
 
 [role=release-note]
 
 == Version 3.8.0
 _Released Tuesday May 1st, 2017_
 
-* Feature. Added link:../apis/blacklist#retrieve-a-dictionary-entry[Retrieve a Dictionary Entry] API
-* Feature. Added link:../apis/blacklist#search-for-dictionary-entries[Search for Dictionary Entries] API
-* Feature. Added link:../apis/blacklist#create-a-dictionary-entry[Create a Dictionary Entry] API
-* Feature. Added link:../apis/blacklist#delete-a-dictionary-entry[Delete a Dictionary Entry] API
-* Feature. Added link:../apis/blacklist#retrieve-a-tag[Retrieve a Tag] API
-* Feature. Added link:../apis/blacklist#retrieve-all-tags[Retrieve all Tags] API
-* Feature. Added link:../apis/blacklist#create-a-tag[Create a Tag] API
-* Feature. Added link:../apis/blacklist#delete-a-tag[Delete a Tag] API
+=== New
+
+* Added link:../apis/blacklist#retrieve-a-dictionary-entry[Retrieve a Dictionary Entry] API
+* Added link:../apis/blacklist#search-for-dictionary-entries[Search for Dictionary Entries] API
+* Added link:../apis/blacklist#create-a-dictionary-entry[Create a Dictionary Entry] API
+* Added link:../apis/blacklist#delete-a-dictionary-entry[Delete a Dictionary Entry] API
+* Added link:../apis/blacklist#retrieve-a-tag[Retrieve a Tag] API
+* Added link:../apis/blacklist#retrieve-all-tags[Retrieve all Tags] API
+* Added link:../apis/blacklist#create-a-tag[Create a Tag] API
+* Added link:../apis/blacklist#delete-a-tag[Delete a Tag] API
 
 [role=release-note]
 
 == Version 3.7.7
 _Released Thursday March 30th, 2017_
 
-* Enhancement. Reduce false positives when partial matches are embedded inside of a UUID.
+=== Enhancement
+
+* Reduce false positives when partial matches are embedded inside of a UUID.
 
 [role=release-note]
 
 == Version 3.7.6
 _Released Tuesday March 21st, 2017_
 
-* Enhancement. Better handling of numbers in between dictionary words.
+=== Enhancement
+
+* Better handling of numbers in between dictionary words.
 
 [role=release-note]
 
 == Version 3.7.5
 _Released Thursday March 9th, 2017_
 
-* Fixed. A filter bug may cause specific variations with trailing duplicate characters in mixed case to be ignored by the filter.
-* Fixed. When emailing moderators on escalation events in some scenarios a user with access to All Applications may not be identified to receive the event notification.
-* Enhancement. Better differentiate between symbols and word characters when detecting replacement characters in a match.
+===  Fixed
+
+* A filter bug may cause specific variations with trailing duplicate characters in mixed case to be ignored by the filter.
+* When emailing moderators on escalation events in some scenarios a user with access to All Applications may not be identified to receive the event notification.
+* Better differentiate between symbols and word characters when detecting replacement characters in a match.
 
 [role=release-note]
 
 == Version 3.7.4
 _Released Monday February 13th, 2017_
 
-* Fixed. An error may keep filter rules from being configured in the Management Interface for an application. This issue was introduced in version 3.7.0.
+=== Fixed
+
+* An error may keep filter rules from being configured in the Management Interface for an application. This issue was introduced in version 3.7.0.
 
 [role=release-note]
 
 == Version 3.7.3
 _Released Monday February 13th, 2017_
 
-* Fixed. An error may cause the Weekly Report from being sent for the first time.
+=== Fixed
+
+* An error may cause the Weekly Report from being sent for the first time.
 
 [role=release-note]
 
 == Version 3.7.2
 _Released Thursday February 9th, 2017_
 
-* Fixed. An error may occur when filtering content using the Moderate Content API with Whitelist Filter Rules with a configured alert.
+
+=== Fixed
+
+* An error may occur when filtering content using the Moderate Content API with Whitelist Filter Rules with a configured alert.
 
 [role=release-note]
 
@@ -574,23 +690,32 @@ _Released Monday February 6th, 2017_
 
 include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 
-* Feature. Added transaction support for content editing, content deleting, user actions and notification servers. You can now manage whether or not notification servers need to successfully respond to notifications for various events.
-* Feature. Added a notification server testing system for developers to quickly test notification servers.
-* Fixed. Multi-lingual handling for various words like `ass` and `dass`
+=== New
+
+* Added transaction support for content editing, content deleting, user actions and notification servers. You can now manage whether or not notification servers need to successfully respond to notifications for various events.
+* Added a notification server testing system for developers to quickly test notification servers.
+
+=== Fixed
+
+* Multi-lingual handling for various words like `ass` and `dass`
 
 [role=release-note]
 
 == Version 3.6.2
 _Released Monday January 25th, 2017_
 
-* Fixed. Bug in URL filter that may cause a 500 response code. This issue was introduced in 3.5.0.
+=== Fixed
+
+* Bug in URL filter that may cause a 500 response code. This issue was introduced in 3.5.0.
 
 [role=release-note]
 
 == Version 3.6.1
 _Released Monday January 23th, 2017_
 
-* Fixed. Email not sent when escalating item from approval queue when enabled using feature added in 3.6.0.
+=== Fixed
+
+* Email not sent when escalating item from approval queue when enabled using feature added in 3.6.0.
 
 [role=release-note]
 
@@ -599,13 +724,21 @@ _Released Friday January 20th, 2017_
 
 include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 
-* Feature. Show changes for list approvals and allow modification prior to approval.
-* Feature. Batch filtering API.
-* Feature. Weekly PDF activity reports.
-* Feature. Configuration to allow moderators to be notified when content is escalated.
-* Fixed. Some JavaScript errors may prevent a moderator from editing content in a moderation queue. This issue was introduced in 3.5.1.
-* Internal. Upgraded from Apache Tomcat 8.0.12 to 8.5.9.
-* Internal. The version is no longer used in the path name inside of the installation packages for Apache Tomcat and ElasticSearch.
+=== New
+
+* Show changes for list approvals and allow modification prior to approval.
+* Batch filtering API.
+* Weekly PDF activity reports.
+* Configuration to allow moderators to be notified when content is escalated.
+
+=== Enhancement
+
+* Upgraded from Apache Tomcat 8.0.12 to 8.5.9.
+* The version is no longer used in the path name inside of the installation packages for Apache Tomcat and ElasticSearch.
+
+=== Fixed
+
+* Some JavaScript errors may prevent a moderator from editing content in a moderation queue. This issue was introduced in 3.5.1.
 
 [role=release-note]
 
@@ -614,48 +747,75 @@ _Released Thursday December 15th, 2016_
 
 include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 
-* Fixed. Accessing the Status action from the Management Interface fails to show the status of the webservice. System -> Status
-* Feature. Initial support for mobile devices using a responsive design. Navigation is provided as a left hand navigation menu.
-* Fixed. Improve embedding validation for matches containing replacement characters. Example: `[0cat0] is`
-* Fixed. Bug in URL filter that may cause a 500 response code. This issue was introduced in 3.5.0.
-* Internal. Upgrade prime.js. Now using native `.bind()` support for maintaining the correct `this` reference.
-* Internal. Encrypt Saved Request cookies.
+=== New
+
+* Initial support for mobile devices using a responsive design. Navigation is provided as a left hand navigation menu.
+
+=== Enhancement
+
+* Upgrade prime.js. Now using native `.bind()` support for maintaining the correct `this` reference.
+* Encrypt Saved Request cookies.
+
+=== Fixed
+
+* Accessing the Status action from the Management Interface fails to show the status of the webservice. System -> Status
+* Improve embedding validation for matches containing replacement characters. Example: `[0cat0] is`
+* Bug in URL filter that may cause a 500 response code. This issue was introduced in 3.5.0.
 
 [role=release-note]
 
 == Version 3.5.0
 _Released Tuesday October 25th, 2016_
 
-* Filter. Add `4` as a possible replacement character for `a`.
-* Fixed. The URL filter may miss a URL if the string begins with a dot separator.
-* Feature. CleanSpeak no longer ships with a default account. A setup wizard is now provided for initial configuration.
+===  New
+
+* CleanSpeak no longer ships with a default account. A setup wizard is now provided for initial configuration.
+
+=== Enhancement
+
+* Add `4` as a possible replacement character for `a`.
+
+=== Fixed
+
+* The URL filter may miss a URL if the string begins with a dot separator.
+
 
 [role=release-note]
 
 == Version 3.4.11
 _Released Thursday September 26th, 2016_
 
-* API. Deprecate `checkOutUser` field in the link:../apis/users#retrieve-a-user[Retrieve a User] API and add `checkOutUserId`.
+=== Changed
+
+* Deprecate `checkOutUser` field in the link:../apis/users#retrieve-a-user[Retrieve a User] API and add `checkOutUserId`.
 
 [role=release-note]
 
 == Version 3.4.10
 _Released Thursday September 15th, 2016_
 
-* Enhancement. Support for CSV file type of `application/vnd.ms-excel` in the batch processing filter. Appropriate messaging will be displayed when an unsupported file type is attempted to be uploaded.
+=== Enhancement
+
+* Support for CSV file type of `application/vnd.ms-excel` in the batch processing filter. Appropriate messaging will be displayed when an unsupported file type is attempted to be uploaded.
 
 [role=release-note]
 
 == Version 3.4.8
 _Released Wednesday September 14th, 2016_
 
-* Fixed. Missing a few Cyrillic characters for Latin replacement characters. This allows some matches to get past the filter if Cyrillic characters are inter-mixed with Latin.
+=== Enhancement
+
 * Enhancement. Increase maximum file size allowed for upload for batch CSV filtering from 50 MB to 100 MB.
+
+=== Fixed
+* Missing a few Cyrillic characters for Latin replacement characters. This allows some matches to get past the filter if Cyrillic characters are inter-mixed with Latin.
 
 [role=release-note]
 
 == Version 3.4.7
 _Released Tuesday September 6th, 2016_
+
+=== Enhancement
 
 * Internal License validation changes
 
@@ -666,16 +826,20 @@ _Released Tuesday September 6th, 2016_
 
 include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 
-* Fixed. When using the verify text tool, username matches will also have a link to the matched root entry.
-* Fixed. Better handling of numbers and extra characters before or after words.
-* Fixed. Some blacklist entries had a variation matching the root entry which limit the ability to modify the entry. The blacklist entries have been fixed in the shipped lists, and the entry validation has been fixed to resolve the issue at runtime.
+=== Fixed
+
+* When using the verify text tool, username matches will also have a link to the matched root entry.
+* Better handling of numbers and extra characters before or after words.
+* Some blacklist entries had a variation matching the root entry which limit the ability to modify the entry. The blacklist entries have been fixed in the shipped lists, and the entry validation has been fixed to resolve the issue at runtime.
 
 [role=release-note]
 
 == Version 3.4.5
 _Released Thursday August 18th, 2016_
 
-* Fixed. When using the `/content/item/filter` API and enabling the username filter, no other match types are returned. This bug was introduced in version 3.4.0.
+=== Fixed
+
+* When using the `/content/item/filter` API and enabling the username filter, no other match types are returned. This bug was introduced in version 3.4.0.
 
 [role=release-note]
 
@@ -684,30 +848,41 @@ _Released Tuesday August 2, 2016_
 
 include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 
-* Feature. CSV Filtering
-* Feature. Backup / Restore API
+=== New
+
+* CSV Filtering
+* Backup / Restore API
 
 [role=release-note]
 
 == Version 3.4.3
 _Released Friday July 1st, 2016_
 
-* Fixed. Import of the Arabic language using the import stock list feature was failing due to duplicate variations. Prior to this version the Arabic language can be imported using the Import feature.
+=== Fixed
+
+* Import of the Arabic language using the import stock list feature was failing due to duplicate variations. Prior to this version the Arabic language can be imported using the Import feature.
 
 [role=release-note]
 
 == Version 3.4.2
 _Released Tuesday June 28th, 2016_
 
-* Fixed. Import stock lists was not loading variations or ignore cases.
+=== Fixed
+
+* Import stock lists was not loading variations or ignore cases.
 
 [role=release-note]
 
 == Version 3.4.1
 _Released Wednesday June 27th, 2016_
 
-* Fixed. systems and sys-v init issues.
+=== Enhancement
+
 * Show locale for filter matches in the filter match table displayed in the content queues.
+
+=== Fixed
+
+* systems and sys-v init issues.
 
 [role=release-note]
 
@@ -717,14 +892,22 @@ _Released Wednesday June 22nd, 2016_
 :migration_message: Email configuration has moved from cleanspeak.properties file to the Management Interface. Your existing configuration has been migrated and should continue to operate. See link:../reference/configuration[Email Configuration].
 include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 
+=== New
+
 * Username Filter for use on the Filter or Moderate request
 * Whitelist Builder
 * Automated Actions per application
 * Whitelist Filter Rules for Application
-* Enhancement. Filter Export provides a selector for languages.
-* Enhancement. Email Template and BBCode editor now uses CodeMirror text editor to provide syntax highlighting and some basic formatting.
-* Fixed. Import stock filter lists on Windows may fail.
-* Fixed Using maintenance mode to bootstrap CleanSpeak database configuration on PostgreSQL may fail.
+
+=== Enhancement
+
+* Filter Export provides a selector for languages.
+* Email Template and BBCode editor now uses CodeMirror text editor to provide syntax highlighting and some basic formatting.
+
+=== Fixed
+
+* Import stock filter lists on Windows may fail.
+* Using maintenance mode to bootstrap CleanSpeak database configuration on PostgreSQL may fail.
 
 [role=release-note]
 
@@ -733,7 +916,9 @@ _Released Tuesday March 15th, 2016_
 
 include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 
-* Fixed. Integration with Passport.
+=== Fixed
+
+* Integration with Passport.
 
 [role=release-note]
 
@@ -742,6 +927,8 @@ _Released Friday March 11th, 2016_
 
 :migration_message: The authentication token previously configured in the cleanspeak.properties file is no longer optional. All REST API requests require authentication. The API keys are now configured through the Management Interface, see API Authentication for more information.
 include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
+
+=== New
 
 * New Content Analysis Reports
 * Installation and database configuration can now be performed through a maintenance mode
@@ -756,6 +943,8 @@ _Released Saturday February 6th, 2016_
 
 include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 
+=== New
+
 * New Approval Image Queue to improve the efficiency of image moderation. Enable this feature by marking your application as Image Only.
 
 [role=release-note]
@@ -763,47 +952,62 @@ include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 == Version 3.1.8
 _Released Tuesday February 2nd, 2016_
 
-* Fixed: When running CleanSpeak with a context path defined, some images may not display correctly.
-* Enhancement: Show the return status code to a user when a request to the configured notification server has failed.
-* Fixed: In 3.1.7 we build links to black list matches using a unique identifier. When viewing content in the queue that was filtered prior to 3.1.7 the links will not function properly.
-* Fixed: Some black list filter matches were missed when containing repeating mixed case characters.
+=== Enhancement
+
+* Show the return status code to a user when a request to the configured notification server has failed.
+
+=== Fixed
+
+* When running CleanSpeak with a context path defined, some images may not display correctly.
+* In 3.1.7 we build links to black list matches using a unique identifier. When viewing content in the queue that was filtered prior to 3.1.7 the links will not function properly.
+* Some black list filter matches were missed when containing repeating mixed case characters.
 
 [role=release-note]
 
 == Version 3.1.7
 _Released Monday January 18th, 2016_
 
-* Enhancement: Black list match links when viewed in the moderation queue or the verify text tool will now take the user directly to the black list entry instead of using a text search.
-* Enhancement: Support Gmail SMTP server with TLS
+=== Enhancement
+
+* Black list match links when viewed in the moderation queue or the verify text tool will now take the user directly to the black list entry instead of using a text search.
+* Support Gmail SMTP server with TLS
 
 [role=release-note]
 
 == Version 3.1.6
 _Released Wednesday December 10, 2015_
 
-* Internal changes only.
+=== Enhancement
 
+* Internal changes only.
 
 [role=release-note]
 
 == Version 3.1.5
 _Released Wednesday December 10, 2015_
 
-* Fixed: User and Location (threaded-view) links were broken in the content view
-* Fixed: Missing Windows Service .exe for CleanSpeak Search Engine
-* Fixed: Filter only users could see the "Approvals" menu item
-* Fixed: Database Languages ZIP file wasn't properly being released to the website
+=== Fixed
+
+* User and Location (threaded-view) links were broken in the content view
+* Missing Windows Service .exe for CleanSpeak Search Engine
+* Filter only users could see the "Approvals" menu item
+* Database Languages ZIP file wasn't properly being released to the website
 
 [role=release-note]
 
 == Version 3.1.4
 _Released Wednesday December 9, 2015_
 
-* Fixed: An unexpected render of poorly formed BBCode may cause a user to be stuck in the alert queue. This has been fixed to ensure regardless of the BBCode rendering in the queue, the user can always be dismissed properly.
-* Fixed: Enhanced our ability to find repeating characters when separated by punctuation.
-* Fixed: Sending null values in JSON to the filter endpoint was returning a 500 status code. This behavior has been corrected.
-* Enhancement: Viewing filter matches in content search or the moderation queue now allows you to view all matches in a content part in a table format.
-* Enhancement: CleanSpeak web services can now be run as Windows services.
+=== Fixed
+
+* An unexpected render of poorly formed BBCode may cause a user to be stuck in the alert queue. This has been fixed to ensure regardless of the BBCode rendering in the queue, the user can always be dismissed properly.
+* Enhanced our ability to find repeating characters when separated by punctuation.
+* Sending null values in JSON to the filter endpoint was returning a 500 status code. This behavior has been corrected.
+
+=== Enhancement
+
+* Viewing filter matches in content search or the moderation queue now allows you to view all matches in a content part in a table format.
+* CleanSpeak web services can now be run as Windows services.
 
 [role=release-note]
 
@@ -817,8 +1021,13 @@ include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 == Version 3.1.2
 _Released Thursday October 8, 2015_
 
+=== Enhancement
+
 * Russian: Updated black list entry: лох . Changed filter mode from exact_match to non-embeddable. This allows 'о' to be replaceable with english 'o'.
 * Russian: Updated black list entry for бля. Changed filter mode from exact_match to filter mode to embeddable and added an ignore case for бляха.
+
+=== Fixed
+
 * Fixed: URL filter has been enhanced to more accurately find the end of a top level domain.
 * Fixed: Enhanced our ability to identify YouTube video URLs in the moderation queue to build an inline player. Add proper sizing to the HTML 5 video tag. Use the Google iFrame API to support the HTML5 YouTube player while still falling back to the Flash Player when the browser does not support the HTML 5 video player.
 
@@ -827,7 +1036,9 @@ _Released Thursday October 8, 2015_
 == Version 3.1.1
 _Released Monday October 5, 2015_
 
-* Fixed OAuth and SAML login errors
+=== Fixed
+
+* OAuth and SAML login errors
 
 [role=release-note]
 
@@ -835,6 +1046,8 @@ _Released Monday October 5, 2015_
 _Released Saturday September 26, 2015_
 
 include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
+
+=== New
 
 * Added a new moderation queue called the Content Alert Queue.
 ** You can put content flags into this queue or put content directly into this queue using a parameter on the request.
@@ -846,12 +1059,16 @@ include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 == Version 3.0.14
 _Released Thursday September 24th, 2015_
 
+=== Fixed
+
 * Fixed: A condition was identified where an attempt to approve a deletion of a white list entry may fail and an error would be displayed in the CleanSpeak Management Interface stating An unexpected error occurred.
 
 [role=release-note]
 
 == Version 3.0.13
 _Released Monday September 21st, 2015_
+
+=== New
 
 * Added parameters to reduce the filter results on the /content/item/filter endpoint
 
@@ -860,12 +1077,16 @@ _Released Monday September 21st, 2015_
 == Version 3.0.12
 _Released Friday September 11th, 2015_
 
+=== New
+
 * Added User deletion system that allows all information and content for multiple users to be completely deleted from CleanSpeak (great for COPPA compliance)
 
 [role=release-note]
 
 == Version 3.0.11
 _Released Tuesday September 8th, 2015_
+
+=== New
 
 * Added the ability to disable url, email and phone number filters on a per request basis using the /content/item/filter endpoint. See /content/item/filter documentation.
 
@@ -876,6 +1097,8 @@ _Released Wednesday September 2nd, 2015_
 
 include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 
+=== Fixed
+
 * Fixed possible error in filter approvals that can cause blacklist entries to lose all their tags
 
 [role=release-note]
@@ -883,28 +1106,39 @@ include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 == Version 3.0.9
 _Released Wednesday July 15th, 2015_
 
-* Fixed: When viewing BBCode content in the moderation queue it is possible that a filter match found embedded within a BBCode attribute could cause the HTML to be rendered invalid.
+=== Fixed
+
+* When viewing BBCode content in the moderation queue it is possible that a filter match found embedded within a BBCode attribute could cause the HTML to be rendered invalid.
 
 [role=release-note]
 
 == Version 3.0.8
 _Released Thursday July 9th, 2015_
 
-* Fixed: A customer identified edge case scenario where a conjugated black list match would ultimately not be returned in the filter results.
+=== Fixed
+
+* A customer identified edge case scenario where a conjugated black list match would ultimately not be returned in the filter results.
 
 [role=release-note]
 
 == Version 3.0.7
 _Released Monday June 8th, 2015_
 
-* Fixed: A filter match may not be returned if the word also exists in the dictionary, was sent in as upper case or mixed case, and was followed by a number.
-* Fixed: A filter match with trailing characters may not be returned when the match is in mixed or upper case.
+=== Enhancement
+
 * Allow a user to be flagged when they currently have content in the approval queue. Previously when the /content/item/flag API is used and the content is currently in the approval queue, a 409 status code is returned. Some customers have a workflow that allows for content to be visible and thus flagged by another user while the content is still in the approval queue. This limitation is now removed, and a 200 will be returned instead.
+
+=== Fixed
+
+* A filter match may not be returned if the word also exists in the dictionary, was sent in as upper case or mixed case, and was followed by a number.
+* A filter match with trailing characters may not be returned when the match is in mixed or upper case.
 
 [role=release-note]
 
 == Version 3.0.6
 _Released Tuesday May 12th, 2015_
+
+=== Enhancement
 
 * Improved filtering of embedded numbers in profanity matches. For example, `he222222ll` will now match `hell` since the numbers are now treated similarly to punctuation.
 
@@ -915,20 +1149,29 @@ _Released Tuesday May 5th, 2015_
 
 include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 
-* Fixed: `/content/item/moderate` endpoint was returning a replacement string with allowed, but alerted, matches were "starred" out when the contentAction is replace. Now, the allowed, or authorOnly, filter matches will not be replaced with the replacement character.
+=== Fixed
+
+* `/content/item/moderate` endpoint was returning a replacement string with allowed, but alerted, matches were "starred" out when the contentAction is replace. Now, the allowed, or authorOnly, filter matches will not be replaced with the replacement character.
 
 [role=release-note]
 
 == Version 3.0.3
 _Released Wednesday April 8th, 2015_
 
-* Fixed top user report to sort the results properly
+=== Enhancement
+
 * Improved compatibility end-point to accept invalid UUIDs for senderUID and receiverUID (defaults invalid values to all 0s)
+
+=== Fixed
+
+* Fixed top user report to sort the results properly
 
 [role=release-note]
 
 == Version 3.0.2
 _Released Thursday March 5th, 2015_
+
+=== Fixed
 
 * BBCode fixes to improve rendering in queues and content search
 
@@ -937,12 +1180,16 @@ _Released Thursday March 5th, 2015_
 == Version 3.0.1
 _Released Friday February 27th, 2015_
 
+=== Fixed
+
 * Bug fixes for the 2.3 compatibility API end-point
 
 [role=release-note]
 
 == Version 3.0.0
 _Released Tuesday February 24th, 2015_
+
+=== Enhancement
 
 * SAML improvements for role and application handling
 * Locale improvements in the Management Interface
