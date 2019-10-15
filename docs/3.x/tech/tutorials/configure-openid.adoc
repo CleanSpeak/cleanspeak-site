@@ -20,7 +20,7 @@ In the following example we will setup a FusionAuth OpenID Connect configuration
 
 . First we need to create a FusionAuth application.
 +
-image::fusionauth-app-create.png[Create FusionAuth app, role=shadowed]
+image::fusionauth-app-create.png[Create FusionAuth app]
 
 . You will need to immediately edit the application
 .. Set the redirect URL to your CleanSpeak URL with a path of `/oauth` for example: `https://example-cleanspeak.inversoft.io/oauth`.
@@ -28,7 +28,7 @@ image::fusionauth-app-create.png[Create FusionAuth app, role=shadowed]
 .. (Optional) Set the logout URL to your CleanSpeak URL so that after a logout the users will be redirected back to the login page.
 .. (Optional) Remove the refresh token grant to lock down the security.
 +
-image::fusionauth-app-settings.png[FusionAuth app redirect settings, role=shadowed]
+image::fusionauth-app-settings.png[FusionAuth app redirect settings]
 
 . Now we need to copy the values from the last step into the CleanSpeak configuration.
 .. Copy client id and client secret
@@ -38,9 +38,9 @@ image::fusionauth-app-settings.png[FusionAuth app redirect settings, role=shadow
 .. (Optional) Set the logout url so that a user is logged out of FusionAuth globally. Ex: `https://local.fusionauth.io/oauth2/logout`
 .. Save
 +
-image::openid-settings.png[OpenID settings, role=shadowed]
+image::openid-settings.png[OpenID settings]
 +
-image::openid-login.png[OpenID login, role=shadowed]
+image::openid-login.png[OpenID login]
 
 === Azure Example
 
@@ -51,15 +51,15 @@ Azure OpenID has a slightly different workflow because it uses a slightly differ
 .. Open `Azure Active Directory`
 .. Open `App registrations` on the new inner left menu. (The screen should look like the image below)
 +
-image::azure-create-app.png[Azure create app screen, role=shadowed]
+image::azure-create-app.png[Azure create app screen]
 .. Click `New registration`
 .. Choose a name and set the redirect URI
 +
-image::azure-create-app-pt2.png[Azure create app ptII, role=shadowed]
+image::azure-create-app-pt2.png[Azure create app ptII]
 .. Click register
 . You should now see a screen like the following.
 +
-image::azure-application-details.png[Azure application details, role=shadowed]
+image::azure-application-details.png[Azure application details]
 . Now open CleanSpeak System Settings
 .. Paste `https://login.microsoftonline.com/{tenantId}` into the issuer field of your. (With `{tenantId}` replaced with your own)
 .. Copy the Client ID from your azure application and paste that in the Client ID field of CleanSpeak
@@ -72,5 +72,5 @@ image::azure-application-details.png[Azure application details, role=shadowed]
 .. Click save
 . You can now login with Azure
 +
-image::azure-login.gif[Azure login, role="box-shadowed force-rounded fit"]
+image::azure-login.png[Azure login]
 

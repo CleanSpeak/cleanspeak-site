@@ -125,13 +125,13 @@ The first step of Maintenance Mode will prompt you to enter your license Id. You
 
 You should see a screen that looks like this:
 
-image::maintenance-mode-license.png[Maintenance Mode License,role=shadowed]
+image::maintenance-mode-license.png[Maintenance Mode License]
 
 Your license Id will be written out to the CleanSpeak configuration file in case you need to change it in the future.
 
 In the next step of Maintenance Mode you will see a screen like this:
 
-image::maintenance-mode-database.png[Maintenance Mode Database,role=shadowed]
+image::maintenance-mode-database.png[Maintenance Mode Database]
 
 You will need to confirm the database server name, port, database type and database name are all correct. Below these fields are the super user username and password credentials. You need to supply CleanSpeak with the username and password for a database user that has access to create new databases and schemas. Below this section are the username and password that CleanSpeak will use to connect to the database. You should ensure that all of these fields are correct and then hit the submit button.
 
