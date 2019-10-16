@@ -7,19 +7,21 @@ Use the following script to generate:
 ```shell script
 # Generate encrypted key
 openssl genrsa -aes192 -passout pass:x -out server.pass.key 2048
+
 # Save unencrypted key
 openssl rsa -passin pass:x -in server.pass.key -out server.key
+
 # Remove encrypted key
 rm server.pass.key
 
-# Create certificate request
-# The only important field here is the CN/Common Name (you can invent values for every other field)
-# Set the common name to local.cleanspeak.io!!
-openssl req -new -key server.key -out server.csr 
+# Create the certificate request
+openssl req -new -out server.csr -key server.key -config server.conf
 
 # Self sign
-openssl x509 -req -days 365 -in server.csr -signkey server.key -sha256 -out server.crt
+openssl x509 -req -days 365 -in server.csr -signkey server.key -sha256 -out server.crt -extensions req_ext -extfile server.conf
 ```
+
+Note the `-extensions req_ext` and `-extfile server.conf`; these files are required to get a proper wildcard certificate.
 
 Now you need to use that cert in your http server.
 
@@ -79,7 +81,7 @@ In order to use a certificate you will have to get your system to trust it.
 1. Close
 1. (Approve the security if it asks)
 
-You can now use `local.cleanspeak.io` without any security warnings in chrome and safari on MacOS
+You can now use `*.cleanspeak.io` and `*.cleanspeak.com` without any security warnings in chrome and safari on MacOS
 
 ## Windows
 TODO

@@ -34,11 +34,13 @@ This table contains all of the configuration options available in the `cleanspea
 
 For MySQL, this URL will look something like this:
 
-[block-quote]#`database.url=jdbc:mysql://localhost:3306/cleanspeak`#
+[block-quote]#`database.url=jdbc:mysql://localhost:3306/cleanspeak?serverTimezone=UTC`#
 
 For PostgreSQL, this URL will look something like this:
 
 [block-quote]#`database.url=jdbc:postgresql://localhost:5432/cleanspeak`#
+
+If you are using MySQL, you must include the `serverTimezone=UTC` parameter in the URL. The `?` character is the same as a standard URL parameter, so if you have additional parameters, you should only have a single `?` and parameters should be separated by `&`.
 
 |[field]#database.username# [type]#[String]#
 |The username used to connect to the database.

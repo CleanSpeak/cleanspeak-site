@@ -53,7 +53,7 @@ aside {
 
   @media only screen and (min-width: 960px) {
     display: block;
-    top: 58px;
+    top: 56px;
     -webkit-transform: translateX(0px);
     -ms-transform: translateX(0px);
     transform: translateX(0px);
@@ -68,7 +68,7 @@ aside {
     /* ensure the last item is accessible by scrolling - match the top: 58px on aside */
     @media only screen and (min-width: 960px) {
       > ul > li:last-of-type {
-        margin-bottom: 76px; /* 58 + 18px for Chrome status */
+        margin-bottom: 74px; /* 56 + 18px for Chrome status */
       }
     }
 
