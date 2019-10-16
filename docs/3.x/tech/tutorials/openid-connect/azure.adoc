@@ -1,0 +1,41 @@
+---
+layout: doc
+title: Configuring OIDC for FusionAuth
+description: Learn how to configure an OpenID Connect with FusionAuth
+---
+
+== Configure OpenID with Azure
+
+Azure OpenID has a slightly different workflow because it uses a slightly different path for the issuer. This is because Azure uses tenant specific OpenID URLs.
+
+=== First we again need to create an application.
+.. First navigate to your portal
+.. Open `Azure Active Directory`
+.. Open `App registrations` on the new inner left menu. (The screen should look like the image below)
++
+image::azure-create-app.png[Azure create app screen]
+.. Click `New registration`
+.. Choose a name and set the redirect URI
++
+image::azure-create-app-pt2.png[Azure create app ptII]
+.. Click register
+
+=== You should now see a screen like the following.
+
+image::azure-application-details.png[Azure application details]
+
+=== Now open CleanSpeak System Settings
+.. Paste `https://login.microsoftonline.com/{tenantId}` into the issuer field of your. (With `{tenantId}` replaced with your own)
+.. Copy the Client ID from your azure application and paste that in the Client ID field of CleanSpeak
+
+=== Now we need a client secret (which is required for all web based applications on Azure)
+.. Go to your Azure app
+.. Open certificates and secrets
+.. Click `New client secret`
+.. Choose a name for this secret and create it
+.. Copy the secret value to your CleanSpeak OpenID Settings
+.. Click save
+
+=== You can now login with Azure
+
+image::azure-login.png[Azure login]

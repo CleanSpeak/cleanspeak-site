@@ -30,7 +30,14 @@
           <li><a href="{{ '/docs/3.x/tech/tutorials/handling-notifications' | relative_url }}" {% if page.url == "/docs/3.x/tech/tutorials/handling-notifications" %}class="active"{% endif %}>Handling Notifications</a></li>
           <li><a href="{{ '/docs/3.x/tech/tutorials/start-and-stop' | relative_url }}" {% if page.url == "/docs/3.x/tech/tutorials/start-and-stop" %}class="active"{% endif %}>Start and Stop CleanSpeak</a></li>
           <li><a href="{{ '/docs/3.x/tech/tutorials/logging-in-with-google' | relative_url }}" {% if page.url == "/docs/3.x/tech/tutorials/logging-in-with-google" %}class="active"{% endif %}>Logging in with Google</a></li>
-          <li><a href="{{ '/docs/3.x/tech/tutorials/configure-openid' | relative_url }}" {% if page.url == "/docs/3.x/tech/tutorials/configure-openid" %}class="active"{% endif %}>Configuring OpenID Connect</a></li>
+          <li>
+            <a href="#"{% if page.url contains "/tutorials/openid-connect/" %} class="open"{% endif %}><i class="fa fa-openid"></i>OpenID Connect<i class="fa fa-angle-right sub-menu"></i></a>
+            <ul{% if page.url contains "/tutorials/openid-connect/" %} class="active"{% endif %}>
+              <li><a href="{{ '/docs/3.x/tech/tutorials/openid-connect/' | relative_url }}" {% if page.url == "/docs/3.x/tech/tutorials/openid-connect/" %}class="active"{% endif %}>Overview</a></li>
+              <li><a href="{{ '/docs/3.x/tech/tutorials/openid-connect/azure' | relative_url }}" {% if page.url == "/docs/3.x/tech/tutorials/openid-connect/azure" %}class="active"{% endif %}>Azure</a></li>
+              <li><a href="{{ '/docs/3.x/tech/tutorials/openid-connect/fusionauth' | relative_url }}" {% if page.url == "/docs/3.x/tech/tutorials/openid-connect/fusionauth" %}class="active"{% endif %}>FusionAuth</a></li>
+            </ul>
+          </li>
         </ul>
       </li>
       <li>

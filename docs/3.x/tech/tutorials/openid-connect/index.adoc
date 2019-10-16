@@ -1,0 +1,82 @@
+---
+layout: doc
+title: Configuring OpenID Connect
+description: Learn how to configure an OpenID Connect within CleanSpeak
+---
+
+[NOTE.since]
+====
+Available since `3.24.0`
+====
+
+== Configure OpenID Connect
+
+We also provide specific examples for how to setup OpenID Connect in CleanSpeak
+
+* link:azure[Configure OpenID Connect with Azure]
+* link:fusionauth[Configure OpenID Connect with FusionAuth]
+
+=== General OpenID Connect instructions
+
+To setup OpenID Connect authentication in CleanSpeak you will need to do the following
+
+. Navigate to [breadcrumb]#Settings# icon:chevron-right[role=breadcrumb] [breadcrumb]#System# icon:chevron-right[role=breadcrumb] [breadcrumb]#Authentication#
+. Enable OpenID Connect Configuration
+. Collect Client ID and Client Secret from the provider and insert them into the form.
+. Enter the issuer or manually enter the endpoints
+.. If your provider has implemented a well-known URL you will likely just be able to use the providers domain (Ex: `https://example.com`) for the issuer. We will then navigate to `https://example.com/.well-known/openid-configuration` to automatically collect the required details for connecting.
+.. If your provider does not provide a well-known URL then you will need to manually provide their authorize, token, and userinfo URLs which should be documented with the provider.
+. Enter the text you would like displayed on the login button
+. Click save
+
+[cols="3a,7a"]
+[.api]
+.Form Fields
+|===
+|[field]#Client ID# [required]#Required#
+|The client id is how OpenID/OAuth identify who is asking for identification and in this case is how CleanSpeak tells the provider that it is the one asking for user logins. This is used on the authorization and token endpoints to authenticate CleanSpeak.
+
+|[field]#Client Secret# [optional]#optional#
+|This is a way to prevent other applications from using the same ID as CleanSpeak and is up to the provider if they require it. This is used on the authorization and token endpoints to authenticate CleanSpeak.
+
+|[field]#Issuer# [required]#Required#
+|This field allows CleanSpeak to look up the endpoints via the well-known URL: `/.well-known/openid-configuration`. This is a common way for OpenID applications to retrieve all of the required information to operate. If the well-known endpoint is not present then you will need to fill out the next three fields instead.
+
+|[field]#Authorization endpoint# [required]#Required#
+|The URL in which authorization is done. This is where the user logs in. Required if the discover endpoints field is off/false.
+
+|[field]#Token endpoint# [required]#Required#
+|The URL which CleanSpeak trades the authorization code for a token and some security is done to prevent spoofing/hacking. Required if the discover endpoints field is off/false.
+
+|[field]#Userinfo endpoint# [required]#Required#
+|The URL which CleanSpeak uses the token to get information about the user (in this case their `email` and optionally `roles`) Required if the discover endpoints field is off/false.
+
+|[field]#Button text# [required]#Required#
+|The text to display on the login button
+
+|[field]#Button image# [optional]#optional#
+|The image to display on the login button
+
+|[field]#Logout URL# [optional]#optional#
+|A URL for CleanSpeak to redirect to after logout.
+
+This is useful if you ever want to log out of your provider as well. You can set this to the providers logout URL and be logged out of everything that way.
+
+|[field]#Scope# [required]#Required#
+|The scope is a part of the request that specifies what permissions are required for this application to be successful. We allow you to customize this in case the provider does not provide the email when the `email` scope is provided. In that case you will need to figure out what scope is required to retrieve the users email as the email is how we figure out which user to log in. (The user must already exist in CleanSpeak!)
+
+|[field]#Override roles#
+|The override roles allows CleanSpeak to overwrite the roles that were previously on the user with ones from the issuer on login. This requires that the userinfo responds with a `roles` field that is an array of strings. Any roles that are not explicitly on the list below will be ignored.
+
+Allowed roles:
+
+* `admin` - Super User
+* `approve_all` - Permits the user to use approve all in moderation
+* `audit_viewer` - Permits the user to view the audit log
+* `filter` - Permits the user to view the filter
+* `filter_manager` - Permits the user to alter the filter
+* `moderator` - Permits the user to moderate
+* `moderator_manager` - Permits the user to moderate escalated content
+* `user_admin` - Permits the user to manage the users
+
+|===

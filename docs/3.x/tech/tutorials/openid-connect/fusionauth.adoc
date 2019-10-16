@@ -1,0 +1,33 @@
+---
+layout: doc
+title: Configuring OIDC for FusionAuth
+description: Learn how to configure an OpenID Connect with FusionAuth
+---
+
+== Configure OpenID with FusionAuth
+
+In the following example we will setup a FusionAuth OpenID Connect configuration. We need to give it a name and a tenant (if there is a tenant other than the default). Then click save.
+
+=== First we need to create a FusionAuth application.
+
+image::fusionauth-app-create.png[Create FusionAuth app]
+
+=== You will need to immediately edit the application
+.. Set the redirect URL to your CleanSpeak URL with a path of `/oauth` for example: `https://example-cleanspeak.inversoft.io/oauth`.
+.. Copy your client id and client secret for later
+.. (Optional) Set the logout URL to your CleanSpeak URL so that after a logout the users will be redirected back to the login page.
+.. (Optional) Remove the refresh token grant to lock down the security.
+
+image::fusionauth-app-settings.png[FusionAuth app redirect settings]
+
+=== Now we need to copy the values from the last step into the CleanSpeak configuration.
+.. Copy client id and client secret
+.. Set the issuer to the domain of your fusionauth domain. Ex: `https://local.fusionauth.io`
+.. Set the button text. Ex: `Login with FusionAuth`
+.. (Optional) Set the button image. Ex: `https://local.fusionauth.io/images/icon.png` (Hint: there is a fusionauth icon available at `/images/icon.png` on every instance of FusionAuth)
+.. (Optional) Set the logout url so that a user is logged out of FusionAuth globally. Ex: `https://local.fusionauth.io/oauth2/logout`
+.. Save
+
+image::openid-settings.png[OpenID settings]
+
+image::openid-login.png[OpenID login]
