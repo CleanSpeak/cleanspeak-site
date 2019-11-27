@@ -1,0 +1,25 @@
+
+[cols="3a,7a"]
+[.api]
+.Response Body
+|===
+|[field]#entries``[x]``.id# [type]#[Integer]#
+|The unique identifier of the entry
+
+|[field]#entries``[x]``.status# [type]#[String]#
+|The approval state of the entry
+
+|[field]#entries``[x]``.tags# [type]#[Array<String>]#
+|The names of url whitelist tags associated with the entry
+
+If the entry contains any tags, they will only be applicable to requests that use an application with the same tag(s). Tags allow you to scope whitelisted urls.
+
+|[field]#entries``[x]``.url# [type]#[String]#
+|A regular expression that will ignore any urls in the content that match
+|===
+
+[source,json]
+.Example Response JSON
+----
+include::../../src/json/url/multiple-resposne.json[]
+----

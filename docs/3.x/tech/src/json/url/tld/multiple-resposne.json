@@ -1,0 +1,24 @@
+{
+  "tlds": [
+    {
+      "name": "AAA",
+      "quality": 0.5,
+      "status": "ACTIVE"
+    },
+    {
+      "name": "ABB",
+      "quality": 0.5,
+      "status": "ACTIVE"
+    },
+    {
+      "name": "ABBOTT",
+      "quality": 0.5,
+      "status": "ACTIVE"
+    },
+    {
+      "name": "ABOGADO",
+      "quality": 0.5,
+      "status": "ACTIVE"
+    }
+  ]
+}

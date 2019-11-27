@@ -1,0 +1,10 @@
+{
+  "entry": {
+    "id": 42,
+    "status": "ACTIVE",
+    "tags": [
+      "tag1"
+    ],
+    "url": "example\\.com/.+"
+  }
+}

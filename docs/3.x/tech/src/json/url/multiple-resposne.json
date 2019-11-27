@@ -1,0 +1,18 @@
+{
+  "entries": [
+    {
+      "id": 42,
+      "status": "ACTIVE",
+      "tags": [],
+      "url": "example\\.com/.+"
+    },
+    {
+      "id": 69,
+      "status": "ACTIVE",
+      "tags": [
+        "tag1"
+      ],
+      "url": "example\\.io/.+"
+    }
+  ]
+}

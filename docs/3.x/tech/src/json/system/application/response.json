@@ -38,22 +38,22 @@
         }
       ],
       "maximumVideoFilterDurationInSeconds": 300,
+      "unicodeFilterRule": {
+        "action": "allow"
+      },
       "videoFilteringEnabled": false,
       "videoQualityFilterRules": [
         {
           "action": "allow",
-          "score": 70,
-          "userScoreAdjustment": 0
+          "score": 70
         },
         {
           "action": "allow",
-          "score": 30,
-          "userScoreAdjustment": 0
+          "score": 30
         },
         {
           "action": "allow",
-          "score": 0,
-          "userScoreAdjustment": 0
+          "score": 0
         }
       ],
       "defaultActionIsQueueForApproval": false,
@@ -154,6 +154,9 @@
           "score": 40,
           "action": "allow"
         }
+      ],
+      "urlWhitelistTags": [
+        "tag1"
       ],
       "userCheckOutMinutes": 10,
       "userFlagUserScoreAdjustment": -3

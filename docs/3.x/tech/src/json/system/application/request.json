@@ -12,6 +12,7 @@
       "contentDeletable": true,
       "contentEditable": true,
       "contentFlagAlertType": "User",
+      "contentFlagUserScoreAdjustment": -3,
       "contentUserActionsEnabled": true,
       "ignorableCharacters": "qxz",
       "imageConfiguration": {
@@ -20,7 +21,6 @@
         "defaultTimerDuration": 2.0,
         "speedModerationLayout": true
       },
-      "imageOnly": false,
       "imageFilteringEnabled": false,
       "imageQualityFilterRules": [
         {
@@ -37,6 +37,9 @@
         }
       ],
       "maximumVideoFilterDurationInSeconds": 300,
+      "unicodeFilterRule": {
+        "action": "allow"
+      },
       "videoFilteringEnabled": false,
       "videoQualityFilterRules": [
         {
@@ -53,7 +56,9 @@
         }
       ],
       "defaultActionIsQueueForApproval": false,
-      "dictionaryTags": [],
+      "dictionaryTags": [
+        "whitelistA"
+      ],
       "emailOnAlerts": false,
       "emailOnContentFlagged": false,
       "emailOnEscalations": false,
@@ -74,32 +79,30 @@
       ],
       "filterRules": [
         {
-          "highAction": "authorOnly",
-          "highAlertType": "User",
-          "locales": [],
-          "mediumAction": "allow",
+          "severeAlertType": "User",
+          "highAction": "replace",
           "mildAction": "allow",
           "severeAction": "reject",
-          "severeAlertType": "User",
           "tags": [
             "Vulgarity"
-          ]
+          ],
+          "mediumAction": "replace",
+          "highAlertType": "User",
+          "highUserScoreAdjustment": -25,
+          "severeUserScoreAdjustment": -50
         },
         {
-          "highAction": "allow",
           "highAlertType": "User",
-          "locales": [
-            "en"
-          ],
-          "mediumAction": "allow",
           "mildAction": "allow",
-          "severeAction": "authorOnly",
-          "severeAlertType": "User",
+          "severeAction": "reject",
           "tags": [
             "Bullying"
-          ]
+          ],
+          "highAction": "allow",
+          "mediumAction": "allow"
         }
       ],
+      "imageOnly": false,
       "persistent": true,
       "phoneNumberRules": [
         {
@@ -128,21 +131,42 @@
           "enabled": false
         },
         "whitelistFilterRules": {
-          "disallowedPhrase": {},
-          "disallowedWord": {}
+          "disallowedPhrase": {
+            "action": "allow"
+          },
+          "disallowedWord": {
+            "action": "allow"
+          }
         }
       },
       "storeContent": true,
-      "urlRules": [],
-      "userCheckOutMinutes": 10
+      "urlRules": [
+        {
+          "score": 90,
+          "action": "allow"
+        },
+        {
+          "action": "allow",
+          "score": 70
+        },
+        {
+          "score": 40,
+          "action": "allow"
+        }
+      ],
+      "urlWhitelistTags": [
+        "tag1"
+      ],
+      "userCheckOutMinutes": 10,
+      "userFlagUserScoreAdjustment": -3
     },
     "name": "Chat",
     "notificationServers": [
       {
         "connectTimeout": 1000,
-        "readTimeout": 2000,
+        "id": 21,
         "url": "http://chat.example.com/notification-handler",
-        "id": 20
+        "readTimeout": 2000
       }
     ]
   }

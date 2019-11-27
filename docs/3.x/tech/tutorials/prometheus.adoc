@@ -1,0 +1,32 @@
+---
+layout: doc
+title: Prometheus Setup
+description: Learn how to setup Prometheus to work with CleanSpeak
+---
+
+== Prometheus Setup
+
+[NOTE.since]
+====
+Available since `3.25.0`
+====
+
+Prometheus is a tool to monitor metrics and setup alerts in the case that some metric has responded negatively for an extended period. Setting this up with CleanSpeak is easy.
+
+=== Setup
+The only requirement to hookup CleanSpeak is to direct prometheus to the CleanSpeak endpoints. We used the following configuration for a CleanSpeak instance running locally on the docker host. (You can reach dockers host ip via `host.docker.internal` on mac and windows docker, and by default management interface runs on `8011` and webservice runs on `8001`)
+
+[source,yaml]
+.prometheus.yaml
+----
+include::docs/3.x/tech/src/yaml/prometheus.yaml[]
+----
+
+We then started prometheus with
+[source,bash]
+----
+docker -v $(pwd)/prometheus.yaml:/etc/prometheus/prometheus.yml -p 9090:9090 prom/prometheus
+----
+
+//=== Optional Setup
+//You can also supply a logback.xml in the catalina classpath root with or without the prometheus configuration. By default we have added prometheus metrics to the logging.

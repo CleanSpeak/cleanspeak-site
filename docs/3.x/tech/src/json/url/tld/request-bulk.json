@@ -1,0 +1,20 @@
+{
+  "tlds": [
+    {
+      "name": "AAA",
+      "quality": 0.5
+    },
+    {
+      "name": "ABB",
+      "quality": 0.5
+    },
+    {
+      "name": "ABBOTT",
+      "quality": 0.5
+    },
+    {
+      "name": "ABOGADO",
+      "quality": 0.5
+    }
+  ]
+}

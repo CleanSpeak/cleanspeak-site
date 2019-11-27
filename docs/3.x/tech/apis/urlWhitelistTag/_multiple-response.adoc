@@ -1,0 +1,20 @@
+
+[cols="3a,7a"]
+[.api]
+.Response Body
+|===
+|[field]#tags``[x]``.id# [type]#[Integer]#
+|The Id of the tag
+
+|[field]#tags``[x]``.name# [type]#[String]#
+|The name of the tag. This is only used for UI purposes.
+
+|[field]#tags``[x]``.status# [type]#[String]#
+|The approval state of the entry
+|===
+
+[source,json]
+.Example Response JSON
+----
+include::../../src/json/url/tag/multiple-response.json[]
+----

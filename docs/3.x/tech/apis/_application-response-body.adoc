@@ -358,6 +358,9 @@ include::_parameter-alert-type.adoc[]
 |
 include::_parameter-user-score-adjustment.adoc[]
 
+|[field]#applicaiton.moderationConfiguration.urlWhitelistTags# [type]#[Array<String>]# [optional]#Optional# [default]#Defaults to empty array#
+|A list of URL whitelist tag names that this application will use during moderation. The tags will include any whitelisted urls that are tagged with the same tag. Any whitelisted urls that are untagged are always used.
+
 |[field]#application.moderationConfiguration.userCheckOutMinutes# [type]#[Integer]#
 |The number of minutes a Content User is checked out for before it is automatically released to be eligible for another moderator to check out.
 

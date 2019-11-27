@@ -1,0 +1,301 @@
+---
+layout: doc
+title: URL APIs
+description: URL APIs allow you to modify the url filter behavior.
+---
+
+== Overview
+
+This page contains all of the APIs for managing the URL filter.
+
+[NOTE.since]
+====
+Available since `3.25.0`
+====
+
+[NOTE]
+====
+The following APIs only operate on the active filter state. The active filter state includes all dictionary and blacklist
+entries excluding pending modifications. Use the management interface to manage pending modifications. There is no approval
+process for the APIs and everything will be immediately added to the active filter state.
+====
+
+Top Level Domains
+
+* <<Retrieve a TLD>>
+* <<Retrieve all TLDs>>
+* <<Create a TLD>>
+* <<Update a TLD>>
+* <<Delete a TLD>>
+
+Whitelisted URLs
+
+* <<Retrieve a Whitelisted URL>>
+* <<Retrieve all Whitelisted URls>>
+* <<Create a Whitelisted URL>>
+* <<Update a Whitelisted URL>>
+* <<Delete a Whitelisted URL>>
+
+URL Whitelist Tags
+
+* <<Retrieve a URL Whitelist Tag>>
+* <<Retrieve all URL Whitelist Tags>>
+* <<Create a URL Whitelist Tag>>
+* <<Update a URL Whitelist Tag>>
+* <<Delete a URL Whitelist Tag>>
+
+== Retrieve a TLD
+
+[.endpoint]
+.URI
+--
+[method]#GET# [uri]#/filter/url/tld/`\{name\}`#
+--
+
+[cols="3a,7a"]
+[.api]
+.Request Parameters
+|===
+|[field]#name# [type]#[String]# [required]#required#
+|The unique name of the TLD to retrieve.
+|===
+
+include::docs/3.x/tech/apis/_standard-get-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/tld/_single-response.adoc[]
+
+== Retrieve all TLDs
+
+[.endpoint]
+.URI
+--
+[method]#GET# [uri]#/filter/url/tld/#
+--
+
+include::docs/3.x/tech/apis/_standard-get-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/tld/_multiple-response.adoc[]
+
+== Create a TLD
+
+[.endpoint]
+.URI
+--
+[method]#POST# [uri]#/filter/url/tld/#
+--
+
+=== Create single
+
+include::docs/3.x/tech/apis/tld/_post-request.adoc[]
+
+include::docs/3.x/tech/apis/_standard-post-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/tld/_single-response.adoc[]
+
+=== Create multiple
+
+include::docs/3.x/tech/apis/tld/_post-bulk-request.adoc[]
+
+include::docs/3.x/tech/apis/_standard-post-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/tld/_multiple-response.adoc[]
+
+== Update a TLD
+
+The `tld.name` field must match the entry you are trying to modify.
+
+[.endpoint]
+.URI
+--
+[method]#PUT# [uri]#/filter/url/tld/#
+--
+
+include::docs/3.x/tech/apis/tld/_post-request.adoc[]
+
+include::docs/3.x/tech/apis/_standard-put-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/tld/_single-response.adoc[]
+
+== Delete a TLD
+
+[.endpoint]
+.URI
+--
+[method]#DELETE# [uri]#/filter/url/tld/`\{name\}`#
+--
+
+include::docs/3.x/tech/apis/_standard-delete-response-codes.adoc[]
+
+== Retrieve a Whitelisted URL
+
+[.endpoint]
+.URI
+--
+[method]#GET# [uri]#/filter/url/`\{id\}`#
+--
+
+[cols="3a,7a"]
+[.api]
+.Request Parameters
+|===
+|[field]#id# [type]#[String]# [required]#required#
+|The unique id of the whitelisted URL to retrieve.
+|===
+
+include::docs/3.x/tech/apis/_standard-get-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/whitelistedURL/_single-response.adoc[]
+
+== Retrieve all Whitelisted URls
+
+[.endpoint]
+.URI
+--
+[method]#GET# [uri]#/filter/url/#
+--
+
+include::docs/3.x/tech/apis/_standard-get-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/whitelistedURL/_multiple-response.adoc[]
+
+== Create a Whitelisted URL
+
+[.endpoint]
+.URI
+--
+[method]#POST# [uri]#/filter/url/#
+--
+
+include::docs/3.x/tech/apis/whitelistedURL/_post-request.adoc[]
+
+include::docs/3.x/tech/apis/_standard-post-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/whitelistedURL/_single-response.adoc[]
+
+== Update a Whitelisted URL
+
+[.endpoint]
+.URI
+--
+[method]#PUT# [uri]#/filter/url/`\{id\}`#
+--
+
+[cols="3a,7a"]
+[.api]
+.Request Parameters
+|===
+|[field]#id# [type]#[String]# [required]#required#
+|The unique id of the whitelisted URL to retrieve.
+|===
+
+include::docs/3.x/tech/apis/whitelistedURL/_post-request.adoc[]
+
+include::docs/3.x/tech/apis/_standard-put-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/whitelistedURL/_single-response.adoc[]
+
+== Delete a Whitelisted URL
+
+[.endpoint]
+.URI
+--
+[method]#PUT# [uri]#/filter/url/#
+--
+
+include::docs/3.x/tech/apis/_standard-delete-response-codes.adoc[]
+
+== Retrieve a URL Whitelist Tag
+
+=== Retrieve by Id
+[.endpoint]
+.URI
+--
+[method]#GET# [uri]#/filter/url/tag/`\{id\}`#
+--
+
+[cols="3a,7a"]
+[.api]
+.Request Parameters
+|===
+|[field]#id# [type]#[Integer]# [required]#required#
+|The unique id of the URL whitelist tag to retrieve.
+|===
+
+=== Retrieve by name
+[.endpoint]
+.URI
+--
+[method]#GET# [uri]#/filter/url/tag/`\{name\}`#
+--
+
+[cols="3a,7a"]
+[.api]
+.Request Parameters
+|===
+|[field]#name# [type]#[String]# [required]#required#
+|The unique name of the URL whitelist tag to retrieve.
+|===
+
+=== Response
+
+include::docs/3.x/tech/apis/_standard-get-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/urlWhitelistTag/_single-response.adoc[]
+
+== Retrieve all URL Whitelist Tags
+
+[.endpoint]
+.URI
+--
+[method]#GET# [uri]#/filter/url/tag/#
+--
+
+include::docs/3.x/tech/apis/_standard-get-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/urlWhitelistTag/_multiple-response.adoc[]
+
+== Create a URL Whitelist Tag
+
+[.endpoint]
+.URI
+--
+[method]#POST# [uri]#/filter/url/tag/#
+--
+
+include::docs/3.x/tech/apis/urlWhitelistTag/_post-request.adoc[]
+
+include::docs/3.x/tech/apis/_standard-post-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/urlWhitelistTag/_single-response.adoc[]
+
+== Update a URL Whitelist Tag
+
+[.endpoint]
+.URI
+--
+[method]#PUT# [uri]#/filter/url/tag/#
+--
+
+include::docs/3.x/tech/apis/urlWhitelistTag/_post-request.adoc[]
+
+include::docs/3.x/tech/apis/_standard-put-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/urlWhitelistTag/_single-response.adoc[]
+
+== Delete a URL Whitelist Tag
+
+[.endpoint]
+.URI
+--
+[method]#DELETE# [uri]#/filter/url/tag/`\{id\}`#
+--
+
+[cols="3a,7a"]
+[.api]
+.Request Parameters
+|===
+|[field]#id# [type]#[Integer]# [required]#required#
+|The unique id of the URL whitelist tag to delete.
+|===
+
+include::docs/3.x/tech/apis/_standard-delete-response-codes.adoc[]

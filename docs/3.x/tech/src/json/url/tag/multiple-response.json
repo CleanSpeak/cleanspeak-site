@@ -1,0 +1,19 @@
+{
+  "tags": [
+    {
+      "id": 1,
+      "name": "Tag 1",
+      "status": "ACTIVE"
+    },
+    {
+      "id": 2,
+      "name": "Tag 2",
+      "status": "ACTIVE"
+    },
+    {
+      "id": 3,
+      "name": "Tag 3",
+      "status": "ACTIVE"
+    }
+  ]
+}
