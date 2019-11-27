@@ -19,3 +19,4 @@ Here are our tutorials:
 * link:handling-notifications[Handling Webhook Notifications] - Learn how to handle notifications that CleanSpeak sends back to your Webhooks.
 * link:start-and-stop[Start and Stop] - Learn how to start and stop the CleanSpeak services
 * link:openid-connect/[Configure OpenID] - Learn how to setup OpenID authentication
+* link:prometheus[Prometheus] - Learn how to configure link:https://prometheus.io/[Prometheus] to listen to CleanSpeak metrics.
