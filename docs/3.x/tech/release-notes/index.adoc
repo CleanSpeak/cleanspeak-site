@@ -25,11 +25,13 @@ _Pending Release_
 
 === New
 * Prometheus endpoint at `/prometheus/metrics` (On both the webservice and the management interface)
-* Top level domain UI and API.
+* Top level domain UI and link:/docs/3.x/tech/apis/url#retrieve-a-tld[API].
 ** Top level domains can now be modified directly in the UI or via the API so that you can further modify the URL filter behavior
 * URL whitelist entries can now be tagged for use with specific applications
 ** By default any entries that are not tagged will be always used
 ** Any entries that are tagged will only be used when an application that contains that same tag is supplied on the moderate endpoint
+* URL Whitelist link:/docs/3.x/tech/apis/url#retrieve-a-whitelisted-url[API]
+* Whitelist URL Tag link:/docs/3.x/tech/apis/url#retrieve-a-url-whitelist-tag[API]
 
 == Version 3.24.6
 _Released September 3rd, 2019_
