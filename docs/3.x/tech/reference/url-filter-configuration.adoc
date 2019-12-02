@@ -8,7 +8,7 @@ description: Learn how to control the quality scores TLDs found by the URL Filte
 
 [WARNING]
 ====
-Deprecated in `3.25.0`
+Removed in `3.25.0`
 
 Use link:/docs/3.x/tech/apis/url[TLD API] instead
 ====

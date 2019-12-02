@@ -278,8 +278,16 @@ include::docs/3.x/tech/apis/urlWhitelistTag/_single-response.adoc[]
 [.endpoint]
 .URI
 --
-[method]#PUT# [uri]#/filter/url/tag/#
+[method]#PUT# [uri]#/filter/url/tag/`\{id\}`#
 --
+
+[cols="3a,7a"]
+[.api]
+.Request Parameters
+|===
+|[field]#name# [type]#[Integer]# [required]#required#
+|The unique id of the URL whitelist tag to update.
+|===
 
 include::docs/3.x/tech/apis/urlWhitelistTag/_post-request.adoc[]
 

@@ -9,7 +9,7 @@
 |[field]#tag.name# [type]#[String]#
 |The name of the tag. This is only used for UI purposes.
 
-|[field]#tag.name# [type]#[String]#
+|[field]#tag.status# [type]#[String]#
 |The approval state of the entry
 |===
 

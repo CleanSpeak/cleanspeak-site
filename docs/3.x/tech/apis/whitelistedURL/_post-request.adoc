@@ -3,9 +3,6 @@
 [.api]
 .Request Body
 |===
-|[field]#entry.status# [type]#[String]#
-|The approval state of the entry
-
 |[field]#entry.tags# [type]#[Array<String>]#
 |The names of url whitelist tags associated with the entry
 
