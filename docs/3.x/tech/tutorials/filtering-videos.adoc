@@ -21,7 +21,7 @@ pre-moderation step to reduce the load on moderators by rejecting videos that ve
 
 === How to configure CleanSpeak to use this feature
 
-[NOTE.warn]
+[WARNING]
 ====
 The following steps need to be followed very closely in order to get a working solution.
 ====

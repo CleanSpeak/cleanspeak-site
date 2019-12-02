@@ -6,6 +6,13 @@ description: Learn how to control the quality scores TLDs found by the URL Filte
 
 == URL Filter Domain Quality Scores
 
+[WARNING]
+====
+Deprecated in `3.25.0`
+
+Use link:/docs/3.x/tech/apis/url[TLD API] instead
+====
+
 CleanSpeak ships with a configuration file that defines the recognized top level domains (TLDs) to be utilized when identifying a string as a URL.
 
 Lists of Top Level Domains
