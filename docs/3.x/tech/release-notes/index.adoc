@@ -21,7 +21,7 @@ _Contact Us for early access_
 [role=release-note]
 
 == Version 3.25.0
-_Pending Release_
+_Released Monday, December 2nd, 2019_
 
 === New
 * Prometheus endpoint at `/prometheus/metrics` (On both the webservice and the management interface)
@@ -34,7 +34,7 @@ _Pending Release_
 * Whitelist URL Tag link:/docs/3.x/tech/apis/url#retrieve-a-url-whitelist-tag[API]
 
 == Version 3.24.6
-_Released September 3rd, 2019_
+_Released Tuesday, September 3rd, 2019_
 
 === Enhancements
 * Upgraded Tomcat to `8.5.43`
