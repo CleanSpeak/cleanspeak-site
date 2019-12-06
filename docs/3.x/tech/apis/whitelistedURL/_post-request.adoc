@@ -8,6 +8,8 @@
 
 If the entry contains any tags, they will only be applicable to requests that use an application with the same tag(s). Tags allow you to scope whitelisted urls.
 
+All tags provided must already exist.
+
 |[field]#entry.url# [type]#[String]#
 |A regular expression that will ignore any urls in the content that match
 |===
