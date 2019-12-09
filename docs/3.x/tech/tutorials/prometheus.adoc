@@ -25,8 +25,10 @@ include::docs/3.x/tech/src/yaml/prometheus.yaml[]
 We then started prometheus with
 [source,bash]
 ----
-docker -v $(pwd)/prometheus.yaml:/etc/prometheus/prometheus.yml -p 9090:9090 prom/prometheus
+docker run -v $(pwd)/prometheus.yaml:/etc/prometheus/prometheus.yml -p 9090:9090 prom/prometheus
 ----
+
+image::prometheus-ui.png[Prometheus Adoc]
 
 //=== Optional Setup
 //You can also supply a logback.xml in the catalina classpath root with or without the prometheus configuration. By default we have added prometheus metrics to the logging.

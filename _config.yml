@@ -46,7 +46,7 @@ asciidoctor:
     #    attribute-missing: drop-line
     #    attribute-undefined: drop
     imagesdir: /images/docs
-    sectnums: ''
+    sectnums: '@'
     # Select Pygments for highlighting but disable the Jekyll-Asciidoc's bullshit plugin that generates the CSS file by
     # setting the stylesheet to empty
     source-highlighter: pygments

@@ -4,11 +4,25 @@ title: Prometheus API
 description: The Prometheus API that provides information, in a Prometheus format, about each CleanSpeak server and the CleanSpeak services running there.
 ---
 
+:sectnums!:
+
 == Prometheus
 
 This API provides metrics similar to the link:status[Status Endpoint] but in a format designed for link:https://prometheus.io[Prometheus].
 
+If you need help setting up prometheus, see our link:/docs/3.x/tech/tutorials/prometheus[tutorial].
+
 === Request
+
+[NOTE]
+====
+This endpoint exists on both the webservice and management interface
+====
+
+[NOTE]
+====
+This endpoint does not require an API key
+====
 
 [.endpoint]
 .URI
@@ -25,6 +39,9 @@ The Prometheus encoded response.
 |Code |Description
 
 |200
-|The CleanSpeak server is functioning properly
+|The request succeeded and the response is a valid Prometheus body
+
+|500
+|Something went wrong and it will be logged. The body will be empty.
 
 |===

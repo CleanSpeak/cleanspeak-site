@@ -15,14 +15,12 @@ Available since `3.25.0`
 
 [NOTE]
 ====
-The following APIs only operate on the active filter state. The active filter state includes all dictionary and blacklist
-entries excluding pending modifications. Use the management interface to manage pending modifications. There is no approval
-process for the APIs and everything will be immediately added to the active filter state.
+The following APIs only operate on the active filter state. There is no approval process for the APIs and everything will be immediately added to the active filter state. Use the management interface to manage pending modifications.
 ====
 
 === Top Level Domains
 
-The following APIs are provided to manage Top Level Domains inside of CleanSpeak. A Top Level Domain or TLD is a unique name used by various agencies as the root domain of any website. An example of this is the `COM` TLD. CleanSpeak uses TLDs to identify URLs and we have added these urls so that you can keep your TLD list up to date as you see fit. We previously shipped a static list inside of CleanSpeak but that has been replaced with this API and all of the previous TLDs are included by default.
+The following APIs are provided to manage Top Level Domains inside of CleanSpeak. A Top Level Domain or TLD is a unique name used by various agencies as the root domain of any website. An example of this is the `COM` TLD. CleanSpeak uses TLDs to identify URLs and this API exists so that you can modify which TLDs CleanSpeak identifies as URLs and their qualities so that bad urls can be easily tuned. The previous design was a static list that was shipped inside of the CleanSpeak jar and was difficult to modify, this API makes it easy and maintains the same behavior.
 
 * <<Retrieve a TLD>>
 * <<Retrieve all TLDs>>
@@ -53,6 +51,8 @@ URL Whitelist Tags are used to associate Whitelisted URLs with applications that
 
 == Retrieve a TLD
 
+=== Request
+
 Retrieve a TLD by name
 
 [.endpoint]
@@ -75,6 +75,8 @@ include::docs/3.x/tech/apis/tld/_single-response.adoc[]
 
 == Retrieve all TLDs
 
+=== Request
+
 Retrieve all TLDs
 
 [.endpoint]
@@ -82,6 +84,8 @@ Retrieve all TLDs
 --
 [method]#GET# [uri]#/filter/url/tld#
 --
+
+=== Response
 
 :never_missing:
 :no_errors:
@@ -93,6 +97,8 @@ include::docs/3.x/tech/apis/tld/_multiple-response.adoc[]
 
 == Create a TLD
 
+=== Request
+
 Create a TLD
 
 [.endpoint]
@@ -103,11 +109,15 @@ Create a TLD
 
 include::docs/3.x/tech/apis/tld/_post-request.adoc[]
 
+=== Response
+
 include::docs/3.x/tech/apis/_standard-post-response-codes.adoc[]
 
 include::docs/3.x/tech/apis/tld/_single-response.adoc[]
 
 == Create bulk TLDs
+
+=== Request
 
 Create many TLDs
 
@@ -124,11 +134,15 @@ Since both of the create TLD APIs use the same URL, providing both `tld` and `tl
 
 include::docs/3.x/tech/apis/tld/_post-bulk-request.adoc[]
 
+=== Response
+
 include::docs/3.x/tech/apis/_standard-post-response-codes.adoc[]
 
 include::docs/3.x/tech/apis/tld/_multiple-response.adoc[]
 
 == Update a TLD
+
+=== Request
 
 Update a TLD by name
 
@@ -142,11 +156,15 @@ The `tld.name` field must match the entry you are trying to modify.
 
 include::docs/3.x/tech/apis/tld/_post-request.adoc[]
 
+=== Response
+
 include::docs/3.x/tech/apis/_standard-put-response-codes.adoc[]
 
 include::docs/3.x/tech/apis/tld/_single-response.adoc[]
 
 == Delete a TLD
+
+=== Request
 
 Delete a TLD by name
 
@@ -164,10 +182,13 @@ Delete a TLD by name
 |The unique name of the TLD to delete.
 |===
 
+=== Response
 
 include::docs/3.x/tech/apis/_standard-delete-response-codes.adoc[]
 
 == Retrieve a Whitelisted URL
+
+=== Request
 
 Retrieve a whitelisted URL by Id
 
@@ -185,11 +206,15 @@ Retrieve a whitelisted URL by Id
 |The unique id of the whitelisted URL to retrieve.
 |===
 
+=== Response
+
 include::docs/3.x/tech/apis/_standard-get-response-codes.adoc[]
 
 include::docs/3.x/tech/apis/whitelistedURL/_single-response.adoc[]
 
 == Retrieve all Whitelisted URLs
+
+=== Request
 
 Retrieve all Whitelisted URLs
 
@@ -198,6 +223,8 @@ Retrieve all Whitelisted URLs
 --
 [method]#GET# [uri]#/filter/url#
 --
+
+=== Response
 
 :never_missing:
 :no_errors:
@@ -209,6 +236,8 @@ include::docs/3.x/tech/apis/whitelistedURL/_multiple-response.adoc[]
 
 == Create a Whitelisted URL
 
+=== Request
+
 Create a Whitelisted URL
 
 [.endpoint]
@@ -219,11 +248,15 @@ Create a Whitelisted URL
 
 include::docs/3.x/tech/apis/whitelistedURL/_post-request.adoc[]
 
+=== Response
+
 include::docs/3.x/tech/apis/_standard-post-response-codes.adoc[]
 
 include::docs/3.x/tech/apis/whitelistedURL/_single-response.adoc[]
 
 == Update a Whitelisted URL
+
+=== Request
 
 Update a Whitelisted URL by name
 
@@ -243,11 +276,15 @@ Update a Whitelisted URL by name
 
 include::docs/3.x/tech/apis/whitelistedURL/_post-request.adoc[]
 
+=== Response
+
 include::docs/3.x/tech/apis/_standard-put-response-codes.adoc[]
 
 include::docs/3.x/tech/apis/whitelistedURL/_single-response.adoc[]
 
 == Delete a Whitelisted URL
+
+=== Request
 
 Delete a Whitelisted URL by Id
 
@@ -265,9 +302,13 @@ Delete a Whitelisted URL by Id
 |The unique id of the Whitelisted URL to delete.
 |===
 
+=== Response
+
 include::docs/3.x/tech/apis/_standard-delete-response-codes.adoc[]
 
 == Retrieve a URL Whitelist Tag
+
+=== Request by Id
 
 Retrieve a URL Whitelist Tag by Id
 [.endpoint]
@@ -283,6 +324,8 @@ Retrieve a URL Whitelist Tag by Id
 |[field]#id# [type]#[Integer]# [required]#required#
 |The unique id of the URL whitelist tag to retrieve.
 |===
+
+=== Request by Name
 
 Retrieve a URL Whitelist Tag by name
 [.endpoint]
@@ -307,6 +350,8 @@ include::docs/3.x/tech/apis/urlWhitelistTag/_single-response.adoc[]
 
 == Retrieve all URL Whitelist Tags
 
+=== Request
+
 Retrieve all of the URL Whitelist Tags
 
 [.endpoint]
@@ -314,6 +359,8 @@ Retrieve all of the URL Whitelist Tags
 --
 [method]#GET# [uri]#/filter/url/tag#
 --
+
+=== Response
 
 :never_missing:
 :no_errors:
@@ -325,6 +372,8 @@ include::docs/3.x/tech/apis/urlWhitelistTag/_multiple-response.adoc[]
 
 == Create a URL Whitelist Tag
 
+=== Request
+
 Create a URL Whitelist Tag
 
 [.endpoint]
@@ -335,11 +384,15 @@ Create a URL Whitelist Tag
 
 include::docs/3.x/tech/apis/urlWhitelistTag/_post-request.adoc[]
 
+=== Response
+
 include::docs/3.x/tech/apis/_standard-post-response-codes.adoc[]
 
 include::docs/3.x/tech/apis/urlWhitelistTag/_single-response.adoc[]
 
 == Update a URL Whitelist Tag
+
+=== Request
 
 Update a URL Whitelist Tag
 
@@ -359,11 +412,15 @@ Update a URL Whitelist Tag
 
 include::docs/3.x/tech/apis/urlWhitelistTag/_post-request.adoc[]
 
+=== Response
+
 include::docs/3.x/tech/apis/_standard-put-response-codes.adoc[]
 
 include::docs/3.x/tech/apis/urlWhitelistTag/_single-response.adoc[]
 
 == Delete a URL Whitelist Tag
+
+=== Request
 
 Delete a URL Whitelist Tag by Id
 
@@ -380,5 +437,7 @@ Delete a URL Whitelist Tag by Id
 |[field]#id# [type]#[Integer]# [required]#required#
 |The unique id of the URL whitelist tag to delete.
 |===
+
+=== Response
 
 include::docs/3.x/tech/apis/_standard-delete-response-codes.adoc[]

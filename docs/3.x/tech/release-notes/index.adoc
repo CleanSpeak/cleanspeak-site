@@ -23,15 +23,23 @@ _Contact Us for early access_
 == Version 3.25.0
 _Released Monday, December 2nd, 2019_
 
+include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
+
 === New
 * Prometheus endpoint at `/prometheus/metrics` (On both the webservice and the management interface)
+** Closes https://github.com/CleanSpeak/cleanspeak-issues/issues/3
 * Top level domain UI and link:/docs/3.x/tech/apis/url#retrieve-a-tld[API].
+** Closes https://github.com/CleanSpeak/cleanspeak-issues/issues/4
 ** Top level domains can now be modified directly in the UI or via the API so that you can further modify the URL filter behavior
+** Top level domains are used in CleanSpeak to identify URLs, this functionality already existed in CleanSpeak via a `domains.properties` file but has been transitioned to an API for ease of use.
 * URL whitelist entries can now be tagged for use with specific applications
+** Closes https://github.com/CleanSpeak/cleanspeak-issues/issues/6
 ** By default any entries that are not tagged will be always used
 ** Any entries that are tagged will only be used when an application that contains that same tag is supplied on the moderate endpoint
-* URL Whitelist link:/docs/3.x/tech/apis/url#retrieve-a-whitelisted-url[API]
-* Whitelist URL Tag link:/docs/3.x/tech/apis/url#retrieve-a-url-whitelist-tag[API]
+* Whitelisted URL link:/docs/3.x/tech/apis/url#retrieve-a-whitelisted-url[API]
+** This API allows you to manage  whitelisted URLs for the URL filter.
+* URL Whitelist Tag link:/docs/3.x/tech/apis/url#retrieve-a-url-whitelist-tag[API]
+** This API allows you to manage tags for the URL filter
 
 == Version 3.24.6
 _Released Tuesday, September 3rd, 2019_

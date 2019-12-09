@@ -1,5 +1,6 @@
 scrape_configs:
   - job_name: CleanSpeak
     metrics_path: /prometheus/metrics
+    scheme: https
     static_configs:
-      - targets: ['host.docker.internal:8011', 'host.docker.internal:8001']
+      - targets: ['local.cleanspeak.io:8011', 'local-api.cleanspeak.io:8001']

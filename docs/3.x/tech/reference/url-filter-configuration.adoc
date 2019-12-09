@@ -8,9 +8,9 @@ description: Learn how to control the quality scores TLDs found by the URL Filte
 
 [WARNING]
 ====
-Removed in `3.25.0`
+The `domains.properties` was removed in `3.25.0` in favor of the link:/docs/3.x/tech/apis/url[TLD API]
 
-Use link:/docs/3.x/tech/apis/url[TLD API] instead
+The quality scores are still relevant but are now accessible/modifiable via the API.
 ====
 
 CleanSpeak ships with a configuration file that defines the recognized top level domains (TLDs) to be utilized when identifying a string as a URL.
