@@ -19,7 +19,26 @@ _Contact Us for early access_
 * Dirty Mind&trade;, an artificial intelligence model used to assist the CleanSpeak core filter capability.
 
 [role=release-note]
+== Version 3.26.0
+_Pending Release_
 
+=== New
+* Filter storage limiter
+** For some applications, storing content was impossible due to the volume of content that was being filtered. This feature allows you to choose to keep some percent of the content so that storage is possible.
+
+[role=release-note]
+== Version 3.25.1
+_Pending Release_
+
+=== Enhanced
+* Enhanced the URL filter to detect more cases where the user is avoiding the filter
+** Explicitly fixes `exampledotcom` but also fixes many other embedded cases where `dot` is used instead of punctuation.
+
+=== Fixed
+* Fixed the TLD API to use name in the parameters/URI. The previous method still works.
+// TODO Update the TLD API to reflect this
+
+[role=release-note]
 == Version 3.25.0
 _Released Monday, December 2nd, 2019_
 
@@ -41,6 +60,7 @@ include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 * URL Whitelist Tag link:/docs/3.x/tech/apis/url#retrieve-a-url-whitelist-tag[API]
 ** This API allows you to manage tags for the URL filter
 
+[role=release-note]
 == Version 3.24.6
 _Released Tuesday, September 3rd, 2019_
 
@@ -55,6 +75,7 @@ _Released Tuesday, September 3rd, 2019_
 ** No match in the results can return anything higher than replace
 ** The current match must be allow or author only with a user or content action enabled
 
+[role=release-note]
 == Version 3.24.5
 _Released Wednesday, August 14th, 2019_
 
@@ -71,7 +92,7 @@ include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 * Application conditional reloading. Application cache will now only reload if a change has been made to reduce load on the database for situations where lots of applications may be desired. (Only affects webservice)
 * Application UI conditional paging. If you have more than 25 applications, paging controls will appear and restrict the number of applications visible at any given time. (Configurable)
 
-
+[role=release-note]
 == Version 3.24.4
 _Released Thursday, August 8th, 2019_
 
@@ -92,6 +113,7 @@ _Released Wednesday, August 7th, 2019_
 * Removed revert button on blacklist whitelist entries pattern property (It was redundant since it was the only property)
 * Fixed the UI for blacklist whitelist entries not showing the correct state.
 
+[role=release-note]
 == Version 3.24.1
 _Released Monday, July 22nd, 2019_
 
