@@ -142,9 +142,14 @@ include::docs/3.x/tech/apis/tld/_multiple-response.adoc[]
 
 == Update a TLD
 
-=== Request
+=== Request (old)
 
-Update a TLD by name
+[NOTE.deprecated]
+====
+This version of the update is deprecated as of `3.26.0` and may be removed in a future release.
+====
+
+Update a TLD by name in the body
 
 The `tld.name` field must match the entry you are trying to modify.
 
@@ -153,6 +158,31 @@ The `tld.name` field must match the entry you are trying to modify.
 --
 [method]#PUT# [uri]#/filter/url/tld#
 --
+
+include::docs/3.x/tech/apis/tld/_post-request-old.adoc[]
+
+=== Request
+
+[NOTE.since]
+====
+Available since `3.26.0`
+====
+
+Update a TLD by name
+
+[.endpoint]
+.URI
+--
+[method]#PUT# [uri]#/filter/url/tld/`\{name\}`#
+--
+
+[cols="3a,7a"]
+[.api]
+.Request Parameters
+|===
+|[field]#name# [type]#[String]# [required]#required#
+|The unique name of the TLD to delete.
+|===
 
 include::docs/3.x/tech/apis/tld/_post-request.adoc[]
 
