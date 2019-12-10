@@ -27,10 +27,12 @@ include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 === New
 * Filter storage limiter
 ** For some applications, storing content was impossible due to the volume of content that was being filtered. This feature allows you to choose to keep some percent of the content so that storage is possible.
+** Closes https://github.com/CleanSpeak/cleanspeak-issues/issues/7
 
 === Enhanced
 * Enhanced the URL filter to detect more cases where the user is avoiding the filter
 ** Explicitly fixes `exampledotcom` but also fixes many other embedded cases where `dot` is used instead of punctuation.
+** Closes https://github.com/CleanSpeak/cleanspeak-issues/issues/5
 
 === Fixed
 * Fixed the TLD API to use name in the parameters/URI instead of using the one in the body. The API will still accept calls if it is only in the body for compatibility but this is deprecated.
