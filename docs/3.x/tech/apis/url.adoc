@@ -181,7 +181,7 @@ Update a TLD by name
 .Request Parameters
 |===
 |[field]#name# [type]#[String]# [required]#required#
-|The unique name of the TLD to delete.
+|The unique name of the TLD to update.
 |===
 
 include::docs/3.x/tech/apis/tld/_post-request.adoc[]
