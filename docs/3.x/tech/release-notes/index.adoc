@@ -33,6 +33,9 @@ include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 * Enhanced the URL filter to detect more cases where the user is avoiding the filter
 ** Explicitly fixes `exampledotcom` but also fixes many other embedded cases where `dot` is used instead of punctuation.
 ** Closes https://github.com/CleanSpeak/cleanspeak-issues/issues/5
+* Improved the OpenID workflow so that we catch more problems with the configuration
+** The access token on the token endpoint will be explicitly checked and displays an issue with the token endpoint configuration if it is missing.
+** The user info endpoint requires the email field or it will display an issue with the user info endpoint configuration.
 
 === Fixed
 * Fixed the TLD API to use name in the parameters/URI instead of using the one in the body. The API will still accept calls if it is only in the body for compatibility but this is deprecated.
