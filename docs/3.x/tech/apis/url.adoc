@@ -20,7 +20,7 @@ The following APIs only operate on the active filter state. There is no approval
 
 === Top Level Domains
 
-The following APIs are provided to manage Top Level Domains inside of CleanSpeak. A Top Level Domain or TLD is a unique name used by various agencies as the root domain of any website. An example of this is the `COM` TLD. CleanSpeak uses TLDs to identify URLs and this API exists so that you can modify which TLDs CleanSpeak identifies as URLs and their qualities so that bad urls can be easily tuned. The previous design was a static list that was shipped inside of the CleanSpeak jar and was difficult to modify, this API makes it easy and maintains the same behavior.
+The following APIs are provided to manage Top Level Domains inside of CleanSpeak. A Top Level Domain or TLD is a unique name used by various agencies as the root domain of any website. An example of this is the `COM` TLD. CleanSpeak uses TLDs to identify URLs and this API exists so that you can modify which TLDs CleanSpeak identifies as URLs and their qualities so that bad urls can be easily tuned.
 
 * <<Retrieve a TLD>>
 * <<Retrieve all TLDs>>
