@@ -3,8 +3,10 @@
 [.api]
 .Request Body
 |===
-|[field]#tld.name# [type]#[String]# [required]#required#
-|The name of the TLD
+|[field]#tld.name# [type]#[String]# [required]#required# [deprecated]#Deprecated in 3.26.0#
+|The name of the tld to update.
+
+In version 3.26.0 and beyond, the name is provided on the request url.
 
 |[field]#tld.quality# [type]#[Double]# [required]#required#
 |The quality score of this TLD. Higher values mean a higher likelihood of a match on a URL. Lower values will cause a match to be thrown out more easily.
@@ -15,5 +17,5 @@ This must be a decimal between 0 and 1 (inclusive)
 [source,json]
 .Example Request JSON
 ----
-include::../../src/json/url/tld/request.json[]
+include::../../src/json/url/tld/request-put.json[]
 ----

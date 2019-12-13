@@ -16,5 +16,5 @@
 [source,json]
 .Example Response JSON
 ----
-include::../../src/json/url/tld/multiple-resposne.json[]
+include::../../src/json/url/tld/multiple-response.json[]
 ----

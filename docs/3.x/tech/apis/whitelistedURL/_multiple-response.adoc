@@ -21,5 +21,5 @@ If the entry contains any tags, they will only be applicable to requests that us
 [source,json]
 .Example Response JSON
 ----
-include::../../src/json/url/multiple-resposne.json[]
+include::../../src/json/url/multiple-response.json[]
 ----

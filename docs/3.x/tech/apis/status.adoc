@@ -30,3 +30,44 @@ The JSON response from the Status API is complex and subject to change. The spec
 |500
 |The CleanSpeak server is not functioning properly. This could indicate that the database connectivity failed or one or more services within CleanSpeak failed. Consult the CleanSpeak link:../troubleshooting/[Troubleshooting] to learn more about the failure or contact Inversoft support for assistance.
 |===
+
+
+== Prometheus
+
+This API provides metrics similar to the Status Endpoint but responds in a format designed for link:https://prometheus.io[Prometheus].
+
+If you need help setting up prometheus, see our link:/docs/3.x/tech/tutorials/prometheus[tutorial].
+
+=== Request
+
+[NOTE]
+====
+This endpoint exists on both the webservice and management interface
+====
+
+[NOTE]
+====
+This endpoint does not require an API key
+====
+
+[.endpoint]
+.URI
+--
+[method]#GET# [uri]#/prometheus/metrics#
+--
+
+=== Response
+The Prometheus encoded response.
+
+[cols="1,9"]
+.Response Codes
+|===
+|Code |Description
+
+|200
+|The request succeeded and the response is a valid Prometheus body
+
+|500
+|Something went wrong and it will be logged. The body will be empty.
+
+|===
