@@ -1,0 +1,142 @@
+---
+layout: doc
+title: Common Errors
+description: A list of common errors that you might see in CleanSpeak and how to fix them
+---
+
+
+== Common Errors
+
+This page exists to help people resolve errors that may arise in certain configurations of CleanSpeak.
+
+=== SSL Validation Errors
+
+If you find SSL validation errors in the logs when connecting to a database or elastic search then it means that whatever certificate your service is using is not explicitly shipped with Java or that certificate is not signed by a known certificate authority (at least not one that is shipped with Java by default). In order to fix this, you will need to add either that certificate or the root certificate it was signed with to the `cacerts` file in the CleanSpeak installation.
+
+You can obtain the root certificate from the certificate authority of the service in most cases. Ex: link:https://ssl-ccp.godaddy.com/repository/?origin=CALLISTO[GoDaddy certificates].
+
+[NOTE]
+====
+All of the following assume that CleanSpeak was installed on a 'nix type system via package manager. If you used zip files then modify all of the paths provided to suit your installation location.
+====
+
+==== General Solution
+
+Run the following on the machine that is running CleanSpeak and replace the variable values with your cert location and a name for that certificate.
+
+[source,bash]
+----
+# Replace the values of these variables
+CERT=/location/of/the/cert/you/want/to/add
+ALIAS=a_name_for_this_cert
+
+# Add the keytool to the path
+PATH=/usr/local/inversoft/cleanspeak-management-interface/java/jre1.8.0_171/bin:$PATH
+
+# This command adds the given cert under the name provided in alias to the cacerts that CleanSpeak uses
+keytool -import -file ${CERT} -alias "${ALIAS}" -storepass changeit -keystore /usr/local/inversoft/cleanspeak-management-interface/java/jre1.8.0_171/lib/security/cacerts -noprompt
+
+# Repeat for webservice
+keytool -import -file ${CERT} -alias "${ALIAS}" -storepass changeit -keystore /usr/local/inversoft/cleanspeak-webservice/java/jre1.8.0_171/lib/security/cacerts -noprompt
+----
+
+==== Workaround (MySQL only)
+
+An alternative solution is to use the parameter string: `&useSSL=true&verifyServerCertificate=false&allowPublicKeyRetrieval=true` which will allow you to use encrypted connections without needing to have the cert explicitly in the truststore. This is the default behavior for enabling TLS via maintenance mode.
+
+==== Docker (Solution 1)
+
+One solution for docker is to create a `cacerts` file similar to that of the general solution and mount it without the need to modify the provided images.
+
+. First obtain a copy of `cacerts`
+.. You can do this via `docker cp` from a running CleanSpeak container. (Emphasis on running container. You cannot copy from an image) Ex: `docker cp <containerId>:/usr/local/inversoft/cleanspeak-management-interface/java/jre1.8.0_171/lib/security/cacerts cacerts`
+. Add your cert to the copy of `cacerts` using `keytool -import -file ${CERT} -alias "${ALIAS}" -storepass changeit -keystore cacerts -noprompt`
+. When starting the images, mount the `cacerts` to the containers
+.. `docker run -p 8011:8011 -v $(pwd)/cacerts:/usr/local/inversoft/cleanspeak-management-interface/java/jre1.8.0_171/lib/security/cacerts cleanspeak/cleanspeak-management-interface:latest`
+.. `docker run -p 8001:8001 -v $(pwd)/cacerts:/usr/local/inversoft/cleanspeak-webservice/java/jre1.8.0_171/lib/security/cacerts cleanspeak/cleanspeak-webservice:latest`
+
+==== Docker (Solution 2)
+
+An alternative solution is to create a `dockerfile` like the following that allows you to have an image with the modified `cacerts` file and no need to mount a volume/file.
+
+[source,dockerfile]
+----
+FROM cleanspeak/cleanspeak-management-interface:latest
+
+COPY ./cert.pem /cert.pem
+
+## Patch the truststore in the java shipped with cleanspeak
+RUN /usr/local/inversoft/cleanspeak-management-interface/java/jre1.8.0_171/bin/keytool -import -file /cert.pem -alias "some_name_for_a_cert" -storepass changeit -keystore /usr/local/inversoft/cleanspeak-management-interface/java/jre1.8.0_171/lib/security/cacerts -noprompt
+
+# Allows docker to simply call run on the image
+USER inversoft
+CMD /usr/local/inversoft/cleanspeak-management-interface/apache-tomcat/bin/catalina.sh run
+----
+
+Repeat this for webservice:
+
+[source,dockerfile]
+----
+FROM cleanspeak/cleanspeak-webservice:latest
+
+COPY ./cert.pem /cert.pem
+
+## Patch the truststore in the java shipped with cleanspeak
+RUN /usr/local/inversoft/cleanspeak-webservice/java/jre1.8.0_171/bin/keytool -import -file /cert.pem -alias "some_name_for_a_cert" -storepass changeit -keystore /usr/local/inversoft/cleanspeak-webservice/java/jre1.8.0_171/lib/security/cacerts -noprompt
+
+# Allows docker to simply call run on the image
+USER inversoft
+CMD /usr/local/inversoft/cleanspeak-webservice/apache-tomcat/bin/catalina.sh run
+----
+
+Build and use these new images in place of the ones we ship. To update CleanSpeak, simply pull the CleanSpeak images and build these dockerfiles again.
+
+==== Many certs (advanced)
+
+In some cases you may need to add more than one certificate to the cacerts. In this case, using the link:https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL-certificate-rotation.html[rds example] as a base, the following script will add all of the rds certificates to a new `cacerts` file which can then be merged with the `cacerts` provided with CleanSpeak. Modify the script as necessary if you want to add a different set of certificates but keep in mind that this script expects a chained pem file.
+
+[NOTE]
+====
+This script requires a system with `keytool` in the path, `split` with a `-p` parameter, and `openssl` installed.
+====
+
+[source,bash]
+----
+mydir=/tmp/certs
+truststore=${mydir}/rds.jks
+storepassword=changeit
+
+mkdir -p $mydir
+curl -sS "https://s3.amazonaws.com/rds-downloads/rds-combined-ca-bundle.pem" > ${mydir}/rds-combined-ca-bundle.pem
+split -p "-----BEGIN CERTIFICATE-----" ${mydir}/rds-combined-ca-bundle.pem rds-ca-
+
+for CERT in rds-ca-*; do
+  alias=$(openssl x509 -noout -text -in $CERT | perl -ne 'next unless /Subject:/; s/.*CN=//; print')
+  echo "Importing $alias"
+  keytool -import -file ${CERT} -alias "${alias}" -storepass ${storepassword} -keystore ${truststore} -noprompt
+  rm $CERT
+done
+
+rm ${mydir}/rds-combined-ca-bundle.pem
+
+echo "Trust store content is: "
+
+keytool -list -v -keystore "$truststore" -storepass ${storepassword} | grep Alias | cut -d " " -f3- | while read alias
+do
+   expiry=`keytool -list -v -keystore "$truststore" -storepass ${storepassword} -alias "${alias}" | grep Valid | perl -ne 'if(/until: (.*?)\n/) { print "$1\n"; }'`
+   echo " Certificate ${alias} expires in '$expiry'"
+done
+----
+
+And finally, merge the new `cacerts` into the ones shipped in CleanSpeak with the following:
+
+[source,bash]
+----
+# Management Interface
+keytool -importkeystore -srckeystore /usr/local/inversoft/cleanspeak-management-interface/java/jre1.8.0_171/rds.jks -destkeystore /usr/local/inversoft/cleanspeak-management-interface/java/jre1.8.0_171/lib/security/cacerts \
+-deststorepass changeit -srcstorepass changeit -noprompt
+
+# Webservice
+keytool -importkeystore -srckeystore /usr/local/inversoft/cleanspeak-webservice/java/jre1.8.0_171/rds.jks -destkeystore /usr/local/inversoft/cleanspeak-webservice/java/jre1.8.0_171/lib/security/cacerts \
+-deststorepass changeit -srcstorepass changeit -noprompt
+----
