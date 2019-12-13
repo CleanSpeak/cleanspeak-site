@@ -66,7 +66,7 @@ Phrases also utilize a severity, locale, and tags to classify how they should be
 application or if they should be ignored by the minimum severity setting on the filter.
 You can then then click `Save` (Top right) and the phrase will be created.
 
-image::add-phrase.png[Add Phrase]
+image::add-phrase.png[Add Phrase,width=1200]
 
 === How to create a Phrase from the API
 

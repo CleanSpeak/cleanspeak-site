@@ -13,16 +13,16 @@ Azure OpenID has a slightly different workflow because it uses a slightly differ
 .. Open `Azure Active Directory`
 .. Open `App registrations` on the new inner left menu. (The screen should look like the image below)
 +
-image::azure-create-app.png[Azure create app screen]
+image::azure-create-app.png[Azure create app screen,width=1200]
 .. Click `New registration`
 .. Choose a name and set the redirect URI
 +
-image::azure-create-app-pt2.png[Azure create app ptII]
+image::azure-create-app-pt2.png[Azure create app ptII,width=1200]
 .. Click register
 
 === You should now see a screen like the following.
 
-image::azure-application-details.png[Azure application details]
+image::azure-application-details.png[Azure application details,width=1200]
 
 === Now open CleanSpeak System Settings
 .. Paste `https://login.microsoftonline.com/{tenantId}` into the issuer field of your. (With `{tenantId}` replaced with your own)
@@ -38,4 +38,4 @@ image::azure-application-details.png[Azure application details]
 
 === You can now login with Azure
 
-image::azure-login.png[Azure login]
+image::azure-login.png[Azure login,width=1200]

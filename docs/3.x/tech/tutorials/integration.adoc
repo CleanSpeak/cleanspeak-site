@@ -14,7 +14,7 @@ complete the following to attain a complete integration with CleanSpeak and get 
 . link:configure-an-application[Setup an Application]
 . link:#email-settings[Setup email] (optional)
 
-image::dashboard.png[Dashboard]
+image::dashboard.png[Dashboard,width=1200]
 
 == Default Filter Lists
 
@@ -26,7 +26,7 @@ it is offensive in French.
 In order to import lists you can click setup on the Dashboard in the Missing Lists card or you can navigate to Filters -> Lists -> Import (Button in the top right) to
 reach this in the future.
 
-image::default-lists.png[Load Stock Lists]
+image::default-lists.png[Load Stock Lists,width=1200]
 
 == API Keys
 
@@ -34,7 +34,7 @@ In order to make calls to CleanSpeak you will need an API Key. These keys allow 
 
 See Settings -> API Keys
 
-image::api-key.png[API Keys]
+image::api-key.png[API Keys,width=1200]
 
 == Email Settings
 
@@ -42,4 +42,4 @@ If you want CleanSpeak to send emails for you, you will need to configure the SM
 
 See Settings -> System -> Email
 
-image::email-settings.png[Email Settnigs]
+image::email-settings.png[Email Settnigs,width=1200]

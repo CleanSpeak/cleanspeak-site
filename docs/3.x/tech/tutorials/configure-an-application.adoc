@@ -13,7 +13,7 @@ You can modify existing Applications, create new Applications and delete old App
 menu option. We won't go into detail about all of the configuration options here, but once you navigate to a specific
 Application, you can select the *Blacklist* tab to control the filter rules that the Application is using. This tab looks like this:
 
-image::filter-rules.png[Application Setup]
+image::filter-rules.png[Application Setup,width=1200]
 
 You can create new rules, modify existing rules or delete filter rules here.
 

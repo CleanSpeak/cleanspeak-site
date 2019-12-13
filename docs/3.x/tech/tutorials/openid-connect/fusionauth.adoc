@@ -10,7 +10,7 @@ In the following example we will setup a FusionAuth OpenID Connect configuration
 
 === First we need to create a FusionAuth application.
 
-image::fusionauth-app-create.png[Create FusionAuth app]
+image::fusionauth-app-create.png[Create FusionAuth app,width=1200]
 
 === You will need to immediately edit the application
 .. Set the redirect URL to your CleanSpeak URL with a path of `/oauth` for example: `https://example-cleanspeak.inversoft.io/oauth`.
@@ -18,7 +18,7 @@ image::fusionauth-app-create.png[Create FusionAuth app]
 .. (Optional) Set the logout URL to your CleanSpeak URL so that after a logout the users will be redirected back to the login page.
 .. (Optional) Remove the refresh token grant to lock down the security.
 
-image::fusionauth-app-settings.png[FusionAuth app redirect settings]
+image::fusionauth-app-settings.png[FusionAuth app redirect settings,width=1200]
 
 === Now we need to copy the values from the last step into the CleanSpeak configuration.
 .. Copy client id and client secret
@@ -28,6 +28,6 @@ image::fusionauth-app-settings.png[FusionAuth app redirect settings]
 .. (Optional) Set the logout url so that a user is logged out of FusionAuth globally. Ex: `https://local.fusionauth.io/oauth2/logout`
 .. Save
 
-image::openid-settings.png[OpenID settings]
+image::openid-settings.png[OpenID settings,width=1200]
 
-image::openid-login.png[OpenID login]
+image::openid-login.png[OpenID login,width=1200]
