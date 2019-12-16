@@ -22,7 +22,7 @@ _Contact Us for early access_
 
 [role=release-note]
 == Version 3.26.0
-_Pending Release_
+_Released Friday, December 13th, 2019_
 
 include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 
