@@ -6,16 +6,19 @@ description: Learn how to handle notifications that CleanSpeak sends back to you
 
 == Handling Notifications
 
-The CleanSpeak Moderation Notification system is designed to provide feedback to your system when moderators perform specific actions on content or users. All notifications are sent from CleanSpeak to the notification servers (often referred to as Webhooks) you configure via the Management Interface. These notifications are sent via an HTTP POST using application/json data. This is the same style of API that the CleanSpeak WebService uses to accept requests from your application.
+The CleanSpeak notification system is designed to provide feedback to your servers when certain actions are taken inside of CleanSpeak. All notifications are sent from CleanSpeak to the webhooks you configure via the Management Interface. These notifications are sent via an HTTP POST using applicaiton/json data. This is similar to the webservice API except in reverse, instead of you calling an API, the API calls your system with data as it happens.
 
-There are four types of notifications that CleanSpeak will send:
+//The CleanSpeak Moderation Notification system is designed to provide feedback to your system when moderators perform specific actions on content or users. All notifications are sent from CleanSpeak to the notification servers (often referred to as Webhooks) you configure via the Management Interface. These notifications are sent via an HTTP POST using application/json data. This is the same style of API that the CleanSpeak WebService uses to accept requests from your application.
+
+There are five types of notifications that CleanSpeak will send:
 
 * <<Content Approvals>> - when a moderator approves or rejects content from the pre-approval queue
 * <<User Actions>> - when a moderator takes an action on a user
 * <<Content Edits>> - when a moderator edits a piece of persistent content
 * <<Content Deletes>> - when a moderator deletes a piece of persistent content
+* <<Filter Approvals>> - When an admin or filter manager approves pending filter changes
 
-Each of this notification types are covered in detail below:
+Each of these notification types are covered in detail below:
 
 == Content Approvals
 
@@ -227,6 +230,84 @@ include::docs/3.x/tech/src/json/notifications/deletes.json[]
 
 CleanSpeak expects that the notification request handler will return a 200 status code if the notification was successfully handled or any other status code if it wasn't. If your notification request handler does not return a 200, CleanSpeak will assume that the edit was not successful and display an error to the moderator.
 
+
+== Filter Approvals
+
+When filter configuration is changed via the UI, the configuration goes to a pending approval state. Only when that configuration is approved by an administrator will it become active in the live state of the filters used by the webservice. When this approval happens, you can view the changes via this notification. (Note: Changes via the API bypass the approval queue and thus will not trigger this notification)
+
+=== Request
+
+[cols="3a,7a"]
+[.api]
+.Request Body
+|===
+|[field]#type# [type]#[String]#
+|This parameter specifies the type of notification and will always be `fitlerApproval` for this type of notification.
+
+|[field]#blacklist.blacklistWhitelistEntries.current# [type]#link:/docs/3.x/tech/apis/blacklist#retrieve-a-whitelist-entry[[Blacklist Whitelist Entry\]]#
+|The original state of the Blacklist Whitelist Entry before the approval.
+
+|[field]#blacklist.blacklistWhitelistEntries.original# [type]#link:/docs/3.x/tech/apis/blacklis#retrieve-a-whitelist-entryt[[Blacklist Whitelist Entry\]]#
+|The current state of the Blacklist Whitelist Entry after approval. This is the state of the object in the filter.
+
+|[field]#blacklist.filterEntries.current# [type]#link:/docs/3.x/tech/apis/blacklist#retrieve-a-filter-entry[[Blacklist Filter Entry\]]#
+|The original state of the Blacklist Filter Entry before the approval.
+
+|[field]#blacklist.filterEntries.original# [type]#link:/docs/3.x/tech/apis/blacklist#retrieve-a-filter-entry[[Blacklist Filter Entry\]]#
+|The current state of the Blacklist Filter Entry after approval. This is the state of the object in the filter.
+
+|[field]#blacklist.dictionaryEntries.current# [type]#link:/docs/3.x/tech/apis/blacklist#retrieve-a-dictionary-entry[[Dictionary Entry\]]#
+|The original state of the Dictionary Entry before the approval.
+
+|[field]#blacklist.dictionaryEntries.original# [type]#link:/docs/3.x/tech/apis/blacklist#retrieve-a-dictionary-entry[[Dictionary Entry\]]#
+|The current state of the Dictionary Entry after approval. This is the state of the object in the filter.
+
+|[field]#blacklist.phrases.current# [type]#link:/docs/3.x/tech/apis/blacklist#retrieve-a-phrase[[Blacklist Phrase\]]#
+|The original state of the Blacklist Phrase before the approval.
+
+|[field]#blacklist.phrases.original# [type]#link:/docs/3.x/tech/apis/blacklist#retrieve-a-phrase[[Blacklist Phrase\]]#
+|The current state of the Blacklist Phrase after approval. This is the state of the object in the filter.
+
+|[field]#whitelist.advancedDisallowedEntries.current# [type]#link:/docs/3.x/tech/apis/kids-chat#retrieve-an-advanced-disallowed-phrase[[Whitelist Advanced Disallowed Phrase\]]#
+|The original state of the Whitelist Advanced Disallowed Entry before the approval.
+
+|[field]#whitelist.advancedDisallowedEntries.original# [type]#link:/docs/3.x/tech/apis/kids-chat#retrieve-an-advanced-disallowed-phrase[[Whitelist Advanced Disallowed Phrase\]]#
+|The current state of the Whitelist Advanced Disallowed Entry after approval. This is the state of the object in the filter.
+
+|[field]#whitelist.allowedEntries.current# [type]#link:/docs/3.x/tech/apis/kids-chat#retrieve-an-allowed-word[[Whitelist Allowed Word\]]#
+|The original state of the Whitelist Allowed Entry before the approval.
+
+|[field]#whitelist.allowedEntries.original# [type]#link:/docs/3.x/tech/apis/kids-chat#retrieve-an-allowed-word[[Whitelist Allowed Word\]]#
+|The current state of the Whitelist Allowed Entry after approval. This is the state of the object in the filter.
+
+|[field]#whitelist.disallowedEntries.current# [type]#link:/docs/3.x/tech/apis/kids-chat#retrieve-a-disallowed-phrase[[Whitelist Disallowed Phrase\]]#
+|The original state of the Whitelist Disallowed Entry before the approval.
+
+|[field]#whitelist.disallowedEntries.original# [type]#link:/docs/3.x/tech/apis/kids-chat#retrieve-a-disallowed-phrase[[Whitelist Disallowed Phrase\]]#
+|The current state of the Whitelist Disallowed Entry after approval. This is the state of the object in the filter.
+
+|[field]#url.tlds.current# [type]#link:/docs/3.x/tech/apis/url#retrieve-a-tld[[TLD\]]#
+|The original state of the TLD before the approval.
+
+|[field]#url.tlds.original# [type]#link:/docs/3.x/tech/apis/url#retrieve-a-tld[[TLD\]]#
+|The current state of the TLD after approval. This is the state of the object in the filter.
+
+|[field]#url.whitelistedURLs.current# [type]#link:/docs/3.x/tech/apis/url#retrieve-a-whitelisted-url[[Whitelisted URL\]]#
+|The original state of the Whitelisted URL before the approval.
+
+|[field]#url.whitelistedURLs.original# [type]#link:/docs/3.x/tech/apis/url#retrieve-a-whitelisted-url[[Whitelisted URL\]]#
+|The current state of the Whitelisted URL after approval. This is the state of the object in the filter.
+|===
+
+[source,json]
+.Example Request JSON
+----
+include::docs/3.x/tech/src/json/notifications/filter-approvals.json[]
+----
+
+=== Response
+
+CleanSpeak expects that the notification request handler will return a 200 status code if the notification was successfully handled or any other status code if it wasn't. If your notification request handler does not return a 200, CleanSpeak will assume that the approval was not successful and display an error.
 
 == Notification Handler
 

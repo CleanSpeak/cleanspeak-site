@@ -396,13 +396,25 @@ include::_parameter-alert-type.adoc[]
 
 Note: In the frontend, Notification Servers are now called Webhooks.
 
-(See link:../tutorials/handling-notifications.html[Handling Notifications] for more details)
+(See link:../tutorials/handling-notifications[Handling Notifications] for more details)
 
 |[field]#applicaiton.notificationServers``[x]``.connectTimeout# [type]#[Integer]# [optional]#Optional# [default]#Defaults to `1000`#
 |The maximum amount of time a server will take to try to connect in milliseconds.
 
 |[field]#application.notificationServers``[x]``.readTimeout# [type]#[Integer]# [optional]#Optional# [default]#Defaults to `2000`#
 |The maximum amount of time any read call will wait for data to flow.
+
+|[field]#application.notificationServers``[x]``.description# [type]#[String]# [optional]#Optional#
+|A description of the notification server and its purpose.
+
+|[field]#application.notificationServers``[x]``.eventsEnabled``[eventType]``# [type]#[Boolean]# [optional]#Optional# [default]#Defaults to true#
+|A list of enabled event types for this notification server. If a value in this map is false, then it will not recieve events of that type. The possible values for `eventType` are as follows (each has a related section in link:../tutorials/handling-notifications[Handling Notifications]):
+
+* `ContentAction`
+* `ContentApproval`
+* `ContentDelete`
+* `ContentEdit`
+* `FilterApproval`
 
 |[field]#application.notificationServers``[x]``.httpAuthenticationPassword# [type]#[String]# [optional]#Optional#
 |A password to supply on the notification request.

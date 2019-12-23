@@ -1,0 +1,85 @@
+{
+  "type": "filterApproval",
+  "changes": {
+    "blacklist": {
+      "blacklistWhitelistEntries": [
+        {
+          "current": {
+            "id": 94,
+            "pattern": "added",
+            "status": "ACTIVE"
+          },
+          "original": {
+            "id": 94,
+            "pattern": "added",
+            "status": "ADDED"
+          }
+        },
+        {
+          "current": {
+            "id": 95,
+            "pattern": "change",
+            "status": "ACTIVE"
+          },
+          "original": {
+            "id": 95,
+            "pattern": "edited",
+            "status": "EDITED"
+          }
+        },
+        {
+          "original": {
+            "id": 96,
+            "pattern": "deleted",
+            "status": "DELETED"
+          }
+        }
+      ],
+      "dictionaryEntries": [
+        {
+          "current": {
+            "id": 117,
+            "locale": "en",
+            "status": "ACTIVE",
+            "tags": [],
+            "text": "dictionary-entry-added"
+          },
+          "original": {
+            "id": 117,
+            "locale": "en",
+            "status": "ADDED",
+            "tags": [],
+            "text": "dictionary-entry-added"
+          }
+        },
+        {
+          "original": {
+            "id": 118,
+            "locale": "en",
+            "status": "DELETED",
+            "tags": [],
+            "text": "dictionary-entry-deleted"
+          }
+        },
+        {
+          "current": {
+            "id": 119,
+            "locale": "en_US",
+            "status": "ACTIVE",
+            "tags": [],
+            "text": "dictionary-entry-edited-changed"
+          },
+          "original": {
+            "id": 119,
+            "locale": "en_US",
+            "status": "EDITED",
+            "tags": [],
+            "text": "dictionary-entry-edited-changed"
+          }
+        }
+      ]
+    },
+    "url": {},
+    "whitelist": {}
+  }
+}
