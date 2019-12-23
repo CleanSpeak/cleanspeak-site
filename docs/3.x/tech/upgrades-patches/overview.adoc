@@ -111,4 +111,5 @@ cleanspeak-database-schema
       |- 3.24.5.sql
       |- 3.25.0.sql
       |- 3.26.0.sql
+      |- 3.27.0.sql
 ----
