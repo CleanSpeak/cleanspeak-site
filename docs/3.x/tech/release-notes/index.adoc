@@ -26,7 +26,7 @@ _Pending Release_
 include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 
 === New
-* Filter approval webhook
+* Filter approval webhook (see link:/docs/3.x/tech/tutorials/handling-notifications#filter-approvals[Handling Notifications] for details)
 ** A new webhook that is triggered by any changes to the filter list that get approved.
 ** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/12[Github Issue #12]
 * Webhooks
