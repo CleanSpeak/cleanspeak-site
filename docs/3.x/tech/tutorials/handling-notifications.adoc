@@ -8,8 +8,6 @@ description: Learn how to handle notifications that CleanSpeak sends back to you
 
 The CleanSpeak notification system is designed to provide feedback to your servers when certain actions are taken inside of CleanSpeak. All notifications are sent from CleanSpeak to the webhooks you configure via the Management Interface. These notifications are sent via an HTTP POST using applicaiton/json data. This is similar to the webservice API except in reverse, instead of you calling an API, the API calls your system with data as it happens.
 
-//The CleanSpeak Moderation Notification system is designed to provide feedback to your system when moderators perform specific actions on content or users. All notifications are sent from CleanSpeak to the notification servers (often referred to as Webhooks) you configure via the Management Interface. These notifications are sent via an HTTP POST using application/json data. This is the same style of API that the CleanSpeak WebService uses to accept requests from your application.
-
 There are five types of notifications that CleanSpeak will send:
 
 * <<Content Approvals>> - when a moderator approves or rejects content from the pre-approval queue
