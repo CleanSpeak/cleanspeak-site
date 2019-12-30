@@ -404,10 +404,10 @@ Note: In the frontend, Notification Servers are now called Webhooks.
 |[field]#application.notificationServers``[x]``.readTimeout# [type]#[Integer]# [optional]#Optional# [default]#Defaults to `2000`#
 |The maximum amount of time any read call will wait for data to flow.
 
-|[field]#application.notificationServers``[x]``.description# [type]#[String]# [optional]#Optional#
+|[field]#application.notificationServers``[x]``.description# [type]#[String]# [optional]#Optional# [since]#Since 3.27.0#
 |A description of the notification server and its purpose.
 
-|[field]#application.notificationServers``[x]``.eventsEnabled``[eventType]``# [type]#[Boolean]# [optional]#Optional# [default]#Defaults to true#
+|[field]#application.notificationServers``[x]``.eventsEnabled``[eventType]``# [type]#[Boolean]# [optional]#Optional# [default]#Defaults to true# [since]#Since 3.27.0#
 |A list of enabled event types for this notification server. If a value in this map is false, then it will not recieve events of that type. The possible values for `eventType` are as follows (each has a related section in link:../tutorials/handling-notifications[Handling Notifications]):
 
 * `ContentAction`

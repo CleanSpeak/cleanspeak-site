@@ -231,6 +231,11 @@ CleanSpeak expects that the notification request handler will return a 200 statu
 
 == Filter Approvals
 
+[NOTE.since]
+====
+Available since `3.27.0`
+====
+
 When filter configuration is changed via the UI, the configuration goes to a pending approval state. Only when that configuration is approved by an administrator will it become active in the live state of the filters used by the webservice. When this approval happens, you can view the changes via this notification. (Note: Changes via the API bypass the approval queue and thus will not trigger this notification)
 
 === Request
