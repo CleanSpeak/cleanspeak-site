@@ -67,7 +67,7 @@ Here are some common steps you'll take to get CleanSpeak Cloud configured and in
 * [Tutorial] link:../tutorials/configure-an-application[Configure an Application]
 * [Tutorial] link:../tutorials/filtering-content[Filtering Content]
 * [Tutorial] link:../tutorials/handling-flags[Handling Flags]
-* [Tech Docs] link:../apis/overview[API docs]
+* [Tech Docs] link:../apis/[API docs]
 
 === CleanSpeak Server
 
@@ -80,7 +80,7 @@ Here are some common steps you'll take to get CleanSpeak Cloud configured and in
 * [Tutorial] link:../tutorials/configure-an-application[Configure an Application]
 * [Tutorial] link:../tutorials/filtering-content[Filtering Content]
 * [Tutorial] link:../tutorials/handling-flags[Handling Flags]
-* [Tech Docs] link:../apis/overview[API docs]
+* [Tech Docs] link:../apis/[API docs]
 
 === Mobile Integrations
 
@@ -98,7 +98,7 @@ Here are the APIs you will need to use as well as the features of CleanSpeak tha
 * [Tutorial] link:../tutorials/filtering-content[Filtering Content]
 * [Tutorial] link:../tutorials/handling-flags[Handling Flags]
 * [Tutorial] link:../tutorials/handling-notifications[Handling Notifications]
-* [Tech Docs] link:../apis/overview[API docs]
+* [Tech Docs] link:../apis/[API docs]
 
 === FAQ
 
