@@ -15,8 +15,10 @@ Here are our tutorials:
 * link:configure-an-application[Configure an Application] - Learn how to configure an application with filter rules within CleanSpeak.
 * link:filtering-content[Filtering Content] - Learn how to send content to CleanSpeak to be filtered.
 * link:filtering-phrases[Filtering Phrases] - Learn how to use Blacklist Phrases for advanced matching.
+* link:filtering-videos[Filtering Videos] - Learn how to filter video content using CleanSpeak and third party filters.
 * link:handling-flags[Handling Flags] - Learn how to handle user and content flags (when user's report others) in CleanSpeak.
-* link:handling-notifications[Handling Webhook Notifications] - Learn how to handle notifications that CleanSpeak sends back to your Webhooks.
-* link:start-and-stop[Start and Stop] - Learn how to start and stop the CleanSpeak services
-* link:openid-connect/[Configure OpenID] - Learn how to setup OpenID authentication
-* link:prometheus[Prometheus] - Learn how to configure link:https://prometheus.io/[Prometheus] to listen to CleanSpeak metrics.
+* link:handling-notifications[Handling Webhook Events] - Learn how to handle events that CleanSpeak sends back to your Webhooks.
+* link:start-and-stop[Start and Stop CleanSpeak] - Learn how to start and stop the CleanSpeak services
+* link:prometheus[Configure Prometheus] - Learn how to configure link:https://prometheus.io/[Prometheus] to listen to CleanSpeak metrics.
+* link:logging-in-with-google[Logging in with Google] - Learn how to login with Google.
+* link:openid-connect/[Configure OpenID Connect] - Learn how to setup OpenID Connect authentication

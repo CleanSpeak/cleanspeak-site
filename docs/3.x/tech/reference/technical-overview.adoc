@@ -16,6 +16,6 @@ The *Search Engine* indexes content from the database for immediate, full-text s
 
 The *Database* is a relational database. We currently support MySQL and PostgreSQL.
 
-The *Moderation Notification Webservice* is developed by you to receive notifications from CleanSpeak when user is actioned and take the appropriate action in your application.
+The *Moderation Event Webservice* is developed by you to receive events from CleanSpeak when user is actioned and take the appropriate action in your application.
 
 image:technical-overview-diagram.png[Technical Overview]

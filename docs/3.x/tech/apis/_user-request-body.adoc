@@ -46,6 +46,7 @@ endif::[]
 * `moderator`
 * `moderator_manager`
 * `user_admin`
+* `webhook_manager` [since]#Available since 3.27.0#
 
 |===
 

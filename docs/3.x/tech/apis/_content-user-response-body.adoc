@@ -45,7 +45,7 @@
 |The name of the user.
 
 |[field]#user.preferredLanguages# [type]#[Array<String>]#
-|A list of languages this user prefers, ordered from most preferred to least. This is used in generating notifications and emails that are localized for the user. See link:../reference/data-types#locales[Locales].
+|A list of languages this user prefers, ordered from most preferred to least. This is used in generating events and emails that are localized for the user. See link:../reference/data-types#locales[Locales].
 
 |[field]#user.score# [type]#[Integer]#
 |The user's score.

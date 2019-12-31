@@ -26,13 +26,14 @@ _Pending Release_
 include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 
 === New
-* Filter approval webhook (see link:/docs/3.x/tech/tutorials/handling-notifications#filter-approvals[Handling Notifications] for details)
-** Added a new webhook that is fired by any time someone changes approves changes to the filter list.
+* Filter approval webhook event (see link:/docs/3.x/tech/tutorials/handling-notifications#filter-approvals[Handling Webhook Events] for details)
+** This webhook is fired any time someone approves a filter change on [breadcrumb]#Filters# icon:chevron-right[role=breadcrumb,type=fas] [breadcrumb]#Approvals#
+** If the webhook fails due to timeout (configured per webhook: [breadcrumb]#Settings# icon:chevron-right[role=breadcrumb,type=fas] [breadcrumb]#Webhooks# icon:chevron-right[role=breadcrumb,type=fas] [breadcrumb]#Add/Edit#) or transaction settings (found under: [breadcrumb]#Settings# icon:chevron-right[role=breadcrumb,type=fas] [breadcrumb]#System# icon:chevron-right[role=breadcrumb,type=fas] [breadcrumb]#Webhooks# ) then the approval will be rolled back.
 ** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/12[Github Issue #12]
-* Webhooks
-** New description field to annotate your webhooks with information about them
-** New toggles to enable/disable a webhook for specific event types. All event types are enabled by default to maintain previous behavior.
-** Added new role to manage webhooks explicitly. Previously only admins could manage webhooks.
+* Added new controls to Webhooks. You can find them under [breadcrumb]#Settings# icon:chevron-right[role=breadcrumb,type=fas] [breadcrumb]#Webhooks# icon:chevron-right[role=breadcrumb,type=fas] [breadcrumb]#Add/Edit#
+** **Description field** for describing a webhooks purpose or details about the webhook
+** **Events Enabled toggles** for enabling/disabling event types for any given webhook. Existing webhooks will have all existing event types enabled to maintain old behavior. New webhooks will default all event types to disabled.
+* Added a new `webhook_manager` role for managing webhooks. See [breadcrumb]#System# icon:chevron-right[role=breadcrumb,type=fas] [breadcrumb]#Users# icon:chevron-right[role=breadcrumb,type=fas] [breadcrumb]#Add/Edit# to find the new role or use the link:/docs/3.x/tech/apis/admins-moderators[User API] to modify the users programatically.
 
 [role=release-note]
 == Version 3.26.0

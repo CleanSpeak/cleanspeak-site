@@ -84,12 +84,12 @@ Here are some common steps you'll take to get CleanSpeak Cloud configured and in
 
 === Mobile Integrations
 
-If you are using CleanSpeak for a mobile application that has user-generated content, you will need to use 2 different APIs to comply with Apple's and Google's requirements to be approved for the App Store and Play Store. You will also need to write a Notification Handler and enable User Actions in your CleanSpeak deployment. This will allow you to cover all of these requirements:
+If you are using CleanSpeak for a mobile application that has user-generated content, you will need to use 2 different APIs to comply with Apple's and Google's requirements to be approved for the App Store and Play Store. You will also need to write an event Handler and enable User Actions in your CleanSpeak deployment. This will allow you to cover all of these requirements:
 
 * Filter user-generated content for appropriate language, racial slurs, bullying, or other offensive content
 * Allow users to report inappropriate user-generated content of other users
-* Have a method for deleting inappropriate content (via Notification Servers)
-* Have a method for disabling user accounts that are generating the inappropriate content (via Notification Servers)
+* Have a method for deleting inappropriate content (via Webhooks)
+* Have a method for disabling user accounts that are generating the inappropriate content (via Webooks)
 
 Here are the APIs you will need to use as well as the features of CleanSpeak that cover all of these requirements:
 
@@ -97,7 +97,7 @@ Here are the APIs you will need to use as well as the features of CleanSpeak tha
 * [Tutorial] link:../tutorials/configure-an-application[Configure an Application]
 * [Tutorial] link:../tutorials/filtering-content[Filtering Content]
 * [Tutorial] link:../tutorials/handling-flags[Handling Flags]
-* [Tutorial] link:../tutorials/handling-notifications[Handling Notifications]
+* [Tutorial] link:../tutorials/handling-notifications[Handling Webhook Events]
 * [Tech Docs] link:../apis/[API docs]
 
 === FAQ

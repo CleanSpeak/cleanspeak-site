@@ -27,7 +27,7 @@ The following configuration is not contained in the backup and as such will also
 ** User Actions
 ** User Action Reasons
 ** Automated User Actions
-** Notification Servers
+** Webhooks
 ** Email Templates
 
 * Other Configuration

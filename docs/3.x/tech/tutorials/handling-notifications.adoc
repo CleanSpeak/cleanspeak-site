@@ -1,14 +1,14 @@
 ---
 layout: doc
-title: Handling Notifications
-description: Learn how to handle notifications that CleanSpeak sends back to your Webhooks.
+title: Handling Webhook Events
+description: Learn how to handle events that CleanSpeak sends back to your Webhooks.
 ---
 
-== Handling Notifications
+== Handling Webhook Events
 
-The CleanSpeak notification system is designed to provide feedback to your servers when certain actions are taken inside of CleanSpeak. All notifications are sent from CleanSpeak to the webhooks you configure via the Management Interface. These notifications are sent via an HTTP POST using applicaiton/json data. This is similar to the webservice API except in reverse, instead of you calling an API, the API calls your system with data as it happens.
+The CleanSpeak webhook system is designed to provide feedback to your servers when certain actions are taken inside of CleanSpeak. All events are sent from CleanSpeak to the webhooks you configure via the Management Interface. These events are sent via an HTTP POST using `application/json` data. This is similar to the webservice API except in reverse, instead of you calling an API, the API calls your system with data as it happens.
 
-There are five types of notifications that CleanSpeak will send:
+There are five types of events that CleanSpeak will send:
 
 * <<Content Approvals>> - when a moderator approves or rejects content from the pre-approval queue
 * <<User Actions>> - when a moderator takes an action on a user
@@ -16,11 +16,11 @@ There are five types of notifications that CleanSpeak will send:
 * <<Content Deletes>> - when a moderator deletes a piece of persistent content
 * <<Filter Approvals>> - When an admin or filter manager approves pending filter changes
 
-Each of these notification types are covered in detail below:
+Each of these event types are covered in detail below:
 
 == Content Approvals
 
-The Pre-Approval Queue supports the approval and rejection of content. Moderators login to the CleanSpeak Management Interface and from there can approve and reject content. Once moderators have approved or rejected content, CleanSpeak will send notifications back into your system using the JSON format described below.
+The Pre-Approval Queue supports the approval and rejection of content. Moderators login to the CleanSpeak Management Interface and from there can approve and reject content. Once moderators have approved or rejected content, CleanSpeak will send events back into your system using the JSON format described below.
 
 === Request
 
@@ -29,7 +29,7 @@ The Pre-Approval Queue supports the approval and rejection of content. Moderator
 .Request Body
 |===
 |[field]#type# [type]#[String]#
-|This parameter specifies the type of notification and will always be `contentApproval` for this type of notification.
+|This parameter specifies the type of event and will always be `contentApproval` for this type of event.
 
 |[field]#approvals# [type]#[Object]#
 |This object contains the approvals performed by a moderator.
@@ -37,13 +37,13 @@ The Pre-Approval Queue supports the approval and rejection of content. Moderator
 The format of the object is 1-N key-value pairs, the key is the UUID of the content item, the value is the action performed ("approved", "rejected").
 
 |[field]#moderatorEmail# [type]#[String]#
-|This parameter specifies the email of the moderator that performed the action that resulted in the notification being sent.
+|This parameter specifies the email of the moderator that performed the action that resulted in the event being sent.
 
 |[field]#moderatorExternalId# [type]#[String]#
-|This parameter specifies the external id (if one is configured) of the moderator that performed the action that resulted in the notification being sent.
+|This parameter specifies the external id (if one is configured) of the moderator that performed the action that resulted in the event being sent.
 
 |[field]#moderatorId# [type]#[UUID]#
-|This parameter specifies the id of the moderator that performed the action that resulted in the notification being sent.
+|This parameter specifies the id of the moderator that performed the action that resulted in the event being sent.
 |===
 
 [source,json]
@@ -54,12 +54,12 @@ include::docs/3.x/tech/src/json/notifications/approvals.json[]
 
 === Response
 
-CleanSpeak expects that the notification request handler (the Webhook you write) will return a 200 status code if the notification was successfully handled or any other status code if it wasn't. If your notification request handler does not return a 200, CleanSpeak will place the content items back into the pre-approval queue so that they can be moderated again.
+CleanSpeak expects that the event request handler (the Webhook you write) will return a 200 status code if the event was successfully handled or any other status code if it wasn't. If your event request handler does not return a 200, CleanSpeak will place the content items back into the pre-approval queue so that they can be moderated again.
 
 
 == User Actions
 
-The User Action system provides moderators the capability to perform specific actions on users that generate content. Actions such as ban, mute, and kick are a few examples of actions that moderators can take when, for instance, users are generating inappropriate content. When actions are taken, CleanSpeak will send notifications back into your system.
+The User Action system provides moderators the capability to perform specific actions on users that generate content. Actions such as ban, mute, and kick are a few examples of actions that moderators can take when, for instance, users are generating inappropriate content. When actions are taken, CleanSpeak will send events back into your system.
 
 === Request
 
@@ -68,7 +68,7 @@ The User Action system provides moderators the capability to perform specific ac
 .Request Body
 |===
 |[field]#type# [type]#[String]#
-|This parameter specifies the type of notification and will always be `userAction` for this type of notification.
+|This parameter specifies the type of event and will always be `userAction` for this type of event.
 
 |[field]#applicationIds# [type]#[Array<UUID>]#
 |This parameter specifies the list of applications that the action is being performed in.
@@ -98,13 +98,13 @@ The User Action system provides moderators the capability to perform specific ac
 |This parameter specifies the localized reason of the action that's occurring, based on the user's preferred languages.
 
 |[field]#moderatorEmail# [type]#[String]#
-|This parameter specifies the email of the moderator that performed the action that resulted in the notification being sent.
+|This parameter specifies the email of the moderator that performed the action that resulted in the event being sent.
 
 |[field]#moderatorExternalId# [type]#[String]#
-|This parameter specifies the external id (if one is configured) of the moderator that performed the action that resulted in the notification being sent.
+|This parameter specifies the external id (if one is configured) of the moderator that performed the action that resulted in the event being sent.
 
 |[field]#moderatorId# [type]#[UUID]#
-|This parameter specifies the id of the moderator that performed the action that resulted in the notification being sent.
+|This parameter specifies the id of the moderator that performed the action that resulted in the event being sent.
 
 |[field]#notifyUser# [type]#[Boolean]#
 |This parameter specifies whether the user should be notified or not.
@@ -140,7 +140,7 @@ include::docs/3.x/tech/src/json/notifications/user-actions.json[]
 
 === Response
 
-CleanSpeak expects that the notification request handler will return a 200 status code if the notification was successfully handled or any other status code if it wasn't. If your notification request handler does not return a 200, CleanSpeak will assume that the action was not successful and display an error to the moderator.
+CleanSpeak expects that the event request handler will return a 200 status code if the event was successfully handled or any other status code if it wasn't. If your event request handler does not return a 200, CleanSpeak will assume that the action was not successful and display an error to the moderator.
 
 
 == Content Edits
@@ -154,7 +154,7 @@ Depending on your Application configuration, persistent content within CleanSpea
 .Request Body
 |===
 |[field]#type# [type]#[String]#
-|This parameter specifies the type of notification and will always be `contentEdit` for this type of notification.
+|This parameter specifies the type of event and will always be `contentEdit` for this type of event.
 
 |[field]#applicationId# [type]#[UUID]#
 |The UUID of the application that owns the content item.
@@ -163,13 +163,13 @@ Depending on your Application configuration, persistent content within CleanSpea
 |The UUID of the content item that was edited.
 
 |[field]#moderatorEmail# [type]#[String]#
-|This parameter specifies the email of the moderator that performed the edit that resulted in the notification being sent.
+|This parameter specifies the email of the moderator that performed the edit that resulted in the event being sent.
 
 |[field]#moderatorExternalId# [type]#[String]#
-|This parameter specifies the external id (if one is configured) of the moderator that performed the edit that resulted in the notification being sent.
+|This parameter specifies the external id (if one is configured) of the moderator that performed the edit that resulted in the event being sent.
 
 |[field]#moderatorId# [type]#[UUID]#
-|This parameter specifies the id of the moderator that performed the edit that resulted in the notification being sent.
+|This parameter specifies the id of the moderator that performed the edit that resulted in the event being sent.
 
 |[field]#newParts# [type]#[Array<String>]#
 |The new versions of each content part.
@@ -183,7 +183,7 @@ include::docs/3.x/tech/src/json/notifications/edits.json[]
 
 === Response
 
-CleanSpeak expects that the notification request handler will return a 200 status code if the notification was successfully handled or any other status code if it wasn't. If your notification request handler does not return a 200, CleanSpeak will assume that the edit was not successful and display an error to the moderator.
+CleanSpeak expects that the event request handler will return a 200 status code if the event was successfully handled or any other status code if it wasn't. If your event request handler does not return a 200, CleanSpeak will assume that the edit was not successful and display an error to the moderator.
 
 
 == Content Deletes
@@ -197,7 +197,7 @@ Depending on your Application configuration, persistent content within CleanSpea
 .Request Body
 |===
 |[field]#type# [type]#[String]#
-|This parameter specifies the type of notification and will always be `contentDelete` for this type of notification.
+|This parameter specifies the type of event and will always be `contentDelete` for this type of event.
 
 |[field]#applicationId# [type]#[UUID]#
 |The UUID of the application that owns the content item.
@@ -206,13 +206,13 @@ Depending on your Application configuration, persistent content within CleanSpea
 |The UUID of the content item that was deleted.
 
 |[field]#moderatorEmail# [type]#[String]#
-|This parameter specifies the email of the moderator that performed the delete that resulted in the notification being sent.
+|This parameter specifies the email of the moderator that performed the delete that resulted in the event being sent.
 
 |[field]#moderatorExternalId# [type]#[String]#
-|This parameter specifies the external id (if one is configured) of the moderator that performed the delete that resulted in the notification being sent.
+|This parameter specifies the external id (if one is configured) of the moderator that performed the delete that resulted in the event being sent.
 
 |[field]#moderatorId# [type]#[UUID]#
-|This parameter specifies the id of the moderator that performed the delete that resulted in the notification being sent.
+|This parameter specifies the id of the moderator that performed the delete that resulted in the event being sent.
 
 |[field]#newParts# [type]#[Array<String>]#
 |The new versions of each content part.
@@ -226,7 +226,7 @@ include::docs/3.x/tech/src/json/notifications/deletes.json[]
 
 === Response
 
-CleanSpeak expects that the notification request handler will return a 200 status code if the notification was successfully handled or any other status code if it wasn't. If your notification request handler does not return a 200, CleanSpeak will assume that the edit was not successful and display an error to the moderator.
+CleanSpeak expects that the event request handler will return a 200 status code if the event was successfully handled or any other status code if it wasn't. If your event request handler does not return a 200, CleanSpeak will assume that the edit was not successful and display an error to the moderator.
 
 
 == Filter Approvals
@@ -236,7 +236,7 @@ CleanSpeak expects that the notification request handler will return a 200 statu
 Available since `3.27.0`
 ====
 
-When filter configuration is changed via the UI, the configuration goes to a pending approval state. Only when that configuration is approved by an administrator will it become active in the live state of the filters used by the webservice. When this approval happens, you can view the changes via this notification. (Note: Changes via the API bypass the approval queue and thus will not trigger this notification)
+When filter configuration is changed via the UI, the configuration goes to a pending approval state. Only when that configuration is approved by an administrator will it become active in the live state of the filters used by the webservice. When this approval happens, you can view the changes via this event. (Note: Changes via the API bypass the approval queue and thus will not trigger this event)
 
 === Request
 
@@ -245,7 +245,7 @@ When filter configuration is changed via the UI, the configuration goes to a pen
 .Request Body
 |===
 |[field]#type# [type]#[String]#
-|This parameter specifies the type of notification and will always be `fitlerApproval` for this type of notification.
+|This parameter specifies the type of event and will always be `fitlerApproval` for this type of event.
 
 |[field]#blacklist.blacklistWhitelistEntries.current# [type]#link:/docs/3.x/tech/apis/blacklist#retrieve-a-whitelist-entry[[Blacklist Whitelist Entry\]]#
 |The current state of the Blacklist Whitelist Entry after approval. This is the state of the object in the filter.
@@ -310,16 +310,16 @@ include::docs/3.x/tech/src/json/notifications/filter-approvals.json[]
 
 === Response
 
-CleanSpeak expects that the notification request handler will return a 200 status code if the notification was successfully handled or any other status code if it wasn't. If your notification request handler does not return a 200, CleanSpeak will assume that the approval was not successful and display an error.
+CleanSpeak expects that the event request handler will return a 200 status code if the event was successfully handled or any other status code if it wasn't. If your event request handler does not return a 200, CleanSpeak will assume that the approval was not successful and display an error.
 
-== Notification Handler
+== event Handler
 
-In order to appropriately handle requests from the CleanSpeak notification system, you must build a simple HTTP request handler that listens for requests from the CleanSpeak Moderation Notification system. Your request handler must be designed to respond to simple HTTP POST requests with a request body containing application/json data as described above.
+In order to appropriately handle requests from the CleanSpeak event system, you must build a simple HTTP request handler that listens for requests from the CleanSpeak Moderation event system. Your request handler must be designed to respond to simple HTTP POST requests with a request body containing application/json data as described above.
 
 === Responses
 
-Your notification handler must handle the RESTful request described above and send back an appropriate response. Your notification WebService must send back to CleanSpeak an HTTP response code that indicates whether or not the notification was successfully handled or not. If your WebService handled the notification properly, it must send back an HTTP response status code of 200. If there was any type of error or failure, your WebService must send back an HTTP response status code of 500.
+Your event handler must handle the RESTful request described above and send back an appropriate response. Your event WebService must send back to CleanSpeak an HTTP response code that indicates whether or not the event was successfully handled or not. If your WebService handled the event properly, it must send back an HTTP response status code of 200. If there was any type of error or failure, your WebService must send back an HTTP response status code of 500.
 
 === Configuration
 
-Once your notification handler is complete and listening for notification requests, you must configure your notification handler URL. CleanSpeak refers to notification handlers as Notification Servers and they are configured via the Management Interface under System -> Notification Servers menu option. If you have multiple notification servers configured for a single Application, they must all correctly handle the notification for the transaction to succeed.
+Once your event handler is complete and listening for event requests, you must configure your event handler URL. CleanSpeak refers to event handlers as event Servers and they are configured via the Management Interface under System -> Webhooks menu option. If you have multiple event servers configured for a single Application, they must all correctly handle the event for the transaction to succeed.

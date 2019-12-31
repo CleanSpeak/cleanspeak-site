@@ -78,5 +78,6 @@ Allowed roles:
 * `moderator` - Permits the user to moderate
 * `moderator_manager` - Permits the user to moderate escalated content
 * `user_admin` - Permits the user to manage the users
+* `webhook_manager` - Permits the user to manage webhooks ([since]#Available since 3.27.0#)
 
 |===

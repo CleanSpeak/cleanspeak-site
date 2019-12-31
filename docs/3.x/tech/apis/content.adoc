@@ -39,7 +39,7 @@ CleanSpeak will store all content whether it is transient or persistent so long 
 
 Transient content is not be eligible for moderation but the user that generated the content can be moderated (actioned). The most common example of transient content is real-time chat, which disappears from the users' perspectives after a short amount of time. This type of content can't be edited or deleted since it disappears so quickly. Also, the real-time nature of chat means it would never require pre-approval.
 
-Persistent content such as forum posts must include a content ID (UUID) in order for CleanSpeak to communicate content moderation events back to the client application with the Notification System.
+Persistent content such as forum posts must include a content ID (UUID) in order for CleanSpeak to communicate content moderation events back to the client application with the Webhook System.
 ====
 
 === Request

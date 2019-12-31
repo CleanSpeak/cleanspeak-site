@@ -51,10 +51,10 @@
 |The number of items checked out of the Alert Queue at a time for a moderator.
 
 |[field]#application.moderationConfiguration.contentDeletable# [type]#[Boolean]#
-|Set to true if you want the ability to delete content. Enabling this feature allows a moderator to delete content which in turn sends a notification of type `contentDelete` to be consumed by the CleanSpeak event handler.
+|Set to true if you want the ability to delete content. Enabling this feature allows a moderator to delete content which in turn sends an event of type `contentDelete` to be consumed by the CleanSpeak event handler.
 
 |[field]#application.moderationConfiguration.contentEditable# [type]#[Boolean]#
-|Set to true if you want the ability to edit content. Enabling this feature allows a moderator to edit content which in turn sends a notification of type `contentEdit` to be consumed by the CleanSpeak event handler.
+|Set to true if you want the ability to edit content. Enabling this feature allows a moderator to edit content which in turn sends an event of type `contentEdit` to be consumed by the CleanSpeak event handler.
 
 |[field]#application.moderationConfiguration.contentFlagAlertType# [type]#[String]#
 |By default when content is flagged a `User` alert is generated. Setting this to `Content` changes the behavior such that a `Content` alert is sent instead. The possible values are:
@@ -395,11 +395,11 @@ include::_parameter-alert-type.adoc[]
 |The amount the User score is adjusted when this filter rule is applied. This value may be a positive or negative integer.
 
 |[field]#applicaiton.notificationServers# [type]#[Array]# [optional]#Optional#
-|A list of notification servers to use on an application. (This will create new notification servers every time)
+|A list of webhooks to use on an application. (This will create new webhooks every time)
 
-Note: In the frontend, Notification Servers are now called Webhooks.
+Note: Notification Servers are now called Webhooks.
 
-(See link:../tutorials/handling-notifications.html[Handling Notifications] for more details)
+(See link:../tutorials/handling-notifications.html[Handling Webhook Events] for more details)
 
 |[field]#applicaiton.notificationServers``[x]``.connectTimeout# [type]#[Integer]# [optional]#Optional# [default]#Defaults to `1000`#
 |The maximum amount of time a server will take to try to connect in milliseconds.
@@ -408,16 +408,16 @@ Note: In the frontend, Notification Servers are now called Webhooks.
 |The maximum amount of time any read call will wait for data to flow.
 
 |[field]#application.notificationServers``[x]``.httpAuthenticationPassword# [type]#[String]# [optional]#Optional#
-|A password to supply on the notification request.
+|A password to supply on the event request.
 
 |[field]#application.notificationServers``[x]``.httpAuthenticationUsername# [type]#[String]# [optional]#Optional#
-|A username to supply on the notification request.
+|A username to supply on the event request.
 
 |[field]#applicaiton.notificationServers``[x]``.sslCertificate# [type]#[String]# [optional]#Optional#
-|An ssl client certificate to present on the notification request.
+|An ssl client certificate to present on the event request.
 
 |[field]#application.notificationServers``[x]``.url# [type]#[String]#
-|The url of a server listening for notifications.
+|The url of a server listening for events.
 
 |===
 
