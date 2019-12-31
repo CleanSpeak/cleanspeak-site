@@ -396,7 +396,7 @@ include::_parameter-alert-type.adoc[]
 
 Note: Notification Servers are now called Webhooks.
 
-(See link:../tutorials/handling-notifications[Handling Webhook Events] for more details)
+(See link:../tutorials/handling-events[Handling Events] for more details)
 
 |[field]#applicaiton.notificationServers``[x]``.connectTimeout# [type]#[Integer]# [optional]#Optional# [default]#Defaults to `1000`#
 |The maximum amount of time a server will take to try to connect in milliseconds.
@@ -408,7 +408,7 @@ Note: Notification Servers are now called Webhooks.
 |A description of the webhook and its purpose.
 
 |[field]#application.notificationServers``[x]``.eventsEnabled``[eventType]``# [type]#[Boolean]# [optional]#Optional# [default]#Defaults to true# [since]#Since 3.27.0#
-|A list of enabled event types for this webhook. If a value in this map is false, then it will not recieve events of that type. The possible values for `eventType` are as follows (each has a related section in link:../tutorials/handling-notifications[Handling Webhook Events]):
+|A list of enabled event types for this webhook. If a value in this map is false, then it will not recieve events of that type. The possible values for `eventType` are as follows (each has a related section in link:../tutorials/handling-events[Handling Events]):
 
 * `ContentAction`
 * `ContentApproval`

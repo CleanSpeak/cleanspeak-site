@@ -399,7 +399,7 @@ include::_parameter-alert-type.adoc[]
 
 Note: Notification Servers are now called Webhooks.
 
-(See link:../tutorials/handling-notifications.html[Handling Webhook Events] for more details)
+(See link:../tutorials/handling-events.html[Handling Webhook Events] for more details)
 
 |[field]#applicaiton.notificationServers``[x]``.connectTimeout# [type]#[Integer]# [optional]#Optional# [default]#Defaults to `1000`#
 |The maximum amount of time a server will take to try to connect in milliseconds.

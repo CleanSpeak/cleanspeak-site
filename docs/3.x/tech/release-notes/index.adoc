@@ -26,14 +26,14 @@ _Pending Release_
 include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 
 === New
-* Filter approval webhook event (see link:/docs/3.x/tech/tutorials/handling-notifications#filter-approvals[Handling Webhook Events] for details)
-** This webhook is fired any time someone approves a filter change on [breadcrumb]#Filters# icon:chevron-right[role=breadcrumb,type=fas] [breadcrumb]#Approvals#
-** If the webhook fails due to timeout (configured per webhook: [breadcrumb]#Settings# icon:chevron-right[role=breadcrumb,type=fas] [breadcrumb]#Webhooks# icon:chevron-right[role=breadcrumb,type=fas] [breadcrumb]#Add/Edit#) or transaction settings (found under: [breadcrumb]#Settings# icon:chevron-right[role=breadcrumb,type=fas] [breadcrumb]#System# icon:chevron-right[role=breadcrumb,type=fas] [breadcrumb]#Webhooks# ) then the approval will be rolled back.
+* A new event has been added for Filter approvals. See link:/docs/3.x/tech/tutorials/handling-events#filter-approvals[Handling Events] for additional details.
+** This event is fired when a change to the filter is approved. Filter approvals can be found in the UI by navigating to [breadcrumb]#Filters# icon:chevron-right[role=breadcrumb,type=fas] [breadcrumb]#Approvals#.
+** The default transaction configuration for this event will require all webhooks to successfully acknowledge the event in order for the approval request to complete. You may optionally modify this default configuration by navigating to [breadcrumb]#Settings# icon:chevron-right[role=breadcrumb,type=fas] [breadcrumb]#System# icon:chevron-right[role=breadcrumb,type=fas] [breadcrumb]#Webhooks#.
+** To enable this new event for an existing Webhook, navigate to [breadcrumb]#Settings# icon:chevron-right[role=breadcrumb,type=fas] [breadcrumb]#Webhooks# icon:chevron-right[role=breadcrumb,type=fas] [breadcrumb]#Events# and enable the **FilterApproval** event.
 ** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/12[Github Issue #12]
-* Added new controls to Webhooks. You can find them under [breadcrumb]#Settings# icon:chevron-right[role=breadcrumb,type=fas] [breadcrumb]#Webhooks# icon:chevron-right[role=breadcrumb,type=fas] [breadcrumb]#Add/Edit#
-** **Description field** for describing a webhooks purpose or details about the webhook
-** **Events Enabled toggles** for enabling/disabling event types for any given webhook. Existing webhooks will have all existing event types enabled to maintain old behavior. New webhooks will default all event types to disabled.
-* Added a new `webhook_manager` role for managing webhooks. See [breadcrumb]#System# icon:chevron-right[role=breadcrumb,type=fas] [breadcrumb]#Users# icon:chevron-right[role=breadcrumb,type=fas] [breadcrumb]#Add/Edit# to find the new role or use the link:/docs/3.x/tech/apis/admins-moderators[User API] to modify the users programatically.
+* Webhooks may now optionally select which events are to be sent. Navigate to [breadcrumb]#Settings# icon:chevron-right[role=breadcrumb,type=fas] [breadcrumb]#Webhooks# icon:chevron-right[role=breadcrumb,type=fas] [breadcrumb]#Events# to configure event selection.
+* Webhooks may now optionally define a free form description field to describe the intended purpose or details of the webhook.
+* Added a new `webhook_manager` role for managing webhooks. Users with the `admin` or `webhook_manager` role may manage Webhooks. See [breadcrumb]#System# icon:chevron-right[role=breadcrumb,type=fas] [breadcrumb]#Users# icon:chevron-right[role=breadcrumb,type=fas] to find the new role or use the link:/docs/3.x/tech/apis/admins-moderators[User API] to modify the users programatically.
 
 [role=release-note]
 == Version 3.26.0

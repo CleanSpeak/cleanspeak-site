@@ -1,10 +1,10 @@
 ---
 layout: doc
-title: Handling Webhook Events
-description: Learn how to handle events that CleanSpeak sends back to your Webhooks.
+title: Handling Events
+description: Learn how to handle events that CleanSpeak sends to your Webhooks
 ---
 
-== Handling Webhook Events
+== Handling Events
 
 The CleanSpeak webhook system is designed to provide feedback to your servers when certain actions are taken inside of CleanSpeak. All events are sent from CleanSpeak to the webhooks you configure via the Management Interface. These events are sent via an HTTP POST using `application/json` data. This is similar to the webservice API except in reverse, instead of you calling an API, the API calls your system with data as it happens.
 

@@ -97,7 +97,7 @@ Here are the APIs you will need to use as well as the features of CleanSpeak tha
 * [Tutorial] link:../tutorials/configure-an-application[Configure an Application]
 * [Tutorial] link:../tutorials/filtering-content[Filtering Content]
 * [Tutorial] link:../tutorials/handling-flags[Handling Flags]
-* [Tutorial] link:../tutorials/handling-notifications[Handling Webhook Events]
+* [Tutorial] link:../tutorials/handling-events[Handling Events]
 * [Tech Docs] link:../apis/[API docs]
 
 === FAQ
