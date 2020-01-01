@@ -16,7 +16,9 @@ There are five types of events that CleanSpeak will send:
 * <<Content Deletes>> - when a moderator deletes a piece of persistent content
 * <<Filter Approvals>> - When an admin or filter manager approves pending filter changes
 
-Each of these event types are covered in detail below:
+Additionally, an <<Event Handler>> is created in your application to process these event types.
+
+Each of the event types are covered in detail below:
 
 == Content Approvals
 
@@ -312,7 +314,7 @@ include::docs/3.x/tech/src/json/notifications/filter-approvals.json[]
 
 CleanSpeak expects that the event request handler will return a 200 status code if the event was successfully handled or any other status code if it wasn't. If your event request handler does not return a 200, CleanSpeak will assume that the approval was not successful and display an error.
 
-== event Handler
+== Event Handler
 
 In order to appropriately handle requests from the CleanSpeak event system, you must build a simple HTTP request handler that listens for requests from the CleanSpeak Moderation event system. Your request handler must be designed to respond to simple HTTP POST requests with a request body containing application/json data as described above.
 
