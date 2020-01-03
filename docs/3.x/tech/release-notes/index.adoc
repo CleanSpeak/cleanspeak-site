@@ -21,7 +21,7 @@ _Contact Us for early access_
 
 [role=release-note]
 == Version 3.27.0
-_Pending Release_
+_Released Thursday, January 2nd, 2020_
 
 include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 
