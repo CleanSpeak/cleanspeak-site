@@ -20,6 +20,24 @@ _Contact Us for early access_
 * Dirty Mind&trade;, an artificial intelligence model used to assist the CleanSpeak core filter capability.
 
 [role=release-note]
+== Version 3.27.1
+_Released Friday, January 24th, 2020_
+
+=== Enhancement
+* Improved HTML escaping to prevent XSS attacks
+** Freemarker now escapes all printed values unless explicitly told not to
+* Relaxed the requirements on ignorable characters to permit any character.
+** We previously restricted this to `a-z` to prevent unknown side effects but found use cases for characters outside of that range. It is still recommended to consult support if you plan to change this setting as it could cause surprising and wide reaching changes in filter behavior.
+* Allow words to be repeated in the kids chat exact phrase builder
+** This has always been allowed via the API but the UI was being overly strict due to a missing flag to permit duplicates
+
+=== Fixed
+* Fixed the verify tool not returning any matches if `All Locales` was selected. (Bug introduced in `3.27.0`)
+** The `All Locales` previously mapped to null but a recent change in Prime MVC causes empty string (aka `All Locales`) to map to the Root locale. We now check for this locale.
+* Fixed an issue that would cause moderation pages to throw exceptions if elastic search was being provided by AWS.
+** The status endpoint in AWS requires a leading slash and CleanSpeak was previously missing this slash. This was not required for standalone elasticsearch.
+
+[role=release-note]
 == Version 3.27.0
 _Released Thursday, January 2nd, 2020_
 
