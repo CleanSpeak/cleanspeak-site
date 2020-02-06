@@ -20,6 +20,14 @@ _Contact Us for early access_
 * Dirty Mind&trade;, an artificial intelligence model used to assist the CleanSpeak core filter capability.
 
 [role=release-note]
+== Version 3.27.2
+_Released Thursday, February 6th, 2020_
+
+=== Fixed
+* Some TLD values could cause the edit button to redirect to a 400 page in tomcat due to the escapes present in the segment. This is both fixed in PrimeMVC and we use parameterized versions of the url to be safer
+* Fixed an error on the alerts queue where the dismiss and ignore buttons would display their java toString value instead of the HTML escaped value.
+
+[role=release-note]
 == Version 3.27.1
 _Released Friday, January 24th, 2020_
 
