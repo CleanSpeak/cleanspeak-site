@@ -10,6 +10,6 @@ When you first start CleanSpeak and open the CleanSpeak Management Interface in 
 
 image::setup-wizard.png[Setup Wizard,width=1200]
 
-In order to ensure that you have permissions to use the Setup Wizard, you must copy your license id into this page. You can find your license id by logging into your Inversoft account at https://account.inversoft.com/account/.
+In order to ensure that you have permissions to use the Setup Wizard, you must copy your license id into this page. You can find your license id by logging into your CleanSpeak account at https://account.cleanspeak.com/account/.
 
 The rest of the Setup Wizard is fairly self-explanatory. Keep in mind that everything configured on this page can be changed later.

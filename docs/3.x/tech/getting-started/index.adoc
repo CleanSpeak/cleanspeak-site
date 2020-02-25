@@ -104,4 +104,4 @@ Here are the APIs you will need to use as well as the features of CleanSpeak tha
 
 [qanda]
 How do I gain access to the software and my license Id?::
-  Login to our accounts section of the web site at https://account.inversoft.com/account/.
+  Login to our accounts section of the web site at https://account.cleanspeak.com/account/.

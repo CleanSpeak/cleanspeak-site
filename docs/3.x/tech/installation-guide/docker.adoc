@@ -211,7 +211,7 @@ Setting this environment variable will override the `cleanspeak-*.memory` in the
 Setting this environment variable will override the `cleanspeak-app.search-servers` in the Configuration file. See the link:../reference/configuration[Configuration Reference] for more information.
 
 |LICENSE_ID [optional]#Optional#
-|Your License ID. You can find your License ID by logging into your account at https://account.inversoft.com/account/.
+|Your License ID. You can find your License ID by logging into your account at https://account.cleanspeak.com/account/.
 
 |===
 
