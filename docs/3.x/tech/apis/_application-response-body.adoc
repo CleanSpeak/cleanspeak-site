@@ -8,6 +8,9 @@
 |[field]#application.id# [type]#[UUID]#
 |The Id of the Application.
 
+|[field]#application.moderationConfiguration.alwaysKeepMatches# [type]#[Boolean]# [optional]#Optional# [default]#Defaults to `false`# [since]#Available since `3.26.0`#
+|A flag to enable all matches to be kept. This is useful if `keepAdditionalContentPercent` is less than `1.0` so that you can ensure that you are always keeping content that was matched on.
+
 |[field]#application.moderationConfiguration.approvalCheckOutMinutes# [type]#[Integer]#
 |The number of minutes content is checked out for in the Approval Queue before it is automatically released to be eligible for another moderator to check out.
 
@@ -100,7 +103,7 @@ with any of the tags in this list.
 |[field]#application.moderationConfiguration.emailOnUserFlagged# [type]#[Boolean]#
 |Set this parameter to `true` to email moderators when users are flagged.
 
-|[field]#application.moderationConfiguration.emailRules# [type]#[Array]#
+|[field]#application.moderationConfiguration.emailRules# [type<<<Quality Filter Rule>>>]#[Array]#
 |The email filter rules. [underline]#You must supply exactly three rules.# Each rule must provide a `score` value which is the inclusive cutoff score for an email match. The rules correspond to a High, Medium and Low quality filter rule. In the Management Interface these rules are referenced as High, Medium and Low.
 
 For example, the following are the default email rules:
@@ -109,20 +112,6 @@ For example, the following are the default email rules:
 ----
 include::../src/json/system/application/moderation-configuration-default-email-rules.json[]
 ----
-
-|[field]#application.moderationConfiguration.emailRules``[x]``.action# [type]#[String]#
-|
-include::_parameter-filter-action.adoc[]
-
-|[field]#application.moderationConfiguration.emailRules``[x]``.alertType# [type]#[String]#
-|
-include::_parameter-alert-type.adoc[]
-
-|[field]#application.moderationConfiguration.emailRules``[x]``.score# [type]#[Integer]#
-|The quality score threshold for this rule. If a match score is greater than or equal to this number and less then the next highest filter rule score the rule will be applied.
-
-|[field]#application.moderationConfiguration.emailRules``[x]``.userScoreAdjustment# [type]#[Integer]#
-|The amount the User score is adjusted when this filter rule is applied. This value may be a positive or negative integer.
 
 |[field]#application.moderationConfiguration.filterRules# [type]#[Array]#
 |The list of blacklist filter rules.
@@ -204,35 +193,95 @@ Specifically, this feature will catch any blacklist word even if separated by a 
 |[field]#application.moderationConfiguration.imageOnly# [type]#[Boolean]#
 |Set this parameter to `true` to enable this application for image only moderation. When this parameter is set to `true` the `imageConfiguration` parameters are used to provide additional configuration.
 
-|[field]#application.moderationConfiguration.imageFilteringEnabled# [type]#[Integer]# [optional]#Optinoal#
-|Set to true if you want to enable third party image filtering. (The provider and credentials must be configured in the system configuration first!)
+|[field]#application.moderationConfiguration.keepAdditionalContentPercent# [type]#[Float]# [since]#Available since `3.26.0`#
+|A field that informs the filter how much content to keep beyond what is required. In situations where storage is impossible due to the database latency or load, this flag can dramatically reduce that load by cutting your unnecessary storage to zero. It is also useful to configure `alwaysKeepMatches` should you want to keep only content that matches.
 
-|[field]#application.moderationConfiguration.imageQualityFilterRules# [type]#[Array]# [optional]#Optional#
-|A list of 3 quality filter rules corresponding to high, medium, and low quality.
 
-For example, the following are the default imageQualityFilterRules:
+|[field]#imageFilterConfiguration.enabled# [type]#[Boolean]# [since]#Available since `3.28.0`#
+|A flag to enable the image filter
 
-[source,json]
-----
-include::../src/json/system/application/moderation-configuration-default-imageQualityFilterRules.json[]
-----
+|[field]#application.moderationConfiguration.imageFilterConfiguration.mediaFilterNudityConfiguration.enabled# [type]#[Boolean]# [since]#Available since `3.28.0`#
+|A flag to enable the nudity filter in the image filter
 
-|[field]#application.moderationConfiguration.imageQualityFilterRules``[x]``.action# [type]#[String]#
-|
-include::_parameter-filter-action.adoc[]
+|[field]#application.moderationConfiguration.imageFilterConfiguration.mediaFilterNudityConfiguration.partialNudityRules# [type]#[Array<<<Quality Filter Rule>>>]# [since]#Available since `3.28.0`#
+|A list of three Quality Filter Rules. Each rule is a set of things to do in the event the filter finds a match with a score greater than that in the rule. (It will pick the highest one)
 
-|[field]#application.moderationConfiguration.imageQualityFilterRules``[x]``.alertType# [type]#[String]# [optional]#Optional#
-|
-include::_parameter-alert-type.adoc[]
+|[field]#application.moderationConfiguration.imageFilterConfiguration.mediaFilterNudityConfiguration.ignoredPartialNudityTags# [type]#[Array<String>]# [since]#Available since `3.28.0`#
+|A list of tags to ignore if the filter finds this specific kind of partial nudity.
 
-|[field]#application.moderationConfiguration.imageQualityFilterRules``[x]``.score# [type]#[Integer]#
-|The quality score threshold for this rule. If a match score is greater than or equal to this number and less then the next highest filter rule score the rule will be applied.
+|[field]#application.moderationConfiguration.imageFilterConfiguration.mediaFilterNudityConfiguration.rawNudityRules# [type]#[Array<<<Quality Filter Rule>>>]# [since]#Available since `3.28.0`#
+|A list of three Quality Filter Rules. Each rule is a set of things to do in the event the filter finds a match with a score greater than that in the rule. (It will pick the highest one)
 
-|[field]#application.moderationConfiguration.imageQualityFilterRules``[x]``.userScoreAdjustment# [type]#[Integer]# [optional]#Optional#
-|The amount the User score is adjusted when this filter rule is applied. This value may be a positive or negative integer.
+|[field]#application.moderationConfiguration.imageFilterConfiguration.mediaFilterOffensiveConfiguration.enabled# [type]#[Boolean]# [since]#Available since `3.28.0`#
+|A flag to enable to the offensive filter in the image filter
 
-|[field]#application.moderationConfiguration.maximumVideoFilterDurationInSeconds# [type]#[Integer]# [optional]#Optional# [default]#defaults to `300`#
-|The maximum amount of time a video filter request is allowed to take in seconds.
+|[field]#application.moderationConfiguration.imageFilterConfiguration.mediaFilterOffensiveConfiguration.offensiveRules# [type]#[Array<<<Quality Filter Rule>>>]# [since]#Available since `3.28.0`#
+|A list of three Quality Filter Rules. Each rule is a set of things to do in the event the filter finds a match with a score greater than that in the rule. (It will pick the highest one)
+
+|[field]#application.moderationConfiguration.imageFilterConfiguration.mediaFilterOffensiveConfiguration.ignoredLabels# [type]#[Array<String>]# [since]#Available since `3.28.0`#
+|A list of labels to ignore if a matching offensive label is found in the content.
+
+|[field]#application.moderationConfiguration.imageFilterConfiguration.mediaFilterScamConfiguration.enabled# [type]#[Boolean]# [since]#Available since `3.28.0`#
+|A flag to enable the scam filter in the image filter
+
+|[field]#application.moderationConfiguration.imageFilterConfiguration.mediaFilterScamConfiguration.scamRules# [type]#[Array<<<Quality Filter Rule>>>]# [since]#Available since `3.28.0`#
+|A list of three Quality Filter Rules. Each rule is a set of things to do in the event the filter finds a match with a score greater than that in the rule. (It will pick the highest one)
+
+|[field]#application.moderationConfiguration.imageFilterConfiguration.mediaFilterWADConfiguration.enabled# [type]#[Boolean]# [since]#Available since `3.28.0`#
+|A flag to enable the Weapons, Alcohol, and Drugs filter in the image filter
+
+|[field]#application.moderationConfiguration.imageFilterConfiguration.mediaFilterWADConfiguration.alcoholRules# [type]#[Array<<<Quality Filter Rule>>>]# [since]#Available since `3.28.0`#
+|A list of three Quality Filter Rules. Each rule is a set of things to do in the event the filter finds a match with a score greater than that in the rule. (It will pick the highest one)
+
+|[field]#application.moderationConfiguration.imageFilterConfiguration.mediaFilterWADConfiguration.drugRules# [type]#[Array<<<Quality Filter Rule>>>]# [since]#Available since `3.28.0`#
+|A list of three Quality Filter Rules. Each rule is a set of things to do in the event the filter finds a match with a score greater than that in the rule. (It will pick the highest one)
+
+|[field]#application.moderationConfiguration.imageFilterConfiguration.mediaFilterWADConfiguration.weaponRules# [type]#[Array<<<Quality Filter Rule>>>]# [since]#Available since `3.28.0`#
+|A list of three Quality Filter Rules. Each rule is a set of things to do in the event the filter finds a match with a score greater than that in the rule. (It will pick the highest one)
+
+
+|[field]#application.moderationConfiguration.videoFilterConfiguration.enabled# [type]#[Boolean]# [since]#Available since `3.28.0`#
+|A flag to enable the video filter
+
+|[field]#application.moderationConfiguration.videoFilterConfiguration.mediaFilterNudityConfiguration.enabled# [type]#[Boolean]# [since]#Available since `3.28.0`#
+|A flag to enable the nudity filter in the video filter
+
+|[field]#application.moderationConfiguration.videoFilterConfiguration.mediaFilterNudityConfiguration.partialNudityRules# [type]#[Array<<<Quality Filter Rule>>>]# [since]#Available since `3.28.0`#
+|A list of three Quality Filter Rules. Each rule is a set of things to do in the event the filter finds a match with a score greater than that in the rule. (It will pick the highest one)
+
+|[field]#application.moderationConfiguration.videoFilterConfiguration.mediaFilterNudityConfiguration.ignoredPartialNudityTags# [type]#[Array<String>]# [since]#Available since `3.28.0`#
+|A list of tags to ignore if the filter finds this specific kind of partial nudity.
+
+|[field]#application.moderationConfiguration.videoFilterConfiguration.mediaFilterNudityConfiguration.rawNudityRules# [type]#[Array<<<Quality Filter Rule>>>]# [since]#Available since `3.28.0`#
+|A list of three Quality Filter Rules. Each rule is a set of things to do in the event the filter finds a match with a score greater than that in the rule. (It will pick the highest one)
+
+|[field]#application.moderationConfiguration.videoFilterConfiguration.mediaFilterOffensiveConfiguration.enabled# [type]#[Boolean]# [since]#Available since `3.28.0`#
+|A flag to enable to the offensive filter in the video filter
+
+|[field]#application.moderationConfiguration.videoFilterConfiguration.mediaFilterOffensiveConfiguration.offensiveRules# [type]#[Array<<<Quality Filter Rule>>>]# [since]#Available since `3.28.0`#
+|A list of three Quality Filter Rules. Each rule is a set of things to do in the event the filter finds a match with a score greater than that in the rule. (It will pick the highest one)
+
+|[field]#application.moderationConfiguration.videoFilterConfiguration.mediaFilterOffensiveConfiguration.ignoredLabels# [type]#[Array<String>]# [since]#Available since `3.28.0`#
+|A list of labels to ignore if a matching offensive label is found in the content.
+
+|[field]#application.moderationConfiguration.videoFilterConfiguration.mediaFilterScamConfiguration.enabled# [type]#[Boolean]# [since]#Available since `3.28.0`#
+|A flag to enable the scam filter in the video filter
+
+|[field]#application.moderationConfiguration.videoFilterConfiguration.mediaFilterScamConfiguration.scamRules# [type]#[Array<<<Quality Filter Rule>>>]# [since]#Available since `3.28.0`#
+|A list of three Quality Filter Rules. Each rule is a set of things to do in the event the filter finds a match with a score greater than that in the rule. (It will pick the highest one)
+
+|[field]#application.moderationConfiguration.videoFilterConfiguration.mediaFilterWADConfiguration.enabled# [type]#[Boolean]# [since]#Available since `3.28.0`#
+|A flag to enable the Weapons, Alcohol, and Drugs filter in the video filter
+
+|[field]#application.moderationConfiguration.videoFilterConfiguration.mediaFilterWADConfiguration.alcoholRules# [type]#[Array<<<Quality Filter Rule>>>]# [since]#Available since `3.28.0`#
+|A list of three Quality Filter Rules. Each rule is a set of things to do in the event the filter finds a match with a score greater than that in the rule. (It will pick the highest one)
+
+|[field]#application.moderationConfiguration.videoFilterConfiguration.mediaFilterWADConfiguration.drugRules# [type]#[Array<<<Quality Filter Rule>>>]# [since]#Available since `3.28.0`#
+|A list of three Quality Filter Rules. Each rule is a set of things to do in the event the filter finds a match with a score greater than that in the rule. (It will pick the highest one)
+
+|[field]#application.moderationConfiguration.videoFilterConfiguration.mediaFilterWADConfiguration.weaponRules# [type]#[Array<<<Quality Filter Rule>>>]# [since]#Available since `3.28.0`#
+|A list of three Quality Filter Rules. Each rule is a set of things to do in the event the filter finds a match with a score greater than that in the rule. (It will pick the highest one)
+
 
 |[field]#application.moderationConfiguration.noRuleUserScoreAdjustment# [type]#[Integer]#
 |This score adjustment is used when the content did not match any rules. This value may be a positive or negative integer.
@@ -265,7 +314,7 @@ Please note that both transient and persistent content in this context are persi
 |[field]#application.moderationConfiguration.phoneNumberFilterWordPenalty# [type]#[Double]#
 |This parameter specifies a penalty that is applied to the quality score for a match if it contains any words rather than digits. For example, `three zero three 555 1234` contains three words so the word penalty will be multiplied by the number of words and added to the quality score.
 
-|[field]#application.moderationConfiguration.phoneNumberRules# [type]#[Array]#
+|[field]#application.moderationConfiguration.phoneNumberRules# [type]#[Array<<<Quality Filter Rule>>>]#
 |The phone number filter rules. [underline]#You must supply exactly three rules.# Each rule must provide a `score` value which is the inclusive cutoff score for a phone number match. The rules correspond to a High, Medium and Low quality filter rule. In the Management Interface these rules are referenced as High, Medium and Low.
 
 For example, the following are the default phone number rules:
@@ -274,21 +323,6 @@ For example, the following are the default phone number rules:
 ----
 include::../src/json/system/application/moderation-configuration-default-phone-number-rules.json[]
 ----
-
-|[field]#application.moderationConfiguration.phoneNumberRules``[x]``.action# [type]#[String]#
-|
-include::_parameter-filter-action.adoc[]
-
-|[field]#application.moderationConfiguration.phoneNumberRules``[x]``.alertType# [type]#[String]#
-|
-include::_parameter-alert-type.adoc[]
-
-|[field]#application.moderationConfiguration.phoneNumberRules``[x]``.score# [type]#[Integer]#
-|The quality score threshold for this rule. If a match score is greater than or equal to this number and less then the next highest filter rule score the rule will be applied.
-
-|[field]#application.moderationConfiguration.phoneNumberRules``[x]``.userScoreAdjustment# [type]#[Integer]#
-|
-include::_parameter-user-score-adjustment.adoc[]
 
 |[field]#application.moderationConfiguration.queuePersistentContent# [type]#[Boolean]#
 |Set this to `true` in order to asynchronously store persistent content. This may improve performance but there is a potential for data loss if an outage occurs before all content is committed to the database. Please consult with Inversoft Support if you are unsure how to use this feature.
@@ -333,7 +367,7 @@ Note 2: The provided config may change between versions.
 |[field]#application.moderationConfiguration.urlFilterSpacePenalty# [type]#[Double]#
 |This parameter specifies a penalty that is applied to the quality score for a match if it contains one or more spaces. For example, `www .ex a m ple .com` contains spaces so the space penalty will added to the quality score.
 
-|[field]#application.moderationConfiguration.urlRules# [type]#[Array]#
+|[field]#application.moderationConfiguration.urlRules# [type]#[Array<<<Quality Filter Rule>>>]#
 |The url filter rules. [underline]#You must supply exactly three rules.# Each rule must provide a `score` value which is the inclusive cutoff score for a url match. The rules correspond to a High, Medium and Low quality filter rule. In the Management Interface these rules are referenced as High, Medium and Low.
 
 For example, the following are the default url rules:
@@ -342,21 +376,6 @@ For example, the following are the default url rules:
 ----
 include::../src/json/system/application/moderation-configuration-default-url-rules.json[]
 ----
-
-|[field]#application.moderationConfiguration.urlRules``[x]``.action# [type]#[String]#
-|
-include::_parameter-filter-action.adoc[]
-
-|[field]#application.moderationConfiguration.urlRules``[x]``.alertType# [type]#[String]#
-|
-include::_parameter-alert-type.adoc[]
-
-|[field]#application.moderationConfiguration.urlRules``[x]``.score# [type]#[Integer]#
-|The quality score threshold for this rule. If a match score is greater than or equal to this number and less then the next highest url filter rule score the rule will be applied.
-
-|[field]#application.moderationConfiguration.urlRules``[x]``.userScoreAdjustment# [type]#[Integer]#
-|
-include::_parameter-user-score-adjustment.adoc[]
 
 |[field]#applicaiton.moderationConfiguration.urlWhitelistTags# [type]#[Array<String>]# [optional]#Optional# [default]#Defaults to empty array#
 |A list of URL whitelist tag names that this application will use during moderation. The tags will include any whitelisted urls that are tagged with the same tag. Any whitelisted urls that are untagged are always used.
@@ -367,33 +386,6 @@ include::_parameter-user-score-adjustment.adoc[]
 |[field]#application.moderationConfiguration.userFlagUserScoreAdjustment# [type]#[Integer]#
 |The amount the User score is adjusted when the user is flagged. This value may be a positive or negative integer.
 
-|[field]#application.moderationConfiguration.videoFilteringEnabled# [type]#[Integer]# [optional]#Optinoal#
-|Set to true if you want to enable third party video filtering. (The provider and credentials must be configured in the system configuration first!)
-
-|[field]#application.moderationConfiguration.videoQualityFilterRules# [type]#[Array]# [optional]#Optional#
-|A list of 3 quality filter rules corresponding to high, medium, and low quality.
-
-For example, the following are the default videoQualityFilterRules:
-
-[source,json]
-----
-include::../src/json/system/application/moderation-configuration-default-videoQualityFilterRules.json[]
-----
-
-|[field]#application.moderationConfiguration.videoQualityFilterRules``[x]``.action# [type]#[String]#
-|
-include::_parameter-filter-action.adoc[]
-
-|[field]#application.moderationConfiguration.videoQualityFilterRules``[x]``.alertType# [type]#[String]# [optional]#Optional#
-|
-include::_parameter-alert-type.adoc[]
-
-|[field]#application.moderationConfiguration.videoQualityFilterRules``[x]``.score# [type]#[Integer]#
-|The quality score threshold for this rule. If a match score is greater than or equal to this number and less then the next highest filter rule score the rule will be applied.
-
-|[field]#application.moderationConfiguration.videoQualityFilterRules``[x]``.userScoreAdjustment# [type]#[Integer]# [optional]#Optional#
-|The amount the User score is adjusted when this filter rule is applied. This value may be a positive or negative integer.
-
 |[field]#applicaiton.notificationServers# [type]#[Array]# [optional]#Optional#
 |A list of webhooks to use on an application. (This will create new webhooks every time)
 
@@ -401,11 +393,23 @@ Note: Notification Servers are now called Webhooks.
 
 (See link:../tutorials/handling-events.html[Handling Webhook Events] for more details)
 
-|[field]#applicaiton.notificationServers``[x]``.connectTimeout# [type]#[Integer]# [optional]#Optional# [default]#Defaults to `1000`#
+|[field]#applicaiton.notificationServers``[x]``.connectTimeout# [type]#[Integer]#
 |The maximum amount of time a server will take to try to connect in milliseconds.
 
-|[field]#application.notificationServers``[x]``.readTimeout# [type]#[Integer]# [optional]#Optional# [default]#Defaults to `2000`#
+|[field]#application.notificationServers``[x]``.readTimeout# [type]#[Integer]#
 |The maximum amount of time any read call will wait for data to flow.
+
+|[field]#application.notificationServers``[x]``.description# [type]#[String]# [since]#Since 3.27.0#
+|A description of the webhook and its purpose.
+
+|[field]#application.notificationServers``[x]``.eventsEnabled``[eventType]``# [type]#[Boolean]# [since]#Since 3.27.0#
+|A list of enabled event types for this webhook. If a value in this map is false, then it will not recieve events of that type. The possible values for `eventType` are as follows (each has a related section in link:../tutorials/handling-events[Handling Events]):
+
+* `ContentAction`
+* `ContentApproval`
+* `ContentDelete`
+* `ContentEdit`
+* `FilterApproval`
 
 |[field]#application.notificationServers``[x]``.httpAuthenticationPassword# [type]#[String]# [optional]#Optional#
 |A password to supply on the event request.

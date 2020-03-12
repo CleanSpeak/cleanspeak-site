@@ -19,9 +19,9 @@ _Contact Us for early access_
 === New
 * Dirty Mind&trade;, an artificial intelligence model used to assist the CleanSpeak core filter capability.
 
-[role=release-note]
-== Version 3.28.0
-_Released Wednesday, March 11th_
+[role=release-node]
+== Version 3.28.1
+_Pending Release_
 
 [WARNING.general-warning]
 ====

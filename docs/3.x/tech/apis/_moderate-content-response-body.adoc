@@ -11,9 +11,38 @@
 |[field]#content.parts# [type]#[Array]#
 |The list of parts of content.
 
-|[field]#content.parts[x].imageConfidence# [type]#[Integer]#
-|The confidence level of an image result (if the part was an image). The confidence is
-on a scale of 0 to 100 and is largely dependent on the image api in use.
+|[field]#content.parts[x].mediaFilterResult# [type]#[Object]#
+|An object for displaying media filter results. This is only present if the application is configured to return filter matches.
+
+|[field]#content.parts[x].mediaFilterResult.alcoholConfidence# [type]#[Float]#
+|The confidence that the image contains alcohol imagery.
+
+|[field]#content.parts[x].mediaFilterResult.drugsConfidence# [type]#[Float]#
+|The confidence that the image contains drug imagery.
+
+|[field]#content.parts[x].mediaFilterResult.offensiveResults[x].offensiveConfidence# [type]#[Float]#
+|The confidence that the image contains offensive content.
+
+|[field]#content.parts[x].mediaFilterResult.offensiveResults[x].offensiveTag# [type]#[String]#
+|The tag for the type of offensive content.
+
+|[field]#content.parts[x].mediaFilterResult.offensiveResults[x].position# [type]#[Float]#
+|The frame that the offensive content exists on.
+
+|[field]#content.parts[x].mediaFilterResult.partialNudityConfidence# [type]#[Float]#
+|The confidence that the image contains partial nudity.
+
+|[field]#content.parts[x].mediaFilterResult.partialNudityTag# [type]#[String]#
+|The associated tag for the type of partial nudity.
+
+|[field]#content.parts[x].mediaFilterResult.rawNudityConfidence# [type]#[Float]#
+|The confidence that the image contains raw nudity.
+
+|[field]#content.parts[x].mediaFilterResult.scamConfidence# [type]#[Float]#
+|The confidence that the image is a known scammer image.
+
+|[field]#content.parts[x].mediaFilterResult.weaponConfidence# [type]#[Float]#
+|The confidence that the image contains weapon.
 
 |[field]#content.parts[x].name# [type]#[String]#
 |The name of the part of the content.

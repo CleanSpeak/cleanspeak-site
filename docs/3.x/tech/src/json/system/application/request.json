@@ -1,6 +1,7 @@
 {
   "application": {
     "moderationConfiguration": {
+      "alwaysKeepMatches": false,
       "approvalCheckOutMinutes": 10,
       "approvalQueueSize": 30,
       "archiveConfiguration": {
@@ -21,40 +22,296 @@
         "defaultTimerDuration": 2.0,
         "speedModerationLayout": true
       },
-      "imageFilteringEnabled": false,
-      "imageQualityFilterRules": [
-        {
-          "action": "allow",
-          "score": 70
+      "imageFilterConfiguration": {
+        "enabled": true,
+        "mediaFilterNudityConfiguration": {
+          "enabled": true,
+          "ignoredPartialNudityTags": [],
+          "partialNudityRules": [
+            {
+              "action": "reject",
+              "score": 90,
+              "userScoreAdjustment": -10
+            },
+            {
+              "action": "queuedForApproval",
+              "score": 70,
+              "userScoreAdjustment": -7
+            },
+            {
+              "action": "allow",
+              "alertType": "User",
+              "score": 40,
+              "userScoreAdjustment": -1
+            }
+          ],
+          "rawNudityRules": [
+            {
+              "action": "reject",
+              "score": 90,
+              "userScoreAdjustment": -10
+            },
+            {
+              "action": "queuedForApproval",
+              "score": 70,
+              "userScoreAdjustment": -7
+            },
+            {
+              "action": "allow",
+              "alertType": "User",
+              "score": 40,
+              "userScoreAdjustment": -1
+            }
+          ]
         },
-        {
-          "action": "allow",
-          "score": 30
+        "mediaFilterOffensiveConfiguration": {
+          "enabled": true,
+          "ignoredLabels": [],
+          "offensiveRules": [
+            {
+              "action": "reject",
+              "score": 90,
+              "userScoreAdjustment": -10
+            },
+            {
+              "action": "queuedForApproval",
+              "score": 70,
+              "userScoreAdjustment": -7
+            },
+            {
+              "action": "allow",
+              "alertType": "User",
+              "score": 40,
+              "userScoreAdjustment": -1
+            }
+          ]
         },
-        {
-          "action": "allow",
-          "score": 0
+        "mediaFilterScamConfiguration": {
+          "enabled": true,
+          "scamRules": [
+            {
+              "action": "reject",
+              "score": 90,
+              "userScoreAdjustment": -10
+            },
+            {
+              "action": "queuedForApproval",
+              "score": 70,
+              "userScoreAdjustment": -7
+            },
+            {
+              "action": "allow",
+              "alertType": "User",
+              "score": 40,
+              "userScoreAdjustment": -1
+            }
+          ]
+        },
+        "mediaFilterWADConfiguration": {
+          "alcoholRules": [
+            {
+              "action": "reject",
+              "score": 90,
+              "userScoreAdjustment": -10
+            },
+            {
+              "action": "queuedForApproval",
+              "score": 70,
+              "userScoreAdjustment": -7
+            },
+            {
+              "action": "allow",
+              "alertType": "User",
+              "score": 40,
+              "userScoreAdjustment": -1
+            }
+          ],
+          "drugRules": [
+            {
+              "action": "reject",
+              "score": 90,
+              "userScoreAdjustment": -10
+            },
+            {
+              "action": "queuedForApproval",
+              "score": 70,
+              "userScoreAdjustment": -7
+            },
+            {
+              "action": "allow",
+              "alertType": "User",
+              "score": 40,
+              "userScoreAdjustment": -1
+            }
+          ],
+          "enabled": true,
+          "weaponRules": [
+            {
+              "action": "reject",
+              "score": 90,
+              "userScoreAdjustment": -10
+            },
+            {
+              "action": "queuedForApproval",
+              "score": 70,
+              "userScoreAdjustment": -7
+            },
+            {
+              "action": "allow",
+              "alertType": "User",
+              "score": 40,
+              "userScoreAdjustment": -1
+            }
+          ]
         }
-      ],
-      "maximumVideoFilterDurationInSeconds": 300,
-      "unicodeFilterRule": {
-        "action": "allow"
       },
-      "videoFilteringEnabled": false,
-      "videoQualityFilterRules": [
-        {
-          "action": "allow",
-          "score": 70
+      "unicodeFilterRule": {
+        "action": "allow",
+        "data": "# Non-printable\n\\u0000-\\u0008\n\\u000B-\\u000C\n\\u000E-\\u001F\n\\u007F-\\u009F\n\n# Symbols, etc.\n\\u00A6-\\u00A8\n\\u00AA-\\u00AD\n\\u00AF-\\u00B0\n\\u00B7-\\u00B7\n\\u00BA-\\u00BB\n\\u02BB-\\u02FF\n\n# Combining marks\n\\u0300-\\u036F\n\\u0590-\\u05C0\n\n# Language sets\n\\u0700-\\u074F\n\\u0780-\\u085F\n\\u08A0-\\u1C7F\n\n# Language supplements and punctuation\n\\u1CC0-\\u1DB0\n\\u1DC0-\\u209F\n\n# More punctuation, symbols, shapes, etc.\n\\u20D0-\\u2599\n\\u2700-\\u2E7F\n\n# CJK punctuation\n\\u3000-\\u303F\n\n# Lisu and above\n\\uA4D0-\\uABFF\n\n# Everything after CJK and Hangul (mostly surrogates and private use)\n\\uD7B0-\\u{1F2FF}\n\n# Everything after Emoji\n\\u{1F700}-"
+      },
+      "videoFilterConfiguration": {
+        "enabled": true,
+        "mediaFilterNudityConfiguration": {
+          "enabled": true,
+          "ignoredPartialNudityTags": [],
+          "partialNudityRules": [
+            {
+              "action": "reject",
+              "score": 90,
+              "userScoreAdjustment": -10
+            },
+            {
+              "action": "queuedForApproval",
+              "score": 70,
+              "userScoreAdjustment": -7
+            },
+            {
+              "action": "allow",
+              "alertType": "User",
+              "score": 40,
+              "userScoreAdjustment": -1
+            }
+          ],
+          "rawNudityRules": [
+            {
+              "action": "reject",
+              "score": 90,
+              "userScoreAdjustment": -10
+            },
+            {
+              "action": "queuedForApproval",
+              "score": 70,
+              "userScoreAdjustment": -7
+            },
+            {
+              "action": "allow",
+              "alertType": "User",
+              "score": 40,
+              "userScoreAdjustment": -1
+            }
+          ]
         },
-        {
-          "action": "allow",
-          "score": 30
+        "mediaFilterOffensiveConfiguration": {
+          "enabled": true,
+          "ignoredLabels": [],
+          "offensiveRules": [
+            {
+              "action": "reject",
+              "score": 90,
+              "userScoreAdjustment": -10
+            },
+            {
+              "action": "queuedForApproval",
+              "score": 70,
+              "userScoreAdjustment": -7
+            },
+            {
+              "action": "allow",
+              "alertType": "User",
+              "score": 40,
+              "userScoreAdjustment": -1
+            }
+          ]
         },
-        {
-          "action": "allow",
-          "score": 0
+        "mediaFilterScamConfiguration": {
+          "enabled": true,
+          "scamRules": [
+            {
+              "action": "reject",
+              "score": 90,
+              "userScoreAdjustment": -10
+            },
+            {
+              "action": "queuedForApproval",
+              "score": 70,
+              "userScoreAdjustment": -7
+            },
+            {
+              "action": "allow",
+              "alertType": "User",
+              "score": 40,
+              "userScoreAdjustment": -1
+            }
+          ]
+        },
+        "mediaFilterWADConfiguration": {
+          "alcoholRules": [
+            {
+              "action": "reject",
+              "score": 90,
+              "userScoreAdjustment": -10
+            },
+            {
+              "action": "queuedForApproval",
+              "score": 70,
+              "userScoreAdjustment": -7
+            },
+            {
+              "action": "allow",
+              "alertType": "User",
+              "score": 40,
+              "userScoreAdjustment": -1
+            }
+          ],
+          "drugRules": [
+            {
+              "action": "reject",
+              "score": 90,
+              "userScoreAdjustment": -10
+            },
+            {
+              "action": "queuedForApproval",
+              "score": 70,
+              "userScoreAdjustment": -7
+            },
+            {
+              "action": "allow",
+              "alertType": "User",
+              "score": 40,
+              "userScoreAdjustment": -1
+            }
+          ],
+          "enabled": true,
+          "weaponRules": [
+            {
+              "action": "reject",
+              "score": 90,
+              "userScoreAdjustment": -10
+            },
+            {
+              "action": "queuedForApproval",
+              "score": 70,
+              "userScoreAdjustment": -7
+            },
+            {
+              "action": "allow",
+              "alertType": "User",
+              "score": 40,
+              "userScoreAdjustment": -1
+            }
+          ]
         }
-      ],
+      },
       "defaultActionIsQueueForApproval": false,
       "dictionaryTags": [
         "whitelistA"
@@ -79,30 +336,34 @@
       ],
       "filterRules": [
         {
-          "severeAlertType": "User",
-          "highAction": "replace",
+          "highAction": "authorOnly",
+          "highAlertType": "User",
+          "locales": [],
+          "mediumAction": "allow",
           "mildAction": "allow",
           "severeAction": "reject",
+          "severeAlertType": "User",
           "tags": [
             "Vulgarity"
-          ],
-          "mediumAction": "replace",
-          "highAlertType": "User",
-          "highUserScoreAdjustment": -25,
-          "severeUserScoreAdjustment": -50
+          ]
         },
         {
+          "highAction": "allow",
           "highAlertType": "User",
+          "locales": [
+            "en"
+          ],
+          "mediumAction": "allow",
           "mildAction": "allow",
-          "severeAction": "reject",
+          "severeAction": "authorOnly",
+          "severeAlertType": "User",
           "tags": [
             "Bullying"
-          ],
-          "highAction": "allow",
-          "mediumAction": "allow"
+          ]
         }
       ],
       "imageOnly": false,
+      "keepAdditionalContentPercent": 1.0,
       "persistent": true,
       "phoneNumberRules": [
         {

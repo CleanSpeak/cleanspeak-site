@@ -1,91 +1,41 @@
 ---
 layout: doc
-title: Filtering Videos
-description: Learn how to configure CleanSpeak to filter videos automatically using Amazon Rekognition
+title: Filtering Images
+description: Learn how to configure CleanSpeak to filter images automatically using the new media filter
 ---
 
 [NOTE.since]
 ====
-Available since 3.16.0
+Available since 3.28.0
 ====
 
-== Filtering Videos
-
-Using Amazon Rekognition to filter videos automatically is a huge improvement that allows videos to be handled quickly
-and efficiently by a machine learning service. This can also be used in conjunction with the existing moderation as a
-pre-moderation step to reduce the load on moderators by rejecting videos that very obviously contain adult content.
+== Filtering Images
+Filtering images is easy with the new media filter
 
 === Prerequisites
-* Your content is stored in S3 and in a region that Rekognition is supported
-* You have the ability to create new IAM users, roles, SNS Topics, SQS Queues in your Amazon account.
+* You have contacted CleanSpeak to have the MediaFilter enabled for your license
+
+=== Considerations
+* You will be billed per operation
+** An operation on an image is simply the number of enabled filters
+** Animated GIFs are billed using `operations` := `number of filters enabled` &times; `number of frames in the GIF`
 
 === How to configure CleanSpeak to use this feature
 
-[WARNING]
-====
-The following steps need to be followed very closely in order to get a working solution.
-====
+==== Setup the image filter
+. Navigate to your application configuration
+. Enable store content
+. Click the media tab
+. Enable the image filter (if the image filter is missing then your license does not have the media filter feature enabled and you will need to contact sales)
+. Enable at least one filter type [Nudity, Scam, Offensive, Weapon/Alcohol/Drugs]
+. Select at least one filter action for the enabled filter (if everything is allow then it will treat the filter as disabled)
+. Click save
 
-. Go to link:https://console.aws.amazon.com/iam/[Amazon Console] and create an IAM user.
-    a. Under `Select AWS access type` choose `Programmatic access`
-    b. On that users permissions page choose `Attach existing policies directly` and add the following permissions:
-        * `AmazonSQSFullAccess`
-        * `AmazonRekognitionFullAccess`
-        * `AmazonS3ReadOnlyAccess`
-    c. Store this users _access key_ and their _secret access key_ for later.
-. Create an IAM service role - This will be used to allow Rekognition to post status messages to a SNS Topic which CleanSpeak
-will listen to through SQS. Note its ARN, you will use it in CleanSpeak settings and creating a policy within the role itself.
-    a. This role needs the following inline policy to work: (You can give the policy any name you like)
+==== Moderate some content
 
-[source,json]
-----
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "MySid",
-            "Effect": "Allow",
-            "Action": "iam:PassRole",
-            "Resource": "arn:Service role ARN (created above)"
-        }
-    ]
-}
-----
+You can now submit content to this application via the moderate endpoint.
 
-[start=3]
-. Go to link:https://console.aws.amazon.com/sns/v2/home[SNS Console]
-    a. Create a new topic with a name prefixed with `AmazonRekognition` (This is __REQUIRED!!__ Amazon Rekognition will not post
-    messages to a topic that is not prefixed with `AmazonRekognition` and will fail silently from CleanSpeaks point of view)
-    b. Note the ARN on this topic and store it for later.
-. Go to link:https://console.aws.amazon.com/sqs/[SQS Console]
-    a. Create a new SQS queue.
-    b. link:http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-subscribe-queue-sns-topic.html[Subscribe] that queue to the SNS you created in step 3.
-    c. link:http://docs.aws.amazon.com/sns/latest/dg/SendMessageToSQS.html#SendMessageToSQS.sqs.permissions[Check] that SNS is allowed to send messages to SQS.
-    d. Keep that queues url for later.
-. Open `System` -> `Global Configuration` and click `Filter`
-    a. For `Video Filter Provider` select `Amazon Rekognition`
-    b. Insert the IAM users credentials you used in step 1
-    c. Select a region (likely the same region CleanSpeak is hosted in, but keep in mind that Rekognition does not
-    work in all regions so you may have to select a region that is not the same as CleanSpeaks)
-    d. Copy the SQS URL from step 4
-    e. Copy the SNS ARN from step 3
-    f. Copy the Role ARN from step 2
-    g. Save
-. Open `System` -> `Applications` select the application you plan to use or create a new one.
-    a. Open the `Image / Video` tab and check `Enable Video Filter`
-    b. Choose the actions, score adjustments, and alert settings you would like to use for each tier of content score. (Using all allow effectively bypasses the filter)
-    c. Save
-. Submit content with a content part type of `video` with a content body of a S3 url (See below for an example)
-
-=== How to quickly test your configuration
-
-You can quickly check your configuration and settings by going to the management interface and opening the verify tool.
-This can be reached by clicking `Filters` -> `Verification`. Now you must open the advanced menu and select Video under
-`Content Type`. If Video is not available then your AWS system settings must be missing.
-
-To test a video, remember to use an s3 url that has the same region as your aws credentials AND that the region selected
-supports Rekognition. You can now paste your s3 url into the text box and press verify. Your video will be filtered and
-the results will return when Rekognition is complete.
+Image moderation works exactly the same as text moderation so you will get a filter response when the filter process is complete.
 
 === Example usage of the filter
 
@@ -142,14 +92,14 @@ If individual content parts are not related and can be rejected or approved sepa
  CleanSpeak as separate requests.
 
 |[field]#content.parts``[x]``.content# [type]#[String]# [required]#Required#
-|The content to be filtered. For videos this is a fully qualified S3 URL of the video to be displayed.
+|The content to be filtered. This is a publicly reachable url to the content.
 
 |[field]#content.parts``[x]``.name# [type]#[String]# [optional]#Optional#
 |The name of the content part. This value is optional an intended to better identify the context when you have more than
  one content part. For example this could be _Title_, _Message Body_ or _Image_.
 
 |[field]#content.parts``[x]``.type# [type]#[String]# [required]#Required#
-|The type of this content part. Use `video` for this filter.
+|The type of this content part. Use `image` for this filter.
 
 Other possible values:
 
@@ -192,9 +142,9 @@ Other possible values:
     "location": "page296",
     "parts": [
       {
-        "content": "https://s3-us-west-1.amazonaws.com/public-resources-us-east.inversoft.com/video-moderation/sfw/rally.mp4",
+        "content": "https://s3.us-east-2.amazonaws.com/public-resources-us-east.inversoft.com/image-moderation/sfw/not-porn.jpg",
         "name": "Body",
-        "type": "video"
+        "type": "image"
       }
     ],
     "senderDisplayName": "PapaSmurf",
@@ -219,6 +169,36 @@ include::docs/3.x/tech/apis/_standard-post-response-codes.adoc[]
 
 |[field]#content.parts# [type]#[Array]#
 |The list of parts of content.
+
+|[field]#content.parts[x].mediaFilterResult.alcoholConfidence# [type]#[Float]#
+|The confidence that the image contains alcohol imagery.
+
+|[field]#content.parts[x].mediaFilterResult.drugsConfidence# [type]#[Float]#
+|The confidence that the image contains drug imagery.
+
+|[field]#content.parts[x].mediaFilterResult.offensiveResults[x].offensiveConfidence# [type]#[Float]#
+|The confidence that the image contains offensive content.
+
+|[field]#content.parts[x].mediaFilterResult.offensiveResults[x].offensiveTag# [type]#[String]#
+|The tag for the type of offensive content.
+
+|[field]#content.parts[x].mediaFilterResult.offensiveResults[x].position# [type]#[Float]#
+|The frame that the offensive content exists on.
+
+|[field]#content.parts[x].mediaFilterResult.partialNudityConfidence# [type]#[Float]#
+|The confidence that the image contains partial nudity.
+
+|[field]#content.parts[x].mediaFilterResult.partialNudityTag# [type]#[String]#
+|The associated tag for the type of partial nudity.
+
+|[field]#content.parts[x].mediaFilterResult.rawNudityConfidence# [type]#[Float]#
+|The confidence that the image contains raw nudity.
+
+|[field]#content.parts[x].mediaFilterResult.scamConfidence# [type]#[Float]#
+|The confidence that the image is a known scammer image.
+
+|[field]#content.parts[x].mediaFilterResult.weaponConfidence# [type]#[Float]#
+|The confidence that the image contains weapon.
 
 |[field]#content.parts[x].name# [type]#[String]#
 |The name of the part of the content.

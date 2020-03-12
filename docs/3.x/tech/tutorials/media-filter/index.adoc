@@ -1,0 +1,41 @@
+---
+layout: doc
+title: Media Filter
+description: CleanSpeak media filter tutorials
+---
+
+[NOTE.since]
+====
+Available since `3.28.0`
+====
+
+== Media Filter
+
+The CleanSpeak media filter is a tool that automates image and video moderation through the use of AI. This tool is designed to decrease the load on human moderators by handling as much content as possible and only send content to human moderators if the AI isn't sure.
+
+=== Enabling this feature
+
+In order to have the media filter available on your instance, you will need to contact sales to have the feature enabled on your license. Once this feature is enabled you can configure it by going to your application and finding the media filter tab. From there you can enable the image and/or video filter individually.
+
+=== What we filter
+
+Both the image and video filter come with several options by default. You can individually configure these filters per content type (image/video) and application.
+
+* Nudity filter
+** Raw nudity - A measure of x-rated material is present in the media. (Genitals, bare breasts)
+** Partial nudity - A measure of suggestive nudity or things that aren't acceptable in a business setting (Bikinis, Lingerie, bare-chested males, cleavage, necklines, and miniskirts)
+** You can also exclude types of partial nudity if you have a situation where for example binikis were allowed but nothing else
+* Weapons, Alcohol, and Drugs (a filter that detects all three at once)
+** The response returns a confidence for weapons, alcohol, or drugs being present in the media
+* Offensive filter
+** Detects the presence of offensive gestures, flags, or symbols
+* Scam
+** Detects the presence of a well known scammer profile picture
+
+=== How we measure usage
+
+Images are billed by per filter invoked. This means that if you enable all 4 filters and submit 1 image, you will be billed for 4 operations.
+
+Videos are billed in a similar manner except you multiply by the number of seconds in the video plus 1 (because we scan frame 0 and the final frame). If you enable all for 4 filters and your video is 5 seconds long, you will be billed for 24 operations (4 filters &times; (5s + 1)).
+
+The one other special case is animated GIFs. You can send these to either the image or video filter and they will be billed per filter per frame. So a gif with 4 frames and 4 filters will result in 16 operations.
