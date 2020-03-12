@@ -20,6 +20,33 @@ _Contact Us for early access_
 * Dirty Mind&trade;, an artificial intelligence model used to assist the CleanSpeak core filter capability.
 
 [role=release-note]
+== Version 3.28.0
+_Released Wednesday, March 11th_
+
+[WARNING.general-warning]
+====
+*Please Read*
+
+This release removes the SightEngine and Rekognition integrations. If you are using these features then it is not recommended to upgrade without considering the required code changes with your integration. These media features are now directly integrated with CleanSpeak for improved performance and capability. Use of these new media filters are available for an additional cost.
+====
+
+=== Changed
+* Removed the SightEngine and Regonition options from the system and application configurations
+* Removed video content type from verification tool. Video is now always asynchronous so it is not possible to test in the UI anymore.
+
+=== New
+* Added Offensive, Nudity, Scam, and the [Weapon/Alcohol/Drug] filters for both image and video filtering
+** Offensive can detect offensive content like swastikas, SS bolts, and middle fingers
+** Nudity can detect x-rated content as well as suggestive content
+** Scam detects images that are frequently associated with scammers
+** Weapon/Alcohol/Drug filter detects the presence of weapons, alcohol, or drugs
+* Added media filter configuration to every application
+** Previously media filters were configured globally on the system configuration and now they are configured per application with far more fine grained controls for moderation.
+
+=== Fixed
+* Patched a bug where leaving locale blank on a filter entry could cause all pages to throw an exception due to new locale handling behavior in mvc. The form now detects the implicit locale and treats it as missing until we can change locale handling everywhere.
+
+[role=release-note]
 == Version 3.27.2
 _Released Thursday, February 6th, 2020_
 
@@ -34,7 +61,7 @@ _Released Friday, January 24th, 2020_
 === Enhancement
 * Improved HTML escaping to prevent XSS attacks
 ** Freemarker now escapes all printed values unless explicitly told not to
-* Relaxed the requirements on ignorable characters to permit any character.
+* Relaxed the requirements on ignorable characters to permit any character
 ** We previously restricted this to `a-z` to prevent unknown side effects but found use cases for characters outside of that range. It is still recommended to consult support if you plan to change this setting as it could cause surprising and wide reaching changes in filter behavior.
 * Allow words to be repeated in the kids chat exact phrase builder
 ** This has always been allowed via the API but the UI was being overly strict due to a missing flag to permit duplicates
