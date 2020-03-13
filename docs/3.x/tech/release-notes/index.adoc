@@ -30,8 +30,10 @@ _Released Thursday, March 12th, 2020_
 This release removes the SightEngine and Rekognition integrations. If you are using these features then it is not recommended to upgrade without considering the required code changes with your integration. These media features are now directly integrated with CleanSpeak for improved performance and capability. Use of these new media filters are available for an additional cost.
 ====
 
+include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
+
 === Changed
-* Removed the SightEngine and Regonition options from the system and application configurations
+* Removed the SightEngine and Rekognition options from the system and application configurations
 * Removed video content type from verification tool. Video is now always asynchronous so it is not possible to test in the UI anymore.
 
 === New
