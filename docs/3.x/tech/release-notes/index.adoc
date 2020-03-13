@@ -21,7 +21,7 @@ _Contact Us for early access_
 
 [role=release-node]
 == Version 3.28.1
-_Pending Release_
+_Released Thursday, March 12th, 2020_
 
 [WARNING.general-warning]
 ====
