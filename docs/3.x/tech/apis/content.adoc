@@ -10,6 +10,8 @@ This page contains the APIs that are used to send content to CleanSpeak for mode
 
 * <<Moderate Content>>
 * <<Update Content>>
+* <<Proxy Moderate Content>>
+* <<Proxy Update Content>>
 * <<Filter Content>>
 * <<Flagging Content>>
 * <<Batch Filter Content>>
@@ -106,6 +108,102 @@ include::docs/3.x/tech/apis/_standard-post-response-codes.adoc[]
 
 include::docs/3.x/tech/apis/_moderate-content-response-body.adoc[]
 
+
+== Proxy Moderate Content
+
+This API is used exactly like the <<Moderate Content>> API except that its responses will be sent to a different destination with the exception of errors. If you need to update a piece of content then you can also use <<Proxy Update Content>> API which is the parallel for the <<Update Content>> API.
+
+[WARNING]
+====
+*Important*
+At least one Application must be configured prior to sending content to the Moderate API. See the Applications setup page for details on configuring applications with the Management Interface or the <<Create an Application,Application>> API. This application will also need to be configured for use with this API via the proxy configuration (this can be found either under moderation configuration if you are using the API or the advanced section if you are using the UI).
+====
+
+[NOTE]
+====
+*Transient vs Persistent Content*
+
+CleanSpeak will store all content whether it is transient or persistent so long as the Store Content? configuration is enabled for the Application. The difference in the two content types is whether the content is eligible for moderation. Moderation actions include placing the content in an Approval Queue or editing/deleting the content after it's been published.
+
+Transient content is not be eligible for moderation but the user that generated the content can be moderated (actioned). The most common example of transient content is real-time chat, which disappears from the users' perspectives after a short amount of time. This type of content can't be edited or deleted since it disappears so quickly. Also, the real-time nature of chat means it would never require pre-approval.
+
+Persistent content such as forum posts must include a content ID (UUID) in order for CleanSpeak to communicate content moderation events back to the client application with the Webhook System.
+====
+
+=== Request
+
+For Transient content, do not provide a unique identifier on the API request, CleanSpeak will generate this on your behalf.
+[.endpoint]
+.URI
+--
+[method]#POST# [uri]#/content/item/moderate/proxy#
+--
+
+For persistent content you will need to provide a unique identifier (UUID) on the API request. When using this API with persistent content you'll need to first ensure your Application configuration is set to Persistent Content Type. If you have not done this the API request will fail with an error message indicating you have not yet configured your Application.
+[.endpoint]
+.URI
+--
+[method]#POST# [uri]#/content/item/moderate/proxy/`\{contentItemId\}`#
+--
+
+[cols="3a,7a"]
+[.api]
+.Request Parameters
+|===
+|[field]#contentItemId# [type]#[UUID]# [required]#Required#
+|The Id of the Content Item.
+|===
+
+include::docs/3.x/tech/apis/_moderate-content-request-body.adoc[]
+
+=== Response
+
+:no_body:
+include::docs/3.x/tech/apis/_standard-post-response-codes.adoc[]
+:no_body!:
+
+=== Forwarded Response
+
+This will be forwarded using a `POST` method to the destination configured in the link:./applications[application's] proxy configuration.
+
+include::docs/3.x/tech/apis/_moderate-content-response-body.adoc[]
+
+== Proxy Update Content
+
+This API is used to send updates to existing content to CleanSpeak to be moderated. Only persistent content can be updated in CleanSpeak.
+
+Like the Filter Content API the same filtering is performed on content sent to this API. The difference is that instead of returning all matches found in the content, the Application filter rules are first applied to determine what action should be taken. Using this API allows you to modify the filter behavior without changing the way you send content to the filter. This allows for a much more powerful integration.
+
+=== Request
+
+You need to provide the unique identifier (UUID) of the content being updated on the API request.
+[.endpoint]
+.URI
+--
+[method]#PUT# [uri]#/content/item/moderate/proxy/`\{contentItemId\}`#
+--
+
+[cols="3a,7a"]
+[.api]
+.Request Parameters
+|===
+|[field]#contentItemId# [type]#[UUID]# [required]#Required#
+|The Id of the Content Item.
+|===
+
+include::docs/3.x/tech/apis/_moderate-content-request-body.adoc[]
+
+=== Response
+
+:no_body:
+include::docs/3.x/tech/apis/_standard-post-response-codes.adoc[]
+:no_body!:
+
+=== Forwarded Response
+
+This will be forwarded using a `POST` method to the destination configured in the link:./applications[application's] proxy configuration.
+
+include::docs/3.x/tech/apis/_moderate-content-response-body.adoc[]
 
 == Filter Content
 

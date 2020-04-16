@@ -384,6 +384,19 @@
           "action": "allow"
         }
       ],
+      "proxy": {
+        "connectTimeout": 2000,
+        "enabled": true,
+        "headers": {
+          "Authorization": "APIKEY",
+          "X-SomeHeader": "HeaderValue"
+        },
+        "httpAuthenticationPassword": "pass",
+        "httpAuthenticationUsername": "user",
+        "readTimeout": 4000,
+        "sslCertificate": "-----BEGIN CERTIFICATE-----\nMIIDTzCCArigAwIBAgIJAMA7XJzxYkPUMA0GCSqGSIb3DQEBBQUAMHkxCzAJBgNV\nBAYTAlVTMQswCQYDVQQIEwJDTzEPMA0GA1UEBxMGZGVudmVyMRIwEAYDVQQKEwlp\nbnZlcnNvZnQxEjAQBgNVBAMTCWxvY2FsaG9zdDEkMCIGCSqGSIb3DQEJARYVc3Vw\ncG9ydEBpbnZlcnNvZnQuY29tMB4XDTE0MDQxMDE5NTA1MFoXDTE0MDUxMDE5NTA1\nMFoweTELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNPMQ8wDQYDVQQHEwZkZW52ZXIx\nEjAQBgNVBAoTCWludmVyc29mdDESMBAGA1UEAxMJbG9jYWxob3N0MSQwIgYJKoZI\nhvcNAQkBFhVzdXBwb3J0QGludmVyc29mdC5jb20wgZ8wDQYJKoZIhvcNAQEBBQAD\ngY0AMIGJAoGBAMZ0AasrmL41BOGhUOr1WVOUah5styok4NjXMRCyJWc7VEyt2lRW\nyaAQeIsR1wgmLJbo7YSC8gY4E9xfiIUqTwHK5bvDuS1T2jwsrIf0jaxjcB+Janol\nvWeVgIUTv5xuzWTWtFEjxwHoum/Ur/T8bigmPhiXwCMJTuP25bSB9Ov5AgMBAAGj\ngd4wgdswHQYDVR0OBBYEFFOEqiRBZtc1vgnC8Zi5QEa6rTDdMIGrBgNVHSMEgaMw\ngaCAFFOEqiRBZtc1vgnC8Zi5QEa6rTDdoX2kezB5MQswCQYDVQQGEwJVUzELMAkG\nA1UECBMCQ08xDzANBgNVBAcTBmRlbnZlcjESMBAGA1UEChMJaW52ZXJzb2Z0MRIw\nEAYDVQQDEwlsb2NhbGhvc3QxJDAiBgkqhkiG9w0BCQEWFXN1cHBvcnRAaW52ZXJz\nb2Z0LmNvbYIJAMA7XJzxYkPUMAwGA1UdEwQFMAMBAf8wDQYJKoZIhvcNAQEFBQAD\ngYEAwXVTn4xPTK4LpAH5F6mjkPefLwuPb7r+oCBuMFjFlGyp3fUmxXIIDt5GhApI\niLTGDJCwZ2znJBzQBlvaCekkEedGq3kTrfpFs0T8DFxc6kMtb8v16JJlSVBXmdAm\nKYeduqsD+n+YjBqS2+08N1DBcpcYkHKi11yZWQ3scWoTsQQ=\n-----END CERTIFICATE-----",
+        "url": "http://example.com"
+      },
       "queuePersistentContent": false,
       "returnFilterMatches": false,
       "rules": {

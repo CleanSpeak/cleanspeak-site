@@ -19,7 +19,16 @@ _Contact Us for early access_
 === New
 * Dirty Mind&trade;, an artificial intelligence model used to assist the CleanSpeak core filter capability.
 
-[role=release-node]
+[role=release-note]
+== Version 3.29.0-RC.1
+_Pending Release_
+
+=== New
+* link:../apis/content#proxy-moderate-content[Proxy endpoint] for allowing moderate responses to instead be forwarded downstream to a different server than the requester
+* Proxy configuration in the link:../apis/applications[application] moderation configuration. When you use the moderate proxy your application requires a proxy to be configured. These settings allow you to choose how to forward your moderate results.
+* Webhooks section in the application settings. It was previously tedious to go to the webhooks page to select all the applications to apply a given webhook to. You can now directly enable webhooks from the application settings.
+
+[role=release-note]
 == Version 3.28.1
 _Released Thursday, March 12th, 2020_
 
