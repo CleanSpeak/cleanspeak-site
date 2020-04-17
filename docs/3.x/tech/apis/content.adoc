@@ -111,6 +111,11 @@ include::docs/3.x/tech/apis/_moderate-content-response-body.adoc[]
 
 == Proxy Moderate Content
 
+[NOTE.since]
+====
+Available since `3.29.0-RC.1`
+====
+
 This API is used exactly like the <<Moderate Content>> API except that its responses will be sent to a different destination with the exception of errors. If you need to update a piece of content then you can also use <<Proxy Update Content>> API which is the parallel for the <<Update Content>> API.
 
 [WARNING]
@@ -169,6 +174,11 @@ This will be forwarded using a `POST` method to the destination configured in th
 include::docs/3.x/tech/apis/_moderate-content-response-body.adoc[]
 
 == Proxy Update Content
+
+[NOTE.since]
+====
+Available since `3.29.0-RC.1`
+====
 
 This API is used to send updates to existing content to CleanSpeak to be moderated. Only persistent content can be updated in CleanSpeak.
 

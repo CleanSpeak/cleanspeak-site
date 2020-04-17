@@ -327,28 +327,28 @@ include::../src/json/system/application/moderation-configuration-default-phone-n
 |[field]#applicaiton.moderationConfiguration.proxy.enabled# [type]#[Boolean]#
 |A flag to determine if this application can send proxy requests. If disabled, all other fields will be ignored and it will not be possible to use the `/content/item/moderate/proxy` endpoint with this application.
 
-|[field]#applicaiton.moderationConfiguration.proxy.url# [type]#[String]#
+|[field]#applicaiton.moderationConfiguration.proxy.url# [type]#[String]# [since]#Available since 3.29.0-RC.1#
 |A destination url for the proxy to forward requests to. This is required if the proxy is enabled.
 
-|[field]#applicaiton.moderationConfiguration.proxy.connectTimeout# [type]#[Integer]#
+|[field]#applicaiton.moderationConfiguration.proxy.connectTimeout# [type]#[Integer]# [since]#Available since 3.29.0-RC.1#
 |A value that determines the maximum amount of time (in milliseconds) that CleanSpeak will wait for the connection to be established with the proxy service. If a connection takes longer than this then the request will result in a 400 on the `/content/item/moderate/proxy` endpoint.
 
-|[field]#applicaiton.moderationConfiguration.proxy.readTimeout# [type]#[Integer]# [optional]#Optional# [default]#Defaults to 1000
+|[field]#applicaiton.moderationConfiguration.proxy.readTimeout# [type]#[Integer]# [optional]#Optional# [since]#Available since 3.29.0-RC.1#
 |A value that determines the maximum amount of time (in milliseconds) that CleanSpeak will wait for the initial read of the request to begin.
 
-|[field]#applicaiton.moderationConfiguration.proxy.headers# [type]#[Object]#
+|[field]#applicaiton.moderationConfiguration.proxy.headers# [type]#[Object]# [since]#Available since 3.29.0-RC.1#
 |An object of string keys to string values that will get encoded as headers on the proxy request.
 
-|[field]#applicaiton.moderationConfiguration.proxy.httpAuthenticationUsername# [type]#[String]#
+|[field]#applicaiton.moderationConfiguration.proxy.httpAuthenticationUsername# [type]#[String]# [since]#Available since 3.29.0-RC.1#
 |A username to supply on the proxy request. Set this if you require http basic authentication.
 
-|[field]#applicaiton.moderationConfiguration.proxy.httpAuthenticationPassword# [type]#[String]#
+|[field]#applicaiton.moderationConfiguration.proxy.httpAuthenticationPassword# [type]#[String]# [since]#Available since 3.29.0-RC.1#
 |A password to supply on the proxy request. Set this if you require http basic authentication.
 
-|[field]#applicaiton.moderationConfiguration.proxy.sslCertificate# [type]#[String]#
+|[field]#applicaiton.moderationConfiguration.proxy.sslCertificate# [type]#[String]# [since]#Available since 3.29.0-RC.1#
 |A pem encoded ssl certificate to present as authorization on the proxy request.
 
-|[field]#application.moderationConfiguration.queuePersistentContent# [type]#[Boolean]#
+|[field]#application.moderationConfiguration.queuePersistentContent# [type]#[Boolean]# [since]#Available since 3.29.0-RC.1#
 |Set this to `true` in order to asynchronously store persistent content. This may improve performance but there is a potential for data loss if an outage occurs before all content is committed to the database. Please consult with Inversoft Support if you are unsure how to use this feature.
 
 |[field]#application.moderationConfiguration.replacementCharacter# [type]#[String]#
