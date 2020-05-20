@@ -13,15 +13,8 @@ Hide Stuff here
 // REMEMBER TO ADD MIGRATIONS TO upgrades-patches
 
 [role=release-note]
-== Technical Preview
-_Contact Us for early access_
-
-=== New
-* Dirty Mind&trade;, an artificial intelligence model used to assist the CleanSpeak core filter capability.
-
-[role=release-note]
 == Version 3.29.0-RC.1
-_Pending Release_
+_Released Thursday, April 16th, 2020_
 
 === New
 * link:../apis/content#proxy-moderate-content[Proxy endpoint] for allowing moderate responses to instead be forwarded downstream to a different server than the requester
