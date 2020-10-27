@@ -12,6 +12,17 @@ Hide Stuff here
 
 // REMEMBER TO ADD MIGRATIONS TO upgrades-patches
 
+
+[role=release-note]
+== Version 3.29.0
+_Released Monday, October 26th, 2020_
+
+=== Fixed
+* A JavaScript bug that may cause an error on the Approval Queue and the Content Alert queue has been resolved.
+
+=== Enhancement
+* When under heavy load with increased database latency, it is possible for the User score processing services to cause additional database contention. This has been enhanced to perform some of the score processing during the request and short circuit some asynchronous processing that may require additional database locks.
+
 [role=release-note]
 == Version 3.29.0-RC.1
 _Released Thursday, April 16th, 2020_
@@ -104,7 +115,7 @@ include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 ** When content storage is enabled, you may also force all content that contains a match to be stored regardless of the previous setting.
 ** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/7[GitHub Issue #7]
 
-=== Enhanced
+=== Enhancement
 * Enhanced the URL filter accuracy
 ** Explicitly fixes `exampledotcom` but also fixes many other embedded cases where `dot` is used instead of punctuation.
 ** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/5[GitHub Issue #5]
