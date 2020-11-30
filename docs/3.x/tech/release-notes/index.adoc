@@ -14,8 +14,12 @@ Hide Stuff here
 
 
 [role=release-note]
-== Version 3.29.0
-_Released Monday, October 26th, 2020_
+== Version 3.29.1
+_Pending Release_
+
+=== Changes
+* Java is no longer bundled with the Zip, RPM or Debian packages. Java will be downloaded during the initial startup.
+* When using RPM or Debian packages, the installation path has been updated to `/usr/local/cleanspeak` from `/usr/local/inversoft`. When upgrading, the `cleanspeak.properties` file will be migrated to the new location.
 
 === Fixed
 * A JavaScript bug that may cause an error on the Approval Queue and the Content Alert queue has been resolved.
