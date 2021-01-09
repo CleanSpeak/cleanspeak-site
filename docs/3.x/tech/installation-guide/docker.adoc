@@ -11,12 +11,12 @@ description: Deploy and test CleanSpeak using a Docker container
 All of the CleanSpeak Docker images may be found on https://hub.docker.com/u/cleanspeak/[Docker Hub]. If you're looking for a complete configuration to get up and running quickly, use our Docker Compose example. The following is an example and it may not be the most recent version. Refer to the following link in https://github.com/CleanSpeak/cleanspeak-containers/blob/master/docker/cleanspeak/docker-compose.yml[GitHub] to find the latest version.
 
 ```
-curl -o docker-compose.yml https://raw.githubusercontent.com/CleanSpeak/cleanspeak-containers/master/docker/cleanspeak/docker-compose.yml
-curl -o .env https://raw.githubusercontent.com/CleanSpeak/cleanspeak-containers/master/docker/cleanspeak/.env
+curl -o docker-compose.yml https://raw.githubusercontent.com/CleanSpeak/cleanspeak-containers/master/docker/docker-compose.yml
+curl -o .env https://raw.githubusercontent.com/CleanSpeak/cleanspeak-containers/master/docker/.env
 docker-compose up
 ```
 
-The stock `.env` file will contain the following values, you will want to modify the `DATABASE_PASSWORD` and ensure the `POSTGRES_USER` and `POSTGRES_PASSWORD` values are correct. You may also override any of these values using environment variables.
+The stock `.env` file will contain the following values, you will want to modify the `DATABASE_PASSWORD` and ensure the `POSTGRES_USER` and `POSTGRES_PASSWORD` values are correct. You will also need to ensure that you add your license key to the `LICENSE_ID` variable. You may also override any of these values using environment variables.
 
 ```
 POSTGRES_USER=postgres
@@ -29,103 +29,6 @@ ES_JAVA_OPTS=-Xmx256m
 CLEANSPEAK_MEMORY=1G
 
 LICENSE_ID=
-```
-
-```yaml
-version: '3'
-
-services:
-  db:
-    image: postgres:11-alpine
-    environment:
-      PGDATA: /var/lib/postgresql/data/pgdata
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-    ports:
-      - 5432:5432
-    networks:
-      - db
-    restart: unless-stopped
-    volumes:
-      - db_data:/var/lib/postgresql/data
-
-  search:
-    image: docker.elastic.co/elasticsearch/elasticsearch:6.3.1
-    environment:
-      cluster.name: cleanspeak
-      bootstrap.memory_lock: "true"
-      ES_JAVA_OPTS: "${ES_JAVA_OPTS}"
-    ports:
-      - 9200:9200
-      - 9300:9300
-    networks:
-      - search
-    restart: unless-stopped
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-    volumes:
-      - es_data:/usr/share/elasticsearch/data
-
-  cleanspeak-webservice:
-    image: cleanspeak/cleanspeak-webservice:latest
-    depends_on:
-      - db
-      - search
-    environment:
-      DATABASE_URL: jdbc:postgresql://db:5432/cleanspeak
-      DATABASE_ROOT_USER: ${POSTGRES_USER}
-      DATABASE_ROOT_PASSWORD: ${POSTGRES_PASSWORD}
-      DATABASE_USER: ${DATABASE_USER}
-      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
-      CLEANSPEAK_MEMORY: ${CLEANSPEAK_MEMORY}
-      CLEANSPEAK_SEARCH_SERVERS: http://search:9200
-      CLEANSPEAK_URL: http://cleanspeak-ws:8001
-      LICENSE_ID: ${LICENSE_ID}
-    networks:
-      - db
-      - search
-    restart: unless-stopped
-    ports:
-      - 8001:8001
-    volumes:
-      - cs_config:/usr/local/inversoft/config
-
-  cleanspeak-management-interface:
-    image: cleanspeak/cleanspeak-management-interface:latest
-    depends_on:
-      - db
-      - search
-    environment:
-      DATABASE_URL: jdbc:postgresql://db:5432/cleanspeak
-      DATABASE_ROOT_USER: ${POSTGRES_USER}
-      DATABASE_ROOT_PASSWORD: ${POSTGRES_PASSWORD}
-      DATABASE_USER: ${DATABASE_USER}
-      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
-      CLEANSPEAK_MEMORY: ${CLEANSPEAK_MEMORY}
-      CLEANSPEAK_SEARCH_SERVERS: http://search:9200
-      CLEANSPEAK_URL: http://cleanspeak-mi:9011
-      LICENSE_ID: ${LICENSE_ID}
-    networks:
-      - db
-      - search
-    restart: unless-stopped
-    ports:
-      - 8011:8011
-    volumes:
-      - cs_config:/usr/local/inversoft/config
-
-networks:
-  db:
-    driver: bridge
-  search:
-    driver: bridge
-
-volumes:
-  db_data:
-  es_data:
-  cs_config:
 ```
 
 == Docker Services
