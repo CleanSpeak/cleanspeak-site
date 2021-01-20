@@ -1,0 +1,21 @@
+<!doctype html>
+<html data-wf-page="5b9ae1c0899c18a1d1cd8a18" data-wf-site="5b9ae1c0899c18411bcd8a16" lang="en">
+{% include _head.html css="main.css" %}
+<body>
+{% include _navigation.html %}
+<main class="main-content">
+  <div class="padded-section">
+    <div class="w-container">
+      <div class="general-divider">
+        {% if page.markdown == 1 %}
+          {{ content | markdownify }}
+        {% else %}
+          {{ content }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</main>
+{% include _footer.html %}
+</body>
+</html>

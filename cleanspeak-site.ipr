@@ -96,6 +96,11 @@
     </LinkMapSettings>
   </component>
   <component name="ProjectDictionaryState">
+    <dictionary name="bpontarelli">
+      <words>
+        <w>inversoft</w>
+      </words>
+    </dictionary>
     <dictionary name="degroff">
       <words>
         <w>apis</w>
@@ -114,7 +119,7 @@
       <module fileurl="file://$PROJECT_DIR$/cleanspeak-site.iml" filepath="$PROJECT_DIR$/cleanspeak-site.iml" />
     </modules>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_10" default="false" project-jdk-name="rbenv: 2.3.1" project-jdk-type="RUBY_SDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_10" project-jdk-name="rbenv: 2.3.1" project-jdk-type="RUBY_SDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
   <component name="VcsDirectoryMappings">
