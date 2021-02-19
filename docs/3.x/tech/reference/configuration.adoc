@@ -42,6 +42,8 @@ For PostgreSQL, this URL will look something like this:
 
 If you are using MySQL, you must include the `serverTimezone=UTC` parameter in the URL. The `?` character is the same as a standard URL parameter, so if you have additional parameters, you should only have a single `?` and parameters should be separated by `&`.
 
+Some MySQL services such as Microsoft Azure may require a specific version of TLS to connect successfully. At the time of writing this note, the MySQL connector will not attempt to utilize TLSv1.2 by default, so when connecting to a service that requires this version you will need to explicitly request this version of TLS on the connection string. For example, appending this `enabledTLSProtocols=TLSv1.2` to the connection string will allow you to successfully connect to an Azure managed MySQL database. See https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-reference-using-ssl.html[MySQL Connector : Connecting Securely UsingSSL] for additional information.
+
 |[field]#database.username# [type]#[String]#
 |The username used to connect to the database.
 
