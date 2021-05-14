@@ -14,15 +14,28 @@ Hide Stuff here
 
 
 [role=release-note]
-== Version 3.29.1
-_Pending Release_
+== Version 3.30.0
+_Released Thursday May 13th, 2021_
+
+[WARNING.general-warning]
+====
+*Please Read*
+
+If you are upgrading from a version of CleanSpeak older than 3.4.0, you will need to reconfigure your SMTP settings in the Management Interface UI in order for emails to be sent by CleanSpeak.
+====
 
 === Changes
+* Removed System V init.d scripts from the RPM and DEB packages and replaced them with SystemD service definitions.
+* Upgraded to Java 14.
+* Upgraded to support Elasticsearch 7.x (version 6.x is still supported as well).
+* Upgraded all dependencies for security fixes and improvements.
 * Java is no longer bundled with the Zip, RPM or Debian packages. Java will be downloaded during the initial startup.
 * When using RPM or Debian packages, the installation path has been updated to `/usr/local/cleanspeak` from `/usr/local/inversoft`. When upgrading, the `cleanspeak.properties` file will be migrated to the new location.
 
 === Fixed
 * A JavaScript bug that may cause an error on the Approval Queue and the Content Alert queue has been resolved.
+* Error when deleting Applications that had moderators working in queues previously.
+* Pagination fixed for Application listing page.
 
 === Enhancement
 * When under heavy load with increased database latency, it is possible for the User score processing services to cause additional database contention. This has been enhanced to perform some of the score processing during the request and short circuit some asynchronous processing that may require additional database locks.
