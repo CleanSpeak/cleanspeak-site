@@ -24,6 +24,8 @@ _Released Thursday May 13th, 2021_
 If you are upgrading from a version of CleanSpeak older than 3.4.0, you will need to reconfigure your SMTP settings in the Management Interface UI in order for emails to be sent by CleanSpeak.
 ====
 
+include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
+
 === Changes
 * Removed System V init.d scripts from the RPM and DEB packages and replaced them with SystemD service definitions.
 * Upgraded to Java 14.
