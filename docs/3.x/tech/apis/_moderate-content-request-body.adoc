@@ -9,7 +9,7 @@
 |The Id of the application that corresponds to the content source.
 
 |[field]#content.createInstant# [type]#[Long]# [required]#Required#
-|The link:../reference/data-types#instants[instant] that the content was generated.
+|The link:../reference/data-types#instants[instant] that the content was generated. *NOTE*: this is represented as milliseconds since Epoch.
 
 |[field]#content.location# [type]#[String]# [optional]#Optional#
 |Specifies the location within the application that the content was generated. For example, you might use a chat room name, area Id for a game, or a thread Id for a forum. This parameter is used by CleanSpeak to display conversational views of content with the <<Context View>> feature.
