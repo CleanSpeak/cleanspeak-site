@@ -12,6 +12,13 @@ Hide Stuff here
 
 // REMEMBER TO ADD MIGRATIONS TO upgrades-patches
 
+[role=release-note]
+== Version 3.31.0
+_Released Wednesday June 16th, 2021_
+
+=== Fixed
+* When editing a webhook in the CleanSpeak admin UI, you may lose your webhook configuration during the save operation.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/21[GitHub Issue #21]
 
 [role=release-note]
 == Version 3.30.0
