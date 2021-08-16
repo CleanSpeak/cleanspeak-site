@@ -13,6 +13,13 @@ Hide Stuff here
 // REMEMBER TO ADD MIGRATIONS TO upgrades-patches
 
 [role=release-note]
+== Version 3.31.1
+_Released Monday August 16th, 2021_
+
+=== Fixed
+* Updated docker images to use new build strategy and correct the user owning the CleanSpeak process.
+
+[role=release-note]
 == Version 3.31.0
 _Released Wednesday June 16th, 2021_
 
