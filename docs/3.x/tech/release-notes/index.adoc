@@ -13,6 +13,14 @@ Hide Stuff here
 // REMEMBER TO ADD MIGRATIONS TO upgrades-patches
 
 [role=release-note]
+== Version 3.31.2
+_Released Monday August 17th, 2021_
+
+=== Fixed
+* A missing JDK module in the docker image may cause a runtime failure. This fix only affects version `3.31.1`.
+
+
+[role=release-note]
 == Version 3.31.1
 _Released Monday August 16th, 2021_
 
