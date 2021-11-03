@@ -69,7 +69,7 @@ Prior to version 3.6.0 the Apache Tomcat directory will be named `apache-tomcat-
 [source,shell]
 .Start CleanSpeak
 ----
-$ /usr/local/inversoft/cleanspeak-search-engin`e/elasticsearch/bin/elasticsearch
+$ /usr/local/inversoft/cleanspeak-search-engine/elasticsearch/bin/elasticsearch
 $ /usr/local/inversoft/cleanspeak-webservice/apache-tomcat/bin/catalina.bat start
 $ /usr/local/inversoft/cleanspeak-management-interface/apache-tomcat/bin/catalina.bat start
 ----
