@@ -8,11 +8,13 @@ source "https://rubygems.org"
 #
 # This will help ensure the proper Jekyll version is running.
 # Happy Jekylling!
-gem "jekyll", "3.8.5"
+gem "jekyll", "4.2.0"
 gem "nokogiri", "1.12.5"
+gem "racc", "1.6.0"
+gem "ffi", "1.15.4"
 
 # This is the default theme for new Jekyll sites. You may change this to anything you like.
-gem "minima", "2.5.0"
+gem "minima", "2.5.1"
 
 # Our plugins
 
@@ -23,15 +25,15 @@ gem "minima", "2.5.0"
 # If you have any plugins, put them here!
 group :jekyll_plugins do
   gem "jekyll-asciidoc", "2.1.1"
-  gem "jekyll-feed", "0.11.0"
+  gem "jekyll-feed", "0.15.1"
   gem "jekyll-paginate", "1.1.0"
 end
 
 # For the docs
-gem "asciidoctor", "1.5.8"
-gem "haml", "5.0.0"
+gem "asciidoctor", "2.0.10"
+gem "haml", "5.1.2"
 gem "thread_safe", "0.3.6"
-gem "tilt", "2.0.9"
+gem "tilt", "2.0.10"
 gem "pygments.rb", "1.2.1"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

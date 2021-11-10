@@ -52,38 +52,33 @@ target(name: "push", description: "Push the site to cleanspeak.com") {
   proc.waitFor()
 }
 
-target(name: "build", description: "builds the project") {
-  if (!cleanExecute(['bundle', 'install'])) {
-    fail("Unable to run 'bundle install' for CleanSpeak Site. Are you certain you have Jekyll installed?")
-  }
-
+target(name: "compile", description: "builds the project") {
   if (switches.has("drafts")) {
-    cleanExecute(["bundle", "exec", "jekyll", "build", "--drafts"])
+    cleanExecute(["bundle", "exec", "jekyll", "build", "--drafts"], false)
   } else {
-    cleanExecute(["bundle", "exec", "jekyll", "build"])
+    cleanExecute(["bundle", "exec", "jekyll", "build"], false)
   }
-
 }
 
 target(name: "clean", description: "cleans the project") {
-  if (!cleanExecute(['bundle', 'install'])) {
-    fail("Unable to run 'bundle install' for CleanSPeak Site. Are you certain you have Jekyll installed?")
-  }
-
-  cleanExecute(["bundle", "exec", "jekyll", "clean"])
+  cleanExecute(["bundle", "exec", "jekyll", "clean"], false)
 }
 
 target(name: "serve", description: "Serve the project") {
-  if (!cleanExecute(['bundle', 'install'])) {
-    fail("Unable to run 'bundle install' for CleanSpeak Site. Are you certain you have Jekyll installed?")
-  }
-
-  cleanExecute(["bundle", "exec", "jekyll", "serve", "--drafts", "--incremental", "-o"])
+  cleanExecute(["bundle", "exec", "jekyll", "serve", "--drafts", "--future", "--incremental", "-o"], false)
 }
 
-boolean cleanExecute(List<String> args) {
+target(name: "watch", description: "Build and watch the project") {
+  cleanExecute(["bundle", "exec", "jekyll", "build", "--drafts", "--future", "--incremental", "--watch"], false)
+}
+
+boolean cleanExecute(List<String> args, boolean prod) {
   ProcessBuilder pb = new ProcessBuilder(args).inheritIO().directory(new File('.'))
   clearEnvironment(pb)
+
+  if (prod) {
+    pb.environment().put("JEKYLL_ENV", "production")
+  }
 
   def process = pb.start()
   process.consumeProcessOutput(System.out, System.err)
