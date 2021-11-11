@@ -20,7 +20,62 @@ Most of the CleanSpeak configuration is performed in the Management Interface. H
 C:\inversoft\config\cleanspeak.properties
 ----
 
-This table contains all of the configuration options available in the `cleanspeak.properties` file.
+=== Options
+
+The following table contains all of the configuration options that CleanSpeak uses. For your convenience, you may select the type of configuration you plan to use and the names will be updated to correspond to your preference.
+
+Display configuration values in format:
+++++
+<style>
+dd p.deprecated {
+  color: #B20000;
+  font-weight: 500;
+  margin-bottom: 0 !important;
+  margin-top: 25px !important;
+}
+label.select {
+  align-items: center;
+  display: inline-flex !important;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+label.select select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: #fff;
+  border: 1px solid #919A9C;
+  border-radius: 3px;
+  box-shadow: 0 0 0 0 rgba(0,0,0,0);
+  color: #0f1314;
+  font-size: 14px;
+  padding: 10px 50px 10px 13px;
+  transition: box-shadow 0.2s ease-in-out;
+}
+label.select:after {
+  content: "\f107";
+  display: inline-block;
+  font-family: 'Font Awesome 5 Pro', FontAwesome;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+  font-weight: 500;
+  pointer-events: none;
+  position: absolute;
+  right: 10px;
+  text-decoration: none;
+  text-rendering: auto;
+}
+</style>
+<label class="select" style="width: 100%;">
+  <select id="configuration-type" class="select" style="width: 100%; margin-bottom: 5px;">
+    <option value="config-file">Configuration File Properties</option>
+    <option value="environment">Environment Variable</option>
+    <option value="java-system-property">Java system property</option>
+  </select>
+</label>
+++++
 
 [cols="3a,7a"]
 [.api]
@@ -167,4 +222,54 @@ configured value for 'cleanspeak-search-engine.http-port'.
 
 Single host example: `http://localhost:8021`
 Multiple hosts example: `http://localhost:8021,http://192.168.1.42:8021`
+
+|[field]#proxy.host# [type]#[String]# [since]#Available since 3.23.3#
+|The proxy host used for egress network traffic. To enable this egress proxy, you must configure both the [field]#proxy.host# and [field]#proxy.port#.
+
+|[field]#proxy.port# [type]#[String]# [since]#Available since 3.23.3#
+|The proxy port used for egress network traffic. To enable this egress proxy, you must configure both the [field]#proxy.host# and [field]#proxy.port#.
+
+|[field]#proxy.username# [type]#[String]# [since]#Available since 3.23.3#
+|The proxy username for egress network traffic. To enable authentication with your proxy, you must configure both the [field]#proxy.username# and [field]#proxy.password#.
+
+|[field]#proxy.password# [type]#[String]# [since]#Available since 3.23.3#
+|The proxy password for egress network traffic. To enable authentication with your proxy, you must configure both the [field]#proxy.username# and [field]#proxy.password#.
+
 |===
+
+++++
+<script>
+var redraw = function() {
+  var selected = select.options[select.selectedIndex].value;
+  localStorage.setItem('configuration-type', selected);
+  for (var i = 0; i < elements.length; i++) {
+    var element = elements[i];
+    element.data = element.data || {};
+    element.data.property = element.data.property || element.innerHTML;
+    if (selected === 'config-file') {
+      element.innerHTML = element.data.property;
+    } else if (selected === 'environment') {
+      element.innerHTML = element.data.property.replaceAll('.', '_').replaceAll('-', '_').toUpperCase();
+    } else {
+      element.innerHTML = '-D' + element.data.property;
+    }
+  }
+}
+
+var elements = document.querySelectorAll('table.api tbody tr td .field');
+var select = document.getElementById('configuration-type');
+var saved = localStorage.getItem('configuration-type');
+if (saved) {
+  var options = select.getElementsByTagName('option');
+  for (var j = 0; j < options.length; j++) {
+    if (options[j].value === saved) {
+       options[j].selected = true;
+       redraw();
+       break;
+    }
+  }
+}
+
+select.addEventListener('change', redraw);
+</script>
+++++

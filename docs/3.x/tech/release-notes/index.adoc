@@ -43,6 +43,7 @@ _Released Tuesday November 9th, 2021_
 
 === Enhancements
 * Add an option to the system configuration to use a proxy for all outbound network access to CleanSpeak licensing.
+** See `proxy.host`, `proxy.port`, `proxy.username` and `proxy.password` in link:../reference/configuration[Configuration] for additional detail.
 ** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/24[GitHub Issue #24]
 * Support `vv` as a leet speak replacement for `w`.
 ** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/26[GitHub Issue #26]
