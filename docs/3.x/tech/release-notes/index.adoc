@@ -13,12 +13,54 @@ Hide Stuff here
 // REMEMBER TO ADD MIGRATIONS TO upgrades-patches
 
 [role=release-note]
+== Version 3.31.3
+_Released Tuesday November 9th, 2021_
+
+=== Fixed
+* When adding an automated user action for a user action that is not time based you are unable to save.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/14[GitHub Issue #14]
+* Restoring from backup when the array `WhitelistedURLs` has an entry that is a `String` instead of an `Object` throws an exception.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/18[GitHub Issue #18]
+* Editing a blacklist phrase and approving the change does not show in the audit log.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/19[GitHub Issue #19]
+* Change the default image filtering probability for Low matches from 0 to 30.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/27[GitHub Issue #27]
+* If an event has never been configured (enabled or disabled) for a webhook an exception may occur when that event occurs, and an attempt to send that event to the webhook occurs.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/29[GitHub Issue #29]
+* Attempting to action a user from the dashboard, and many other places is blocked by the fact that selecting an action does not update the rest of the UI. Specifically, the related controls are not properly hidden or shown, and the submit button is never enabled.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/31[GitHub Issue #31]
+* When submitting an escalation comment that is longer than 255 characters saving the escalation will fail.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/32[GitHub Issue #32]
+* When adding a moderation action with any one of location, sender display name, or receiver display name that is longer than 255 characters it will block them from being asynchronously added to the database. The action gets stuck in the queue and is never cleared or saved.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/33[GitHub Issue #33]
+* Fix the queue drainer so that it is properly closed during shutdown.  Outstanding queue entries are written to disk, so they can be replayed later.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/35[GitHub Issue #35]
+* The OIDC integration generates invalid OAuth redirect URLs when starting the OAuth login process. The URLs have two `?` symbols, which make them invalid.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/36[GitHub Issue #36]
+* The css text color for `h3` inside certain tooltips is not correct. It's black on black, so you can't read the text.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/38[GitHub Issue #38]
+
+
+=== Enhancements
+* Add an option to the system configuration to use a proxy for all outbound network access to CleanSpeak licensing.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/24[GitHub Issue #24]
+* Support `vv` as a leet speak replacement for `w`.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/26[GitHub Issue #26]
+* Added a new reports UI to download a zip file of several reports: content, filtered entries, filtered words, moderator activity, top filtered users, and top producing users.  The new report can be found in the UI by navigating to [breadcrumb]#Reports -> Combined Zip Report#.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/30[GitHub Issue #30]
+* Add a queue size to the queue drainer health check.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/34[GitHub Issue #34]
+
+=== Internal
+* Upgrade Apache Tomcat from `8.5.63` to `8.5.72`
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/25[GitHub Issue #25]
+
+[role=release-note]
 == Version 3.31.2
 _Released Monday August 17th, 2021_
 
 === Fixed
 * A missing JDK module in the docker image may cause a runtime failure. This fix only affects version `3.31.1`.
-
 
 [role=release-note]
 == Version 3.31.1
@@ -139,7 +181,7 @@ include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 ** This event is fired when a change to the filter is approved. Filter approvals can be found in the UI by navigating to [breadcrumb]#Filters# icon:chevron-right[role=breadcrumb,type=fas] [breadcrumb]#Approvals#.
 ** The default transaction configuration for this event will require all webhooks to successfully acknowledge the event in order for the approval request to complete. You may optionally modify this default configuration by navigating to [breadcrumb]#Settings# icon:chevron-right[role=breadcrumb,type=fas] [breadcrumb]#System# icon:chevron-right[role=breadcrumb,type=fas] [breadcrumb]#Webhooks#.
 ** To enable this new event for an existing Webhook, navigate to [breadcrumb]#Settings# icon:chevron-right[role=breadcrumb,type=fas] [breadcrumb]#Webhooks# icon:chevron-right[role=breadcrumb,type=fas] [breadcrumb]#Events# and enable the **FilterApproval** event.
-** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/12[Github Issue #12]
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/12[GitHub Issue #12]
 * Webhooks may now optionally select which events are to be sent. Navigate to [breadcrumb]#Settings# icon:chevron-right[role=breadcrumb,type=fas] [breadcrumb]#Webhooks# icon:chevron-right[role=breadcrumb,type=fas] [breadcrumb]#Events# to configure event selection.
 * Webhooks may now optionally define a free form description field to describe the intended purpose or details of the webhook.
 * Added a new `webhook_manager` role for managing webhooks. Users with the `admin` or `webhook_manager` role may manage Webhooks. See [breadcrumb]#System# icon:chevron-right[role=breadcrumb,type=fas] [breadcrumb]#Users# icon:chevron-right[role=breadcrumb,type=fas] to find the new role or use the link:/docs/3.x/tech/apis/admins-moderators[User API] to modify the users programatically.
