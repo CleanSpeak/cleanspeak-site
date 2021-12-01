@@ -13,6 +13,19 @@ Hide Stuff here
 // REMEMBER TO ADD MIGRATIONS TO upgrades-patches
 
 [role=release-note]
+== Version 3.31.4
+_Released Thursday November 25th, 2021_
+
+=== Fixed
+* Moderate escalation comments not displayed in the escalation queue.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/41   [GitHub Issue #41]
+* Unable to perform an administrative score change on a content user from the User Moderation queue.
+** This occurred when managing user at the URI `/admin/moderation/user`.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/43[GitHub Issue #43]
+* Several fixes for the Zip Report feature released in 3.31.3.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/45[GitHub Issue #45]
+
+[role=release-note]
 == Version 3.31.3
 _Released Tuesday November 9th, 2021_
 
