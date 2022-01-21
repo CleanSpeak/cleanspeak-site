@@ -13,6 +13,34 @@ Hide Stuff here
 // REMEMBER TO ADD MIGRATIONS TO upgrades-patches
 
 [role=release-note]
+== Version 3.32.0
+_Released Friday January 21st, 2022_
+
+include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
+
+=== Fixed
+* Selecting a custom duration for the combined Zip download in the admin UI may fail.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/47[GitHub Issue #47]
+
+=== Security
+* Upgraded Logback to the latest available version of 1.3.0.
+** No known vulnerabilities exist in the version previously shipping with CleanSpeak. As a resul of the Log4J vulnerability, the Logback team added some additional hardening to their library as a precautionary measure. We are upgrading to the latest version that includes these additions.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/49[GitHub Issue #49]
+* Add `-Dlog4j2.formatMsgNoLookups=true` to the VM options shipped with the `cleanspeak-search-engine` Elasticsearch package.
+** Please note, this is only being done for good measure. Other mitigation steps are in place and are outlined in more detail in the blog post linked below.
+** See https://cleanspeak.com/blog/2021/12/10/log4j-cleanspeak for additional information.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/48[GitHub Issue #48]
+
+=== Internal
+* CleanSpeak now shipping with 21% more Java!
+** Upgraded from Java 14 to Java 17 LTS.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/42[GitHub Issue #42]
+* Upgraded PostgreSQL JDBC driver from 4.2.22 to 42.3.1
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/50[GitHub Issue #50]
+* Update `prime-email` dependency.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/51[GitHub Issue #51]
+
+[role=release-note]
 == Version 3.31.4
 _Released Thursday November 25th, 2021_
 
