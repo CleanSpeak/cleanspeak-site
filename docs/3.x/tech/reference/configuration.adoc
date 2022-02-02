@@ -214,7 +214,7 @@ include::docs/3.x/tech/reference/_property-memory.adoc[]
 |
 include::docs/3.x/tech/reference/_property-additional-jvm-args.adoc[]
 
-|[field]#cleanspeak-app.search-servers# [type]#[String]# [since]#Available since 3.23.1# [default]#Defaults to `http://localhost:8021`#
+|[field]#cleanspeak-app.search-servers# [type]#[String]# [since]#Available since 3.23.1# [default]#Defaults to `http://localhost:8021`# [deprecated]#Deprecated#
 |
 Specify the location of your CleanSpeak Search servers. Multiple values may be specified using a comma separator.
 This configuration is used by CleanSpeak App to connect to the ElasticSearch nodes. The specified port should be the
@@ -235,6 +235,13 @@ Multiple hosts example: `http://localhost:8021,http://192.168.1.42:8021`
 |[field]#proxy.password# [type]#[String]# [since]#Available since 3.23.3#
 |The proxy password for egress network traffic. To enable authentication with your proxy, you must configure both the [field]#proxy.username# and [field]#proxy.password#.
 
+|[field]#search.servers# [type]#[String]# [since]#Available since 3.30.0#
+|The `http` or `https` URL to the Elasticsearch service. To specify more than one value, use a comma separated list.
+
+Single host example: `http://localhost:8021`
+Multiple hosts example: `http://localhost:8021,http://192.168.1.42:8021`
+
+Note the default port of `8021` is used by the `cleanspeak-search-service`, if you are using a standalone Elasticsearch service the port is more likely `9200`.
 |===
 
 ++++
