@@ -2,7 +2,7 @@
 layout: blog-post
 title: 6 Things You Should Know About User-Generated Content Moderation
 author: Blair Ewalt
-author_image: "/images/blog/mooreds.jpg"
+author_image: "/images/blog/blair.jpg"
 excerpt_separator: "<!--more-->"
 categories:
 - Online community
