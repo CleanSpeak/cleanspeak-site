@@ -37,12 +37,15 @@ Many other operating systems are capable of running the CleanSpeak, but are not 
 === Java
 If you install CleanSpeak via the ZIP package prior to version 3.1.4, you must install Java JDK 1.8 manually. If you're using CleanSpeak version 3.1.4 or later, Java is bundled in the downloaded package and there is no additional configuration required.
 
+* Version 3.32.0 and beyond will download and utilize Java 17
+* Versions 3.30.0 to 3.31.4 will download and utilize Java 14
+* Anything older than version 3.30.0 will run on Java 8
+
 === Database
 CleanSpeak supports the following two databases.
 
-* MySQL 5.5.4 or higher
-** MySQL 8 is not yet supported
-* PostgreSQL 9.1 or higher
+* MySQL 5.7 or later.
+* PostgreSQL 10 or later
 
 === Availability
 If you're planning your architecture for high availability, we recommend separating the CleanSpeak web services and database onto different servers. CleanSpeak is comprised of a database and three web services: the Search Engine, WebService (API) and the Management Interface. Each of these components communicates through a network connection so they can run on the same server or separate servers to accommodate availability requirements.

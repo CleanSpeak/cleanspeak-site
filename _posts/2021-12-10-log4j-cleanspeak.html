@@ -1,0 +1,42 @@
+---
+layout: blog-post
+title: "Log4j CVE: How it affects CleanSpeak (TLDR: It doesn't)"
+author: Dan Moore
+author_image: "/images/blog/mooreds.jpg"
+excerpt_separator: "<!--more-->"
+categories:
+- CleanSpeak
+- News
+tags:
+- Updates
+- CleanSpeak
+image: blog/log4j-header.jpg
+---
+
+<p>The recent announcement of <a href="https://nvd.nist.gov/vuln/detail/CVE-2021-44228">CVE-2021-44228</a>, which allows for "arbitrary code loaded from LDAP servers when message lookup substitution is enabled" through a vulnerability in Log4j has many people double checking the dependencies of their Java applications.</p>
+<h2>CleanSpeak is not affected</h2>
+<p>CleanSpeak is not affected by this vulnerability in Log4j. CleanSpeak uses a different logging framework, <a href="http://logback.qos.ch">Logback</a>, so there is no way that any CleanSpeak applications could be compromised.</p>
+<p><!--more--></p>
+<p>Log4j is a popular logging framework and is used in many Java projects, both open source and commercial. When a CVE like this comes out, it makes sense to check all of your applications for the issue. Security is important to us and we understand why customers and users would reach out about this.</p>
+<p>In conclusion, CleanSpeak is <strong>not affected by the Log4j vulnerability</strong>.</p>
+
+<p>To learn more about the CVE, you can:</p>
+
+<ul>
+<li> visit the <a href="https://nvd.nist.gov/vuln/detail/CVE-2021-44228">NIST CVE description</a>
+  <li>review a <a href="https://www.lunasec.io/docs/blog/Log4j-zero-day/">detailed report about the vulnerability</a></li>
+  <li>participate in the <a href="https://news.ycombinator.com/item?id=29504755">HackerNews discussion</a></li>
+  <li>read <a href="http://mailman.qos.ch/pipermail/announce/2021/000163.html">a message from the Logback maintainers about this issue</a></li>
+</ul>
+
+<h2>What about Elasticsearch</h2>
+<p>Elasticsearch is used by CleanSpeak installations. However, in general the Elasticsearch service is not publicly accessible, if <a href="/docs/3.x/tech/installation-guide/securing">following the recommended security guidance</a>.</p>
+
+<p>Per the <a href="https://discuss.elastic.co/t/apache-Log4j2-remote-code-execution-rce-vulnerability-cve-2021-44228-esa-2021-31/291476">Elasticsearch documentation</a>:</p>
+
+<blockquote>Elasticsearch is not susceptible to remote code execution with this vulnerability due to our use of the Java Security Manager. Elasticsearch on JDK8 or below is susceptible to an information leak via DNS which is fixed by a simple JVM property change.</blockquote>
+
+<p>There is no vulnerability if you are running in CleanSpeak Cloud. Deployments there do not allow external access to the Elasticsearch servers. If you need specific version information, please open a support ticket.</p>
+
+<p>If you are self-hosting CleanSpeak, please review the Elasticsearch guidance and your Elasticsearch and Java configurations to ensure you aren't vulnerable.</p>
+

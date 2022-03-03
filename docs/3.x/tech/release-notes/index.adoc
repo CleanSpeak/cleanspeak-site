@@ -13,6 +13,50 @@ Hide Stuff here
 // REMEMBER TO ADD MIGRATIONS TO upgrades-patches
 
 [role=release-note]
+== Version 3.32.1
+_Released Friday February 18th, 2022_
+
+=== Security
+* Proactively upgrade Logback. Instead of Log4J, CleanSpeak uses Logback. In response to the recent vulnerabilities in Log4J, the Logback team has proactively added some additional hardening to their library to ensure similar vulnerabilities are not found.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/58[GitHub Issue #58]
+
+=== Fixed
+* Some OpenID Connect IdPs such as Okta strictly enforce only sending the `client_id` in the request body or the Authorization header. This fix is to only send the `client_id` in the request body when you request to use `client_secret_post` or `none` for the Client authentication method. When configuring OpenID Connect in the CleanSpeak UI, you may not select the client authentication method you wish to use with the OpenID Connect identity provider.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/57[GitHub Issue #57]
+
+=== Enhancement
+* Add the ability to override or provide additional custom SMTP options. This should allow CleanSpeak to be more compatible with 3rd party SMTP services.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/62[GitHub Issue #62]
+
+[role=release-note]
+== Version 3.32.0
+_Released Friday January 21st, 2022_
+
+include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
+
+=== Security
+* Upgraded Logback to the latest available version of 1.3.0.
+** No known vulnerabilities exist in the version previously shipping with CleanSpeak. As a resul of the Log4J vulnerability, the Logback team added some additional hardening to their library as a precautionary measure. We are upgrading to the latest version that includes these additions.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/49[GitHub Issue #49]
+* Add `-Dlog4j2.formatMsgNoLookups=true` to the VM options shipped with the `cleanspeak-search-engine` Elasticsearch package.
+** Please note, this is only being done for good measure. Other mitigation steps are in place and are outlined in more detail in the blog post linked below.
+** See https://cleanspeak.com/blog/2021/12/10/log4j-cleanspeak for additional information.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/48[GitHub Issue #48]
+
+=== Fixed
+* Selecting a custom duration for the combined Zip download in the admin UI may fail.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/47[GitHub Issue #47]
+
+=== Internal
+* CleanSpeak now shipping with 21% more Java!
+** Upgraded from Java 14 to Java 17 LTS.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/42[GitHub Issue #42]
+* Upgraded PostgreSQL JDBC driver from 4.2.22 to 42.3.1
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/50[GitHub Issue #50]
+* Update `prime-email` dependency.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/51[GitHub Issue #51]
+
+[role=release-note]
 == Version 3.31.4
 _Released Thursday November 25th, 2021_
 
