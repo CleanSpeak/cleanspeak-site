@@ -14,7 +14,7 @@ tags:
 - Profanity filter
 - Moderation tools
 - Best practices
-image: blog/log4j-header.jpg
+image: blog/things-to-know-ugc/ugc-header.jpg
 ---
 
 You may have heard of user-generated content (UGC) before, but what does it actually mean? UGC refers to any type of media produced by users rather than the company that owns or operates the platform where the media gets shared. Examples include YouTube or Facebook. Content such as photos, videos, comments, and product reviews are all examples of UGC. 
