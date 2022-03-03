@@ -5,15 +5,14 @@ author: Blair Ewalt
 author_image: "/images/blog/blair.jpg"
 excerpt_separator: "<!--more-->"
 categories:
-- Online community
+- Online Community
 - Technology
 - Strategies
 tags:
-- User generated content
-- Online safety
-- Profanity filter
-- Moderation tools
-- Best practices
+- user generated content
+- Online Safety
+- Profanity Filter
+- Best Practices
 image: blog/things-to-know-ugc/ugc-header.jpg
 ---
 
