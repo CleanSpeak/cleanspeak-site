@@ -59,9 +59,11 @@ GEM
       jekyll-feed (~> 0.9)
       jekyll-seo-tag (~> 2.1)
     multi_json (1.15.0)
-    nokogiri (1.12.5-arm64-darwin)
+    nokogiri (1.13.2-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.12.5-x86_64-darwin)
+    nokogiri (1.13.2-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.13.2-x86_64-linux)
       racc (~> 1.4)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
@@ -88,6 +90,7 @@ PLATFORMS
   arm64-darwin-21
   x86_64-darwin-19
   x86_64-darwin-20
+  x86_64-linux
 
 DEPENDENCIES
   asciidoctor (= 2.0.10)
@@ -98,7 +101,7 @@ DEPENDENCIES
   jekyll-feed (= 0.15.1)
   jekyll-paginate (= 1.1.0)
   minima (= 2.5.1)
-  nokogiri (= 1.12.5)
+  nokogiri (= 1.13.2)
   pygments.rb (= 1.2.1)
   racc (= 1.6.0)
   thread_safe (= 0.3.6)
