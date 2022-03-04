@@ -5,6 +5,7 @@
 _site
 build
 cleanspeak-site.iws
+.gems
 
 ### JetBrains template
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm
@@ -34,4 +35,3 @@ out/
 
 # Editor-based Rest Client
 .idea/httpRequests
-
