@@ -53,7 +53,7 @@ All of the environment variables are options, if not provided a default will be 
 
 * `DATABASE_URL`
 * `DATABASE_ROOT_USER`
-* `CLEANSPEAK_SEARCH_SERVERS`
+* `SEARCH_SERVERS`
 * `LICENSE_ID`
 
 These four variables when configured correctly will allow CleanSpeak to silently configure itself and go directly to the setup wizard. If they are omitted, CleanSpeak will start up in Maintenance mode and require you to interactively configure the database and search engine.
@@ -108,10 +108,10 @@ Setting this environment variable will override the `database.password` in the C
 
 Setting this environment variable will override the `cleanspeak-*.memory` in the Configuration file. See the link:../reference/configuration[Configuration Reference] for more information.
 
-|CLEANSPEAK_SEARCH_SERVERS [optional]#Optional# [default]#defaults to `http://localhost:9021`#
+|SEARCH_SERVERS [optional]#Optional# [default]#defaults to `http://localhost:9021`#
 |A comma separated listed of URLs to connect to one or more search servers.
 
-Setting this environment variable will override the `cleanspeak-app.search-servers` in the Configuration file. See the link:../reference/configuration[Configuration Reference] for more information.
+Setting this environment variable will override the `cleanspeak.search-servers` in the Configuration file. See the link:../reference/configuration[Configuration Reference] for more information.
 
 |LICENSE_ID [optional]#Optional#
 |Your License ID. You can find your License ID by logging into your account at https://account.cleanspeak.com/account/.

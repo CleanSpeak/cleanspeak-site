@@ -214,7 +214,7 @@ include::docs/3.x/tech/reference/_property-memory.adoc[]
 |
 include::docs/3.x/tech/reference/_property-additional-jvm-args.adoc[]
 
-|[field]#cleanspeak-app.search-servers# [type]#[String]# [since]#Available since 3.23.1# [default]#Defaults to `http://localhost:8021`# [deprecated]#Deprecated#
+|[field]#cleanspeak.search-servers# [type]#[String]# [since]#Available since 3.23.1# [default]#Defaults to `http://localhost:8021`# [deprecated]#Deprecated#
 |
 Specify the location of your CleanSpeak Search servers. Multiple values may be specified using a comma separator.
 This configuration is used by CleanSpeak App to connect to the ElasticSearch nodes. The specified port should be the
