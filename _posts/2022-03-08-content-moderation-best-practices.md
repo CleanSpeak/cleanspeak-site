@@ -86,5 +86,5 @@ Our team has been working on our profanity filtering technology for more than a 
  
 [Learn More](https://cleanspeak.com/products/profanity-filter)
 
-[Get A 14-Day Free Trial](https://cleanspeak.com/try-cleanspeak)
+[Get A 14-Day Free Trial](https://cleanspeak.com/try-cleanspeak){:.orange-button-material .big .w-button}
 
