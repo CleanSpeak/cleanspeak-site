@@ -22,13 +22,13 @@ You may have heard of user-generated content (UGC) before, but what does it actu
 
 For many companies, it can be a challenge to moderate and filter such content on your site or app if your system of moderation is easy to circumvent. This post will answer six questions you might have about UGC moderation and filtering to help you address these challenges. These tips will ensure that your site has high quality UGC while protecting your brand from liability and spam. 
 
-### 1) Why is UGC moderation important?
+## 1) Why is UGC moderation important?
 
 As companies allow more UGC and their online communities grow, users begin to control the tone and image of the community. This can be both good and bad, depending on the users. Relinquishing control to the users empowers them and drives further engagement. Companies do face a risk, however; as users will not always have the best interest of the companies in mind; a few might even abuse the privilege of an open forum by posting inappropriate content. The risk of abuse creates a strong argument for closer monitoring of user generated content. 
 
 This is the point when most companies decide to invest in filtering technology or other solutions to protect their online presence. However, filtering UGC is not as simple as it seems. Users are sophisticated and highly imaginative when it comes to working around automated filters.
 
-### 2) What are the biggest challenges with moderating UGC?
+## 2) What are the biggest challenges with moderating UGC?
 
 Today, most content moderation is reactive in nature. The idea is to go through a site’s or brand’s existing content after it has already been published and make edits or deletions as necessary. With UGC, you must be proactive rather than reactive to ensure your users receive the best experience upfront.
 
@@ -49,7 +49,7 @@ Feel free to check out our [Filtering UGC whitepaper](/resources/Filtering-UGC-W
 
 If you’re responsible for moderating UGC, you know that it can be quite a challenge to keep up with all of these. Many companies are embracing UGC in their marketing and communications strategies, but they often find themselves struggling to keep on top of all that activity and manage their moderation efforts more effectively.  
 
-### 3) What benefits can you gain from using a UGC platform?
+## 3) What benefits can you gain from using a UGC platform?
 
 A UGC platform may be anywhere that a user can generate content in a public space. Examples include chat rooms, feeds, review sites, and forums, among others. UGC platforms provide brands with access to large, relevant audiences that can together foster a sense of community. These communities are valuable as a strong community generating content can help you build a strong brand. 
 
@@ -57,7 +57,7 @@ However, many companies are hesitant to use a UGC platform because of quality co
 
 The reality is that there are opportunities and risks involved in using a UGC platform, whether you choose to use one or not. 
 
-### 4) How do people react to being moderated?
+## 4) How do people react to being moderated?
 
 The internet is full of content, most of which is user-generated. For big platforms like YouTube and Facebook, it’s incredibly important to have a system in place that filters out spam or anything else you wouldn’t want on your site. So how do people react to being moderated? And what happens if they don’t like what they see? We searched the web for feedback from moderators as well as users that have faced bans from platforms for inappropriate content. 
 
@@ -67,7 +67,7 @@ When users do not like the content they are seeing, they are [more likely to dro
 
 Content moderators oftentimes find themselves in tough situations between a rock and a hard place. Similar to the role of a judge, the moderator is the gatekeeper responsible for keeping an online community safe. Many content moderators agree that technology alone can not handle the whole problem of unwanted content, and that people must be involved to make the final decision if something is in the gray area. This can be especially necessary in communities when posts last for a long time, i.e. forums, comment sections. Content moderators often urge their users to read their terms and conditions, as well as community guidelines to make sure that they are aware of what is allowed and not allowed to help create a better user experience. 
 
-### 5) Does automatic moderation work well in practice?
+## 5) Does automatic moderation work well in practice?
 
 There are two broad ways to moderate UGC: automatically or manually. Automated moderation refers to systems that employ algorithms to flag inappropriate content; manual moderation means humans looking through posts before they appear online.
 
@@ -75,7 +75,7 @@ Automatic moderation is cheap and quick. Automatic moderation can have some disa
 
 The best solution for UGC moderation is a mix of both automatic and manual moderation. Automatic moderation can catch the high volume, obvious offensive items. Manual moderation can catch the items which require judgment, eliminating false positives and negatives. Intertwining the two is optimal for moderation efficiency, and it is often cheaper than hiring moderators to catch content which is obviously offensive. 
 
-### 6) How can I really eliminate profanity from my platform?
+## 6) How can I really eliminate profanity from my platform?
 
 Every platform is different, so there are no hard-and-fast rules to guarantee you’ll be able to remove all profanity. Most platforms allow you to moderate your content and ban users who swear, but some platforms have built-in moderation systems that can help detect and automatically flag or remove content with profanity. 
 
