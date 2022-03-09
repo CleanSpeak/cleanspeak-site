@@ -22,6 +22,7 @@ plugins:
  - jekyll-asciidoc
  - jekyll-feed
  - jekyll-paginate
+ - jekyll-redirect-from
 exclude:
  - docs/src/templates
  - .gitignore
