@@ -27,6 +27,7 @@ group :jekyll_plugins do
   gem "jekyll-asciidoc", "2.1.1"
   gem "jekyll-feed", "0.15.1"
   gem "jekyll-paginate", "1.1.0"
+  gem "jekyll-redirect-from"
 end
 
 # For the docs
