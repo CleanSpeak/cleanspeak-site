@@ -8,7 +8,7 @@ categories:
 - CleanSpeak
 - Conferences
 tags:
-- User generated content
+- user generated content
 image: blog/gdc.png
 ---
 
