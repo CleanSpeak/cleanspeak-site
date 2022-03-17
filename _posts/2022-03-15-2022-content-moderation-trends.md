@@ -11,7 +11,7 @@ tags:
 - Content moderation
 - Online Safety
 - Security 
-- Applications
+- applications
 image: blog/content-moderation-trends.png
 ---
 
