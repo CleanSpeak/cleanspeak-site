@@ -32,25 +32,25 @@ The most effective way to keep tabs on all of this content is by using profanity
 ## 10 Content Moderation Platform Requirements
 Organizations need to implement advanced, automated profanity filter and content moderation capabilities that will reduce or eliminate inappropriate or unwanted content. The following 10 platform capabilities are critical:
  
-1. **Broad Content Filtering Capabilities** – Perform content moderation (text moderation), image moderation, and video content moderation.
+1. **[Broad Content Filtering Capabilities](https://cleanspeak.com/blog/2016/01/29/7268)** – Perform content moderation (text moderation), image moderation, and video content moderation.
 
-2. **Multiple Application Use** – Manage users and content across multiple applications, set up different filtering and moderation rules for each application and content source, and isolate moderators so they moderate content and users only for specific applications.
+2. **[Multiple Application Use](https://cleanspeak.com/docs/3.x/tech/tutorials/)** – Manage users and content across multiple applications, set up different filtering and moderation rules for each application and content source, and isolate moderators so they moderate content and users only for specific applications.
 
-3. **Scalability** – Filter tens of thousands of messages per second on a single server.
+3. **[Scalability](https://cleanspeak.com/blog/2016/08/18/profanity-filter-build-vs-buy-analysis)** – Filter tens of thousands of messages per second on a single server.
 
-4. **Ease of Use and Performance** – Rapidly implement an integrated, developer-friendly solution that begins working quickly to ensure that all visible online content is safe and clean.
+4. **[Ease of Use and Performance](https://cleanspeak.com/blog/2018/05/03/cleanspeak-ui-update-2018)** – Rapidly implement an integrated, developer-friendly solution that begins working quickly to ensure that all visible online content is safe and clean.
 
-5. **Accuracy** – Generate few false positives and misses with fast and accurate filtering in multiple languages to meet diverse business needs.
+5. **[Accuracy](https://cleanspeak.com/blog/2013/05/02/profanity-filter-best-practices-customize-in-real-time)** – Generate few false positives and misses with fast and accurate filtering in multiple languages to meet diverse business needs.
 
-6. **Built-in Reporting Tools** – Use content moderation and content filtering reports and analytics to better understand the user community, extract meaningful insights from user content, and improve overall business performance.
+6. **[Built-in Reporting Tools](https://cleanspeak.com/blog/2013/12/31/external-internal-internet-safety-tools)** – Use content moderation and content filtering reports and analytics to better understand the user community, extract meaningful insights from user content, and improve overall business performance.
 
-7. **Preapproval/Rejection of Content** – Allow moderators to pre-screen content in a preapproval queue before it’s visible to other users.
+7. **[Preapproval/Rejection of Content](https://cleanspeak.com/blog/2015/01/22/moderation-teams-technology-improving-customer-retention)** – Allow moderators to pre-screen content in a preapproval queue before it’s visible to other users.
 
-8. **User Discipline** – Automatically take action after a user’s reputation/trust score reaches a designated threshold, as well as use progressive disciplinary action to manage repeat offenders and enable moderators to escalate issues to managers immediately.
+8. **[User Discipline](https://cleanspeak.com/blog/2016/11/16/fake-news)** – Automatically take action after a user’s reputation/trust score reaches a designated threshold, as well as use progressive disciplinary action to manage repeat offenders and enable moderators to escalate issues to managers immediately.
 
-9. **Security** – Choose an on-premise solution that ensures each customer’s data is isolated and ensures personally identifiable information (PII) is secure.
+9. **[Security](https://cleanspeak.com/blog/2013/03/05/prevent-sharing-pii-account-information)** – Choose an on-premise solution that ensures each customer’s data is isolated and ensures personally identifiable information (PII) is secure.
 
-10. **PII, COPPA, and EU Data Direction Compliance** – Choose an on-premise solution that provides strict compliance with the Children’s Online Privacy Protection Act, InfoSec, and EU Data Privacy Directive requirements.
+10. **[PII, COPPA, and EU Data Direction Compliance](https://cleanspeak.com/blog/2013/06/24/complying-with-coppa-2-0-faqs)** – Choose an on-premise solution that provides strict compliance with the Children’s Online Privacy Protection Act, InfoSec, and EU Data Privacy Directive requirements.
 
 ## 10 Content Moderation Tools
 Organizations that leverage the following 10 content moderation tools can protect their user community, save time and money, and vastly reduce the manual workload of human moderators:
