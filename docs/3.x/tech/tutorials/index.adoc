@@ -18,7 +18,9 @@ Here are our tutorials:
 * link:filtering-videos[Filtering Videos] - Learn how to filter video content using CleanSpeak and third party filters.
 * link:handling-flags[Handling Flags] - Learn how to handle user and content flags (when user's report others) in CleanSpeak.
 * link:handling-events[Handling Events] - Learn how to handle events that CleanSpeak sends back to your Webhooks.
+* link:exporting-lists[Exporting Lists and Configurations] - Learn how to export your Lists and Configurations in CleanSpeak.
 * link:start-and-stop[Start and Stop CleanSpeak] - Learn how to start and stop the CleanSpeak services
 * link:prometheus[Configure Prometheus] - Learn how to configure link:https://prometheus.io/[Prometheus] to listen to CleanSpeak metrics.
 * link:logging-in-with-google[Logging in with Google] - Learn how to login with Google.
 * link:openid-connect/[Configure OpenID Connect] - Learn how to setup OpenID Connect authentication
+* link:exporting-lists[Exporting Lists and Configurations] - Learn how to export your Lists and Configurations in CleanSpeak.

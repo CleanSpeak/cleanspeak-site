@@ -6,7 +6,7 @@ description: Various server layouts for CleanSpeak that will help you determine 
 
 == Server Layouts
 
-To help you determine the best server layout, look over the diagrams below and determine which layout works best for your dev, staging and production environments
+To help you determine the best server layout, look over the diagrams below and determine which layout works best for your dev, staging and production environments.
 
 === One Server
 
