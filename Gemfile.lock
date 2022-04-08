@@ -96,8 +96,12 @@ PLATFORMS
   arm64-darwin-21
   ruby
   x86_64-darwin-19
+<<<<<<< Updated upstream
   x86_64-darwin-20
   x86_64-linux
+=======
+  x86_64-darwin-21
+>>>>>>> Stashed changes
 
 DEPENDENCIES
   asciidoctor (= 2.0.10)
