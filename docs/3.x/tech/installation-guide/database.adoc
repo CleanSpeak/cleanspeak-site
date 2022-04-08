@@ -20,11 +20,11 @@ You only need to install either MySQL or PostgreSQL to use CleanSpeak.
 
 === Install MySQL
 
-If you want to use MySQL for your database, you will need to install version 5.5.3 or later. Depending on your operating system, you can download and install MySQL or use the operating systems package management tools. Use the instructions below to install MySQL based on your operating system.
+If you want to use MySQL for your database, you will need to install version `5.5.3` or later. Depending on your operating system, you can download and install MySQL or use the operating systems package management tools. Use the instructions below to install MySQL based on your operating system.
 
 ==== Linux
 
-To install MySQL on a Linux system, you can use the apt or yum tools depending on whether or not your Linux distribution is based on Red Hat or Debian. The package name may vary depending on your platform, for example, MySQL-server or MySQL-server-5.5. Here are the commands for each:
+To install MySQL on a Linux system, you can use the apt or yum tools depending on whether or not your Linux distribution is based on Red Hat or Debian. The package name may vary depending on your platform, for example, `MySQL-server` or `MySQL-server-5.5`. Here are the commands for each:
 
 [source,shell]
 .Red Hat
@@ -95,6 +95,6 @@ $ sudo apt-get install postgresql-server
 $ sudo apt-get install postgresql-contrib
 ----
 
-==== Windows or Mac OSX
+==== Windows or macOS
 
-If you are installing PostgreSQL on a platform that does not support RPM or DEB packages, you will need to manually download it from the PostgreSQL website here: https://www.postgresql.org/
+If you are installing PostgreSQL on a platform that does not support RPM or DEB packages, you will need to manually download it from the PostgreSQL website here: https://www.postgresql.org

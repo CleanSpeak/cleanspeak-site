@@ -29,7 +29,7 @@ If you do not intend to store content, which means you’ll either be using the 
 CleanSpeak is capable of running on most modern operating systems. Below is a list of the supported operating systems.
 
 * Linux - all distributions (64-bit)
-* Mac OS X 10.8 (Mountain Lion) or newer
+* macOS  10.8 (Mountain Lion) or newer
 * Windows Server 2008 SP2 (64-bit) w/ Windows Management Framework 3.0 or newer
 * Windows Server 2008 R2 (64-bit) w/ Windows Management Framework 3.0 or newer
 * Windows 7 SP1 (64-bit) w/ Windows Management Framework 3.0 or newer
