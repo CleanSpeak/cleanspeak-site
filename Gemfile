@@ -33,9 +33,9 @@ end
 # For the docs
 gem "asciidoctor", "2.0.10"
 gem "haml", "5.1.2"
+gem "pygments.rb", "2.3.0"
 gem "thread_safe", "0.3.6"
 gem "tilt", "2.0.10"
-gem "pygments.rb", "1.2.1"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]

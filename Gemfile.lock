@@ -61,7 +61,6 @@ GEM
       jekyll (>= 3.5, < 5.0)
       jekyll-feed (~> 0.9)
       jekyll-seo-tag (~> 2.1)
-    multi_json (1.15.0)
     nokogiri (1.13.2)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
@@ -74,8 +73,7 @@ GEM
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
     public_suffix (4.0.6)
-    pygments.rb (1.2.1)
-      multi_json (>= 1.0.0)
+    pygments.rb (2.3.0)
     racc (1.6.0)
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
@@ -96,12 +94,9 @@ PLATFORMS
   arm64-darwin-21
   ruby
   x86_64-darwin-19
-<<<<<<< Updated upstream
   x86_64-darwin-20
-  x86_64-linux
-=======
   x86_64-darwin-21
->>>>>>> Stashed changes
+  x86_64-linux
 
 DEPENDENCIES
   asciidoctor (= 2.0.10)
@@ -114,7 +109,7 @@ DEPENDENCIES
   jekyll-redirect-from
   minima (= 2.5.1)
   nokogiri (= 1.13.2)
-  pygments.rb (= 1.2.1)
+  pygments.rb (= 2.3.0)
   racc (= 1.6.0)
   thread_safe (= 0.3.6)
   tilt (= 2.0.10)
