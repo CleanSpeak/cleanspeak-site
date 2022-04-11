@@ -6,8 +6,7 @@ description: Learn how to setup CleanSpeak
 
 == Dashboard
 
-After you have completed the link:setup-wizard[Setup Wizard] you will arrive at the dashboard. From here you will want to
-complete the following to attain a complete integration with CleanSpeak and get the most out of it.
+After you have completed the link:setup-wizard[Setup Wizard] you will arrive at the dashboard. From here, you will want to complete the following to attain a complete integration with CleanSpeak and get the most out of it.
 
 . link:#default-filter-lists[Import your default filter list]
 . link:#api-keys[Setup your first API Key]
@@ -18,19 +17,15 @@ image::dashboard.png[Dashboard,width=1200]
 
 == Default Filter Lists
 
-You can import any number of languages you want for your instance, it is however only recommended that you use the language
-that bulk of your users speak and use, this is because many languages have overlapping words that are not vulgar in one but
-offensive in another. For example importing both French and English would result in the word "Pine" being filtered out as
-it is offensive in French.
+You can import any number of languages you want for your instance. It is however only recommended that you use the language that the bulk of your users speak and use. This is because many languages have overlapping words that are not vulgar in one but offensive in another. For example, importing both French and English would result in the word "Pine" being filtered out as it is offensive in French.
 
-In order to import lists you can click setup on the Dashboard in the Missing Lists card or you can navigate to Filters -> Lists -> Import (Button in the top right) to
-reach this in the future.
+To import lists, you can click setup on the Dashboard in the Missing Lists card or navigate to Filters → Lists → Import (Button in the top right) to reach this in the future.
 
 image::default-lists.png[Load Stock Lists,width=1200]
 
 == API Keys
 
-In order to make calls to CleanSpeak you will need an API Key. These keys allow REST calls to be authenticated and gives them controlled access to CleanSpeaks APIs.
+To make calls to CleanSpeak, you will need an API Key. These keys allow REST calls to be authenticated and give them controlled access to CleanSpeaks APIs.
 
 See Settings -> API Keys
 
@@ -38,7 +33,7 @@ image::api-key.png[API Keys,width=1200]
 
 == Email Settings
 
-If you want CleanSpeak to send emails for you, you will need to configure the SMTP settings.
+If you want CleanSpeak to send emails to you, you must configure the SMTP settings.
 
 See Settings -> System -> Email
 

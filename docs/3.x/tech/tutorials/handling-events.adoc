@@ -6,7 +6,7 @@ description: Learn how to handle events that CleanSpeak sends to your Webhooks
 
 == Handling Events
 
-The CleanSpeak webhook system is designed to provide feedback to your servers when certain actions are taken inside of CleanSpeak. All events are sent from CleanSpeak to the webhooks you configure via the Management Interface. These events are sent via an HTTP POST using `application/json` data. This is similar to the webservice API except in reverse, instead of you calling an API, the API calls your system with data as it happens.
+The CleanSpeak webhook system is designed to provide feedback to your servers when certain actions are taken inside of CleanSpeak. All events are sent from CleanSpeak to the webhooks you configure via the Management Interface. These events are sent via an HTTP POST using `application/json` data. This is similar to the webservice API except in reverse. Instead of you calling an API, the API calls your system with data as it happens.
 
 There are five types of events that CleanSpeak will send:
 
@@ -22,8 +22,7 @@ Each of the event types are covered in detail below:
 
 == Content Approvals
 
-The Pre-Approval Queue supports the approval and rejection of content. Moderators login to the CleanSpeak Management Interface and from there can approve and reject content. Once moderators have approved or rejected content, CleanSpeak will send events back into your system using the JSON format described below.
-
+The Pre-Approval Queue supports the approval and rejection of content. Moderators login to the CleanSpeak Management Interface and can approve and reject content. Once moderators have approved or rejected content, CleanSpeak will send events back into your system using the JSON format described below.
 === Request
 
 [cols="3a,7a"]
@@ -119,7 +118,7 @@ The User Action system provides moderators the capability to perform specific ac
 * cancel
 * end
 
-When the action is started by a moderator, the phase will be "start". If a moderator changes the duration of the action, the phase will be "modify". If a moderator cancels an action it will be "cancel" or the action expires, the phase will be "end". If the action is key-based, the phase will be "start".
+When the action is started by a moderator, the phase will be "start". If a moderator changes the duration of the action, the phase will be "modified". If a moderator cancels an action it will be "cancel" or the action expires. The phase will be "end." If the action is key-based, the phase will be "start."
 
 |[field]#reason# [type]#[String]#
 |The reason the moderator selected. Reasons are configured in the management interface via System -> Moderation Configuration -> User Action Reasons. This value will be null when no reasons are selected (or configured).
@@ -143,7 +142,6 @@ include::docs/3.x/tech/src/json/notifications/user-actions.json[]
 === Response
 
 CleanSpeak expects that the event request handler will return a 200 status code if the event was successfully handled or any other status code if it wasn't. If your event request handler does not return a 200, CleanSpeak will assume that the action was not successful and display an error to the moderator.
-
 
 == Content Edits
 
