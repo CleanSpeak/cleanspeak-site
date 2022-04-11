@@ -192,8 +192,8 @@ The configuration file may be found in the following directory, assuming you ins
 Windows::
   `C:\cleanspeak\config`
 
-Mac OS X or Linux::
-  `usr/local/cleanspeak/config`
+macOS or Linux::
+  `/usr/local/cleanspeak/config`
 
 For more information about the other configuration options found in this file, see the Configuration Reference section.
 
