@@ -6,23 +6,23 @@ description: All of the configuration options of CleanSpeak stored in the cleans
 
 == Configuration
 
-Most of the CleanSpeak configuration is performed in the Management Interface. However some configuration is provided through a configuration file. You may modify this file in order to change your configuration, CleanSpeak will need to be restarted to pick up changes to this configuration. Assuming you installed in the default locations, the configuration file may be found in the following directory. If you have installed in an alternate location the path to this file will be different.
+Most of the CleanSpeak configuration is performed in the Management Interface. However, some configuration is provided through a configuration file. You may modify this file in order to change your configuration, CleanSpeak will need to be restarted to pick up changes to this configuration. Assuming you installed it in the default locations, the configuration file may be found in the following directory. If you have installed it in an alternate location the path to this file will be different.
 
 [.command-line]
-.Linux and Mac OS X
+.Linux and macOS
 ----
-/usr/local/inversoft/config/cleanspeak.properties
+/usr/local/cleanspeak/config/cleanspeak.properties
 ----
 
 [.command-line]
 .Windows
 ----
-C:\inversoft\config\cleanspeak.properties
+C:\cleanspeak\config\cleanspeak.properties
 ----
 
 === Options
 
-The following table contains all of the configuration options that CleanSpeak uses. For your convenience, you may select the type of configuration you plan to use and the names will be updated to correspond to your preference.
+The following table contains all of the configuration options that CleanSpeak uses. For your convenience, you may select the type of configuration you plan to use, and the names will be updated to correspond to your preference.
 
 Display configuration values in format:
 ++++

@@ -87,16 +87,10 @@ By default, a quality score above 0.9 is considered a *high* quality match, 0.7 
 == Filter Mode
 
 === Exact Match
-This property determines if the filter should only match on the word or any of the variations or conjugations exactly.
-When this is checked, if the match contains any spaces, separators, punctuation, duplicate characters, or replacement characters (where punctuation is used for letters - also called leet speak), it will be ignored.
-For example, if this is checked and the word is `anal`, then a match such as `ana!` will be ignored.
-Likewise, matches such as `/ al` and `aaannnalll` will be ignored as well. A good example of a word that should be marked as an exact match is the word `ho`. This is because the word ho cannot be written like `hoooo` because it changes to meaning.
+This property determines if the filter should only match the word or any of the variations or conjugations exactly. When this is checked, if the match contains any spaces, separators, punctuation, duplicate characters, or replacement characters (where punctuation is used for letters - also called leet speak), it will be ignored. For example, if this is checked and the word is `anal,` then a match such as `ana!` will be ignored. Likewise, matches such as `/ al` and `aaannnalll` will be ignored as well. A good example of a word that should be marked as an exact match is the word `ho`. This is because the word ho cannot be written like `hoooo` because it changes to meaning.
 
 === Embeddable
-This property defines whether or not the filter will locate the word when it is next to other words. When entries are marked as embeddable and the filter finds the word next to another word, a few additional checks are performed. The checks are:
-Check if the entire match is in the whitelist and if so, reject the match
-Check if the words next to the match are in the whitelist and if they are, accept the match
-Here are a few examples of embedded entries and how the filter treats them:
+This property defines whether or not the filter will locate the word when it is next to other words. A few additional checks are performed when entries are marked as embeddable, and the filter finds the word next to another word. The checks are: Check if the entire match is in the whitelist and, if so, reject the match. Check if the words next to the match are in the whitelist and, if they are, accept the match. Here are a few examples of embedded entries and how the filter treats them:
 
 ----
 "I assume you are right"
@@ -130,5 +124,4 @@ On the flip side, the word ass is almost never distinguishable. Here are some ex
 thasstenasshanti
 ----
 
-When entries are marked as distinguishable, if the filter finds the word anywhere in the text being filtered, it will mark that word as a match. When words are not marked as distinguishable and the filter finds the word next to other words, additional checks are performed to ensure the word is actually a match. These checks are described in the definition of the `embeddable` property.
-If you select the distinguishable option, the word will also be marked as embeddable and the embeddable option will be disabled. This is because the distinguishable and embeddable options are directly linked to each other. A word cannot be distinguishable without being embeddable.
+When entries are marked as distinguishable, if the filter finds the word anywhere in the text being filtered, it will mark that word as a match. When words are not marked as distinguishable, and the filter finds the word next to other words, additional checks are performed to ensure the word is actually a match. These checks are described in the definition of the `embeddable` property. If you select the distinguishable option, the word will also be marked as embeddable, and the embeddable option will be disabled. This is because the distinguishable and embeddable options are directly linked to each other. A word cannot be distinguishable without being embeddable.

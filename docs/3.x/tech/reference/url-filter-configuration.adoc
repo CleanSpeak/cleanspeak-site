@@ -46,10 +46,10 @@ jar xf ../lib/cleanspeak-filter-*.jar domains.properties
 [source,shell]
 .Windows
 ----
-cd C:\inversoft\cleanspeak-webservice\web\WEB-INF\classes
+cd C:\cleanspeak\cleanspeak-webservice\web\WEB-INF\classes
 jar xf ..\lib\cleanspeak-filter-*.jar domains.properties
 
-cd C:\inversoft\cleanspeak-management-interface\web\WEB-INF\classes
+cd C:\cleanspeak\cleanspeak-management-interface\web\WEB-INF\classes
 jar xf ..\lib\cleanspeak-filter-*.jar domains.properties
 ----
 
