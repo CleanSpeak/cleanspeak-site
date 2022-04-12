@@ -49,24 +49,24 @@ Once the zip bundle has been extracted, the directory structure should look simi
 
 == Windows
 
-To install on Windows or higher, use the ZIP bundle. Extract the CleanSpeak WebService ZIP file anywhere on the file system. Remember where you extract the file. This location will be referred to as `CLEANSPEAK_HOME`. We suggest extracting this file to a directory such as `C:\cleanspeak` on Windows.
+To install on Windows 7 or higher use the ZIP bundle. Extract the CleanSpeak WebService ZIP file anywhere on the file system. Remember where you extract the file. This location will be referred to as `CLEANSPEAK_HOME`. We suggest extracting this file to a directory such as `C:\inversoft` on Windows.
 
 Once the zip bundle has been extracted, the directory structure should look similar to this. If you installed somewhere other the default `CLEANSPEAK_HOME`, your directory structure will be different, this is only for shown as an example.
 
 [source,shell]
 ----
-C:\cleanspeak\config
-C:\cleanspeak\config\keystore
-C:\cleanspeak\config\cleanspeak.properties
-C:\cleanspeak\cleanspeak-webservice\
+C:\inversoft\config
+C:\inversoft\config\keystore
+C:\inversoft\config\cleanspeak.properties
+C:\inversoft\cleanspeak-webservice\
 ----
 
-Next, install the Windows service by changing to the directory you installed CleanSpeak (i.e., `C:\cleanspeak\cleanspeak-webservice\apache-tomcat\bin`) and then running the install command. Here are those two steps:
+Next, install the Windows service by changing to the directory you installed CleanSpeak (i.e. `C:\inversoft\cleanspeak-webservice\apache-tomcat\bin`) and then running the install command. Here are those two steps:
 
 [source,shell]
 ----
-C:\>cd C:\cleanspeak\cleanspeak-webservice\apache-tomcat\bin
-C:\cleanspeak\cleanspeak-webservice\apache-tomcat\bin>CleanSpeakWebService.exe /install
+C:\>cd C:\inversoft\cleanspeak-webservice\apache-tomcat\bin
+C:\inversoft\cleanspeak-webservice\apache-tomcat\bin>CleanSpeakWebService.exe /install
 ----
 
 == Service Name
@@ -83,7 +83,7 @@ You can use the operating system commands to start, stop and check the status of
 
 == Start CleanSpeak WebService
 
-Next, you need to start CleanSpeak WebService so that you can enter Maintenance Mode and allow CleanSpeak to create the database. Use the instructions below to start CleanSpeak based on the platform you installed it on. Also, note that the `CLEANSPEAK_HOME` directory is where you installed CleanSpeak WebService.
+Next, you need to start CleanSpeak WebService so that you can enter Maintenance Mode and allow CleanSpeak to create the database. Use the instructions below to start CleanSpeak based on the platform you installed it on. Also note that the `CLEANSPEAK_HOME` directory is the location you installed CleanSpeak WebService to.
 
 [NOTE]
 ====
@@ -100,7 +100,7 @@ $ sudo service cleanspeak-webservice start
 ----
 
 [source,shell]
-.macOS (ZIP package)
+.Mac OS X (ZIP package)
 ----
 $ <CLEANSPEAK_HOME>/cleanspeak-webservice/apache-tomcat/bin/startup.sh
 ----
@@ -108,7 +108,7 @@ $ <CLEANSPEAK_HOME>/cleanspeak-webservice/apache-tomcat/bin/startup.sh
 [source,shell]
 .Windows (ZIP package)
 ----
-C:\cleanspeak\cleanspeak-webservice\apache-tomcat\bin>startup.bat
+C:\inversoft\cleanspeak-webservice\apache-tomcat\bin>startup.bat
 ----
 
 [source,shell]
@@ -119,9 +119,9 @@ C:\> net start CleanSpeakWebService
 
 == Maintenance Mode
 
-You will access CleanSpeak WebService’s Maintenance Mode setup via the browser. If you installed CleanSpeak WebService on your local machine, you’d access this interface by opening `http://localhost:8011` in your browser. If CleanSpeak is running on a remote server, change the server name in the URL to match your server’s name.
+You will access CleanSpeak WebService's Maintenance Mode setup via the browser. If you installed CleanSpeak WebService on your local machine, you'll access this interface by opening http://localhost:8011 in your browser. If CleanSpeak is running on a remote server, change the server name in the URL to match your server's name.
 
-The first step of Maintenance Mode will prompt you to enter your license Id. You can retrieve your license Id from the CleanSpeak website by logging into your account here: `https://account.cleanspeak.com/account`
+The first step of Maintenance Mode will prompt you to enter your license Id. You can retrieve your license Id from the CleanSpeak website by logging into your account here: https://account.cleanspeak.com/account/
 
 You should see a screen that looks like this:
 
@@ -139,7 +139,7 @@ After you hit submit, you should see a screen that indicates that CleanSpeak Web
 
 == Advanced Installation
 
-These instructions will assist you in editing the CleanSpeak WebService configuration file and installing the database schema via the command line. You could skip this section if you used Maintenance Mode to configure CleanSpeak WebService.
+These instructions will assist you in editing the CleanSpeak WebService configuration file and installing the database schema via the command-line. If you used Maintenance Mode to configure CleanSpeak WebService, you can skip this section.
 
 === Database Schema
 
@@ -150,12 +150,12 @@ These instructions will assist you in editing the CleanSpeak WebService configur
 By default, the application is configured to connect to the database named `cleanspeak` on localhost with the user name `cleanspeak` and the password `cleanspeak`. For development and testing, you can use these defaults; however, we recommend a more secure password for production systems.
 ====
 
-In the following examples, `<root_user>` is the name of the root user for your database. The `<root_user>` must be either the root user or a user that has privileges to create databases. For MySQL, this is generally a user named `root`. On PostgreSQL, this is generally a user named 'postgres'. Run the following SQL commands to configure the database for use by CleanSpeak.
+In the following examples, `<root_user>` is the name of the root user for your database. The `<root_user>`` must be either the root user or a user that has privileges to create databases. For MySQL, this is generally a user named 'root', on PostgreSQL, this is generally a user named 'postgres'. Run the following SQL commands to configure the database for use by CleanSpeak.
 
 [source,shell]
 .MySQL
 ----
-# Create the cleanspeak database, replace `<root_user>` a valid superuser.
+# Create the cleanspeak database, replace <root_user> a valid superuser.
 mysql --default-character-set=utf8 -u<root_user> -e "create database cleanspeak character set = 'utf8mb4' collate = 'utf8mb4_bin';"
 
 # Grant cleanspeak all authority to cleanspeak database, replace <root_user> a valid superuser.
@@ -185,15 +185,15 @@ psql -Ucleanspeak cleanspeak < postgresql.sql
 
 === Configuration
 
-Before starting CleanSpeak WebService for the first time, you’ll need to add your license Id and verify your database connection in the link:../reference/configuration[Configuration Reference] section. The name of this file is `cleanspeak.properties`.
+Before starting CleanSpeak WebService for the first time, you'll need to add your license Id and verify your database connection in the the CleanSpeak configuration. The name of this file is `cleanspeak.properties`.
 
-The configuration file may be found in the following directory, assuming you installed it in the default locations. If you have installed it in an alternate location, the path to this file will be different.
+The configuration file may be found in the following directory, assuming you installed in the default locations. If you have installed in an alternate location, the path to this file will be different.
 
 Windows::
-  `C:\cleanspeak\config`
+  `C:\inversoft\config`
 
-macOS or Linux::
-  `/usr/local/cleanspeak/config`
+Mac OS X or Linux::
+  `/usr/local/inversoft/config`
 
 For more information about the other configuration options found in this file, see the link:../reference/configuration[Configuration Reference] section.
 
@@ -205,7 +205,7 @@ Find the license Id field at the top of this configuration file and enter your l
 license.id=
 ----
 
-Find the default database JDBC URL, username, and password values, and verify this information is correct. The default JDBC URL is configured for MySQL. If you’re using PostgreSQL, you’ll need to update the URL. See the `database.URL` property documentation in link:../reference/configuration[Configuration] for more information.
+Find the default database JDBC url, username and password values, verify this information is correct. The default JDBC url is configured for MySQL, if you're using PostgreSQL you'll need to update the URL. See the `database.url` property documentation in link:../reference/configuration[Configuration Reference] for more information.
 
 [source,ini]
 .Database Configuration
@@ -215,4 +215,4 @@ database.username=cleanspeak
 database.password=cleanspeak
 ----
 
-CleanSpeak WebService should now be configured, the database should be created, and everything should be ready to run. You can start CleanSpeak WebService using the instructions in the Start CleanSpeak Webservice section above.
+CleanSpeak WebService should now be configured, the database should be created and everything should be ready to run. You can start CleanSpeak WebService using the instructions in the <<Start CleanSpeak WebService>> section above.

@@ -51,24 +51,24 @@ Once the zip bundle has been extracted, the directory structure should look simi
 
 == Windows
 
-To install on Windows, use the ZIP bundle. Extract the CleanSpeak Search Engine ZIP file anywhere on the file system. Remember where you extract the file. This location will be referred to as `CLEANSPEAK_HOME`. We suggest extracting this file to a directory such as `C:\cleanspeak` on Windows.
+To install on Windows 7 or higher use the ZIP bundle. Extract the CleanSpeak Search Engine ZIP file anywhere on the file system. Remember where you extract the file. This location will be referred to as `CLEANSPEAK_HOME`. We suggest extracting this file to a directory such as `C:\inversoft` on Windows.
 
-Once the zip bundle has been extracted, the directory structure should look similar. If you installed somewhere other than the default `CLEANSPEAK_HOME`, your directory structure would be different. This is only shown as an example.
-
-[source,shell]
-----
-C:\cleanspeak\config
-C:\cleanspeak\config\keystore
-C:\cleanspeak\config\cleanspeak.properties
-C:\cleanspeak\cleanspeak-search-engine\
-----
-
-Next, install the Windows service by changing to the directory you installed CleanSpeak (i.e. `C:\cleanspeak\cleanspeak-search-engine\elasticsearch\bin`) and then running the install command. Here are those two steps:
+Once the zip bundle has been extracted, the directory structure should look similar to this. If you installed somewhere other the default `CLEANSPEAK_HOME`, your directory structure will be different, this is only for shown as an example.
 
 [source,shell]
 ----
-C:\>cd C:\cleanspeak\cleanspeak-search-engine\elasticsearch\bin
-C:\cleanspeak\cleanspeak-search-engine\elasticsearch\bin>CleanSpeakSearchEngine.exe /install
+C:\inversoft\config
+C:\inversoft\config\keystore
+C:\inversoft\config\cleanspeak.properties
+C:\inversoft\cleanspeak-search-engine\
+----
+
+Next, install the Windows service by changing to the directory you installed CleanSpeak (i.e. `C:\inversoft\cleanspeak-search-engine\elasticsearch\bin`) and then running the install command. Here are those two steps:
+
+[source,shell]
+----
+C:\>cd C:\inversoft\cleanspeak-search-engine\elasticsearch\bin
+C:\inversoft\cleanspeak-search-engine\elasticsearch\bin>CleanSpeakSearchEngine.exe /install
 ----
 
 == Service Name
@@ -85,7 +85,7 @@ You can use the operating system commands to start, stop and check the status of
 
 == Configure Other Servers
 
-Next, you need to configure all of the servers running CleanSpeak Management Interface to point them at your CleanSpeak Search Engine servers. For each of these servers, you will need to edit the cleanspeak.properties configuration file. More information about this configuration file is located in the Configuration Reference section.
+Next, you need to configure all of the servers that are running CleanSpeak Management Interface to point them at your CleanSpeak Search Engine servers. For each of these servers, you will need to edit the `cleanspeak.properties` configuration file. More information about this configuration file is located in the link:../reference/configuration[Configuration Reference] section.
 
 When you have this file open for editing, you need to modify two lines like this:
 
@@ -96,11 +96,12 @@ cleanspeak-search-engine.embedded=false
 cleanspeak-search-engine.servers=<search-engine-server>:8020
 ----
 
-The first line tells CleanSpeak Management Interface not to use the embedded search engine. The second line tells CleanSpeak Management Interface where to locate the CleanSpeak Search Engine instances. This is a comma-separated list of servers and ports. You can use IP addresses or DNS names here. If you are running multiple CleanSpeak Search Engines, you must list each one here. You also need to update the configuration on all of the servers running the CleanSpeak Search Engine so that they can find each other.
+The first line tells CleanSpeak Management Interface not to use the embedded search engine. The second line tells CleanSpeak Management Interface where to locate the CleanSpeak Search Engine instances. This is a comma separated list of servers and ports. You can use IP addresses or DNS names here. If you are running multiple CleanSpeak Search Engines, you will need to list each one here. You also need to update the configuration on all of the servers running the CleanSpeak Search Engine so that they can find each other.
 
 == Start CleanSpeak Search Engine
 
-CleanSpeak Search Engine should now be ready to run. Use the instructions below to start CleanSpeak Search Engine based on the platform you installed it on. Also, note that the `CLEANSPEAK_HOME` directory is where you installed the CleanSpeak Search Engine.
+CleanSpeak Search Engine should now be ready to run. Use the instructions below to start CleanSpeak Search Engine based on the platform you installed it on. Also note that the `CLEANSPEAK_HOME` directory is the location you installed CleanSpeak Search Engine to.
+
 [source,shell]
 .Linux (RPM or DEB package)
 ----
@@ -116,7 +117,7 @@ $ <CLEANSPEAK_HOME>/cleanspeak-search-engine/elasticsearch/bin/elasticsearch -d
 [source,shell]
 .Windows (ZIP package)
 ----
-C:\cleanspeak\cleanspeak-search-engine\elasticsearch\bin>elasticsearch.bat
+C:\inversoft\cleanspeak-search-engine\elasticsearch\bin>elasticsearch.bat
 ----
 
 [source,shell]

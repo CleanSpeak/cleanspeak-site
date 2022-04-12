@@ -29,6 +29,7 @@ Suppose CleanSpeak Search Engine is running on the same system as the CleanSpeak
 
 If CleanSpeak services are installed on multiple servers, and those servers can communicate across a private network using a site-local address, then in this scenario, you will need to allow access to ports `8020` and `8021` on the site-local IP address in addition to the localhost address.
 
-It is not recommended to expose the CleanSpeak Search Engine service to any public network. If this is a requirement, then a firewall should be used to limit traffic based on the service's source and destination IP address.
+It is not recommended to expose the CleanSpeak Search Engine service to any public network. If this is a requirement, then a firewall should be
+used to limit traffic based upon the source and destination IP address to the service.
 
 The `8020` port is utilized by Elastic Search for internal communication, including clustering. The `8021` port is the HTTP port exposed by Elastic Search for API requests to the search index.Elastic Search for API requests to the search index.
