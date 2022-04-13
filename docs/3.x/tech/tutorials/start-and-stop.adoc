@@ -10,7 +10,7 @@ If you use the CleanSpeak Server version, you may need to start or stop CleanSpe
 
 [NOTE]
 ====
-If you are using CleanSpeak Cloud, these instructions do not apply to you. cleanspeak monitors all CleanSpeak Cloud servers and will restart CleanSpeak if necessary.
+If you are using CleanSpeak Cloud, these instructions do not apply to you. CleanSpeak monitors all of our cloud deployments and will restart CleanSpeak if necessary.
 ====
 
 
@@ -81,7 +81,7 @@ $ /usr/local/cleanspeak/cleanspeak-management-interface/apache-tomcat/bin/catali
 $ /usr/local/cleanspeak/cleanspeak-webservice/apache-tomcat/bin/catalina.bat stop
 ----
 
-Elastic Search should be stopped last. If you started Elastic Search using the `elasticsearch` script then you may simply kill the terminal where the service is running to initiate shutdown.
+Elasticsearch should be stopped last. If you started Elasticsearch using the `elasticsearch` script then you may simply kill the terminal where the service is running to initiate shutdown.
 
 === Windows
 
@@ -104,7 +104,7 @@ Prior to version 3.6.0 the Apache Tomcat directory will be named `apache-tomcat-
 > \cleanspeak\cleanspeak-webservice\apache-tomcat\bin\catalina.bat stop
 ----
 
-Elastic Search should be stopped last. If you started Elastic Search using the `elasticsearch.bat` script then you may simply close the command window where the service is running to initiate shutdown.
+Elasticsearch should be stopped last. If you started Elasticsearch using the `elasticsearch.bat` script then you may simply close the command window where the service is running to initiate shutdown.
 
 *Start and Stop services using Windows Services*
 

@@ -8,14 +8,14 @@ description: APIs to moderate and filter your user-generated content with CleanS
 
 This page contains the `APIs` that are used to send content to CleanSpeak for moderation and filtering. Here are the `APIs`:
 
-* `<<Moderate Content>>`
-* `<<Update Content>>`
-* `<<Proxy Moderate Content>>`
-* `<<Proxy Update Content>>`
-* `<<Filter Content>>`
-* `<<Flagging Content>>`
-* `<<Batch Filter Content>>`
-* `<<Batch Moderate Content>>`
+* <<Moderate Content>>
+* <<Update Content>>
+* <<Proxy Moderate Content>>
+* <<Proxy Update Content>>
+* <<Filter Content>>
+* <<Flagging Content>>
+* <<Batch Filter Content>>
+* <<Batch Moderate Content>>
 
 
 include::docs/3.x/tech/apis/_null_warning.adoc[]

@@ -225,7 +225,7 @@ _Released Friday, January 24th, 2020_
 === Fixed
 * Fixed the verify tool not returning any matches if `All Locales` was selected. (Bug introduced in `3.27.0`)
 ** The `All Locales` previously mapped to null but a recent change in Prime MVC causes empty string (aka `All Locales`) to map to the Root locale. We now check for this locale.
-* Fixed an issue that would cause moderation pages to throw exceptions if elastic search was being provided by AWS.
+* Fixed an issue that would cause moderation pages to throw exceptions if Elasticsearch was being provided by AWS.
 ** The status endpoint in AWS requires a leading slash and CleanSpeak was previously missing this slash. This was not required for standalone elasticsearch.
 
 [role=release-note]
@@ -505,7 +505,7 @@ was only a cosmetic issue and did not affect the CleanSpeak Management Interface
 _Released Wednesday August 15th, 2018_
 
 include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
-:elastic_message: A major version upgrade of Elastic Search requires a full rebuild of the search index. This will be done automatically on startup, this may cause additional load on the system until completed. Content and user search will be incomplete until the process is complete.
+:elastic_message: A major version upgrade of Elasticsearch requires a full rebuild of the search index. This will be done automatically on startup, this may cause additional load on the system until completed. Content and user search will be incomplete until the process is complete.
 include::docs/3.x/tech/release-notes/__search-index-warning.adoc[]
 
 === New
@@ -516,7 +516,7 @@ include::docs/3.x/tech/release-notes/__search-index-warning.adoc[]
 === Fixed
 
 * When using PostgreSQL with a large amount of content stored in CleanSpeak, the performance may be degraded as moderates enter the queue.
-* Upgraded Elastic Search to 6.3.1
+* Upgraded Elasticsearch to 6.3.1
 * URL whitelist entries were not approved after a Backup / Restore
 * Duplicate key violation when importing with new phrases
 * English was (almost) always selected for verify tool even if all locales was a better default.

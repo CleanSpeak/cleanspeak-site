@@ -11,7 +11,7 @@ This page exists to help people resolve errors that may arise in certain configu
 
 === SSL Validation Errors
 
-If you find SSL validation errors in the logs when connecting to a database or elastic search then it means that whatever certificate your service is using is not explicitly shipped with Java or that certificate is not signed by a known certificate authority (at least not one that is shipped with Java by default). In order to fix this, you will need to add either that certificate or the root certificate it was signed with to the `cacerts` file in the CleanSpeak installation.
+If you find SSL validation errors in the logs when connecting to a database or Elasticsearch then it means that whatever certificate your service is using is not explicitly shipped with Java or that certificate is not signed by a known certificate authority (at least not one that is shipped with Java by default). In order to fix this, you will need to add either that certificate or the root certificate it was signed with to the `cacerts` file in the CleanSpeak installation.
 
 You can obtain the root certificate from the certificate authority of the service in most cases. Ex: link:https://ssl-ccp.godaddy.com/repository/?origin=CALLISTO[GoDaddy certificates].
 

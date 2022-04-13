@@ -191,6 +191,11 @@
   <component name="ProjectRootManager" version="2" languageLevel="JDK_10" project-jdk-name="rbenv: 2.3.1" project-jdk-type="RUBY_SDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
+  <component name="SwUserDefinedSpecifications">
+    <option name="specTypeByUrl">
+      <map />
+    </option>
+  </component>
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
   </component>

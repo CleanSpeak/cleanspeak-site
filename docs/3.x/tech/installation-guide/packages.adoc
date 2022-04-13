@@ -22,7 +22,7 @@ The `CleansSpeak WebService` is the web service that contains all of CleanSpeakâ
 
 === Search Engine Downloads
 
-The `Search Engine` package contains the Elastic Search service that CleanSpeak uses to index and provides the ability to search for users and content. You will always need to download this package since it is the core component of CleanSpeak.
+The `Search Engine` package contains the Elasticsearch service that CleanSpeak uses to index and provides the ability to search for users and content. You will always need to download this package since it is the core component of CleanSpeak.
 [WARNING]
 ====
 You must install and start the `CleanSpeak Search Engine` before starting either the `CleanSpeak Management Interface` or the `CleanSpeak WebService`.
