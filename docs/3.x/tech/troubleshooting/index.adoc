@@ -1,7 +1,7 @@
 ---
 layout: doc
 title: Troubleshooting CleanSpeak
-description: Troubleshoot any issues that might arise while install or running CleanSpeak or contact Inversoft Support for assistance.
+description: Troubleshoot any issues that might arise while install or running CleanSpeak or contact CleanSpeak Support for assistance.
 ---
 
 == Overview
@@ -17,18 +17,18 @@ The following are the default locations for each of the CleanSpeak log files. Yo
 [source,shell]
 .Linux and macOS
 ----
-/usr/local/inversoft/logs/cleanspeak-management-interface.log
-/usr/local/inversoft/logs/cleanspeak-webservice.log
-/usr/local/inversoft/logs/cleanspeak-search-engine.log
+/usr/local/cleanspeak/logs/cleanspeak-management-interface.log
+/usr/local/cleanspeak/logs/cleanspeak-webservice.log
+/usr/local/cleanspeak/logs/cleanspeak-search-engine.log
 ----
 
-These paths assume the suggested product location of `C:\inversoft`. This path may be different on your system depending on where you unpacked the zip files.
+These paths assume the suggested product location of `C:\cleanspeak`. This path may be different on your system depending on where you unpacked the zip files.
 [source,shell]
 .Windows
 ----
-C:\inversoft\logs\cleanspeak-management-interface.log
-C:\inversoft\logs\cleanspeak-webservice.log
-C:\inversoft\logs\cleanspeak-search-engine.log
+C:\cleanspeak\logs\cleanspeak-management-interface.log
+C:\cleanspeak\logs\cleanspeak-webservice.log
+C:\cleanspeak\logs\cleanspeak-search-engine.log
 ----
 
 === Database Connections
