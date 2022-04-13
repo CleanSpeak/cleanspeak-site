@@ -9,26 +9,26 @@ description: Learn how to send content to CleanSpeak to be moderated
 After you complete the link:setup-wizard[Setup Wizard] steps, you should have an API key and Application Id that you will use to call
 the CleanSpeak WebService APIs.
 
-This API key will be sent in via the `Authorization` header, see link:../apis/authentication[API Authentication].
+This API key will be sent in via the `Authorization` header, see `link:../apis/authentication[API Authentication]`.
 
-CleanSpeak provides two filter APIs, link:../apis/content#moderate-content[Moderate Content] and link:../apis/content#filter-content[Filter Content].
-Both APIs use the same CleanSpeak filter, they are different only by their intended use cases.
+CleanSpeak provides two filter `APIs`, `link:../apis/content#moderate-content[Moderate Content]` and `link:../apis/content#filter-content[Filter Content]`.
+Both `APIs` use the same CleanSpeak filter, they are different only by their intended use cases.
 
-The Moderate Content API allows you to configure rules to indicate if the filter should allow or reject the content. This is helpful when you have more than one content source, such as chat, forum, and usernames. This configuration will enable you to tune the filter results based on the content source.
+The Moderate Content `API` allows you to configure rules to indicate if the filter should allow or reject the content. This is helpful when you have more than one content source, such as chat, forum, and usernames. This configuration will enable you to tune the filter results based on the content source.
 
-The Filter Content API allows for some configuration but is provided on each HTTP request. The API response is intended to be consumed and parsed based upon your business logic to decide if the content should be allowed or rejected based upon match severity, locale, etc.
+The `Filter Content API` allows for some configuration but is provided on each `HTTP` request. The `API` response is intended to be consumed and parsed based upon your business logic to decide if the content should be allowed or rejected based upon match severity, locale, etc.
 
-It is recommended to begin integration using the link:../apis/content#moderate-content[Moderate Content] API. Review the sections below for examples of sending the same content to each API.
+It is recommended to begin integration using the `link:../apis/content#moderate-content[Moderate Content] API`. Review the sections below for examples of sending the same content to each `API`.
 
-* <<Using the Moderate Content API>>
-* <<Using the Filter Content API>>
+* `<<Using the Moderate Content API>>`
+* `<<Using the Filter Content API>>`
 
 
 === Using the Moderate Content API
 
-You will need to authenticate this API request using an API key, see link:../apis/authentication[API Authentication].
+You will need to authenticate this `API` request using an `API Key`, see `link:../apis/authentication[API Authentication]`.
 
-In the following example, we are sending a single message called a content part of type text to be filtered based upon the rules defined by the CleanSpeak Application with Id `f81d4fae-7dec-11d0-a765-00a0c91e6bf6`. See the link:../apis/content[Moderate Content] API for additional details.
+In the following example, we are sending a single message called a content part of type text to be filtered based upon the rules defined by the `CleanSpeak Application` with Id `f81d4fae-7dec-11d0-a765-00a0c91e6bf6`. See the `link:../apis/content[Moderate Content] API` for additional details.
 
 [.endpoint]
 .URI
@@ -44,7 +44,7 @@ include::docs/3.x/tech/src/json/content/moderate/sample-request.json[]
 
 The API will respond with a status code of `200` and a JSON response body.
 
-`Beer` is an alcohol reference, and in our example we have configured our filter rules to reject matches with the `Alcohol-Drug` tag. This `contentAction` value of `reject` will indicate to the caller the content should be rejected.
+`Beer` is an alcohol reference, and in our example we have configured our filter rules to reject matches with the `Alcohol-Drug` tag. This `contentAction` value of reject will indicate to the caller the content should be rejected.
 
 [source,json]
 
@@ -53,15 +53,15 @@ The API will respond with a status code of `200` and a JSON response body.
 include::docs/3.x/tech/src/json/content/moderate/sample-response.json[]
 ----
 
-You can consult the link:../apis/content[API documentation] for this endpoint for more information on the request and response JSON formats.
+You can consult the `link:../apis/content[API documentation]` for this endpoint for more information on the request and response `JSON` formats.
 
 === Using the Filter Content API
 
-CleanSpeak also has another API for filtering content. This API only takes input via the API and will returns all of the matches in the JSON response body.
+CleanSpeak also has another `API` for filtering content. This `API` only takes input via the `API` and will returns all of the matches in the `JSON` response body.
 
-This API may requires a more complex integration because your application code must parse the response and determine what action to take based up the filter matches. Unless you have a particular requirement for this API, the link:../apis/content[Moderate Content Endpoint] should be preferred.
+This `API` may requires a more complex integration because your application code must parse the response and determine what action to take based up the filter matches. Unless you have a particular requirement for this `API`, the `link:../apis/content[Moderate Content Endpoint]` should be preferred.
 
-The following is an example cURL request to the Filter endpoint. However, your API key will be different. Your URL might also be different if you are running CleanSpeak on an external server. See the API documentation for link:../apis/content#filtering-content[Filter Content] for additional details.
+The following is an example `cURL` request to the Filter endpoint. However, your `API Key` will be different. Your `URL` might also be different if you are running CleanSpeak on an external server. See the `API` documentation for `link:../apis/content#filtering-content[Filter Content]` for additional details.
 
 [.endpoint]
 .URI
@@ -75,9 +75,9 @@ The following is an example cURL request to the Filter endpoint. However, your A
 include::docs/3.x/tech/src/json/content/filter/sample-request.json[]
 ----
 
-The API will respond with a status code of `200` and a JSON response body.
+The `API` will respond with a status code of `200` and a JSON response body.
 
-`Beer` is an alcohol reference, and you will see this match returned with the tag `Alcohol-Drug` tag. When using this API it is up to your
+`Beer` is an alcohol reference, and you will see this match returned with the tag `Alcohol-Drug` tag. When using this `API` it is up to your
 application code to parse this response and decide if a medium severity alcohol reference should be allowed or reject.
 
 [source,json]

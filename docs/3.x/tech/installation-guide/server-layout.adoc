@@ -24,7 +24,7 @@ This setup is ideal for these uses:
 
 image::two-servers.png[]
 
-This configuration uses two separate servers to host CleanSpeak Management Interface and CleanSpeak WebService. The server that hosts the CleanSpeak WebService also hosts the database to improve on the latency between the two servers. The server that hosts the CleanSpeak Management Interface also hosts the CleanSpeak Search Engine. In a high availability system, this separates the two services with the highest load (WebService and Search Engine).
+This configuration uses two separate servers to host `CleanSpeak Management Interface` and `CleanSpeak WebService`. The server that hosts the `CleanSpeak WebService` also hosts the database to improve on the latency between the two servers. The server that hosts the `CleanSpeak Management Interface` also hosts the `CleanSpeak Search Engine`. In a high availability system, this separates the two services with the highest load (`WebService and Search Engine`).
 
 This setup is ideal for these uses:
 
@@ -35,7 +35,7 @@ This setup is ideal for these uses:
 
 image::three-servers.png[]
 
-This configuration uses two separate servers to host CleanSpeak Management Interface and CleanSpeak WebService and also puts the database on its own server. The server that hosts CleanSpeak WebService also hosts the CleanSpeak Search Engine.
+This configuration uses two separate servers to host `CleanSpeak Management Interface` and `CleanSpeak WebService` and also puts the database on its own server. The server that hosts `CleanSpeak WebService` also hosts the `CleanSpeak Search Engine`.
 
 This setup is ideal for these uses:
 
@@ -46,7 +46,7 @@ This setup is ideal for these uses:
 
 image::four-servers.png[]
 
-This configuration uses separate servers to host CleanSpeak Management Interface, CleanSpeak WebService, CleanSpeak Search Engine and the database. This allows each service to have its own CPU and RAM which will provide the best performance possible.
+This configuration uses separate servers to host `CleanSpeak Management Interface`, `CleanSpeak WebService`, `CleanSpeak Search Engine` and the database. This allows each service to have its own `CPU` and `RAM` which will provide the best performance possible.
 
 This setup is ideal for these uses:
 

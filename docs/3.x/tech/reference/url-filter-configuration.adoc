@@ -34,12 +34,12 @@ When modifying this configuration, please take caution. Many of the newly suppor
 _Select your platform and follow the instructions. These steps assume the default installation locations for Mac OS X and Windows and that you have the Java Development KIT (JDK) in your PATH. If you do not have the JDK installed you can utilize a zip utility to extract the domains.properties and copy into the `./WEB-INF/classes` directory as shown in the instructions below._
 
 [source,shell]
-.Linux and Mac OS X
+.Linux and macOS
 ----
-cd /usr/local/inversoft/cleanspeak-webservice/web/WEB-INF/classes
+cd /usr/local/cleanspeak/cleanspeak-webservice/web/WEB-INF/classes
 jar xf ../lib/cleanspeak-filter-*.jar domains.properties
 
-cd /usr/local/inversoft/cleanspeak-management-interface/web/WEB-INF/classes
+cd /usr/local/cleanspeak/cleanspeak-management-interface/web/WEB-INF/classes
 jar xf ../lib/cleanspeak-filter-*.jar domains.properties
 ----
 

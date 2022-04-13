@@ -10,13 +10,13 @@ description: Learn how to export your Filter lists Configuration in CleanSpeak
 
 [NOTE]
 ====
-We do not recommended making changes to your Filter Lists Configuration after exporting if you intend on importing it back into CleanSpeak.
+We do not recommended making changes to your `Filter Lists Configuration` after exporting if you intend on importing it back into CleanSpeak.
 ====
 
 There are a few reasons why you may want to export your filter lists configuration. You may be asked by our support team for an export to recreate an issue or assist you in modifying your list to suite your needs.
 You may also just wish to export your list in order to back up your current filter configuration prior to an upgrade or to migrate the list to a different instance of CleanSpeak.
 
-From the moderator dashboard you will click on the [breadcrumb]#Filters -> Lists# from the left navigation.
+From the moderator dashboard you will click on the `[breadcrumb]#Filters -> Lists#` from the left navigation.
 
 image::filter-dropdown.png[Exporting Lists, width=1200]
 

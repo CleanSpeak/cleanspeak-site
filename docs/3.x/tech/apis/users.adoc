@@ -6,12 +6,12 @@ description: APIs for managing users that produce content within your applicatio
 
 == Create a User
 
-This API is used to create a Content User. Some examples of when this API would be used:
+This `API` is used to create a `Content User`. Some examples of when this `API` would be used:
 
 * A new user has registered with your application
 * You need to bulk import your existing users into CleanSpeak
 
-Content Users are also automatically created when content is sent to the Moderation API if the user does not yet exist.
+`Content Users` are also automatically created when content is sent to the `Moderation API` if the user does not yet exist.
 
 === Request
 
@@ -44,7 +44,7 @@ include::docs/3.x/tech/apis/_content-user-response-body.adoc[]
 
 == Retrieve a User
 
-This API is used to retrieve an existing Content User.
+This `API` is used to retrieve an existing `Content User`.
 
 === Request
 
@@ -75,7 +75,7 @@ include::docs/3.x/tech/apis/_content-user-response-body.adoc[]
 
 == Update a User
 
-This API is used to update an existing Content User.
+This `API` is used to update an existing `Content User`.
 
 === Request
 
@@ -108,9 +108,9 @@ include::docs/3.x/tech/apis/_content-user-response-body.adoc[]
 
 == Delete a User
 
-This API is used to delete an existing Content User. This API does not delete CleanSpeak Users (moderators). When a content user is deleted the content for this user is also deleted.
+This `API` is used to delete an existing `Content User`. This `API` does not delete `CleanSpeak Users` (moderators). When a `Content User` is deleted the content for this user is also deleted.
 
-This might be necessary for https://www.ftc.gov/enforcement/rules/rulemaking-regulatory-reform-proceedings/childrens-online-privacy-protection-rule[COPPA] compliance, or just to ensure that a user's information is completely removed. However, it is usually a good idea to keep user information in CleanSpeak even if they have closed or deleted their account in your system. Some cases where you should use this API are:
+This might be necessary for `https://www.ftc.gov/enforcement/rules/rulemaking-regulatory-reform-proceedings/childrens-online-privacy-protection-rule[COPPA]` compliance, or just to ensure that a user's information is completely removed. However, it is usually a good idea to keep user information in CleanSpeak even if they have closed or deleted their account in your system. Some cases where you should use this `API` are:
 
 * A user deletes their account
 * A user or the parent of a user requests their account information to be deleted
@@ -138,7 +138,7 @@ include::docs/3.x/tech/apis/_standard-delete-response-codes.adoc[]
 
 == Flag a User
 
-This API is used to flag a content user. Once a user has been flagged they will be queued for a moderator to review in the User Alert queue.
+This `API` is used to flag a `Content User`. Once a user has been flagged they will be queued for a `Moderator` to review in the `User Alert Queue`.
 
 For example, a user may flag or report another user. In most forums and games, players have the option to report other players for various reasons such as _"the user is being offensive"_ or _"the user is bullying me"_.
 

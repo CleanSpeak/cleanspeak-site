@@ -121,10 +121,10 @@ The User Action system provides moderators the capability to perform specific ac
 When the action is started by a moderator, the phase will be "start". If a moderator changes the duration of the action, the phase will be "modified". If a moderator cancels an action it will be "cancel" or the action expires. The phase will be "end." If the action is key-based, the phase will be "start."
 
 |[field]#reason# [type]#[String]#
-|The reason the moderator selected. Reasons are configured in the management interface via System -> Moderation Configuration -> User Action Reasons. This value will be null when no reasons are selected (or configured).
+|The reason the moderator selected. Reasons are configured in the management interface via `[breadcrumb]#System -> Moderation Configuration -> User Action#` Reasons. This value will be null when no reasons are selected (or configured).
 
 |[field]#reasonCode# [type]#[String]#
-|The reason code the moderator selected. Reasons are configured in the management interface via System -> Moderation Configuration -> User Action Reasons. This value will be null when no reasons are selected (or configured).
+|The reason code the moderator selected. Reasons are configured in the management interface via `[breadcrumb]#System -> Moderation Configuration -> User Action#` Reasons. This value will be null when no reasons are selected (or configured).
 
 |[field]#userId# [type]#[UUID]#
 |This parameter specifies the unique identifier of the user the action is being performed. This ID is equivalent to the ‘contentItem.senderId’ you provide when moderating and storing content.
@@ -322,7 +322,7 @@ Your event handler must handle the RESTful request described above and send back
 
 === Configuration
 
-Once your event handler is complete and listening for event requests, you must configure your event handler URL. CleanSpeak refers to event handlers as event Servers and they are configured via the Management Interface under System -> Webhooks menu option. If you have multiple event servers configured for a single Application, they must all correctly handle the event for the transaction to succeed.
+Once your event handler is complete and listening for event requests, you must configure your event handler URL. CleanSpeak refers to event handlers as event Servers and they are configured via the Management Interface under `[breadcrumb]#System -> Webhooks#` menu option. If you have multiple event servers configured for a single Application, they must all correctly handle the event for the transaction to succeed.
 
 === Securing
 

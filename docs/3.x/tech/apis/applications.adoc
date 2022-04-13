@@ -16,7 +16,7 @@ description: The APIs for creating, retrieving, updating and deleting Applicatio
 
 == Create an Application
 
-This API is used to create a new application. A CleanSpeak application defines a content source and the filter rules for that content source.
+This `API` is used to create a new application. A CleanSpeak application defines a content source and the filter rules for that content source.
 
 === Request
 
@@ -56,7 +56,7 @@ include::docs/3.x/tech/apis/_application-response-body.adoc[]
 
 == Retrieve an Application
 
-This API is used to retrieve an application and its configuration.
+This `API` is used to retrieve an application and its configuration.
 
 === Request
 
@@ -94,7 +94,7 @@ include::docs/3.x/tech/apis/_application-response-body.adoc[]
 
 == Update an Application
 
-This API is used to update an application.
+This `API` is used to update an application.
 
 === Request
 
@@ -125,7 +125,7 @@ include::docs/3.x/tech/apis/_application-response-body.adoc[]
 
 == Delete an Application
 
-This API is used to delete a CleanSpeak application.
+This `API` is used to delete a CleanSpeak application.
 
 [WARNING]
 ====

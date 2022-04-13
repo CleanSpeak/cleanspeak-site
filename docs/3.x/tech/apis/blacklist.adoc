@@ -6,60 +6,58 @@ description: Blacklist APIs allow you to modify the filter behavior.
 
 == Overview
 
-This page contains all of the APIs for managing Blacklist Dictionary Entries and Tags.
+This page contains all of the `APIs` for managing Blacklist Dictionary Entries and Tags.
 
 [NOTE.since]
 ====
-Blacklist APIs Available Since Version 3.8.0
+Blacklist `APIs` Available Since Version 3.8.0
 ====
 
 [NOTE]
 ====
-The following APIs only operate on the active filter state. The active filter state includes all dictionary and blacklist
-entries excluding pending modifications. Use the management interface to manage pending modifications. There is no approval
-process for the APIs and everything will be immediately added to the active filter state.
+The following `APIs` only operate on the active filter state. The active filter state includes all dictionary and Blacklist entries excluding pending modifications. Use the management interface to manage pending modifications. There is no approval process for the `APIs` and everything will be immediately added to the active filter state.
 ====
 
 Dictionary Entries
 
-* <<Retrieve a Dictionary Entry>>
-* <<Search for Dictionary Entries>>
-* <<Create a Dictionary Entry>>
-* <<Update a Dictionary Entry>>
-* <<Delete a Dictionary Entry>>
-* <<Bulk Delete Dictionary Entries by Locale>>
+* `<<Retrieve a Dictionary Entry>>`
+* `<<Search for Dictionary Entries>>`
+* `<<Create a Dictionary Entry>>`
+* `<<Update a Dictionary Entry>>`
+* `<<Delete a Dictionary Entry>>`
+* `<<Bulk Delete Dictionary Entries by Locale>>`
 
 Tags
 
-* <<Retrieve a Tag>>
-* <<Retrieve all Tags>>
-* <<Create a Tag>>
-* <<Delete a Tag>>
+* `<<Retrieve a Tag>>`
+* `<<Retrieve all Tags>>`
+* `<<Create a Tag>>`
+* `<<Delete a Tag>>`
 
 Filter Entries
 
-* <<Retrieve a Filter Entry>>
-* <<Search for Filter Entries>>
-* <<Create a Filter Entry>>
-* <<Delete a Filter Entry>>
-* <<Bulk Delete Filter Entries by Locale>>
-* <<Update a Filter Entry>>
+* `<<Retrieve a Filter Entry>>`
+* `<<Search for Filter Entries>>`
+* `<<Create a Filter Entry>>`
+* `<<Delete a Filter Entry>>`
+* `<<Bulk Delete Filter Entries by Locale>>`
+* `<<Update a Filter Entry>>`
 
 Phrases
 
-* <<Retrieve a Phrase>>
-* <<Retrieve all Phrases>>
-* <<Create a Phrase>>
-* <<Update a Phrase>>
-* <<Delete a Phrase>>
+* `<<Retrieve a Phrase>>`
+* `<<Retrieve all Phrases>>`
+* `<<Create a Phrase>>`
+* `<<Update a Phrase>>`
+* `<<Delete a Phrase>>`
 
 Whitelist
 
-* <<Retrieve a Whitelist Entry>>
-* <<Retrieve all Whitelist Entries>>
-* <<Create a Whitelist Entry>>
-* <<Update a Whitelist Entry>>
-* <<Delete a Whitelist Entry>>
+* `<<Retrieve a Whitelist Entry>>`
+* `<<Retrieve all Whitelist Entries>>`
+* `<<Create a Whitelist Entry>>`
+* `<<Update a Whitelist Entry>>`
+* `<<Delete a Whitelist Entry>>`
 
 == Retrieve a Dictionary Entry
 
@@ -158,7 +156,7 @@ include::docs/3.x/tech/apis/dictionary/_blacklist-dictionary-multiple-response.a
 
 == Create a Dictionary Entry
 
-This API is used to create dictionary entries. Creating a dictionary entry using this API bypasses the approval process.
+This `API` is used to create dictionary entries. Creating a dictionary entry using this `API` bypasses the approval process.
 
 === Request
 
@@ -180,7 +178,7 @@ include::docs/3.x/tech/apis/dictionary/_blacklist-dictionary-single-response.ado
 
 == Update a Dictionary Entry
 
-This API is used to update dictionary entries. This will bypass the approval process.
+This `API` is used to update dictionary entries. This will bypass the approval process.
 
 [NOTE.since]
 ====
@@ -207,7 +205,7 @@ include::docs/3.x/tech/apis/dictionary/_blacklist-dictionary-post-request.adoc[]
 
 == Delete a Dictionary Entry
 
-Allows you to delete a dictionary entry by Id. Deleting a dictionary entry using this API bypasses the approval process.
+Allows you to delete a dictionary entry by `Id`. Deleting a dictionary entry using this `API` bypasses the approval process.
 
 [.endpoint]
 .URI
@@ -231,11 +229,11 @@ include::docs/3.x/tech/apis/_standard-delete-response-codes.adoc[]
 
 == Bulk Delete Dictionary Entries by Locale
 
-WARNING: This api is potentially catastrophically destructive and cannot be undone. Use care with this API.
+WARNING: This `API` is potentially catastrophically destructive and cannot be undone. Use this `API` with care.
 
 [NOTE.since]
 ====
-This API has been available since 3.11.0
+This `API` has been available since 3.11.0
 ====
 
 === Request
@@ -560,7 +558,7 @@ WARNING: This api is potentially catastrophically destructive and cannot be undo
 
 [NOTE.since]
 ====
-This API has been available since 3.11.0
+This `API` has been available since 3.11.0
 ====
 
 === Request

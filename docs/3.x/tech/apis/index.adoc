@@ -1,23 +1,23 @@
 ---
 layout: doc
 title: API Overview
-description: An overview of the CleanSpeak APIs
+description: An overview of the CleanSpeak `APIs`
 ---
 
 == Overview
 
-CleanSpeak provides a number of APIs that allow you to integrate your application with CleanSpeak. All of the CleanSpeak APIs are RESTful and return JSON. This means that you will contact the API using the standard HTTP protocol.
+CleanSpeak provides a number of `APIs` that allow you to integrate your application with CleanSpeak. All of the CleanSpeak `APIs` are `RESTful` and return `JSON`. This means that you will contact the `API` using the standard `HTTP` protocol.
 
-The CleanSpeak APIs are also synchronous. When you call an API, CleanSpeak will process the request and then immediately return a response. This allows you to use CleanSpeak for real-time applications such as filtering chat before it is displayed.
+The CleanSpeak `APIs` are also synchronous. When you call an `API`, CleanSpeak will process the request and then immediately return a response. This allows you to use CleanSpeak for real-time applications such as filtering chat before it is displayed.
 
-There are 7 primary groups of APIs:
+There are 7 primary groups of `APIs`:
 
-* link:admins-moderators[Admins/Moderators] - These are system level APIs that allows you to manage CleanSpeak Moderators and Administrators.
-* link:applications[Applications] - These are system level APIs that allows you to manage filter rules for content different sources.
-* link:blacklist[Blacklist] - These APIs allow you to modify the blacklist filter behavior.
-* link:content[Content] - These APIs are the primary integration point where you will send content to be filtered, analyzed and moderated.
-* link:kids-chat[Kids Chat] - These APIs allow you to download the whitelist for use in auto-correct or suggestion features of your application.
-* link:url[URL] - These APIs allow you to control the URL filter state.
-* link:users[Users] - These APIs are the secondary integration point where you will manage your end-users that are generating content.
-* link:status[Status] - This API provides you status information about CleanSpeak.
-* link:system[System] - These are system level APIs that allows you to backup and restore CleanSpeak data.
+* link:admins-moderators[Admins/Moderators] - These are system level `APIs` that allows you to manage CleanSpeak Moderators and Administrators.
+* link:applications[Applications] - These are system level `APIs` that allows you to manage filter rules for content different sources.
+* link:blacklist[Blacklist] - These `APIs` allow you to modify the blacklist filter behavior.
+* link:content[Content] - These `APIs` are the primary integration point where you will send content to be filtered, analyzed and moderated.
+* link:kids-chat[Kids Chat] - These `APIs` allow you to download the whitelist for use in auto-correct or suggestion features of your application.
+* link:url[URL] - These `APIs` allow you to control the URL filter state.
+* link:users[Users] - These `APIs` are the secondary integration point where you will manage your end-users that are generating content.
+* link:status[Status] - This `API` provides you status information about CleanSpeak.
+* link:system[System] - These are system level `APIs` that allows you to backup and restore CleanSpeak data.

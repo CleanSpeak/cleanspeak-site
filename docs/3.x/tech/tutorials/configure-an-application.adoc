@@ -6,19 +6,19 @@ description: Learn how to configure an application with filter rules within Clea
 
 == Configure an Application
 
-After you complete the link:setup-wizard[Setup Wizard], you will want to create an application. Applications allow you to have a reusable configuration when using moderation and simplifies changing settings for any particular integration.
+After you complete the `link:setup-wizard[Setup Wizard]`, you will want to create an application. Applications allow you to have a reusable configuration when using moderation and simplifies changing settings for any particular integration.
 
-You can modify existing Applications, create new Applications and delete old Applications using the Settings → Applications menu. We won’t go into detail about all of the configuration options here. Still, once you navigate to a specific Application, you can select the Blacklist tab to control the filter rules that the Application is using. This tab looks like this:
+You can modify existing Applications, create new Applications and delete old Applications using the `Settings → Applications` menu. We won’t go into detail about all of the configuration options here. Still, once you navigate to a specific `Application`, you can select the `Blacklist` tab to control the filter rules that the `Application` is using. This tab looks like this:
 
 image::filter-rules.png[Application Setup,width=1200]
 
 You can create new rules, modify existing rules or delete filter rules here.
 
-An important field to pay attention to here is the store content toggle. If you enable content storage, you gain analytics of all content flowing through CleanSpeak using this application at an increased cost of latency and storage. It would be a good idea to test with this enabled before using it in production.
+An important field to pay attention to here is the store content toggle. If you enable content storage, you gain analytics of all content flowing through CleanSpeak using this `Application` at an increased cost of latency and storage. It would be a good idea to test with this enabled before using it in production.
 
-You should read through the https://cleanspeak.com/docs/user-guides/cleanspeak-3.x.pdf[User Guide section on Applications] to learn about all of the configuration options available to you.
+You should read through the `https://cleanspeak.com/docs/user-guides/cleanspeak-3.x.pdf[User Guide section on Applications]` to learn about all of the configuration options available to you.
 
 [NOTE]
 ====
-Remember that the Application configuration options only apply if you are using the Moderate Content endpoint.
+Remember that the `Application` configuration options only apply if you are using the `Moderate Content` endpoint.
 ====
