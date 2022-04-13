@@ -23,14 +23,14 @@ If you do not intend to store content, which means you’ll either be using the 
 *AWS Considerations:*
 
 * When running CleanSpeak in a cloud environment such as `Amazon Web Services` `(AWS)` be aware that virtualized storage access and shared CPUs can be slower than bare metal.
-* For a production deployment, we recommend an m3.large EC2 instance as a minimum. If you’re deploying development and staging environments CleanSpeak will run fine on a `m3.medium` albeit a bit slower.
+* For a production deployment, we recommend an `m3.large EC2` instance as a minimum. If you’re deploying development and staging environments CleanSpeak will run fine on a `m3.medium` albeit a bit slower.
 
 === Operating System
 CleanSpeak is capable of running on most modern operating systems. Below is a list of the supported operating systems.
 
-* Linux - all distributions (64-bit)
-* macOS  10.8 (Mountain Lion) or newer
-* Windows 8 or newer
+* `Linux - all distributions (64-bit)`
+* `macOS - 10.12 (Sierra) or newer`
+* `Windows - 8 or newer`
 
 Many other operating systems can run CleanSpeak but are not officially supported. Any operating system capable of running `Java version 1.8` or higher should be capable of running CleanSpeak.
 
