@@ -37,20 +37,20 @@ Many other operating systems can run CleanSpeak but are not officially supported
 === Java
 If you install CleanSpeak via the `ZIP` package before `version 3.1.4`, you must install `Java JDK 1.8` manually. If you’re using CleanSpeak `version 3.1.4` or later, `Java` is bundled in the downloaded package and there is no additional configuration required.
 
-* Version 3.32.0 and beyond will download and utilize Java 17
-* Versions 3.30.0 to 3.31.4 will download and utilize Java 14
-* Anything older than version 3.30.0 will run on Java 8
+* `Version 3.32.0` and beyond will download and utilize `Java 17`
+* `Versions 3.30.0` to `3.31.4` will download and utilize `Java 14`
+* Anything older than version `3.30.0` will run on `Java 8`
 
 === Database
 CleanSpeak supports the following two databases.
 
-* MySQL 5.7 or later.
-* PostgreSQL 10 or later
+* `MySQL 5.7` or later.
+* `PostgreSQL 10` or later
 
 === Availability
 If you’re planning your architecture for high availability, we recommend separating the CleanSpeak web services and database onto different servers. CleanSpeak is comprised of a database and three web services: the `Search Engine`, `WebService API`, and the `Management Interface`. Each of these components communicates through a network connection so they can run on the same server or separate servers to accommodate availability requirements.
 
-A common enterprise topology example is provided below. In this example, a load balancer is used to distribute the API requests between two instances of the `CleanSpeak WebService`. Each `WebService` and `Management Interface` server has a connection to the same database. Only one server is running the `CleanSpeak Management Interface` as this service does not usually need to be redundant. The `CleanSpeak Management Interface` is how CleanSpeak is configured and how moderators manage content and users. If this crashes, most companies can simply restart the server and manage a small amount of downtime. Not that the `CleanSpeak WebService`, where all the filtering logic resides and this is also where your application will integrate with CleanSpeak, will continue to operate even if the CleanSpeak Management Interface is not available. The database can be clustered or if you’re using something like Amazon RDS, there is some inherent redundancy already built into the system.
+A common enterprise topology example is provided below. In this example, a load balancer is used to distribute the `API` requests between two instances of the `CleanSpeak WebService`. Each `WebService` and `Management Interface` server has a connection to the same database. Only one server is running the `CleanSpeak Management Interface` as this service does not usually need to be redundant. The `CleanSpeak Management Interface` is how CleanSpeak is configured and how moderators manage content and users. If this crashes, most companies can simply restart the server and manage a small amount of downtime. Not that the `CleanSpeak WebService`, where all the filtering logic resides and this is also where your application will integrate with CleanSpeak, will continue to operate even if the `CleanSpeak Management Interface` is not available. The database can be clustered or if you’re using something like `Amazon RDS`, there is some inherent redundancy already built into the system.
 
-CleanSpeak utilizes Elastic Search which natively supports clustering. This service may also be horizontally scaled for redundancy and performance reasons.
+CleanSpeak utilizes `Elastic Search` which natively supports clustering. This service may also be horizontally scaled for redundancy and performance reasons.
 image:install-guide-availability-architecture.png[Enterprise Architecture]
