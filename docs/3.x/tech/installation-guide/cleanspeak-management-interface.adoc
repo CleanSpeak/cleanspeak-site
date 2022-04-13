@@ -6,13 +6,13 @@ description: Install the CleanSpeak Management Interface bundle that allows you 
 
 == Download the Packages
 
-This guide will assist you with installing `CleanSpeak Management Interface `on your server (Linux, macOS, or Windows) and works equally well for development environments.
+This guide will assist you with installing `CleanSpeak Management Interface` on your server (`Linux, macOS, or Windows`) and works equally well for development environments.
 
 Log into the CleanSpeak website at `https://account.cleanspeak.com/account/`, navigate to the Licenses section, and click on Download CleanSpeak. You will need to download one of the `CleanSpeak Management Interface` package that matches the operating system you will be installing CleanSpeak on.
 
 == Red Hat
 
-Use the `RPM` bundle to install on a Red Hat system (including Fedora and CentOS). Execute this command to install the CleanSpeak Management Interface RPM (replace with the correct `<version>` number):
+Use the `RPM` bundle to install on a Red Hat system (including Fedora and CentOS). Execute this command to install the `CleanSpeak Management Interface RPM` (replace with the correct `<version>` number):
 
 [source,shell]
 ----
@@ -51,7 +51,7 @@ Once the zip bundle has been extracted, the directory structure should look simi
 
 To install on `Windows`, use the `ZIP` bundle. Extract the `CleanSpeak Management Interface` `ZIP` file anywhere on the file system. Remember where you extract the file. This location will be referred to as `CLEANSPEAK_HOME`. We suggest extracting this file to a directory such as `C:\cleanspeak` on `Windows`.
 
-Once the zip bundle has been extracted, the directory structure should look similar. If you installed somewhere other than the default `CLEANSPEAK_HOME`, your directory structure would be different; this is only shown as an example.
+Once the `zip` bundle has been extracted, the directory structure should look similar. If you installed somewhere other than the default `CLEANSPEAK_HOME`, your directory structure would be different; this is only shown as an example.
 
 [source,shell]
 ----
@@ -83,7 +83,7 @@ You can use the operating system commands to start, stop and check the status of
 
 == Start CleanSpeak Management Interface
 
-Next, you need to start CleanSpeak Management Interface so that you can enter Maintenance Mode and allow CleanSpeak to create the database. Use the instructions below to start CleanSpeak based on the platform you installed it on. Also, note that the `CLEANSPEAK_HOME` directory is where you installed CleanSpeak Management Interface.
+Next, you need to start `CleanSpeak Management Interface` so that you can enter `Maintenance Mode` and allow CleanSpeak to create the database. Use the instructions below to start CleanSpeak based on the platform you installed it on. Also, note that the `CLEANSPEAK_HOME` directory is where you installed `CleanSpeak Management Interface`.
 
 [NOTE]
 ====
@@ -150,7 +150,7 @@ These instructions will assist you in editing the `CleanSpeak Management Interfa
 By default, the application is configured to connect to the database named `cleanspeak` on localhost with the user name `cleanspeak` and the password `cleanspeak`. For development and testing, you can use these defaults; however, we recommend a more secure password for production systems.
 ====
 
-In the following examples, `<root_user>` is the name of the root user for your database. The `<root_user>` must be either the root user or a user that has privileges to create databases. For `MySQL`, this is generally a user named 'root'; on PostgreSQL, this is generally a user named 'postgres'. Run the following `SQL` commands to configure the database for use by CleanSpeak.
+In the following examples, `<root_user>` is the name of the root user for your database. The `<root_user>` must be either the root user or a user that has privileges to create databases. For `MySQL`, this is generally a user named `root`; on `PostgreSQL`, this is generally a user named 'postgres'. Run the following `SQL` commands to configure the database for use by CleanSpeak.
 
 [source,shell]
 .MySQL
@@ -205,7 +205,7 @@ Find the license Id field at the top of this configuration file and enter your l
 license.id=
 ----
 
-Find the default database `JDBC URL`, username, and password values, and verify this information is correct. The default `JDBC URL` is configured for `MySQL`. If you’re using `PostgreSQL`, you’ll need to update the `URL`. See the database.`URL` property documentation in Configuration Reference for more information.
+Find the default database `JDBC URL`, username, and password values, and verify this information is correct. The default `JDBC URL` is configured for `MySQL`. If you’re using `PostgreSQL`, you’ll need to update the `URL`. See the database.`URL` property documentation in `Configuration Reference` for more information.
 
 [source,ini]
 .Database Configuration

@@ -8,7 +8,7 @@ description: Install the CleanSpeak Search Engine bundle for full text searching
 
 This guide will assist you with installing a `CleanSpeak Search Engine` on your server (Linux, macOS, or Windows) and works equally well for development environments. These instructions are only for deployments that need `CleanSpeak Search Engine` to run on a separate server or need `CleanSpeak Search Engine` to be scaled horizontally.
 
-In most circumstances, you will not need to install CleanSpeak Search Engine on a separate server and can skip this section.
+In most circumstances, you will not need to install `CleanSpeak Search Engine` on a separate server and can skip this section.
 
 Log into the CleanSpeak website at `https://account.cleanspeak.com/account/`, navigate to the Licenses section, and click on Download CleanSpeak. You will need to download one of the `CleanSpeak Search Engine` package that matches the operating system you will be installing CleanSpeak on.
 
@@ -73,7 +73,7 @@ C:\cleanspeak\cleanspeak-search-engine\elasticsearch\bin>CleanSpeakSearchEngine.
 
 == Service Name
 
-As long as your installation method installed CleanSpeak Search Engine as a service, the service name will be as follows:
+As long as your installation method installed `CleanSpeak Search Engine` as a service, the service name will be as follows:
 
 [cols="4h,6m"]
 |===
@@ -85,7 +85,7 @@ You can use the operating system commands to start, stop and check the status of
 
 == Configure Other Servers
 
-Next, you need to configure all of the servers that are running CleanSpeak Management Interface to point them at your CleanSpeak Search Engine servers. For each of these servers, you will need to edit the `cleanspeak.properties` configuration file. More information about this configuration file is located in the link:../reference/configuration[Configuration Reference] section.
+Next, you need to configure all of the servers that are running `CleanSpeak Management Interface` to point them at your `CleanSpeak Search Engine` servers. For each of these servers, you will need to edit the `cleanspeak.properties` configuration file. More information about this configuration file is located in the `link:../reference/configuration[Configuration Reference]` section.
 
 When you have this file open for editing, you need to modify two lines like this:
 
