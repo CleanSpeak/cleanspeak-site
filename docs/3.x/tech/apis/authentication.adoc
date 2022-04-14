@@ -17,7 +17,7 @@ The following example demonstrates the HTTP `Authorization` header with an API K
 Authorization: 2524a832-c1c6-4894-9125-41a9ea84e013
 ----
 
-The following is a cURL example using the Authorization header.
+The following is a cURL example using the `Authorization` header.
 [source,bash]
 ----
 curl -H 'Authorization: 2524a832-c1c6-4894-9125-41a9ea84e013' https://example-cleanspeak-api.io/content/item/filter

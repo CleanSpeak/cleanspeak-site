@@ -91,7 +91,7 @@ If you are using CleanSpeak for a mobile application that has user-generated con
 * Have a method for deleting inappropriate content (via Webhooks)
 * Have a method for disabling user accounts that are generating the inappropriate content (via Webooks)
 
-Here are the `API`s you will need to use as well as the features of CleanSpeak that cover all of these requirements:
+Here are the APIs you will need to use as well as the features of CleanSpeak that cover all of these requirements:
 
 * [Tutorial] link:../tutorials/setup-wizard[Setup Wizard]
 * [Tutorial] link:../tutorials/configure-an-application[Configure an Application]

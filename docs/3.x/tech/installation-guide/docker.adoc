@@ -16,7 +16,7 @@ curl -o .env https://raw.githubusercontent.com/CleanSpeak/cleanspeak-containers/
 docker-compose up
 ```
 
-The stock .env file will contain the following values, and you will want to modify the DATABASE_PASSWORD and ensure the POSTGRES_USER and POSTGRES_PASSWORD values are correct. You will also need to ensure that you add your license key to the LICENSE_ID variable. You may also override any of these values using environment variables.
+The stock .env file will contain the following values, and you will want to modify the `DATABASE_PASSWORD` and ensure the `POSTGRES_USER` and `POSTGRES_PASSWORD` values are correct. You will also need to ensure that you add your license key to the `LICENSE_ID` variable. You may also override any of these values using environment variables.
 ```
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=postgres

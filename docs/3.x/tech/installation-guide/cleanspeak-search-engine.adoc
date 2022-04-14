@@ -85,7 +85,7 @@ You can use the operating system commands to start, stop and check the status of
 
 == Configure Other Servers
 
-Next, you need to configure all of the servers that are running CleanSpeak Management Interface to point them at your CleanSpeak Search Engine servers. For each of these servers, you will need to edit the cleanspeak.properties configuration file. More information about this configuration file is located in the link:../reference/configuration[Configuration Reference] section.
+Next, you need to configure all of the servers that are running CleanSpeak Management Interface to point them at your CleanSpeak Search Engine servers. For each of these servers, you will need to edit the `cleanspeak.properties` configuration file. More information about this configuration file is located in the link:../reference/configuration[Configuration Reference] section.
 
 When you have this file open for editing, you need to modify two lines like this:
 

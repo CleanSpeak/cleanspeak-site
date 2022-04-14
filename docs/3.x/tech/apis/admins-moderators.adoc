@@ -6,7 +6,7 @@ description: APIs for managing admins and moderators that will be using the Clea
 
 == Create an Admin/Moderator
 
-This API is used to create a new Admin or Moderator.
+This API is used to create a new admin or moderator.
 
 === Request
 
@@ -31,7 +31,7 @@ include::docs/3.x/tech/apis/_user-response-body.adoc[]
 
 == Retrieve an Admin/Moderator
 
-This API is used to retrieve an existing Admin or Moderator.
+This API is used to retrieve an existing admin or moderator.
 
 === Request
 
@@ -58,7 +58,7 @@ include::docs/3.x/tech/apis/_user-response-body.adoc[]
 
 == Update an Admin/Moderator
 
-This API is used to update an existing Admin or Moderator.
+This API is used to update an existing admin or moderator.
 
 === Request
 
@@ -93,7 +93,7 @@ include::docs/3.x/tech/apis/_user-response-body.adoc[]
 
 This API is used to delete a admin or moderator. When a user is deleted they are marked as disabled.
 
-Once a user has been deleted, they may not be enabled through the use of an API. A deleted user can be enabled by a CleanSpeak Admin user in the CleanSpeak Management Interface.
+Once a user has been deleted, they may not be enabled through the use of an API. A deleted user can be enabled by a CleanSpeak admin user in the CleanSpeak Management Interface.
 
 A deleted user cannot log into CleanSpeak, be retrieved using the <<Retrieve a User,Retrieve User>> API or be updated using the <<Update a User,Update User>> API.
 
