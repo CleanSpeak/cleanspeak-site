@@ -150,7 +150,7 @@ These instructions will assist you in editing the CleanSpeak WebService configur
 By default, the application is configured to connect to the database named `cleanspeak` on localhost with the user name `cleanspeak` and the password `cleanspeak`. For development and testing, you can use these defaults; however, we recommend a more secure password for production systems.
 ====
 
-In the following examples, <root_user> is the name of the root user for your database. The <root_user> must be either the root user or a user that has privileges to create databases. For MySQL, this is generally a user named `root`, on PostgreSQL, this is generally a user named `postgres`. Run the following SQL commands to configure the database for use by CleanSpeak.
+In the following examples, `<root_user>` is the name of the root user for your database. The `<root_user>` must be either the root user or a user that has privileges to create databases. For MySQL, this is generally a user named `root`, on PostgreSQL, this is generally a user named `postgres`. Run the following SQL commands to configure the database for use by CleanSpeak.
 
 [source,shell]
 .MySQL

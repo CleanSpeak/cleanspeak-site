@@ -15,9 +15,7 @@ Blacklist APIs Available Since Version 3.8.0
 
 [NOTE]
 ====
-The following APIs only operate on the active filter state. The active filter state includes all dictionary and blacklist
-entries excluding pending modifications. Use the management interface to manage pending modifications. There is no approval
-process for the APIs and everything will be immediately added to the active filter state.
+The following APIs only operate on the active filter state. The active filter state includes all dictionary and Blacklist entries excluding pending modifications. Use the management interface to manage pending modifications. There is no approval process for the APIs and everything will be immediately added to the active filter state.
 ====
 
 Dictionary Entries

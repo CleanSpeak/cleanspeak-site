@@ -24,7 +24,7 @@ If you want to use MySQL for your database, you will need to install version 5.5
 
 ==== Linux
 
-To install MySQL on a Linux system, you can use the `apt` or `yum` tools depending on whether or not your Linux distribution is based on Red Hat or Debian. The package name may vary depending on your platform, for example: `mysql-server` or `mysql-server-5.5`. Here's the commands for each:
+To install MySQL on a Linux system, you can use the `apt` or `yum` tools depending on whether or not your Linux distribution is based on Red Hat or Debian. The package name may vary depending on your platform, for example: `mysql-server` or `mysql-server-<version>` where `<version>` is the version you wish to install. Here's the commands for each:
 
 [source,shell]
 .Red Hat
@@ -40,7 +40,7 @@ $ sudo apt-get install mysql-server
 
 ==== Windows or macOS
 
-If you are installing MySQL on a platform that does not support RPM or DEB packages, you will need to download it manually from the MySQL website here: http://dev.mysql.com/downloads/mysql
+If you are installing MySQL on a platform that does not support RPM or DEB packages, you will need to download it manually from the MySQL website here: https://dev.mysql.com/downloads/mysql/
 
 ==== MySQL and Unicode
 

@@ -8,24 +8,24 @@ description: Deploy and test CleanSpeak using a Docker container
 
 == Docker Compose
 
-The CleanSpeak Docker images may be found on https://hub.docker.com/u/cleanspeak/[Docker Hub]. Use our Docker Compose example if you’re looking for a complete configuration to get up and running quickly. The following is an example, and it may not be the most recent version. Refer to the following link in https://github.com/CleanSpeak/cleanspeak-containers/blob/master/docker/docker-compose.yml[GitHub] to find the latest version.
+The CleanSpeak Docker images may be found on https://hub.docker.com/u/cleanspeak/[Docker Hub]. Use our Docker Compose example if you’re looking for a complete configuration to get up and running quickly. The following is an example, and it may not be the most recent version. Refer to the following link in https://raw.githubusercontent.com/CleanSpeak/cleanspeak-containers/master/docker/cleanspeak/docker-compose.yml[GitHub] to find the latest version.
 
 ```
-curl -o docker-compose.yml https://raw.githubusercontent.com/CleanSpeak/cleanspeak-containers/master/docker/docker-compose.yml
-curl -o .env https://raw.githubusercontent.com/CleanSpeak/cleanspeak-containers/master/docker/.env
+curl -o docker-compose.yml https://raw.githubusercontent.com/CleanSpeak/cleanspeak-containers/master/docker/cleanspeak/docker-compose.yml
+curl -o .env https://raw.githubusercontent.com/CleanSpeak/cleanspeak-containers/master/docker/cleanspeak/.env
 docker-compose up
 ```
 
-The stock .env file will contain the following values, and you will want to modify the `DATABASE_PASSWORD` and ensure the `POSTGRES_USER` and `POSTGRES_PASSWORD` values are correct. You will also need to ensure that you add your license key to the `LICENSE_ID` variable. You may also override any of these values using environment variables.
+The stock `.env` file will contain the following values, and you will want to modify the `DATABASE_PASSWORD` and ensure the `POSTGRES_USER` and `POSTGRES_PASSWORD` values are correct. You will also need to ensure that you add your license key to the `LICENSE_ID` variable. You may also override any of these values using environment variables.
 ```
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=postgres
 DATABASE_USER=cleanspeak
 DATABASE_PASSWORD=hkaLBM3RVnyYeYeqE3WI1w2e4Avpy0Wd5O3s3
 
-ES_JAVA_OPTS=-Xmx256m
+ES_JAVA_OPTS=-Xms256m -Xmx256m
 
-CLEANSPEAK_MEMORY=1G
+CLEANSPEAK_MEMORY=256M
 
 LICENSE_ID=
 ```
@@ -153,8 +153,8 @@ docker pull cleanspeak/cleanspeak-webservice
 
 === CleanSpeak Search
 
-We do not provide a CleanSpeak Search image as the default Elasticsearch images work great (so long as you use version 6.3.1)
+We do not provide a CleanSpeak Search image as the default Elasticsearch images work great.
 
 ```
-docker pull elasticsearch/elasticsearch:6.3.1
+docker pull docker.elastic.co/elasticsearch/elasticsearch:7.17.0
 ```

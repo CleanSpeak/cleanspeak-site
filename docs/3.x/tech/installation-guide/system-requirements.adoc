@@ -45,7 +45,7 @@ If you install CleanSpeak via the ZIP package before version 3.1.4, you must ins
 === Database
 CleanSpeak supports the following two databases.
 
-* MySQL 5.7.9 or newer
+* MySQL 8 or newer
 * PostgreSQL 10 or newer
 
 === Availability

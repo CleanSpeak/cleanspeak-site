@@ -32,7 +32,6 @@ _Content Types_
 !`text`      !The content to be filtered.
 !`bbcode`    !Text content to be filtered that may contain BBCode.
 !`html`      !Text content to be filtered that may contain HTML. [since]#Available Since 3.19.0#
-
 !`attribute` !A simple attribute of the content. This is an arbitrary string and will not be filtered.
 !`hyperlink` !Fully qualified URL to an external web page.
 !`image`     !Fully qualified URL of the image to be displayed.
