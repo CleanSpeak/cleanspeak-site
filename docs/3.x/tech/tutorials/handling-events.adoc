@@ -22,7 +22,7 @@ Each of the event types are covered in detail below:
 
 == Content Approvals
 
-The Pre-Approval Queue supports the approval and rejection of content. Moderators login to the CleanSpeak Management Interface and can approve and reject content. Once moderators have approved or rejected content, CleanSpeak will send events back into your system using the JSON format described below.
+The Pre-Approval Queue supports the approval and rejection of content. Moderators login to the CleanSpeak Management Interface and from there can approve and reject content. Once moderators have approved or rejected content, CleanSpeak will send events back into your system using the JSON format described below.
 
 === Request
 
@@ -31,7 +31,7 @@ The Pre-Approval Queue supports the approval and rejection of content. Moderator
 .Request Body
 |===
 |[field]#type# [type]#[String]#
-|This parameter specifies the type of event and will always be contentApproval for this type of event.
+|This parameter specifies the type of event and will always be `contentApproval` for this type of event.
 
 |[field]#approvals# [type]#[Object]#
 |This object contains the approvals performed by a moderator.
@@ -119,7 +119,7 @@ The User Action system provides moderators the capability to perform specific ac
 * cancel
 * end
 
-When the action is started by a moderator, the phase will be "start". If a moderator changes the duration of the action, the phase will be "modified". If a moderator cancels an action it will be "cancel" or the action expires. The phase will be "end." If the action is key-based, the phase will be "start."
+When the action is started by a moderator, the phase will be "start". If a moderator changes the duration of the action, the phase will be "modify". If a moderator cancels an action it will be "cancel" or the action expires, the phase will be "end". If the action is key-based, the phase will be "start".
 
 |[field]#reason# [type]#[String]#
 |The reason the moderator selected. Reasons are configured in the management interface via `[breadcrumb]#System -> Moderation Configuration -> User Action#` Reasons. This value will be null when no reasons are selected (or configured).

@@ -24,7 +24,7 @@ To access the CleanSpeak API you'll need to open port `8001`.
 
 **CleanSpeak Search Engine**
 
-Suppose CleanSpeak Search Engine is running on the same system as the CleanSpeak Management Interface or CleanSpeak Webservice. If you’re only running a single instance of CleanSpeak, then no external ports should be allowed for CleanSpeak Search Engine. In this scenario, CleanSpeak Management Interface and CleanSpeak Webservice will access the Elasticsearch service on port `8020` on the localhost address, and traffic to ports `8020` and `8021` can be blocked from any address with the exception of the localhost.
+Suppose CleanSpeak Search Engine is running on the same system as the CleanSpeak Management Interface or CleanSpeak Webservice. If you're only running a single instance of CleanSpeak, then no external ports should be allowed for CleanSpeak Search Engine. In this scenario, CleanSpeak Management Interface and CleanSpeak Webservice will access the Elasticsearch service on port `8020` on the localhost address, and traffic to ports `8020` and `8021` can be blocked from any address with the exception of the localhost.
 
 If CleanSpeak services are installed on multiple servers, and those servers can communicate across a private network using a site-local address, then in this scenario, you will need to allow access to ports `8020` and `8021` on the site-local IP address in addition to the localhost address.
 

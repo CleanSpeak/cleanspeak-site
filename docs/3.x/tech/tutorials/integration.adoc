@@ -6,7 +6,8 @@ description: Learn how to setup CleanSpeak
 
 == Dashboard
 
-After you have completed the link:setup-wizard[Setup Wizard] you will arrive at the dashboard. From here, you will want to complete the following to attain a complete integration with CleanSpeak and get the most out of it.
+After you have completed the link:setup-wizard[Setup Wizard] you will arrive at the dashboard. From here you will want to
+complete the following to attain a complete integration with CleanSpeak and get the most out of it.
 
 . link:#default-filter-lists[Import your default filter list]
 . link:#api-keys[Setup your first API Key]

@@ -165,7 +165,7 @@ _Example Parameter_
 `"words": ["Competitor", "badguy", "tuesday"]`
 
 |[field]#whitelist# [type]#[Boolean]# [optional]#Optional# [default]#defaults to `false`#
-|This parameter enables the white list filter. This parameter is unique in that when enabled by setting this parameter to `true` it implicitly disables all other filters. See <<Whitelist Filter>>.
+|This parameter enables the whitelist filter. This parameter is unique in that when enabled by setting this parameter to `true` it implicitly disables all other filters. See link:../reference/tech/apis/kids-chat[Whitelist Filter].
 |===
 
 [source,json]

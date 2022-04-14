@@ -6,7 +6,7 @@ description: Determine which of the CleanSpeak packages you need to install
 
 == Packages
 
-When you’ve navigated to the CleanSpeak Downloads page after logging into your CleanSpeak account https://account.cleanspeak.com/account, you’ll be presented with several packages to download. Review the following information to understand which packages you need to download. If your target platform is Linux, using the RPM or DEB packages is preferred and provides a simple installation process. Only ZIP files are provided for Windows and macOS.
+When you've navigated to the CleanSpeak Downloads page after logging into your CleanSpeak account https://account.cleanspeak.com/account you'll be presented with several packages to download. Review the following information to understand which packages you need to download. If your target platform is Linux, using the RPM or DEB packages is preferred and provides the simples installation process. Only ZIP files are provided for Windows and macOS.
 
 === Database Downloads
 
@@ -18,7 +18,7 @@ The CleanSpeak Management Interface is a web front-end that you will use to conf
 
 === WebService Downloads
 
-The CleansSpeak WebService is the web service that contains all of CleanSpeak’s APIs. This is the main integration point for your application to integrate with CleanSpeak. You will always need to download this package since it is the core component of CleanSpeak.
+The CleansSpeak WebService is the web service that contains all of CleanSpeak's APIs. This is the main integration point for your application to integrate with CleanSpeak. You will always need to download this package since it is the core component of CleanSpeak.
 
 === Search Engine Downloads
 

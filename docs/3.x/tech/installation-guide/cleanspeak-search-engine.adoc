@@ -96,7 +96,7 @@ cleanspeak-search-engine.embedded=false
 cleanspeak-search-engine.servers=<search-engine-server>:8020
 ----
 
-The first line tells CleanSpeak Management Interface not to use the embedded search engine. The second line tells CleanSpeak Management Interface where to locate the CleanSpeak Search Engine instances. This is a comma separated list of servers and ports. You can use IP Addresses or DNS names here. If you are running multiple CleanSpeak Search Engines, you will need to list each one here. You also need to update the configuration on all of the servers running the CleanSpeak Search Engine so that they can find each other.
+The first line tells CleanSpeak Management Interface not to use the embedded search engine. The second line tells CleanSpeak Management Interface where to locate the CleanSpeak Search Engine instances. This is a comma separated list of servers and ports. You can use IP addresses or DNS names here. If you are running multiple CleanSpeak Search Engines, you will need to list each one here. You also need to update the configuration on all of the servers running the CleanSpeak Search Engine so that they can find each other.
 
 == Start CleanSpeak Search Engine
 

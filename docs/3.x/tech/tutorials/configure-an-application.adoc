@@ -14,7 +14,7 @@ image::filter-rules.png[Application Setup,width=1200]
 
 You can create new rules, modify existing rules or delete filter rules here.
 
-An important field to pay attention to here is the store content toggle. If you enable content storage, you gain analytics of all content flowing through CleanSpeak using this Application at an increased cost of latency and storage. It would be a good idea to test with this enabled before using it in production.
+An important field to pay attention to here is the store content toggle. If you enable content storage, you gain analytics of all content flowing through CleanSpeak using this application at an increased cost of latency and storage. It would be a good idea to test with this enabled before using it in production.
 
 You should read through the https://cleanspeak.com/docs/user-guides/cleanspeak-3.x.pdf[User Guide section on Applications] to learn about all of the configuration options available to you.
 

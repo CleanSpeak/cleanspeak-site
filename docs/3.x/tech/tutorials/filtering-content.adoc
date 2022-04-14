@@ -20,8 +20,8 @@ The Filter Content API allows for some configuration but is provided on each HTT
 
 It is recommended to begin integration using the link:../apis/content#moderate-content[Moderate Content] API. Review the sections below for examples of sending the same content to each API.
 
-* `<<Using the Moderate Content API>>`
-* `<<Using the Filter Content API>>`
+* <<Using the Moderate Content API, Using the Moderate Content API>>
+* <<Using the Filter Content API, Using the Filter Content API>>
 
 
 === Using the Moderate Content API
@@ -44,16 +44,16 @@ include::docs/3.x/tech/src/json/content/moderate/sample-request.json[]
 
 The API will respond with a status code of `200` and a JSON response body.
 
-`Beer` is an alcohol reference, and in our example we have configured our filter rules to reject matches with the `Alcohol-Drug` tag. This contentAction value of reject will indicate to the caller the content should be rejected.
+`Beer` is an alcohol reference, and in our example we have configured our filter rules to reject matches with the `Alcohol-Drug` tag. This
+`contentAction` value of `reject` will indicate to the caller the content should be rejected.
 
 [source,json]
-
 .Example Moderate Response
 ----
 include::docs/3.x/tech/src/json/content/moderate/sample-response.json[]
 ----
 
-You can consult the link:../apis/content[API documentation] for this endpoint for more information on the request and response `JSON` formats.
+You can consult the link:../apis/content[API documentation] for this endpoint for more information on the request and response JSON formats.
 
 === Using the Filter Content API
 
