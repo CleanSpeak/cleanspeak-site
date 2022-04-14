@@ -17,7 +17,7 @@ This API provides status information about CleanSpeak with the help of the https
 --
 
 === Response
-The JSON response from the Status API is complex and subject to change. The specific contents of the JSON body are not documented here. If you choose to use this API for monitoring purposes you should primarily use the response code to indicate server health. If you receive a 200 you may consider CleanSpeak in a healthy state. The response body is intended for use by CleanSpeak support.
+The JSON response from the Status API is complex and subject to change. The specific contents of the JSON body are not documented here. If you choose to use this API for monitoring purposes you should primarily use the response code to indicate server health. If you receive a `200` you may consider CleanSpeak in a healthy state. The response body is intended for use by CleanSpeak support.
 
 [cols="1,9"]
 .Response Codes
@@ -34,7 +34,7 @@ The JSON response from the Status API is complex and subject to change. The spec
 
 == Prometheus
 
-This AP provides metrics similar to the Status Endpoint but responds in a format designed for link:https://prometheus.io[Prometheus].
+This API provides metrics similar to the Status Endpoint but responds in a format designed for link:https://prometheus.io[Prometheus].
 
 If you need help setting up prometheus, see our link:/docs/3.x/tech/tutorials/prometheus[tutorial].
 

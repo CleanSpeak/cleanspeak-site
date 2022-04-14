@@ -1,7 +1,7 @@
 ---
 layout: doc
 title: API Overview
-description: An overview of the CleanSpeak `APIs`
+description: An overview of the CleanSpeak APIs
 ---
 
 == Overview

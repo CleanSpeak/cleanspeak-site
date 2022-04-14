@@ -8,12 +8,12 @@ description: Whitelist APIs that allow your application to access the whitelist 
 
 [NOTE.info]
 --
-The Whitelist is known as the kids chat on the frontend. In this document it will still be referred to as the Whitelist.
+The Whitelist is known as the Kids Chat on the frontend. In this document it will still be referred to as the Whitelist.
 --
 
-These APIs allow you to query and modify the Whitelist Filter state.
+These APIs allow you to query and modify the Whitelist filter state.
 
-The Whitelist is best understood as a deny first list of words people are allowed to use. Only when a user has matched an allowed word or phrase will the content be permitted. The `Whitelist` also has its own set of `Blacklist` rules called disallowed phrases that prevent combinations of `Whitelisted` words being used together in ways that could be just as bad as using a blacklisted word.
+The Whitelist is best understood as a deny first list of words people are allowed to use. Only when a user has matched an allowed word or phrase will the content be permitted. The Whitelist also has its own set of Blacklist rules called disallowed phrases that prevent combinations of `Whitelisted` words being used together in ways that could be just as bad as using a blacklisted word.
 
 * Allowed Words
 ** <<Retrieve the Whitelist, Retrieve the Whitelist>>
@@ -24,10 +24,10 @@ The Whitelist is best understood as a deny first list of words people are allowe
 ** <<Create an Allowed Word, Create an Allowed Word>>
 ** <<Update an Allowed Word, Update an Allowed Word>>
 * Tags
-** <<Retrieve a Tag,>>
-** <<Retrieve all Tags,>>
-** <<Delete a Tag,>>
-** <<Create a Tag,>>
+** <<Retrieve a Tag, Retrieve a Tag>>
+** <<Retrieve all Tags,R etrieve all Tags>>
+** <<Delete a Tag, Delete a Tag>>
+** <<Create a Tag, Create a Tag>>
 * Disallowed Phrases
 ** <<Retrieve a Disallowed Phrase, Retrieve a Disallowed Phrase>>
 ** <<Retrieve all Disallowed Phrases, Retrieve all Disallowed Phrases>>

@@ -229,7 +229,7 @@ include::docs/3.x/tech/apis/_standard-delete-response-codes.adoc[]
 
 == Bulk Delete Dictionary Entries by Locale
 
-WARNING: This `API` is potentially catastrophically destructive and cannot be undone. Use this `API` with care.
+WARNING: This API is potentially catastrophically destructive and cannot be undone. Use this API with care.
 
 [NOTE.since]
 ====

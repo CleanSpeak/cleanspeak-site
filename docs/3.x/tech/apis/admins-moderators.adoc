@@ -91,7 +91,7 @@ include::docs/3.x/tech/apis/_user-response-body.adoc[]
 
 == Delete an Admin/Moderator
 
-This API is used to delete a Admin or Moderator. When a user is deleted they are marked as disabled.
+This API is used to delete a admin or moderator. When a user is deleted they are marked as disabled.
 
 Once a user has been deleted, they may not be enabled through the use of an API. A deleted user can be enabled by a CleanSpeak Admin user in the CleanSpeak Management Interface.
 

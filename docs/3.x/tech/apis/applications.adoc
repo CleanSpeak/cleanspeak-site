@@ -6,13 +6,13 @@ description: The APIs for creating, retrieving, updating and deleting Applicatio
 
 == Overview
 
-<<Create an Application>>
+<<Create an Application, Create an Application>>
 
-<<Retrieve an Application>>
+<<Retrieve an Application, Retrieve an Application>>
 
-<<Update an Application>>
+<<Update an Application, Update an Application>>
 
-<<Delete an Application>>
+<<Delete an Application, Delete an Application>>
 
 == Create an Application
 

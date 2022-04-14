@@ -81,7 +81,7 @@ include::docs/3.x/tech/apis/_moderate-content-response-body.adoc[]
 
 This API is used to send updates to existing content to CleanSpeak to be moderated. Only persistent content can be updated in CleanSpeak.
 
-Like the Filter Content API the same filtering is performed on content sent to this API. The difference is that instead of returning all matches found in the content, the Application Filter rules are first applied to determine what action should be taken. Using this API allows you to modify the filter behavior without changing the way you send content to the filter. This allows for a much more powerful integration.
+Like the Filter Content API the same filtering is performed on content sent to this API. The difference is that instead of returning all matches found in the content, the Application filter rules are first applied to determine what action should be taken. Using this API allows you to modify the filter behavior without changing the way you send content to the filter. This allows for a much more powerful integration.
 
 === Request
 
