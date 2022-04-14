@@ -46,7 +46,7 @@ Filter Entries
 Phrases
 
 * <<Retrieve a Phrase,Retrieve a Phrase>>
-* <<Retrieve all Phrases,<Retrieve all Phrases>>
+* <<Retrieve all Phrases,Retrieve all Phrases>>
 * <<Create a Phrase,Create a Phrase>>
 * <<Update a Phrase,Update a Phrase>>
 * <<Delete a Phrase,Delete a Phrase>>
@@ -558,7 +558,7 @@ WARNING: This api is potentially catastrophically destructive and cannot be undo
 
 [NOTE.since]
 ====
-This `API` has been available since 3.11.0
+This API has been available since 3.11.0
 ====
 
 === Request

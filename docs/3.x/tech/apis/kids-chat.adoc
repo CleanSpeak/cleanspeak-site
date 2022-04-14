@@ -13,7 +13,7 @@ The Whitelist is known as the Kids Chat on the frontend. In this document it wil
 
 These APIs allow you to query and modify the Whitelist filter state.
 
-The Whitelist is best understood as a deny first list of words people are allowed to use. Only when a user has matched an allowed word or phrase will the content be permitted. The Whitelist also has its own set of Blacklist rules called disallowed phrases that prevent combinations of Whitelisted words being used together in ways that could be just as bad as using a Blacklisted word.
+The Whitelist is best understood as a deny first list of words people are allowed to use. Only when a user has matched an allowed word or phrase will the content be permitted. The Whitelist also has its own set of blacklist rules called disallowed phrases that prevent combinations of whitelisted words being used together in ways that could be just as bad as using a blacklisted word.
 
 * Allowed Words
 ** <<Retrieve the Whitelist, Retrieve the Whitelist>>
@@ -41,7 +41,7 @@ The Whitelist is best understood as a deny first list of words people are allowe
 
 == Retrieve the Whitelist
 
-This API is used to retrieve the entire Whitelist. You should use this API if you intend to retrieve the entire Whitelist and store it to be used for realtime feedback as a user enters content. If you only intend to send content into CleanSpeak to filter against the Whitelist, use the link:content#filtering-content[Filter Content] API instead.
+This API is used to retrieve the entire Whitelist. You should use this API if you intend to retrieve the entire Whitelist and store it to be used for realtime feedback as a user enters content. If you only intend to send content into CleanSpeak to filter against the Whitelist, use the link:content#filter-content[Filter Content] API instead.
 
 === Request
 

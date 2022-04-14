@@ -53,7 +53,7 @@ cd C:\cleanspeak\cleanspeak-management-interface\web\WEB-INF\classes
 jar xf ..\lib\cleanspeak-filter-*.jar domains.properties
 ----
 
-Now that the `domains.properties` file has been extracted in both the management interface and the webservice, edit the file(s) and add additional TLDs that you wish to filter to the configuration. CleanSpeak will need to be restarted after you have performed these steps. If you need additional assistance please contact support be sending an email to support@inversoft.com.
+Now that the `domains.properties` file has been extracted in both the management interface and the webservice, edit the file(s) and add additional TLDs that you wish to filter to the configuration. CleanSpeak will need to be restarted after you have performed these steps. If you need additional assistance please contact support be sending an email to support@cleanspeak.com.
 
 *Stock Configuration*
 

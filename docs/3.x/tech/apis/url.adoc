@@ -129,7 +129,7 @@ Create many TLDs
 
 [NOTE]
 ====
-Since both of the create TLD APIs use the same URL, providing both tld and tlds in the request will prefer the create single TLD variant.
+Since both of the create TLD APIs use the same URL, providing both `tld` and `tlds` in the request will prefer the create single TLD variant.
 ====
 
 include::docs/3.x/tech/apis/tld/_post-bulk-request.adoc[]
@@ -172,7 +172,7 @@ include::docs/3.x/tech/apis/tld/_single-response.adoc[]
 
 === Request
 
-Delete a `TLD` by name
+Delete a TLD by name
 
 [.endpoint]
 .URI
@@ -198,7 +198,7 @@ include::docs/3.x/tech/apis/_standard-delete-response-codes.adoc[]
 
 === Request
 
-Retrieve a Whitelisted URL by Id
+Retrieve a whitelisted URL by Id
 
 [.endpoint]
 .URI
@@ -279,7 +279,7 @@ Update a Whitelisted URL by name
 .Request Parameters
 |===
 |[field]#id# [type]#[String]# [required]#required#
-|The unique id of the whitelisted URL to retrieve.
+|The unique id of the Whitelisted URL to retrieve.
 |===
 
 include::docs/3.x/tech/apis/whitelistedURL/_post-request.adoc[]
@@ -294,7 +294,7 @@ include::docs/3.x/tech/apis/whitelistedURL/_single-response.adoc[]
 
 === Request
 
-Delete a `Whitelisted URL` by `Id`
+Delete a Whitelisted URL by Id
 
 [.endpoint]
 .URI
@@ -360,7 +360,7 @@ include::docs/3.x/tech/apis/urlWhitelistTag/_single-response.adoc[]
 
 === Request
 
-Retrieve all of the `URL Whitelist Tags`
+Retrieve all of the URL Whitelist Tags
 
 [.endpoint]
 .URI
@@ -402,7 +402,7 @@ include::docs/3.x/tech/apis/urlWhitelistTag/_single-response.adoc[]
 
 === Request
 
-Update a `URL Whitelist Tag`
+Update a URL Whitelist Tag
 
 [.endpoint]
 .URI

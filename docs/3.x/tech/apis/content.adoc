@@ -30,7 +30,7 @@ Like the Filter Content API the same filtering is performed on content sent to t
 [WARNING]
 ====
 *Important*
-At least one Application must be configured prior to sending content to the Moderate API. See the Applications setup page for details on configuring applications with the Management Interface or the <<Create an Application,Application>> API.
+At least one Application must be configured prior to sending content to the Moderate API. See the Applications setup page for details on configuring applications with the Management Interface or the link:/docs/3.x/tech/apis/applications[Application] API.
 ====
 
 [NOTE]
@@ -286,7 +286,7 @@ This API is used to send multiple pieces of content to CleanSpeak to be filtered
 
 [NOTE]
 ====
-This API can be called synchronously or asynchronously. If the ``callbackURL`` is specified in the request, CleanSpeak will handle the request asynchronously and send the response to this URL. Otherwise, the request is handled synchronously and CleanSpeak will send the response back directly.
+This API can be called synchronously or asynchronously. If the `callbackURL` is specified in the request, CleanSpeak will handle the request asynchronously and send the response to this URL. Otherwise, the request is handled synchronously and CleanSpeak will send the response back directly.
 ====
 
 === Request
@@ -321,7 +321,7 @@ This API is used to send multiple pieces of content to CleanSpeak to be moderate
 
 [NOTE]
 ====
-This API can be called synchronously or asynchronously. If the ``callbackURL`` is specified in the request, CleanSpeak will handle the request asynchronously and send the response to this URL. Otherwise, the request is handled synchronously and CleanSpeak will send the response back directly.
+This API can be called synchronously or asynchronously. If the `callbackURL` is specified in the request, CleanSpeak will handle the request asynchronously and send the response to this URL. Otherwise, the request is handled synchronously and CleanSpeak will send the response back directly.
 ====
 
 === Request

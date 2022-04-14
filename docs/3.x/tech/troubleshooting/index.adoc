@@ -8,7 +8,7 @@ description: Troubleshoot any issues that might arise while install or running C
 
 If any problems arise or if you are unable to access CleanSpeak, consult the CleanSpeak log files. In most cases API errors will be written out to the cleanspeak-webservice.log file. Errors that you encounter in the management interface will be found in the `cleanspeak-management-interface.log`.
 
-Please email support@inversoft.com if you need assistance. If possible, when contacting Inversoft support, zip the contents of the logs directory and attach it to the email.
+Please email support@cleanspeak.com if you need assistance. If possible, when contacting CleanSpeak support, zip the contents of the logs directory and attach it to the email.
 
 === Logs
 
