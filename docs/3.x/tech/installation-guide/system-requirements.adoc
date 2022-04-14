@@ -5,52 +5,53 @@ description: Server and third party software requirements necessary to run Clean
 ---
 
 === Hardware Sizing
-CleanSpeak is an efficient, high-performance piece of software. The main factor in determining your hardware needs is whether you will be storing content or not. When you store content, you’ll need to properly size the system to manage the database load. The hardware requirements depend on the server load which is primarily impacted by the volume of content being filtered and persisted by CleanSpeak and the number of moderators you’ll have logged into the `CleanSpeak Management Interface` searching content and taking moderation actions.
+CleanSpeak is an efficient, high-performance piece of software. The main factor in determining your hardware needs is whether you will be storing content or not. When you store content, you’ll need to properly size the system to manage the database load. The hardware requirements depend on the server load which is primarily impacted by the volume of content being filtered and persisted by CleanSpeak and the number of moderators you’ll have logged into the CleanSpeak Management Interface searching content and taking moderation actions.
 
 If you do not intend to store content, which means you'll either be using the link:../apis/content#filtering-content[Filter Content API] or will be configuring your CleanSpeak Application to not store content, the database and disk speeds are not crucial to the performance of CleanSpeak. With this type of usage, you may choose to run the database and all the CleanSpeak web services on the same system. Be aware that running all services on the same system does present a single point of failure in your architecture.
 
 *CleanSpeak Resource Usage Overview:*
 
-* `CPU`: When running on bare metal any modern `CPU` (Dual Core) or better will be sufficient. `CPU` load will increase with content volume. When sizing virtual `CPUs` in a cloud configuration 2 virtual CPUs are adequate for most configurations. Because there is no standard of what constitutes a virtual processor in cloud terminology it is difficult to make a specific recommendation. In our experience `2 vCPU` is adequate.
-* `Memory`: The size and complexity of the filter will impact the amount of `RAM` necessary to run CleanSpeak. Each service runs in a separate `Java VM` and thus requires a minimum amount of RAM to start up. If you’ll be running all the CleanSpeak services on the same system, 2 GB of RAM is the minimum required. 4 GB is recommended.
-* `Disk`: The size of disk storage required is primarily dictated by the size of the database. If you’ll be installing the database on a separate server from the other CleanSpeak services a 20 GB disk is sufficient. If you’ll be persisting content, the server where the database is installed should have a minimum of 64 GB of storage and you should favor `SSD disks` whenever possible. You will also need to increase your database server specs as the amount of content you will be persisting increases.
+* CPU: When running on bare metal any modern CPU (Dual Core) or better will be sufficient. CPU load will increase with content volume. When sizing virtual CPUs in a cloud configuration 2 virtual CPUs are adequate for most configurations. Because there is no standard of what constitutes a virtual processor in cloud terminology it is difficult to make a specific recommendation. In our experience 2 vCPU is adequate.
+* Memory: The size and complexity of the filter will impact the amount of RAM necessary to run CleanSpeak. Each service runs in a separate Java VM and thus requires a minimum amount of RAM to start up. If you’ll be running all the CleanSpeak services on the same system, 2 GB of RAM is the minimum required. 4 GB is recommended.
+* Disk: The size of disk storage required is primarily dictated by the size of the database. If you’ll be installing the database on a separate server from the other CleanSpeak services a 20 GB disk is sufficient. If you’ll be persisting content, the server where the database is installed should have a minimum of 64 GB of storage and you should favor SSD disks whenever possible. You will also need to increase your database server specs as the amount of content you will be persisting increases.
 
 *Variables to Consider:*
 
-* How much content will you be persisting and for how long? The size of your database will directly be impacted by these variables. Is this bare metal or virtualized in `AWS` or another cloud provider? Network and storage performance can be very low on virtualized resources. Specifically, `IOPS` can be much lower on virtualized servers than on bare metal servers.
-* Does the database server have adequate `RAM` to keep all indexes in memory? As the size of your database grows the size of the indexes will increase. Once they cannot fit into `RAM` the database performance will suffer drastically.
+* How much content will you be persisting and for how long? The size of your database will directly be impacted by these variables. Is this bare metal or virtualized in AWS or another cloud provider? Network and storage performance can be very low on virtualized resources. Specifically, IOPS can be much lower on virtualized servers than on bare metal servers.
+* Does the database server have adequate `RAM` to keep all indexes in memory? As the size of your database grows the size of the indexes will increase. Once they cannot fit into RAM the database performance will suffer drastically.
 
 *AWS Considerations:*
 
-* When running CleanSpeak in a cloud environment such as `Amazon Web Services` `(AWS)` be aware that virtualized storage access and shared CPUs can be slower than bare metal.
-* For a production deployment, we recommend an `m3.large EC2` instance as a minimum. If you’re deploying development and staging environments CleanSpeak will run fine on a `m3.medium` albeit a bit slower.
+* When running CleanSpeak in a cloud environment such as Amazon Web Services (AWS) be aware that virtualized storage access and shared CPUs can be slower than bare metal.
+* For a production deployment, we recommend an m3.large EC2 instance as a minimum. If you’re deploying development and staging environments CleanSpeak will run fine on a m3.medium albeit a bit slower.
 
 === Operating System
 CleanSpeak is capable of running on most modern operating systems. Below is a list of the supported operating systems.
 
 * Linux - all distributions (64-bit)
-* macOS - 10.12 (Sierra) or newer
-* Windows - 8 or newer
+* macOS 10.8 (Mountain Lion) or newer
+* Windows Server 2012 R2 (64-bit) w/ Windows Management Framework 5.0 or newe
+* Windows 10 (64-bit) w/ Windows Management Framework 5.0 or newer
 
 Many other operating systems can run CleanSpeak but are not officially supported. Any operating system capable of running Java version 1.8 or higher should be capable of running CleanSpeak.
 
 === Java
-If you install CleanSpeak via the `ZIP` package before `version 3.1.4`, you must install `Java JDK 1.8` manually. If you’re using CleanSpeak `version 3.1.4` or later, `Java` is bundled in the downloaded package and there is no additional configuration required.
+If you install CleanSpeak via the ZIP package before version 3.1.4, you must install Java JDK 1.8 manually. If you’re using CleanSpeak version 3.1.4 or later, Java is bundled in the downloaded package and there is no additional configuration required.
 
-* `Version 3.32.0` and beyond will download and utilize `Java 17`
-* `Versions 3.30.0` to `3.31.4` will download and utilize `Java 14`
-* Anything older than version `3.30.0` will run on `Java 8`
+* Version 3.32.0 and beyond will download and utilize Java 17
+* Versions 3.30.0 to 3.31.4 will download and utilize Java 14
+* Anything older than version 3.30.0 will run on Java 8
 
 === Database
 CleanSpeak supports the following two databases.
 
-* MySQL 5.7 or later.
-* PostgreSQL 10 or later
+* MySQL 5.7.9 or newer
+* PostgreSQL 10 or newer
 
 === Availability
-If you're planning your architecture for high availability, we recommend separating the CleanSpeak web services and database onto different servers. CleanSpeak is comprised of a database and three web services: the `Search Engine`, `WebService API`, and the `Management Interface`. Each of these components communicates through a network connection so they can run on the same server or separate servers to accommodate availability requirements.
+If you're planning your architecture for high availability, we recommend separating the CleanSpeak web services and database onto different servers. CleanSpeak is comprised of a database and three web services: the Search Engine, WebService API, and the Management Interface. Each of these components communicates through a network connection so they can run on the same server or separate servers to accommodate availability requirements.
 
-A common enterprise topology example is provided below. In this example, a load balancer is used to distribute the `API` requests between two instances of the `CleanSpeak WebService`. Each `WebService` and `Management Interface` server has a connection to the same database. Only one server is running the `CleanSpeak Management Interface` as this service does not usually need to be redundant. The `CleanSpeak Management Interface` is how CleanSpeak is configured and how moderators manage content and users. If this crashes, most companies can simply restart the server and manage a small amount of downtime. Not that the `CleanSpeak WebService`, where all the filtering logic resides and this is also where your application will integrate with CleanSpeak, will continue to operate even if the `CleanSpeak Management Interface` is not available. The database can be clustered or if you’re using something like `Amazon RDS`, there is some inherent redundancy already built into the system.
+A common enterprise topology example is provided below. In this example, a load balancer is used to distribute the API requests between two instances of the CleanSpeak WebService. Each WebService and Management Interface server has a connection to the same database. Only one server is running the CleanSpeak Management Interface as this service does not usually need to be redundant. The CleanSpeak Management Interface is how CleanSpeak is configured and how moderators manage content and users. If this crashes, most companies can simply restart the server and manage a small amount of downtime. Not that the CleanSpeak WebService, where all the filtering logic resides and this is also where your application will integrate with CleanSpeak, will continue to operate even if the CleanSpeak Management Interface is not available. The database can be clustered or if you’re using something like Amazon RDS, there is some inherent redundancy already built into the system.
 
 CleanSpeak utilizes Elasticsearch which natively supports clustering. This service may also be horizontally scaled for redundancy and performance reasons.
 image:install-guide-availability-architecture.png[Enterprise Architecture]

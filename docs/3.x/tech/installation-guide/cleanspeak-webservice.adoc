@@ -135,11 +135,11 @@ image::maintenance-mode-database.png[Maintenance Mode Database,width=1200]
 
 You will need to confirm the database server name, port, database type and database name are all correct. Below these fields are the super user username and password credentials. You need to supply CleanSpeak with the username and password for a database user that has access to create new databases and schemas. Below this section are the username and password that CleanSpeak will use to connect to the database. You should ensure that all of these fields are correct and then hit the submit button.
 
-After you hit submit, you should see a screen that indicates that `CleanSpeak WebService` is starting. After this screen disappears, `CleanSpeak WebService` will be fully installed, configured and running.
+After you hit submit, you should see a screen that indicates that CleanSpeak WebService is starting. After this screen disappears, CleanSpeak WebService will be fully installed, configured and running.
 
 == Advanced Installation
 
-These instructions will assist you in editing the `CleanSpeak WebService` configuration file and installing the database schema via the command-line. If you used Maintenance Mode to configure CleanSpeak WebService, you can skip this section.
+These instructions will assist you in editing the CleanSpeak WebService configuration file and installing the database schema via the command-line. If you used Maintenance Mode to configure CleanSpeak WebService, you can skip this section.
 
 === Database Schema
 
@@ -150,7 +150,7 @@ These instructions will assist you in editing the `CleanSpeak WebService` config
 By default, the application is configured to connect to the database named `cleanspeak` on localhost with the user name `cleanspeak` and the password `cleanspeak`. For development and testing, you can use these defaults; however, we recommend a more secure password for production systems.
 ====
 
-In the following examples, `<root_user>` is the name of the root user for your database. The `<root_user>`` must be either the root user or a user that has privileges to create databases. For `MySQL`, this is generally a user named 'root', on PostgreSQL, this is generally a user named 'postgres'. Run the following `SQL` commands to configure the database for use by CleanSpeak.
+In the following examples, <root_user> is the name of the root user for your database. The <root_user> must be either the root user or a user that has privileges to create databases. For MySQL, this is generally a user named 'root', on PostgreSQL, this is generally a user named postgres. Run the following SQL commands to configure the database for use by CleanSpeak.
 
 [source,shell]
 .MySQL
@@ -192,12 +192,12 @@ The configuration file may be found in the following directory, assuming you ins
 Windows::
   `C:\cleanspeak\config`
 
-Mac OS X or Linux::
+macOS or Linux::
   `/usr/local/cleanspeak/config`
 
-For more information about the other configuration options found in this file, see the `link:../reference/configuration[Configuration Reference] section`.
+For more information about the other configuration options found in this file, see the link:../reference/configuration[Configuration Reference] section.
 
-Find the license Id field at the top of this configuration file and enter your license Id. You can find your License Id by logging into your account at `https://account.cleanspeak.com/account/`.
+Find the license Id field at the top of this configuration file and enter your license Id. You can find your License Id by logging into your account at https://account.cleanspeak.com/account/.
 
 [source,ini]
 .License Id
@@ -205,7 +205,7 @@ Find the license Id field at the top of this configuration file and enter your l
 license.id=
 ----
 
-Find the default database `JDBC URL`, username and password values, verify this information is correct. The default `JDBC URL` is configured for `MySQL`, if you're using `PostgreSQL` you'll need to update the URL. See the `database.url` property documentation in `link:../reference/configuration[Configuration Reference] for more information`.
+Find the default database JDBC URL, username and password values, verify this information is correct. The default JDBC URL is configured for MySQL, if you're using PostgreSQL you'll need to update the URL. See the database.url property documentation in link:../reference/configuration[Configuration Reference] for more information.
 
 [source,ini]
 .Database Configuration
@@ -215,4 +215,4 @@ database.username=cleanspeak
 database.password=cleanspeak
 ----
 
-`CleanSpeak WebService` should now be configured, the database should be created and everything should be ready to run. You can start `CleanSpeak WebService` using the instructions in the `<<Start CleanSpeak WebService>>` section above.
+CleanSpeak WebService should now be configured, the database should be created and everything should be ready to run. You can start CleanSpeak WebService using the instructions in the <<Start CleanSpeak WebService>> section above.

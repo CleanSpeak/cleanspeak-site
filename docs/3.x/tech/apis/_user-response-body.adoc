@@ -15,7 +15,7 @@
 |The email address of the user.
 
 |[field]#user.expirationInstantUTC# [type]#[Long]#
-|The `link:../reference/data-types#instants[instants]` this user will expire and will be unable to login to CleanSpeak.
+|The link:../reference/data-types#instants[instants] this user will expire and will be unable to login to CleanSpeak.
 
 |[field]#user.externalId# [type]#[String]#
 |The external identifier used to link this user to another system.

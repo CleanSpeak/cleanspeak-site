@@ -30,7 +30,7 @@ The Pre-Approval Queue supports the approval and rejection of content. Moderator
 .Request Body
 |===
 |[field]#type# [type]#[String]#
-|This parameter specifies the type of event and will always be `contentApproval` for this type of event.
+|This parameter specifies the type of event and will always be contentApproval for this type of event.
 
 |[field]#approvals# [type]#[Object]#
 |This object contains the approvals performed by a moderator.

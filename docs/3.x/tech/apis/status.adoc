@@ -34,20 +34,20 @@ The `JSON` response from the `Status API` is complex and subject to change. The 
 
 == Prometheus
 
-This `API` provides metrics similar to the `Status Endpoint` but responds in a format designed for `link:https://prometheus.io[Prometheus]`.
+This AP` provides metrics similar to the Status Endpoint but responds in a format designed for link:https://prometheus.io[Prometheus].
 
-If you need help setting up prometheus, see our `link:/docs/3.x/tech/tutorials/prometheus[tutorial]`.
+If you need help setting up prometheus, see our link:/docs/3.x/tech/tutorials/prometheus[tutorial].
 
 === Request
 
 [NOTE]
 ====
-This endpoint exists on both the `Webservice` and `Management Interface`
+This endpoint exists on both the Webservice and Management Interface
 ====
 
 [NOTE]
 ====
-This endpoint does not require an `API Key`
+This endpoint does not require an API Key
 ====
 
 [.endpoint]

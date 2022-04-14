@@ -172,7 +172,7 @@ Special values include:
 * `\_site_` - Any site-local addresses on the system, for example `192.168.0.1`.
 * `\_global_` - Any globally-scoped addresses on the system, for example `8.8.8.8`.
 
-The following is an example to bind to `localhost` as well as any site local addresses on the system such at `192.168.1.42`.
+The following is an example to bind to localhost as well as any site local addresses on the system such at `192.168.1.42`.
 
 [block-quote]#`cleanspeak-search-engine.hosts=\_local_,\_site_`#
 

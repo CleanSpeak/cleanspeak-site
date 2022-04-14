@@ -153,7 +153,7 @@ docker pull cleanspeak/cleanspeak-webservice
 
 === CleanSpeak Search
 
-We do not provide a CleanSpeak Search image as the default `Elasticsearch` images work great (so long as you use `version 6.3.1`)
+We do not provide a CleanSpeak Search image as the default Elasticsearch images work great (so long as you use `version 6.3.1`)
 
 ```
 docker pull elasticsearch/elasticsearch:6.3.1

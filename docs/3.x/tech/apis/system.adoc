@@ -6,7 +6,7 @@ description: System APIs for general system tasks including backup and restoring
 
 == Backup
 
-This `API` is used to backup the filter state. The result will be a `zip` file that can be later used by the `Restore API`. The `zip` file will contain the following:
+This API is used to backup the filter state. The result will be a zip file that can be later used by the Restore API. The zip file will contain the following:
 
 * Blacklist
 ** Dictionary Entries
@@ -19,7 +19,7 @@ This `API` is used to backup the filter state. The result will be a `zip` file t
 ** Advanced Disallowed Phrases
 * URL Whitelist Entries
 
-The following configuration is not contained in the backup and as such will also not be modified during the restore. In the future we may add additional configuration to the backup, if you have a requirement for one or more of the following send us a note at `suggestions@inversoft.com` and let us know about your use case.
+The following configuration is not contained in the backup and as such will also not be modified during the restore. In the future we may add additional configuration to the backup, if you have a requirement for one or more of the following send us a note at suggestions@inversoft.com and let us know about your use case.
 
 * Moderation Configuration
 ** Applications
@@ -53,10 +53,10 @@ The following configuration is not contained in the backup and as such will also
 
 [.example]
 --
-In the following `cURL` example a backup is requested and saved to a file named `backup.zip`. Note this example has omitted the required `Authorization` header, see `link:authentication[Authentication]`.
+In the following `cURL` example a backup is requested and saved to a file named `backup.zip`. Note this example has omitted the required `Authorization` header, see link:authentication[Authentication].
 [source]
 ----
-curl -XGET 'https://example-cleanspeak-api.io/system/backup' -o backup.zip
+curl -XGET https://example-cleanspeak-api.io/system/backup -o backup.zip
 ----
 --
 
@@ -64,7 +64,7 @@ curl -XGET 'https://example-cleanspeak-api.io/system/backup' -o backup.zip
 
 [NOTE]
 ====
-Note that a successful response will not contain `JSON` but instead the response will have a `Content-Type` of `application/octet-stream`.
+Note that a successful response will not contain JSON but instead the response will have a Content-Type of `application/octet-stream`.
 ====
 
 // Backup never returns 400 or 404
@@ -80,11 +80,11 @@ include::docs/3.x/tech/apis/_standard-get-response-codes.adoc[]
 
 == Restore
 
-This `API` is used to restore the filter state from a backup. The request takes a binary `zip` file as input.
+This API is used to restore the filter state from a backup. The request takes a binary zip file as input.
 
 [WARNING]
 ====
-It is recommended that if you intend to use the backup and restore `APIs` in a production environment that you test the process to ensure the results are as you intend. The state of your filter will be overwritten by the contents of the backup and the action can not be reversed.
+It is recommended that if you intend to use the backup and restore APIs in a production environment that you test the process to ensure the results are as you intend. The state of your filter will be overwritten by the contents of the backup and the action can not be reversed.
 ====
 
 === Request
@@ -97,7 +97,7 @@ It is recommended that if you intend to use the backup and restore `APIs` in a p
 
 [.example]
 --
-The following `cURL` example assumes a file named `backup.zip` exists in the current directory. Note this example has omitted the required `Authorization` header, see link:authentication[Authentication].
+The following cURL example assumes a file named `backup.zip` exists in the current directory. Note this example has omitted the required `Authorization` header, see link:authentication[Authentication].
 [source]
 ----
 curl -XPOST -H 'Content-Type: application/octet-stream' 'https://example-cleanspeak-api.io/system/restore' --data-binary @backup.zip

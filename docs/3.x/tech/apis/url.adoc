@@ -430,7 +430,7 @@ include::docs/3.x/tech/apis/urlWhitelistTag/_single-response.adoc[]
 
 === Request
 
-Delete a `URL Whitelist Tag` by `Id`
+Delete a URL Whitelist Tag by Id
 
 [.endpoint]
 .URI
@@ -443,7 +443,7 @@ Delete a `URL Whitelist Tag` by `Id`
 .Request Parameters
 |===
 |[field]#id# [type]#[Integer]# [required]#required#
-|The unique id of the URL whitelist tag to delete.
+|The unique id of the URL Whitelist tag to delete.
 |===
 
 === Response

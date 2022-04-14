@@ -6,10 +6,10 @@ description: Learn how to setup CleanSpeak and get started using the Setup Wizar
 
 == Setup Wizard
 
-When you first start CleanSpeak and open the `CleanSpeak Management Interface` in your web browser, you will be presented with a `Setup Wizard` to guide you through the initial steps of configuring CleanSpeak. The `Setup Wizard` screen looks like this:
+When you first start CleanSpeak and open the CleanSpeak Management Interface in your web browser, you will be presented with a Setup Wizard to guide you through the initial steps of configuring CleanSpeak. The Setup Wizard screen looks like this:
 
 image::setup-wizard.png[Setup Wizard,width=1200]
 
-To ensure that you have permission to use the `Setup Wizard`, you must copy your license id into this page. You can find your license id by logging into your CleanSpeak account at `https://account.cleanspeak.com/account`.
+To ensure that you have permission to use the Setup Wizard, you must copy your license id into this page. You can find your license id by logging into your CleanSpeak account at https://account.cleanspeak.com/account.
 
-The rest of the `Setup Wizard` is relatively self-explanatory. Keep in mind that everything configured on this page can be changed later.
+The rest of the Setup Wizard is relatively self-explanatory. Keep in mind that everything configured on this page can be changed later.

@@ -156,7 +156,7 @@ include::docs/3.x/tech/apis/dictionary/_blacklist-dictionary-multiple-response.a
 
 == Create a Dictionary Entry
 
-This `API` is used to create dictionary entries. Creating a dictionary entry using this `API` bypasses the approval process.
+This API is used to create dictionary entries. Creating a dictionary entry using this API bypasses the approval process.
 
 === Request
 
@@ -178,7 +178,7 @@ include::docs/3.x/tech/apis/dictionary/_blacklist-dictionary-single-response.ado
 
 == Update a Dictionary Entry
 
-This `API` is used to update dictionary entries. This will bypass the approval process.
+This API is used to update dictionary entries. This will bypass the approval process.
 
 [NOTE.since]
 ====
@@ -205,7 +205,7 @@ include::docs/3.x/tech/apis/dictionary/_blacklist-dictionary-post-request.adoc[]
 
 == Delete a Dictionary Entry
 
-Allows you to delete a dictionary entry by `Id`. Deleting a dictionary entry using this `API` bypasses the approval process.
+Allows you to delete a dictionary entry by Id. Deleting a dictionary entry using this API bypasses the approval process.
 
 [.endpoint]
 .URI
@@ -233,7 +233,7 @@ WARNING: This `API` is potentially catastrophically destructive and cannot be un
 
 [NOTE.since]
 ====
-This `API` has been available since 3.11.0
+This API has been available since 3.11.0
 ====
 
 === Request

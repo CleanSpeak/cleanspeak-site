@@ -5,7 +5,7 @@ description: Get started with CleanSpeak
 ---
 
 == Introduction
-CleanSpeak is a platform for filtering and moderating user generated content. Integration with CleanSpeak is provided through the user of `API`s. The `Management Interface` allows for configuration and human moderators to view and moderate content.
+CleanSpeak is a platform for filtering and moderating user generated content. Integration with CleanSpeak is provided through the user of APIs. The Management Interface allows for configuration and human moderators to view and moderate content.
 
 The following is a list of some of the features that CleanSpeak provides:
 
@@ -63,11 +63,11 @@ CleanSpeak Cloud is a hosted solution that is maintained and monitored by CleanS
 
 Here are some common steps you'll take to get CleanSpeak Cloud configured and integrate your application with it.
 
-* `[Tutorial] link:../tutorials/setup-wizard[Setup Wizard]`
-* `[Tutorial] link:../tutorials/configure-an-application[Configure an Application]`
-* `[Tutorial] link:../tutorials/filtering-content[Filtering Content]`
-* `[Tutorial] link:../tutorials/handling-flags[Handling Flags]`
-* `[Tech Docs] link:../apis/[API docs]`
+* [Tutorial] link:../tutorials/setup-wizard[Setup Wizard]
+* [Tutorial] link:../tutorials/configure-an-application[Configure an Application]
+* [Tutorial] link:../tutorials/filtering-content[Filtering Content]
+* [Tutorial] link:../tutorials/handling-flags[Handling Flags]
+* [Tech Docs] link:../apis/[API docs]
 
 === CleanSpeak Server
 
@@ -75,16 +75,16 @@ CleanSpeak Server is an on-premise solution that is downloaded and installed on 
 
 Here are some common steps you'll take to get CleanSpeak Cloud configured and integrate your application with it.
 
-* `[Tech Docs] link:../installation-guide/system-requirements[Installation Guide]`
-* `[Tutorial] link:../tutorials/setup-wizard[Setup Wizard]`
-* `[Tutorial] link:../tutorials/configure-an-application[Configure an Application]`
-* `[Tutorial] link:../tutorials/filtering-content[Filtering Content]`
-* `[Tutorial] link:../tutorials/handling-flags[Handling Flags]`
-* `[Tech Docs] link:../apis/[API docs]`
+* [Tech Docs] link:../installation-guide/system-requirements[Installation Guide]
+* [Tutorial] link:../tutorials/setup-wizard[Setup Wizard]
+* [Tutorial] link:../tutorials/configure-an-application[Configure an Application]
+* [Tutorial] link:../tutorials/filtering-content[Filtering Content]
+* [Tutorial] link:../tutorials/handling-flags[Handling Flags]
+* [Tech Docs] link:../apis/[API docs]
 
 === Mobile Integrations
 
-If you are using CleanSpeak for a mobile application that has user-generated content, you will need to use 2 different `API`s to comply with Apple's and Google's requirements to be approved for the App Store and Play Store. You will also need to write an event Handler and enable User Actions in your CleanSpeak deployment. This will allow you to cover all of these requirements:
+If you are using CleanSpeak for a mobile application that has user-generated content, you will need to use 2 different APIs to comply with Apple's and Google's requirements to be approved for the App Store and Play Store. You will also need to write an event Handler and enable User Actions in your CleanSpeak deployment. This will allow you to cover all of these requirements:
 
 * Filter user-generated content for appropriate language, racial slurs, bullying, or other offensive content
 * Allow users to report inappropriate user-generated content of other users
@@ -93,15 +93,15 @@ If you are using CleanSpeak for a mobile application that has user-generated con
 
 Here are the `API`s you will need to use as well as the features of CleanSpeak that cover all of these requirements:
 
-* `[Tutorial] link:../tutorials/setup-wizard[Setup Wizard]`
-* `[Tutorial] link:../tutorials/configure-an-application[Configure an Application]`
-* `[Tutorial] link:../tutorials/filtering-content[Filtering Content]`
-* `[Tutorial] link:../tutorials/handling-flags[Handling Flags]`
-* `[Tutorial] link:../tutorials/handling-events[Handling Events]`
-* `[Tech Docs] link:../apis/[API docs]`
+* [Tutorial] link:../tutorials/setup-wizard[Setup Wizard]
+* [Tutorial] link:../tutorials/configure-an-application[Configure an Application]
+* [Tutorial] link:../tutorials/filtering-content[Filtering Content]
+* [Tutorial] link:../tutorials/handling-flags[Handling Flags]
+* [Tutorial] link:../tutorials/handling-events[Handling Events]
+* [Tech Docs] link:../apis/[API docs]
 
 === FAQ
 
 [qanda]
 How do I gain access to the software and my license Id?::
-  Login to our accounts section of the web site at `https://account.cleanspeak.com/account/`.
+  Login to our accounts section of the web site at https://account.cleanspeak.com/account/.
