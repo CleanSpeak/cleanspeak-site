@@ -14,7 +14,7 @@ Log into the CleanSpeak website at https://account.cleanspeak.com/account/, navi
 
 == Red Hat
 
-Use the RPM bundle to install on a Red Hat system (including Fedora and CentOS). Execute this command to install the CleanSpeak Search Engine RPM (replace with the correct <version> number):
+Use the RPM bundle to install on a Red Hat system (including Fedora and CentOS). Execute this command to install the CleanSpeak Search Engine RPM (replace with the correct `<version>` number):
 
 [source,shell]
 ----
@@ -23,7 +23,7 @@ $ sudo rpm -i cleanspeak-search-engine-<version>.rpm
 
 == Debian
 
-Use the DEB bundle to install on a Debian system (including Ubuntu, Mint, and Debian base). Execute this command to install the CleanSpeak Search Engine DEB (replace with the correct <version> number):
+Use the DEB bundle to install on a Debian system (including Ubuntu, Mint, and Debian base). Execute this command to install the CleanSpeak Search Engine DEB (replace with the correct `<version>` number):
 
 [source,shell]
 ----

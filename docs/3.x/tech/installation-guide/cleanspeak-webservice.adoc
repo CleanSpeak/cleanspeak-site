@@ -12,7 +12,7 @@ Log into the CleanSpeak website at https://account.cleanspeak.com/account, navig
 
 == Red Hat
 
-Use the RPM bundle to install on a Red Hat system (including Fedora and CentOS). Execute this command to install the CleanSpeak WebService RPM (replace with the correct <version> number):
+Use the RPM bundle to install on a Red Hat system (including Fedora and CentOS). Execute this command to install the CleanSpeak WebService RPM (replace with the correct `<version>` number):
 
 [source,shell]
 ----
@@ -21,7 +21,7 @@ $ sudo rpm -i cleanspeak-webservice-<version>.rpm
 
 == Debian
 
-Use the DEB bundle to install on a Debian system (including Ubuntu, Mint, and Debian base). Execute this command to install the CleanSpeak WebService DEB (replace with the correct <version> number):
+Use the DEB bundle to install on a Debian system (including Ubuntu, Mint, and Debian base). Execute this command to install the CleanSpeak WebService DEB (replace with the correct `<version>` number):
 
 [source,shell]
 ----
