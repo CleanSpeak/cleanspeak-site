@@ -28,10 +28,10 @@ If you do not intend to store content, which means you'll either be using the li
 === Operating System
 CleanSpeak is capable of running on most modern operating systems. Below is a list of the supported operating systems.
 
-* Linux - all distributions (64-bit)
-* macOS 10.8 (Mountain Lion) or newer
-* Windows Server 2012 R2 (64-bit) w/ Windows Management Framework 5.0 or newer
-* Windows 10 (64-bit) w/ Windows Management Framework 5.0 or newer
+* Linux - all distributions
+* macOS 10.15 (Catalina) or newer
+* Windows Server 2019
+* Windows 10
 
 Many other operating systems can run CleanSpeak but are not officially supported. Any operating system capable of running Java version 1.8 or higher should be capable of running CleanSpeak.
 
