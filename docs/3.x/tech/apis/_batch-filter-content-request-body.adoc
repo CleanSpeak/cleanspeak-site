@@ -121,7 +121,7 @@ _Example Parameter_
 |This parameter disables the username filter completely. No username matches will be returned and the replacement value will not contain replacements for username matches. When this parameter is set to `true` all other nested `username` parameters will be ignored.
 
 |[field]#usernames.scheme# [type]#[String]# [required]#Required#
-|The username filter scheme to use during this filter request. See Username Filter Schemes.
+|The username filter scheme to use during this filter request.  See link:docs/3.x/tech/apis/content#filter-content[Filter Content] for more information..
 
 |[field]#urls# [type]#[Object]# [optional]#Optional#
 |Object that defines the url filter options.
