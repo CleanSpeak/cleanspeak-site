@@ -6,15 +6,15 @@ description: Install the CleanSpeak Search Engine bundle for full text searching
 
 == Download the Packages
 
-This guide will assist you with installing a `CleanSpeak Search Engine` on your server (Linux, macOS, or Windows) and works equally well for development environments. These instructions are only for deployments that need `CleanSpeak Search Engine` to run on a separate server or need `CleanSpeak Search Engine` to be scaled horizontally.
+This guide will assist you with installing a CleanSpeak Search Engine on your server (Linux, macOS, or Windows) and works equally well for development environments. These instructions are only for deployments that need CleanSpeak Search Engine to run on a separate server or need CleanSpeak Search Engine to be scaled horizontally.
 
-In most circumstances, you will not need to install `CleanSpeak Search Engine` on a separate server and can skip this section.
+In most circumstances, you will not need to install CleanSpeak Search Engine on a separate server and can skip this section.
 
-Log into the CleanSpeak website at `https://account.cleanspeak.com/account/`, navigate to the Licenses section, and click on Download CleanSpeak. You will need to download one of the `CleanSpeak Search Engine` package that matches the operating system you will be installing CleanSpeak on.
+Log into the CleanSpeak website at https://account.cleanspeak.com/account/, navigate to the Licenses section, and click on Download CleanSpeak. You will need to download one of the CleanSpeak Search Engine package that matches the operating system you will be installing CleanSpeak on.
 
 == Red Hat
 
-Use the `RPM` bundle to install on a Red Hat system (including Fedora and CentOS). Execute this command to install the `CleanSpeak Search Engine` `RPM` (replace with the correct `<version>` number):
+Use the RPM bundle to install on a Red Hat system (including Fedora and CentOS). Execute this command to install the CleanSpeak Search Engine RPM (replace with the correct <version> number):
 
 [source,shell]
 ----
@@ -23,7 +23,7 @@ $ sudo rpm -i cleanspeak-search-engine-<version>.rpm
 
 == Debian
 
-Use the `DEB` bundle to install on a Debian system (including Ubuntu, Mint, and Debian base). Execute this command to install the `CleanSpeak Search Engine` `DEB` (replace with the correct `<version>` number):
+Use the DEB bundle to install on a Debian system (including Ubuntu, Mint, and Debian base). Execute this command to install the CleanSpeak Search Engine DEB (replace with the correct <version> number):
 
 [source,shell]
 ----
@@ -32,14 +32,14 @@ $ sudo dpkg -i cleanspeak-search-engine-<version>.deb
 
 == macOS
 
-To install on `macOS`, use the `ZIP` bundle. Extract the `CleanSpeak Search Engine` `ZIP` file anywhere on the file system. Remember where you extract the file. This location will be referred to as `CLEANSPEAK_HOME`. We suggest extracting this file to a directory like `/usr/local/cleanspeak`.
+To install on macOS, use the ZIP bundle. Extract the CleanSpeak Search Engine ZIP file anywhere on the file system. Remember where you extract the file. This location will be referred to as `CLEANSPEAK_HOME`. We suggest extracting this file to a directory like `/usr/local/cleanspeak`.
 
 [NOTE]
 ====
 You can install CleanSpeak in any directory including your home directory. This is a good choice for development machines or when you don't have or want to use sudo to install CleanSpeak.
 ====
 
-Once the `zip` bundle has been extracted, the directory structure should look similar. If you installed somewhere other than the default `CLEANSPEAK_HOME`, your directory structure would be different. This is only shown as an example.
+Once the ZIP bundle has been extracted, the directory structure should look similar. If you installed somewhere other than the default `CLEANSPEAK_HOME`, your directory structure would be different. This is only shown as an example.
 
 [source,shell]
 ----
@@ -51,9 +51,9 @@ Once the `zip` bundle has been extracted, the directory structure should look si
 
 == Windows
 
-To install on `Windows` use the `ZIP` bundle. Extract the `CleanSpeak Search Engine` `ZIP` file anywhere on the file system. Remember where you extract the file. This location will be referred to as `CLEANSPEAK_HOME`. We suggest extracting this file to a directory such as `C:\cleanspeak` on `Windows`.
+To install on Windows use the ZIP bundle. Extract the CleanSpeak Search Engine ZIP file anywhere on the file system. Remember where you extract the file. This location will be referred to as `CLEANSPEAK_HOME`. We suggest extracting this file to a directory such as `C:\cleanspeak` on Windows.
 
-Once the `zip` bundle has been extracted, the directory structure should look similar to this. If you installed somewhere other the default `CLEANSPEAK_HOME`, your directory structure will be different, this is only for shown as an example.
+Once the ZIP bundle has been extracted, the directory structure should look similar to this. If you installed somewhere other the default `CLEANSPEAK_HOME`, your directory structure will be different, this is only for shown as an example.
 
 [source,shell]
 ----

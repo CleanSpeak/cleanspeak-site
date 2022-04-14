@@ -93,6 +93,6 @@ $ sudo apt-get install postgresql-server
 $ sudo apt-get install postgresql-contrib
 ----
 
-==== Windows or macOX
+==== Windows or macOS
 
 If you are installing PostgreSQL on a platform that does not support RPM or DEB packages, you will need to manually download it from the PostgreSQL website here: https://www.postgresql.org/

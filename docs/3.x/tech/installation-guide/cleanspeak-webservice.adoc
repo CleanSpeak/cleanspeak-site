@@ -6,13 +6,13 @@ description: Install the CleanSpeak WebService bundle to use the CleanSpeak filt
 
 == Download the Packages
 
-This guide will assist you with installing `CleanSpeak WebService` on your server (Linux, macOS, or Windows) and works equally well for development environments.
+This guide will assist you with installing CleanSpeak WebService on your server (Linux, macOS, or Windows) and works equally well for development environments.
 
-Log into the CleanSpeak website at https://account.cleanspeak.com/account, navigate to the Licenses section, and click on Download CleanSpeak. You will need to download one of the `CleanSpeak WebService` package that matches the operating system you will be installing CleanSpeak on.
+Log into the CleanSpeak website at https://account.cleanspeak.com/account, navigate to the Licenses section, and click on Download CleanSpeak. You will need to download one of the CleanSpeak WebService package that matches the operating system you will be installing CleanSpeak on.
 
 == Red Hat
 
-Use the `RPM` bundle to install on a Red Hat system (including Fedora and CentOS). Execute this command to install the `CleanSpeak WebService` `RPM` (replace with the correct `<version>` number):
+Use the RPM bundle to install on a Red Hat system (including Fedora and CentOS). Execute this command to install the CleanSpeak WebService RPM (replace with the correct <version> number):
 
 [source,shell]
 ----
@@ -21,7 +21,7 @@ $ sudo rpm -i cleanspeak-webservice-<version>.rpm
 
 == Debian
 
-Use the `DEB` bundle to install on a Debian system (including Ubuntu, Mint, and Debian base). Execute this command to install the `CleanSpeak WebService` `DEB` (replace with the correct `<version>` number):
+Use the DEB bundle to install on a Debian system (including Ubuntu, Mint, and Debian base). Execute this command to install the CleanSpeak WebService DEB (replace with the correct <version> number):
 
 [source,shell]
 ----
@@ -30,14 +30,14 @@ $ sudo dpkg -i cleanspeak-webservice-<version>.deb
 
 == macOS
 
-To install on `macOS`, use the `ZIP` bundle. Extract the `CleanSpeak WebService` `ZIP` file anywhere on the file system. Remember where you extract the file. This location will be referred to as `CLEANSPEAK_HOME`. We suggest extracting this file to a directory like `/usr/local/cleanspeak`.
+To install on macOS, use the ZIP bundle. Extract the CleanSpeak WebService ZIP file anywhere on the file system. Remember where you extract the file. This location will be referred to as `CLEANSPEAK_HOME`. We suggest extracting this file to a directory like `/usr/local/cleanspeak`.
 
 [NOTE]
 ====
 You can install CleanSpeak in any directory including your home directory. This is a good choice for development machines or when you don't have or want to use sudo to install CleanSpeak.
 ====
 
-Once the `zip` bundle has been extracted, the directory structure should look similar. Your directory structure would be different if you installed it somewhere other than the default `CLEANSPEAK_HOME`. This is only for show as an example.
+Once the zip bundle has been extracted, the directory structure should look similar. Your directory structure would be different if you installed it somewhere other than the default `CLEANSPEAK_HOME`. This is only for show as an example.
 
 [source,shell]
 ----
@@ -49,9 +49,9 @@ Once the `zip` bundle has been extracted, the directory structure should look si
 
 == Windows
 
-To install on Windows use the `ZIP` bundle. Extract the `CleanSpeak WebService` `ZIP` file anywhere on the file system. Remember where you extract the file. This location will be referred to as `CLEANSPEAK_HOME`. We suggest extracting this file to a directory such as `C:\cleanspeak` on Windows.
+To install on Windows use the ZIP bundle. Extract the CleanSpeak WebService ZIP file anywhere on the file system. Remember where you extract the file. This location will be referred to as `CLEANSPEAK_HOME`. We suggest extracting this file to a directory such as `C:\cleanspeak` on Windows.
 
-Once the `zip` bundle has been extracted, the directory structure should look similar to this. If you installed somewhere other the default `CLEANSPEAK_HOME`, your directory structure will be different, this is only for shown as an example.
+Once the zip bundle has been extracted, the directory structure should look similar to this. If you installed somewhere other the default `CLEANSPEAK_HOME`, your directory structure will be different, this is only for shown as an example.
 
 [source,shell]
 ----
@@ -61,7 +61,7 @@ C:\cleanspeak\config\cleanspeak.properties
 C:\cleanspeak\cleanspeak-webservice\
 ----
 
-Next, install the `Windows` service by changing to the directory you installed CleanSpeak (i.e. `C:\cleanspeak\cleanspeak-webservice\apache-tomcat\bin`) and then running the install command. Here are those two steps:
+Next, install the Windows service by changing to the directory you installed CleanSpeak (i.e. C:\cleanspeak\cleanspeak-webservice\apache-tomcat\bin) and then running the install command. Here are those two steps:
 
 [source,shell]
 ----
@@ -100,7 +100,7 @@ $ sudo service cleanspeak-webservice start
 ----
 
 [source,shell]
-.Mac OS X (ZIP package)
+.macOS (ZIP package)
 ----
 $ <CLEANSPEAK_HOME>/cleanspeak-webservice/apache-tomcat/bin/startup.sh
 ----
@@ -215,4 +215,4 @@ database.username=cleanspeak
 database.password=cleanspeak
 ----
 
-CleanSpeak WebService should now be configured, the database should be created and everything should be ready to run. You can start CleanSpeak WebService using the instructions in the <<Start CleanSpeak WebService>> section above.
+CleanSpeak WebService should now be configured, the database should be created and everything should be ready to run. You can start CleanSpeak WebService using the instructions in the <<Start CleanSpeak WebService, Start CleanSpeak WebService>> section above.

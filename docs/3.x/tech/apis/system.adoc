@@ -53,7 +53,7 @@ The following configuration is not contained in the backup and as such will also
 
 [.example]
 --
-In the following `cURL` example a backup is requested and saved to a file named `backup.zip`. Note this example has omitted the required `Authorization` header, see link:authentication[Authentication].
+In the following cURL example a backup is requested and saved to a file named `backup.zip`. Note this example has omitted the required `Authorization` header, see link:authentication[Authentication].
 [source]
 ----
 curl -XGET https://example-cleanspeak-api.io/system/backup -o backup.zip
