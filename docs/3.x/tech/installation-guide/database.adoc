@@ -72,7 +72,6 @@ collation-server = utf8mb4_bin
 
 This is a system-wide configuration option, so be certain that this change won’t impact other databases and applications on the same MySQL server. Not all of these configuration options may be available, depending on your database configuration. Once you have configured the available options, you may disable this feature if the startup still fails due to this validation. See `database.mysql.enforce-utf8mb4` in the link:../reference/configuration[Configuration] reference.
 
-
 === Installing PostgreSQL
 
 ==== Linux

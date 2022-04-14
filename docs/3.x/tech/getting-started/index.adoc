@@ -32,7 +32,6 @@ The following is a list of some of the features that CleanSpeak provides:
 * Granular API Access Controls
 * Moderator Roles
 
-
 Don't see a feature you need? Need to filter in another language? Let us know so we can build it for you.
 
 == Overview

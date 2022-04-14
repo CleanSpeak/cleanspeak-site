@@ -21,7 +21,7 @@
 |The Id for the piece of content (only required if the application for this piece of content is configured to moderate persistent content).
 
 |[field]#contentItems``[x]``.location# [type]#[String]# [optional]#Optional#
-|Specifies the location within the application that the content was generated. For example, you might use a chat room name, area Id for a game, or a thread Id for a forum. This parameter is used by CleanSpeak to display conversational views of content with the <<Context View>> feature.
+|Specifies the location within the application that the content was generated. For example, you might use a chat room name, area Id for a game, or a thread Id for a forum. This parameter is used by CleanSpeak to display conversational views of content with the Context View feature.
 
 |[field]#contentItems``[x]``.parts# [type]#[Array]# [required]#Required#
 |An array that contains one to many content parts. If your content only has a single part, such as a chat message, the array will only contain a single text entry. The reason you would send in multiple content parts within a single request is to ensure the moderation decision affects each part.

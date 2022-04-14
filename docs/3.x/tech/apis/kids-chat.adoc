@@ -31,7 +31,7 @@ The Whitelist is best understood as a deny first list of words people are allowe
 * Disallowed Phrases
 ** <<Retrieve a Disallowed Phrase, Retrieve a Disallowed Phrase>>
 ** <<Retrieve all Disallowed Phrases, Retrieve all Disallowed Phrases>>
-** <<Delete a Disallowed Phrase,Delete a Disallowed Phrase>>
+** <<Delete a Disallowed Phrase, Delete a Disallowed Phrase>>
 ** <<Create a Disallowed Phrase, Create a Disallowed Phrase>>
 * Advanced Disallowed Phrases
 ** <<Retrieve an Advanced Disallowed Phrase, Retrieve an Advanced Disallowed Phrase>>

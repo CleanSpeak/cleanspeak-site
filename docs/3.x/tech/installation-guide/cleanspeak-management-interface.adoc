@@ -51,7 +51,7 @@ Once the zip bundle has been extracted, the directory structure should look simi
 
 To install on Windows, use the ZIP bundle. Extract the CleanSpeak Management Interface ZIP file anywhere on the file system. Remember where you extract the file. This location will be referred to as `CLEANSPEAK_HOME`. We suggest extracting this file to a directory such as `C:\cleanspeak` on Windows.
 
-Once the zip bundle has been extracted, the directory structure should look similar. If you installed somewhere other than the default `CLEANSPEAK_HOME`, your directory structure would be different; this is only shown as an example.
+Once the zip bundle has been extracted, the directory structure should look similar. If you installed somewhere other than the default `CLEANSPEAK_HOME`, your directory structure would be different, this is only shown as an example.
 
 [source,shell]
 ----
