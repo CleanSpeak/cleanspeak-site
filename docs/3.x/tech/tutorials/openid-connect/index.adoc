@@ -20,7 +20,7 @@ We also provide specific examples for how to setup OpenID Connect in CleanSpeak
 
 To setup OpenID Connect authentication in CleanSpeak you will need to do the following
 
-. Navigate to [breadcrumb]#Settings# icon:chevron-right[role=breadcrumb] [breadcrumb]#System# icon:chevron-right[role=breadcrumb] [breadcrumb]#Authentication#
+. Navigate to [breadcrumb]#Settings -> System ->  Authentication#
 . Enable OpenID Connect Configuration
 . Collect Client ID and Client Secret from the provider and insert them into the form.
 . Enter the issuer or manually enter the endpoints

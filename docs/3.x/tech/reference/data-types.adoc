@@ -87,48 +87,44 @@ By default, a quality score above 0.9 is considered a *high* quality match, 0.7 
 == Filter Mode
 
 === Exact Match
-This property determines if the filter should only match on the word or any of the variations or conjugations exactly.
-When this is checked, if the match contains any spaces, separators, punctuation, duplicate characters, or replacement characters (where punctuation is used for letters - also called leet speak), it will be ignored.
-For example, if this is checked and the word is `anal`, then a match such as `ana!` will be ignored.
-Likewise, matches such as `/ al` and `aaannnalll` will be ignored as well. A good example of a word that should be marked as an exact match is the word `ho`. This is because the word ho cannot be written like `hoooo` because it changes to meaning.
+This property determines if the filter should only match the word or any of the variations or conjugations exactly. When this is checked, if the match contains any spaces, separators, punctuation, duplicate characters, or replacement characters (where punctuation is used for letters - also called leet speak), it will be ignored.
+
+For example, if this is checked and the word is `anal` then a match such as `ana!` will be ignored. Likewise, matches such as `/ al` and `aaannnalll` will be ignored as well. A good example of a word that should be marked as an exact match is the word `ho`. This is because the word ho cannot be written like `hoooo` because it changes to meaning.
 
 === Embeddable
-This property defines whether or not the filter will locate the word when it is next to other words. When entries are marked as embeddable and the filter finds the word next to another word, a few additional checks are performed. The checks are:
-Check if the entire match is in the whitelist and if so, reject the match
-Check if the words next to the match are in the whitelist and if they are, accept the match
+This property defines whether or not the filter will locate the word when it is next to other words. A few additional checks are performed when entries are marked as embeddable, and the filter finds the word next to another word. The checks are:
+
+* Check if the entire match is in the whitelist and, if so, reject the match.
+* Check if the words next to the match are in the whitelist and, if they are, accept the match.
+
 Here are a few examples of embedded entries and how the filter treats them:
 
-----
-"I assume you are right"
-----
+[block-quote]#I assume you are right#
 
 Here the filter found the word `ass`, but it is next to another word. The filter first checks if the entire match is in the whitelist. In this case, the word `assume` is in the whitelist and therefore the filter will ignore this match.
-----
-"You are an assjockey"
-----
+
+[block-quote]#You are an assjockey#
+
 Here the filter found the word `ass`, but it is next to another word. The filter first checks if the entire match is in the whitelist. In this case, the word `assjockey` is not in the whitelist. Next, the filter checks if the word next to the match is in the whitelist. Since the word `jockey` is in the whitelist the filter will assume that this is in fact a match.
-----
-"My username is rass123"
-----
+
+[block-quote]#My username is rass123#
+
 Here the filter found the word ass, but it is next to other words. The filter first checks if the entire match is in the whitelist. In this case, the word `rass123` is not in the whitelist. Next, the filter checks if the word next to the match is in the whitelist. Neither the word `r` or `123` are in the whitelist. Therefore,the filter assumes that this is not a match.
 
 === Non Embeddable
-Non embeddable is like exact match except that it permits character replacements and whitespace.
-
-For instance `fuck` would not match `fu<k` in exact match but would with non embeddable.
+Non embeddable is like exact match except that it permits character replacements and whitespace. For instance `fuck` would not match `fu<k` in exact match but would with non embeddable.
 
 === Distinguishable
 This property defines whether or not the entry can be found when it is embedded next to other words. For example, the word fuck can generally be distinguished when it is embedded like this:
 
-----
-foofuckblahfuckblah
-----
+[block-quote]#foofuckblahfuckblah#
 
 On the flip side, the word ass is almost never distinguishable. Here are some examples:
 
-----
-thasstenasshanti
-----
+[block-quote]#thasstenasshanti#
 
-When entries are marked as distinguishable, if the filter finds the word anywhere in the text being filtered, it will mark that word as a match. When words are not marked as distinguishable and the filter finds the word next to other words, additional checks are performed to ensure the word is actually a match. These checks are described in the definition of the `embeddable` property.
-If you select the distinguishable option, the word will also be marked as embeddable and the embeddable option will be disabled. This is because the distinguishable and embeddable options are directly linked to each other. A word cannot be distinguishable without being embeddable.
+When entries are marked as distinguishable, if the filter finds the word anywhere in the text being filtered, it will mark that word as a match.
+
+When words are not marked as distinguishable, and the filter finds the word next to other words, additional checks are performed to ensure the word is actually a match. These checks are described in the definition of the Embeddable property.
+
+If you select the distinguishable option, the word will also be marked as embeddable, and the embeddable option will be disabled. This is because the distinguishable and embeddable options are directly linked to each other. A word cannot be distinguishable without being embeddable.

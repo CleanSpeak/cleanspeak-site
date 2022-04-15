@@ -349,7 +349,7 @@ include::../src/json/system/application/moderation-configuration-default-phone-n
 |A pem encoded ssl certificate to present as authorization on the proxy request.
 
 |[field]#application.moderationConfiguration.queuePersistentContent# [type]#[Boolean]# [since]#Available since 3.29.0-RC.1#
-|Set this to `true` in order to asynchronously store persistent content. This may improve performance but there is a potential for data loss if an outage occurs before all content is committed to the database. Please consult with Inversoft Support if you are unsure how to use this feature.
+|Set this to `true` in order to asynchronously store persistent content. This may improve performance but there is a potential for data loss if an outage occurs before all content is committed to the database. Please consult with CleanSpeak Support if you are unsure how to use this feature.
 
 |[field]#application.moderationConfiguration.replacementCharacter# [type]#[String]#
 |The character used during match replacement. If this value is set it will take precedence over `replacementString`.

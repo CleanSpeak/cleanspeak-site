@@ -22,7 +22,7 @@ endif::[]
 |You did not supply a valid Authorization header. The header was omitted or your API key was not valid. The response will be empty. See link:authentication[Authentication].
 
 |402
-|Your license has expired. The response will be empty. Contact sales@inversoft.com for assistance.
+|Your license has expired. The response will be empty. Contact sales@cleanspeak.com for assistance.
 
 // Show the 404 status code
 ifdef::code_404[]

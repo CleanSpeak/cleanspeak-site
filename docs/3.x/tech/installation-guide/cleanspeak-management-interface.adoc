@@ -6,13 +6,13 @@ description: Install the CleanSpeak Management Interface bundle that allows you 
 
 == Download the Packages
 
-This guide will assist you with installing CleanSpeak Management Interface on your server (Linux, Mac OS, or Windows) and works equally well for development environments.
+This guide will assist you with installing CleanSpeak Management Interface on your server (Linux, macOS, or Windows) and works equally well for development environments.
 
-Log into the CleanSpeak website at https://account.cleanspeak.com/account/, navigate to the Licenses section, and click on Download CleanSpeak. You will need to download one of the CleanSpeak Management Interface package that matches the operating system you will be installing CleanSpeak on.
+Log into the CleanSpeak website at https://account.cleanspeak.com/account/, navigate to the Licenses section, and click on Download CleanSpeak. You will need to download the CleanSpeak Management Interface package that matches the operating system you will be installing CleanSpeak on.
 
 == Red Hat
 
-Use the RPM bundle to install on a Red Hat system (including Fedora and CentOS). Execute this command to install the CleanSpeak Management Interface RPM (replace with the correct version number):), use the RPM bundle. Execute this command to install the CleanSpeak Management Interface RPM (replace `<version>` with the correct version number):
+Use the RPM bundle to install on a Red Hat system (including Fedora and CentOS). Execute this command to install the CleanSpeak Management Interface RPM (replace with the correct `<version>` number):
 
 [source,shell]
 ----
@@ -21,16 +21,16 @@ $ sudo rpm -i cleanspeak-management-interface-<version>.rpm
 
 == Debian
 
-Use the DEB bundle to install on a Debian system (including Ubuntu, Mint, and Debian base). Execute this command to install the CleanSpeak Management Interface DEB (replace with the correct version number):
+Use the DEB bundle to install on a Debian system (including Ubuntu, Mint, and Debian base). Execute this command to install the CleanSpeak Management Interface DEB (replace `<version>` with the correct version number):
 
 [source,shell]
 ----
 $ sudo dpkg -i cleanspeak-management-interface-<version>.deb
 ----
 
-== Mac OS X
+== macOS
 
-To install on Mac OS, use the ZIP bundle. Extract the CleanSpeak Management Interface ZIP file anywhere on the file system. Remember where you extract the file. This location will be referred to as CLEANSPEAK_HOME. We suggest extracting this file to a directory like/usr/local/inversoft.
+To install on macOS, use the ZIP bundle. Extract the CleanSpeak Management Interface ZIP file anywhere on the file system. Remember where you extract the file. This location will be referred to as `CLEANSPEAK_HOME`. We suggest extracting this file to a directory like `/usr/local/cleanspeak`.
 
 [NOTE]
 ====
@@ -41,32 +41,32 @@ Once the zip bundle has been extracted, the directory structure should look simi
 
 [source,shell]
 ----
-/usr/local/inversoft/config
-/usr/local/inversoft/config/keystore
-/usr/local/inversoft/config/cleanspeak.properties
-/usr/local/inversoft/cleanspeak-management-interface
+/usr/local/cleanspeak/config
+/usr/local/cleanspeak/config/keystore
+/usr/local/cleanspeak/config/cleanspeak.properties
+/usr/local/cleanspeak/cleanspeak-management-interface
 ----
 
 == Windows
 
-To install on Windows 7 or higher, use the ZIP bundle. Extract the CleanSpeak Management Interface ZIP file anywhere on the file system. Remember where you extract the file. This location will be referred to as CLEANSPEAK_HOME. We suggest extracting this file to a directory such as C:\inversoft on Windows.
+To install on Windows, use the ZIP bundle. Extract the CleanSpeak Management Interface ZIP file anywhere on the file system. Remember where you extract the file. This location will be referred to as `CLEANSPEAK_HOME`. We suggest extracting this file to a directory such as `C:\cleanspeak` on Windows.
 
-Once the zip bundle has been extracted, the directory structure should look similar. If you installed somewhere other than the default CLEANSPEAK_HOME, your directory structure would be different; this is only shown as an example.
-
-[source,shell]
-----
-C:\inversoft\config
-C:\inversoft\config\keystore
-C:\inversoft\config\cleanspeak.properties
-C:\inversoft\cleanspeak-management-interface\
-----
-
-Next, install the Windows service by changing to the directory you installed CleanSpeak (i.e. `C:\inversoft\cleanspeak-management-interface\apache-tomcat\bin`) and then running the install command. Here are those two steps:
+Once the zip bundle has been extracted, the directory structure should look similar. If you installed somewhere other than the default `CLEANSPEAK_HOME`, your directory structure would be different, this is only shown as an example.
 
 [source,shell]
 ----
-C:\>cd C:\inversoft\cleanspeak-management-interface\apache-tomcat\bin
-C:\inversoft\cleanspeak-management-interface\apache-tomcat\bin>CleanSpeakManagementInterface.exe /install
+C:\cleanspeak\config
+C:\cleanspeak\config\keystore
+C:\cleanspeak\config\cleanspeak.properties
+C:\cleanspeak\cleanspeak-management-interface\
+----
+
+Next, install the Windows service by changing to the directory you installed CleanSpeak (i.e. `C:\cleanspeak\cleanspeak-management-interface\apache-tomcat\bin`) and then running the install command. Here are those two steps:
+
+[source,shell]
+----
+C:\>cd C:\cleanspeak\cleanspeak-management-interface\apache-tomcat\bin
+C:\cleanspeak\cleanspeak-management-interface\apache-tomcat\bin>CleanSpeakManagementInterface.exe /install
 ----
 
 == Service Name
@@ -83,7 +83,7 @@ You can use the operating system commands to start, stop and check the status of
 
 == Start CleanSpeak Management Interface
 
-Next, you need to start CleanSpeak Management Interface so that you can enter Maintenance Mode and allow CleanSpeak to create the database. Use the instructions below to start CleanSpeak based on the platform you installed it on. Also, note that the CLEANSPEAK_HOME directory is where you installed CleanSpeak Management Interface.
+Next, you need to start CleanSpeak Management Interface so that you can enter Maintenance Mode and allow CleanSpeak to create the database. Use the instructions below to start CleanSpeak based on the platform you installed it on. Also, note that the `CLEANSPEAK_HOME` directory is where you installed CleanSpeak Management Interface.
 
 [NOTE]
 ====
@@ -100,7 +100,7 @@ $ sudo service cleanspeak-management-interface start
 ----
 
 [source,shell]
-.Mac OS X (ZIP package)
+.macOS (ZIP package)
 ----
 $ <CLEANSPEAK_HOME>/cleanspeak-management-interface/apache-tomcat/bin/startup.sh
 ----
@@ -108,7 +108,7 @@ $ <CLEANSPEAK_HOME>/cleanspeak-management-interface/apache-tomcat/bin/startup.sh
 [source,shell]
 .Windows (ZIP package)
 ----
-C:\inversoft\cleanspeak-management-interface\apache-tomcat\bin>startup.bat
+C:\cleanspeak\cleanspeak-management-interface\apache-tomcat\bin>startup.bat
 ----
 
 [source,shell]
@@ -119,7 +119,7 @@ C:\> net start CleanSpeakManagementInterface
 
 == Maintenance Mode
 
-You will access CleanSpeak Management Interface’s Maintenance Mode setup via the browser. If you installed CleanSpeak Management Interface on your local machine, you’d access this interface by opening http://localhost:8011/ in your browser. If CleanSpeak is running on a remote server, change the server name in the URL to match your server’s name.
+You will access the CleanSpeak Maintenance Mode setup via the browser. If you installed CleanSpeak Management Interface on your local machine, you'd access this interface by opening \http://localhost:8011 in your browser. If CleanSpeak is running on a remote server, change the server name in the URL to match your server's name.
 
 The first step of Maintenance Mode will prompt you to enter your license Id. You can retrieve your license Id from the CleanSpeak website by logging into your account here: https://account.cleanspeak.com/account/
 
@@ -139,7 +139,7 @@ After you hit submit, you should see a screen that indicates that CleanSpeak Man
 
 == Advanced Installation
 
-These instructions will assist you in editing the CleanSpeak Management Interface configuration file and installing the database schema via the command line. You could skip this section if you used Maintenance Mode to configure CleanSpeak Management Interface.
+These instructions will assist you in editing the CleanSpeak Management Interface configuration file and installing the database schema via the command-line. You can skip this section if you used Maintenance Mode to configure CleanSpeak Management Interface.
 
 === Database Schema
 
@@ -150,7 +150,7 @@ These instructions will assist you in editing the CleanSpeak Management Interfac
 By default, the application is configured to connect to the database named `cleanspeak` on localhost with the user name `cleanspeak` and the password `cleanspeak`. For development and testing, you can use these defaults; however, we recommend a more secure password for production systems.
 ====
 
-In the following examples, <root_user> is the name of the root user for your database. The <root_user>` must be either the root user or a user that has privileges to create databases. For MySQL, this is generally a user named 'root'; on PostgreSQL, this is generally a user named 'Postgres'. Run the following SQL commands to configure the database for use by CleanSpeak.
+In the following examples, `<root_user>` is the name of the root user for your database. The `<root_user>` must be either the root user or a user that has privileges to create databases. For MySQL, this is generally a user named `root`; on PostgreSQL, this is generally a user named `postgres`. Run the following SQL commands to configure the database for use by CleanSpeak.
 
 [source,shell]
 .MySQL
@@ -164,8 +164,6 @@ mysql --default-character-set=utf8mb4 -u<root_user> -e "grant all on cleanspeak.
 # Create CleanSpeak schema, run this command from the directory where you have extracted the CleanSpeak Database Schema zip
 mysql --default-character-set=utf8mb4 -ucleanspeak -pcleanspeak cleanspeak < mysql.sql
 ----
-
-*_Note:* MySQL version 8 is not yet supported._
 
 [source,shell]
 .PostgreSQL
@@ -190,12 +188,12 @@ Before starting CleanSpeak Management Interface for the first time, you'll need 
 The configuration file may be found in the following directory, assuming you installed it in the default locations. If you have installed it in an alternate location, the path to this file will be different.
 
 Windows::
-  `C:\inversoft\config`
+  `C:\cleanspeak\config`
 
-Mac OS X or Linux::
-  `/usr/local/inversoft/config`
+macOS or Linux::
+  `/usr/local/cleanspeak/config`
 
-For more information about the other configuration options found in this file, see the Configuration Reference section.
+For more information about the other configuration options found in this file, see the link:../reference/configuration[Configuration Reference] section.
 
 Find the license Id field at the top of this configuration file and enter your license Id. You can find your License Id by logging into your account at https://account.cleanspeak.com/account/.
 
@@ -205,7 +203,7 @@ Find the license Id field at the top of this configuration file and enter your l
 license.id=
 ----
 
-Find the default database JDBC URL, username, and password values, and verify this information is correct. The default JDBC URL is configured for MySQL. If you’re using PostgreSQL, you’ll need to update the URL. See the database.URL property documentation in Configuration Reference for more information.
+Find the default database JDBC URL, username, and password values, and verify this information is correct. The default JDBC URL is configured for MySQL. If you're using PostgreSQL, you'll need to update the URL. See the database URL property documentation in the link:../reference/configuration[Configuration Reference] for more information.
 
 [source,ini]
 .Database Configuration
@@ -215,4 +213,4 @@ database.username=cleanspeak
 database.password=cleanspeak
 ----
 
-CleanSpeak Management Interface should now be configured, the database should be created, and everything should be ready to run. You can start CleanSpeak Management Interface using the instructions in the [start-cleanspeak-management-interface] section above.
+CleanSpeak Management Interface should now be configured, the database should be created, and everything should be ready to run. You can start CleanSpeak Management Interface using the instructions in the <<Start CleanSpeak Management Interface, Start CleanSpeak Management Interface>> section above.

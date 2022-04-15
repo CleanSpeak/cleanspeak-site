@@ -47,4 +47,4 @@ Please take note of the details listed in the migration tool page regarding UUID
 * The primary key of an Application is now the UUID and not the name. Application names are now editable.
 * SenderId (UUID) is now mandatory for all moderation requests.
 
-Be sure to check out our integration examples and all of the new features of 3.0 by browsing through the CleanSpeak API and User Guide! Please contact support@inversoft.com with any questions.
+Be sure to check out our integration examples and all of the new features of 3.0 by browsing through the CleanSpeak API and User Guide! Please contact support@cleanspeak.com with any questions.

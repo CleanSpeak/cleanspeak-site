@@ -20,11 +20,11 @@ You only need to install either MySQL or PostgreSQL to use CleanSpeak.
 
 === Install MySQL
 
-If you want to use MySQL for your database, you will need to install version 5.5.3 or later. Depending on your operating system, you can download and install MySQL or use the operating systems package management tools. Use the instructions below to install MySQL based on your operating system.
+If you want to use MySQL for your database, you will need to install version 8 or later. Depending on your operating system, you can download and install MySQL or use the operating systems package management tools. Use the instructions below to install MySQL based on your operating system.
 
 ==== Linux
 
-To install MySQL on a Linux system, you can use the apt or yum tools depending on whether or not your Linux distribution is based on Red Hat or Debian. The package name may vary depending on your platform, for example, MySQL-server or MySQL-server-5.5. Here are the commands for each:
+To install MySQL on a Linux system, you can use the `apt` or `yum` tools depending on whether or not your Linux distribution is based on Red Hat or Debian. The package name may vary depending on your platform, for example: `mysql-server` or `mysql-server-<version>` where `<version>` is the version you wish to install. Here's the commands for each:
 
 [source,shell]
 .Red Hat
@@ -38,9 +38,9 @@ $ yum install mysql-server
 $ sudo apt-get install mysql-server
 ----
 
-==== Windows or Mac OSX
+==== Windows or macOS
 
-If you are installing MySQL on a platform that does not support RPM or DEB packages, you will need to download it manually from the MySQL website here: http://dev.mysql.com/downloads/mysql
+If you are installing MySQL on a platform that does not support RPM or DEB packages, you will need to download it manually from the MySQL website here: https://dev.mysql.com/downloads/mysql/
 
 ==== MySQL and Unicode
 
@@ -48,11 +48,9 @@ If you are installing MySQL on a platform that does not support RPM or DEB packa
 ====
 To properly store 4 byte unicode, the character set must be set to `utf8mb4`.
 
-By default this configuration is enforced during startup. If CleanSpeak fails to startup due to this validation the log will contain detailed
-messages about the MySQL configuration.
+By default this configuration is enforced during startup. If CleanSpeak fails to startup due to this validation the log will contain detailed messages about the MySQL configuration.
 
-It is recommended to ensure you have properly configured MySQL to use `utf8mb4` before attempting to startup CleanSpeak. Please verify you have
-the following configuration in your `my.cnf` file. On Windows the file is called `my.ini`.
+It is recommended to ensure you have properly configured MySQL to use `utf8mb4` before attempting to startup CleanSpeak. Please verify you have the following configuration in your `my.cnf` file. On Windows the file is called `my.ini`.
 
 If you need to modify your configuration, restart MySQL for the changes to take effect.
 ====
@@ -74,12 +72,11 @@ collation-server = utf8mb4_bin
 
 This is a system-wide configuration option, so be certain that this change won’t impact other databases and applications on the same MySQL server. Not all of these configuration options may be available, depending on your database configuration. Once you have configured the available options, you may disable this feature if the startup still fails due to this validation. See `database.mysql.enforce-utf8mb4` in the link:../reference/configuration[Configuration] reference.
 
-
 === Installing PostgreSQL
 
 ==== Linux
 
-To install PostgreSQL on a Linux system, you can use the apt or yum tools depending on whether or not your Linux distribution is based on Red Hat or Debian. The package name may vary depending on your platform.
+To install PostgreSQL on a Linux system, you can use the `apt` or `yum` tools depending on whether or not your Linux distribution is based on Red Hat or Debian. The package name may vary depending on your platform.
 
 [source,shell]
 .Red Hat
@@ -95,6 +92,6 @@ $ sudo apt-get install postgresql-server
 $ sudo apt-get install postgresql-contrib
 ----
 
-==== Windows or Mac OSX
+==== Windows or macOS
 
 If you are installing PostgreSQL on a platform that does not support RPM or DEB packages, you will need to manually download it from the PostgreSQL website here: https://www.postgresql.org/

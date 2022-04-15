@@ -15,39 +15,39 @@ Available since `3.25.0`
 
 [NOTE]
 ====
-The following APIs only operate on the active filter state. There is no approval process for the APIs and everything will be immediately added to the active filter state. Use the management interface to manage pending modifications.
+The following APIs only operate on the active filter state. There is no approval process for the APIs and everything will be immediately added to the active filter state. Use the Management Interface to manage pending modifications.
 ====
 
 === Top Level Domains
 
-The following APIs are provided to manage Top Level Domains inside of CleanSpeak. A Top Level Domain or TLD is a unique name used by various agencies as the root domain of any website. An example of this is the `COM` TLD. CleanSpeak uses TLDs to identify URLs and this API exists so that you can modify which TLDs CleanSpeak identifies as URLs and their qualities so that bad urls can be easily tuned.
+The following APIs are provided to manage Top Level Domains inside of CleanSpeak. A Top Level Domain or TLD is a unique name used by various agencies as the root domain of any website. An example of this is the `COM` TLD. CleanSpeak uses TLDs to identify URLs and this API exists so that you can modify which TLDs CleanSpeak identifies as URLs and their qualities so that bad URLs can be easily tuned.
 
-* <<Retrieve a TLD>>
-* <<Retrieve all TLDs>>
-* <<Create a TLD>>
-* <<Create bulk TLDs>>
-* <<Update a TLD>>
-* <<Delete a TLD>>
+* <<Retrieve a TLD, Retrieve a TLD>>
+* <<Retrieve all TLDs, Retrieve all TLDs>>
+* <<Create a TLD, Create a TLD>>
+* <<Create bulk TLDs, Create bulk TLDs>>
+* <<Update a TLD, Update a TLD>>
+* <<Delete a TLD, Delete a TLD>>
 
 === Whitelisted URLs
 
 A Whitelisted URL is a Regular Expression or RegEx that when matched will prevent CleanSpeak from flagging that particular URL. This is useful if you are hosting something like a forum where users are only allowed to post URLs to permitted websites. The permitted websites are defined by the Whitelisted URL objects. Additionally you can also tag a Whitelisted URL to be limited in scope to only affect applications that also have those same tags.
 
-* <<Retrieve a Whitelisted URL>>
-* <<Retrieve all Whitelisted URLs>>
-* <<Create a Whitelisted URL>>
-* <<Update a Whitelisted URL>>
-* <<Delete a Whitelisted URL>>
+* <<Retrieve a Whitelisted URL, Retrieve a Whitelisted URL>>
+* <<Retrieve all Whitelisted URLs, Retrieve all Whitelisted URLs>>
+* <<Create a Whitelisted URL, Create a Whitelisted URL>>
+* <<Update a Whitelisted URL, Update a Whitelisted URL>>
+* <<Delete a Whitelisted URL, Delete a Whitelisted URL>>
 
 === URL Whitelist Tags
 
 URL Whitelist Tags are used to associate Whitelisted URLs with applications that wish to limit their scope. When a Whitelisted URL has a tag it can only affect applications that also contain that same tag.
 
-* <<Retrieve a URL Whitelist Tag>>
-* <<Retrieve all URL Whitelist Tags>>
-* <<Create a URL Whitelist Tag>>
-* <<Update a URL Whitelist Tag>>
-* <<Delete a URL Whitelist Tag>>
+* <<Retrieve a URL Whitelist Tag, Retrieve a URL Whitelist Tag>>
+* <<Retrieve all URL Whitelist Tags, Retrieve all URL Whitelist Tags>>
+* <<Create a URL Whitelist Tag, Create a URL Whitelist Tag>>
+* <<Update a URL Whitelist Tag, Update a URL Whitelist Tag>>
+* <<Delete a URL Whitelist Tag, Delete a URL Whitelist Tag>>
 
 == Retrieve a TLD
 
@@ -279,7 +279,7 @@ Update a Whitelisted URL by name
 .Request Parameters
 |===
 |[field]#id# [type]#[String]# [required]#required#
-|The unique id of the whitelisted URL to retrieve.
+|The unique id of the Whitelisted URL to retrieve.
 |===
 
 include::docs/3.x/tech/apis/whitelistedURL/_post-request.adoc[]
@@ -443,7 +443,7 @@ Delete a URL Whitelist Tag by Id
 .Request Parameters
 |===
 |[field]#id# [type]#[Integer]# [required]#required#
-|The unique id of the URL whitelist tag to delete.
+|The unique id of the URL Whitelist tag to delete.
 |===
 
 === Response

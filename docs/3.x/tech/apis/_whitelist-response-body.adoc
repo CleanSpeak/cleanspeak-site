@@ -3,16 +3,16 @@
 .Response Body
 |===
 |[field]#whitelist# [type]#[Object]#
-|The whitelist object.
+|The Whitelist object.
 
 |[field]#whitelist.advancedDisallowedEntries# [type]#[Array]#
-|An array of advanced disallowed entries on the whitelist.
+|An array of advanced disallowed entries on the Whitelist.
 
 |[field]#whitelist.advancedDisallowedEntries``[x]``.parts# [type]#[Array<String>]#
-|An array of whitelist tags and optional wild cards that in the order that makes up the advanced disallowed phrase.
+|An array of Whitelist tags and optional wild cards that in the order that makes up the advanced disallowed phrase.
 
 |[field]#whitelist.allowedEntries# [type]#[Array]#
-|An array of allowed entries on the whitelist.
+|An array of allowed entries on the Whitelist.
 
 |[field]#whitelist.allowedEntries``[x]``.exclusions# [type]#[Array<String>]#
 |An array of the inflections to be excluded for this word.
@@ -30,7 +30,7 @@
 |The allowed word.
 
 |[field]#whitelist.disallowedEntries# [type]#[Array]#
-|An array of disallowed entries on the whitelist.
+|An array of disallowed entries on the Whitelist.
 
 |[field]#whitelist.disallowedEntries``[x]``.parts# [type]#[Array<String>]#
 |An array of allowed entries in the order that makes up the disallowed phrase.

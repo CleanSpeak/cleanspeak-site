@@ -2,13 +2,11 @@
 # CleanSpeak Jekyll config
 #
 title: CleanSpeak
-email: dev@inversoft.com
+email: dev@cleanspeak.com
 description: >-
   CleanSpeak is awesome
 baseurl: ""
 url: "https://cleanspeak.com"
-twitter_username: inversoft
-github_username:  inversoft
 paginate: 5
 paginate_path: "/blog/page/:num/"
 permalink: /blog/:year/:month/:day/:title

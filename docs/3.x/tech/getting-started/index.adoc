@@ -5,7 +5,6 @@ description: Get started with CleanSpeak
 ---
 
 == Introduction
-
 CleanSpeak is a platform for filtering and moderating user generated content. Integration with CleanSpeak is provided through the user of APIs. The Management Interface allows for configuration and human moderators to view and moderate content.
 
 The following is a list of some of the features that CleanSpeak provides:
@@ -33,7 +32,6 @@ The following is a list of some of the features that CleanSpeak provides:
 * Granular API Access Controls
 * Moderator Roles
 
-
 Don't see a feature you need? Need to filter in another language? Let us know so we can build it for you.
 
 == Overview
@@ -60,7 +58,7 @@ Getting started with CleanSpeak depends on the version of CleanSpeak you are usi
 
 === CleanSpeak Cloud
 
-CleanSpeak Cloud is a hosted solution that is maintained and monitored by Inversoft. When you sign up for CleanSpeak Cloud, Inversoft provisions a Private Cloud Server for you in our Cloud environment. You don't need to download or install CleanSpeak if you are using this version. Once your CleanSpeak Cloud server is setup, you can immediately access it and begin your integration.
+CleanSpeak Cloud is a hosted solution that is maintained and monitored by CleanSpeak. When you sign up for CleanSpeak Cloud, CleanSpeak provisions a private cloud Server for you in our Cloud environment. You don't need to download or install CleanSpeak if you are using this version. Once your CleanSpeak Cloud server is setup, you can immediately access it and begin your integration.
 
 Here are some common steps you'll take to get CleanSpeak Cloud configured and integrate your application with it.
 
@@ -76,7 +74,7 @@ CleanSpeak Server is an on-premise solution that is downloaded and installed on 
 
 Here are some common steps you'll take to get CleanSpeak Cloud configured and integrate your application with it.
 
-* [Tech Docs] link:../installation-guide/system-requirements[Installation Guide]
+* [Tech Docs] link:../installation-guide/system-requirements[System Requirements]
 * [Tutorial] link:../tutorials/setup-wizard[Setup Wizard]
 * [Tutorial] link:../tutorials/configure-an-application[Configure an Application]
 * [Tutorial] link:../tutorials/filtering-content[Filtering Content]

@@ -19,7 +19,7 @@ This API is used to backup the filter state. The result will be a zip file that 
 ** Advanced Disallowed Phrases
 * URL Whitelist Entries
 
-The following configuration is not contained in the backup and as such will also not be modified during the restore. In the future we may add additional configuration to the backup, if you have a requirement for one or more of the following send us a note at suggestions@inversoft.com and let us know about your use case.
+The following configuration is not contained in the backup and as such will also not be modified during the restore. In the future we may add additional configuration to the backup, if you have a requirement for one or more of the following send us a note at sales@cleanspeak.com and let us know about your use case.
 
 * Moderation Configuration
 ** Applications
@@ -56,7 +56,7 @@ The following configuration is not contained in the backup and as such will also
 In the following cURL example a backup is requested and saved to a file named `backup.zip`. Note this example has omitted the required `Authorization` header, see link:authentication[Authentication].
 [source]
 ----
-curl -XGET 'https://example-cleanspeak-api.inversoft.io/system/backup' -o backup.zip
+curl -XGET https://example-cleanspeak-api.cleanspeak.io/system/backup -o backup.zip
 ----
 --
 
@@ -100,7 +100,7 @@ It is recommended that if you intend to use the backup and restore APIs in a pro
 The following cURL example assumes a file named `backup.zip` exists in the current directory. Note this example has omitted the required `Authorization` header, see link:authentication[Authentication].
 [source]
 ----
-curl -XPOST -H 'Content-Type: application/octet-stream' 'https://example-cleanspeak-api.inversoft.io/system/restore' --data-binary @backup.zip
+curl -XPOST -H 'Content-Type: application/octet-stream' https://example-cleanspeak-api.cleanspeak.io/system/restore --data-binary @backup.zip
 ----
 --
 

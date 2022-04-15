@@ -8,14 +8,14 @@ description: APIs to moderate and filter your user-generated content with CleanS
 
 This page contains the APIs that are used to send content to CleanSpeak for moderation and filtering. Here are the APIs:
 
-* <<Moderate Content>>
-* <<Update Content>>
-* <<Proxy Moderate Content>>
-* <<Proxy Update Content>>
-* <<Filter Content>>
-* <<Flagging Content>>
-* <<Batch Filter Content>>
-* <<Batch Moderate Content>>
+* <<Moderate Content, Moderate Content>>
+* <<Update Content, Update Content>>
+* <<Proxy Moderate Content, Proxy Moderate Content>>
+* <<Proxy Update Content, Proxy Update Content>>
+* <<Filter Content, Filter Content>>
+* <<Flagging Content, Flagging Content>>
+* <<Batch Filter Content, Batch Filter Content>>
+* <<Batch Moderate Content, Batch Moderate Content>>
 
 
 include::docs/3.x/tech/apis/_null_warning.adoc[]
@@ -23,14 +23,14 @@ include::docs/3.x/tech/apis/_null_warning.adoc[]
 
 == Moderate Content
 
-This API is used to send new content to CleanSpeak to be moderated. To make updates to content that has already been sent into CleanSpeak use the <<Update Content>> API.
+This API is used to send new content to CleanSpeak to be moderated. To make updates to content that has already been sent into CleanSpeak use the <<Update Content, Update Content>> API.
 
 Like the Filter Content API the same filtering is performed on content sent to this API. The difference is that instead of returning all matches found in the content, the Application filter rules are first applied to determine what action should be taken. Using this API allows you to modify the filter behavior without changing the way you send content to the filter. This allows for a much more powerful integration.
 
 [WARNING]
 ====
 *Important*
-At least one Application must be configured prior to sending content to the Moderate API. See the Applications setup page for details on configuring applications with the Management Interface or the <<Create an Application,Application>> API.
+At least one Application must be configured prior to sending content to the Moderate API. See the Applications setup page for details on configuring applications with the Management Interface or the link:/docs/3.x/tech/apis/applications[Application] API.
 ====
 
 [NOTE]
@@ -116,7 +116,7 @@ include::docs/3.x/tech/apis/_moderate-content-response-body.adoc[]
 Available since `3.29.0-RC.1`
 ====
 
-This API is used exactly like the <<Moderate Content>> API except that its responses will be sent to a different destination with the exception of errors. If you need to update a piece of content then you can also use <<Proxy Update Content>> API which is the parallel for the <<Update Content>> API.
+This API is used exactly like the <<Moderate Content, Moderate Content>> API except that its responses will be sent to a different destination with the exception of errors. If you need to update a piece of content then you can also use <<Proxy Update Content, Proxy Update Content>> API which is the parallel for the <<Update Content, Update Content>> API.
 
 [WARNING]
 ====
@@ -217,11 +217,11 @@ include::docs/3.x/tech/apis/_moderate-content-response-body.adoc[]
 
 == Filter Content
 
-This API is used to send content to CleanSpeak to be filtered. Content sent to this API is not persisted by CleanSpeak and does not use the CleanSpeak Application filter rules. To use Application filter rules and other more advanced features of CleanSpeak see <<Moderate Content>>.
+This API is used to send content to CleanSpeak to be filtered. Content sent to this API is not persisted by CleanSpeak and does not use the CleanSpeak Application filter rules. To use Application filter rules and other more advanced features of CleanSpeak see <<Moderate Content, Moderate Content>>.
 
 [NOTE]
 ====
-This API should be avoided unless you have a very specific need to only perform filtering and want all of the filter matches back. For most situations, the <<Moderate Content>> API should be used instead.
+This API should be avoided unless you have a very specific need to only perform filtering and want all of the filter matches back. For most situations, the <<Moderate Content, Moderate Content>> API should be used instead.
 ====
 
 === Request
@@ -282,11 +282,11 @@ include::docs/3.x/tech/apis/_standard-post-response-codes.adoc[]
 Available Since Version 3.6.0
 ====
 
-This API is used to send multiple pieces of content to CleanSpeak to be filtered. It primarily uses the same API structure as the <<Filter Content>> API except that the content is an array instead of an object.
+This API is used to send multiple pieces of content to CleanSpeak to be filtered. It primarily uses the same API structure as the <<Filter Content, Filter Content>> API except that the content is an array instead of an object.
 
 [NOTE]
 ====
-This API can be called synchronously or asynchronously. If the ``callbackURL`` is specified in the request, CleanSpeak will handle the request asynchronously and send the response to this URL. Otherwise, the request is handled synchronously and CleanSpeak will send the response back directly.
+This API can be called synchronously or asynchronously. If the `callbackURL` is specified in the request, CleanSpeak will handle the request asynchronously and send the response to this URL. Otherwise, the request is handled synchronously and CleanSpeak will send the response back directly.
 ====
 
 === Request
@@ -313,7 +313,7 @@ include::docs/3.x/tech/apis/_batch-filter-content-response-body.adoc[]
 Available Since Version 3.6.0
 ====
 
-This API is used to send multiple pieces of content to CleanSpeak to be moderated. It primarily uses the same API structure as the <<Moderate Content>> and <<Update Content>> APIs with a few differences:
+This API is used to send multiple pieces of content to CleanSpeak to be moderated. It primarily uses the same API structure as the <<Moderate Content, Moderate Content>> and <<Update Content, Update Content>> APIs with a few differences:
 
 * For persistent content, the id of each piece of content is in the request rather than on the URL
 * For transient content, the results come back in the response in the same as they were passed into the request
@@ -321,7 +321,7 @@ This API is used to send multiple pieces of content to CleanSpeak to be moderate
 
 [NOTE]
 ====
-This API can be called synchronously or asynchronously. If the ``callbackURL`` is specified in the request, CleanSpeak will handle the request asynchronously and send the response to this URL. Otherwise, the request is handled synchronously and CleanSpeak will send the response back directly.
+This API can be called synchronously or asynchronously. If the `callbackURL` is specified in the request, CleanSpeak will handle the request asynchronously and send the response to this URL. Otherwise, the request is handled synchronously and CleanSpeak will send the response back directly.
 ====
 
 === Request

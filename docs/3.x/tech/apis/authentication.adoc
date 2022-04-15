@@ -6,20 +6,19 @@ description: Learn how the CleanSpeak APIs authenticate requests
 
 == Authentication
 
-CleanSpeak controls access to the API through the use of an API key. By default all APIs will return an `401 Unauthorized` response.
+CleanSpeak controls access to the API through the use of an API Key. By default all APIs will return an `401` Unauthorized response.
 
-To enable access to the API create one or more API keys in the CleanSpeak management interface. The API key is then supplied in the HTTP request using the Authorization header.  See API Keys for more information on adding additional keys.
+To enable access to the API create one or more API Keys in the CleanSpeak Management Interface. The API Key is then supplied in the HTTP request using the `Authorization` header.
 
-The following example demonstrates the HTTP Authorization header with an API key of `2524a832-c1c6-4894-9125-41a9ea84e013`.
+The following example demonstrates the HTTP `Authorization` header with an API Key of `2524a832-c1c6-4894-9125-41a9ea84e013`.
 
 [source,properties]
 ----
 Authorization: 2524a832-c1c6-4894-9125-41a9ea84e013
 ----
 
-The following is a cURL example using the Authorization header with a base CleanSpeak URL of `https://example-cleanspeak-api.inversoft.io`.
-
+The following is a cURL example using the `Authorization` header.
 [source,bash]
 ----
-curl -H 'Authorization: 2524a832-c1c6-4894-9125-41a9ea84e013' https://example-cleanspeak-api.inversoft.io/content/item/filter
+curl -H 'Authorization: 2524a832-c1c6-4894-9125-41a9ea84e013' https://example-cleanspeak-api.cleanspeak.io/content/item/filter
 ----

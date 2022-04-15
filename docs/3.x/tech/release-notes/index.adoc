@@ -225,7 +225,7 @@ _Released Friday, January 24th, 2020_
 === Fixed
 * Fixed the verify tool not returning any matches if `All Locales` was selected. (Bug introduced in `3.27.0`)
 ** The `All Locales` previously mapped to null but a recent change in Prime MVC causes empty string (aka `All Locales`) to map to the Root locale. We now check for this locale.
-* Fixed an issue that would cause moderation pages to throw exceptions if elastic search was being provided by AWS.
+* Fixed an issue that would cause moderation pages to throw exceptions if Elasticsearch was being provided by AWS.
 ** The status endpoint in AWS requires a leading slash and CleanSpeak was previously missing this slash. This was not required for standalone elasticsearch.
 
 [role=release-note]
@@ -439,14 +439,14 @@ The default configuration may cause CleanSpeak to return matches you had not pre
 sent to CleanSpeak contains one or more characters from one of the default unicode match ranges the content will be rejected. A new match type will be returned of type `unicode` and
 the response will include the indices containing matched characters.
 
-If you have questions or concerns about this new filter and how it may impact you please contact us at support@inversoft.com.
+If you have questions or concerns about this new filter and how it may impact you please contact us at support@cleanspeak.com.
 ====
 
 === New
 * CleanSpeak now provides a Unicode filter designed to reject content containing characters in high order unicode ranges that are often used
 to bypass filters. For example many character glyphs exist in high order unicode that render as an alphabetic character but are not easily detected. CleanSpeak
 understands most of these replacement characters already but the possible variations are too numerous to account for every possible variation. The default configuration
-provided should cover most cases, but you may optionally modify or augment the unicode match ranges. Contact us at support@inversoft.com if you need assistance.
+provided should cover most cases, but you may optionally modify or augment the unicode match ranges. Contact us at support@cleanspeak.com if you need assistance.
 ** If you're using the link:../apis/content#filter-content[Filter Content] API this filter will be enabled by default. Please review the advisory above.
 ** If you're using the link:../apis/content#moderate-content[Moderate Content] API the default configuration will be to allow unicode matches, in other words CleanSpeak will
  not reject content based upon a unicode match. To enable this filter, find the Unicode filter rule in your Application configuration in the `Other Filters` tab, and
@@ -458,7 +458,7 @@ is intended to allow more accurate detection of embedded words. The default conf
 
 === Fixed
 * In some cases Reverting a Blacklist Phrase in the Filter Approvals would cause an exception and would not be be reverted. This issue has been corrected. If you encounter this issue prior to version `3.22.0` contact
- support@inversoft.com for assistance.
+ support@cleanspeak.com for assistance.
 
 [role=release-note]
 
@@ -505,7 +505,7 @@ was only a cosmetic issue and did not affect the CleanSpeak Management Interface
 _Released Wednesday August 15th, 2018_
 
 include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
-:elastic_message: A major version upgrade of Elastic Search requires a full rebuild of the search index. This will be done automatically on startup, this may cause additional load on the system until completed. Content and user search will be incomplete until the process is complete.
+:elastic_message: A major version upgrade of Elasticsearch requires a full rebuild of the search index. This will be done automatically on startup, this may cause additional load on the system until completed. Content and user search will be incomplete until the process is complete.
 include::docs/3.x/tech/release-notes/__search-index-warning.adoc[]
 
 === New
@@ -516,7 +516,7 @@ include::docs/3.x/tech/release-notes/__search-index-warning.adoc[]
 === Fixed
 
 * When using PostgreSQL with a large amount of content stored in CleanSpeak, the performance may be degraded as moderates enter the queue.
-* Upgraded Elastic Search to 6.3.1
+* Upgraded Elasticsearch to 6.3.1
 * URL whitelist entries were not approved after a Backup / Restore
 * Duplicate key violation when importing with new phrases
 * English was (almost) always selected for verify tool even if all locales was a better default.
@@ -615,7 +615,7 @@ _Released Thursday April 19th, 2018_
 == Version 3.17.0
 _Released Tuesday April 17th, 2018_
 
-:warning_message: CleanSpeak has received a major UI overhaul and you may pleasantly surprised when you login after the upgrade. Contact support@inversoft.com if you have further questions or would like to schedule a demo of the new UI.
+:warning_message: CleanSpeak has received a major UI overhaul and you may pleasantly surprised when you login after the upgrade. Contact support@cleanspeak.com if you have further questions or would like to schedule a demo of the new UI.
 include::docs/3.x/tech/release-notes/__general-migration-warning.adoc[]
 
 include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
@@ -777,7 +777,7 @@ _Released Wednesday August 30th, 2017_
 
 === Enhancement
 
-* Setup wizard no longer prompts the user for License Id when coming from their Inversoft account page.
+* Setup wizard no longer prompts the user for License Id when coming from their CleanSpeak account page.
 * Better embedded video player support for  vimeo.com, ted.com videos in the moderation queue.
 
 [role=release-note]
