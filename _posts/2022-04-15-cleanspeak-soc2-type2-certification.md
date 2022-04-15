@@ -22,4 +22,4 @@ This certification is the result of demonstrating strict security and process co
 
 For contracted CleanSpeak customers we will confidentially provide a full and detailed audit report upon request.  Please reach out to your CleanSpeak support contact or to your account representative for more information. 
 
-The CleanSpeak community can rest assured in the fact that SOC2 Type II certification indicates FusionAuth’s high level of security commitment, awareness and preparation.
+The CleanSpeak community can rest assured in the fact that SOC2 Type II certification indicates CleanSpeak’s high level of security commitment, awareness and preparation.
