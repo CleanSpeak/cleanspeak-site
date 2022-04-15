@@ -119,7 +119,7 @@ C:\> net start CleanSpeakManagementInterface
 
 == Maintenance Mode
 
-You will access the CleanSpeak Maintenance Mode setup via the browser. If you installed CleanSpeak Management Interface on your local machine, you'd access this interface by opening http://localhost:8011 in your browser. If CleanSpeak is running on a remote server, change the server name in the URL to match your server's name.
+You will access the CleanSpeak Maintenance Mode setup via the browser. If you installed CleanSpeak Management Interface on your local machine, you'd access this interface by opening \http://localhost:8011 in your browser. If CleanSpeak is running on a remote server, change the server name in the URL to match your server's name.
 
 The first step of Maintenance Mode will prompt you to enter your license Id. You can retrieve your license Id from the CleanSpeak website by logging into your account here: https://account.cleanspeak.com/account/
 

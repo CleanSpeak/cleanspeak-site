@@ -39,11 +39,11 @@ First, you will need a good base set of words you want blocked when viewed toget
 |`Likes`, `Thumbs Up`, `Retweet`
 |===
 
-A Blacklist Phrase can then be created from these tags using the tags from above. The phrase we will create will use regex to find any regions of code with those tags embedded. In order to match someone saying "Buy Facebook likes", the phrase will have a regex of `%Purchase%\s+%Company%\s+%Social-Like%`. This will match `Purchase`, `Company`, `Social-Like` separated by any number (but at least one) spaces. This will cause the whole region of text in the input to be matched just like regex but can handle variations using the power of the Blacklist entries on any tagged words. Aka `Buuyy FaaceeBok Likees` and many other variations can still be easily matched and found by the phrase.
+A Blacklist Phrase can then be created from these tags using the tags from above. The phrase we will create will use regex to find any regions of code with those tags embedded. In order to match someone saying "Buy facebook likes", the phrase will have a regex of `%Purchase%\s+%Company%\s+%Social-Like%`. This will match `Purchase`, `Company`, `Social-Like` separated by any number (but at least one) spaces. This will cause the whole region of text in the input to be matched just like regex but can handle variations using the power of the Blacklist entries on any tagged words. Aka `Buuyy FaaceeBok Likees` and many other variations can still be easily matched and found by the phrase.
 
 === How to create a Phrase from the UI
 
-You can create a Phrase by going to your management interface, navigating to [breadcrumb]#Filters -> Blacklist -> Phrases# (Quote icon in the top right), clicking `Add Phrase` (plus button in the top right), and begin creating a phrase by clicking in the box and typing a regex. Blacklist entries can be matched on their tags by typing `%TagName%` where the tag name is the tag you are interested in matching that includes only the Blacklist entries that make sense in that position of the regex. You can also click the pills below the pattern field to quickly add a tag to the pattern.
+You can create a Phrase by going to your management interface, navigating to [breadcrumb]#Filters -> Blacklist -> Phrases# The Phrases button will be found in the drop down menu in the top right of the Blacklist configuration page. Clicking *Add* (plus button in the top right), and begin creating a phrase by clicking in the box and typing a regex. Blacklist entries can be matched on their tags by typing `%TagName%` where the tag name is the tag you are interested in matching that includes only the Blacklist entries that make sense in that position of the regex. You can also click the pills below the pattern field to quickly add a tag to the pattern.
 
 Phrases also utilize a severity, locale, and tags to classify how they should be treated by an application or if they should be ignored by the minimum severity setting on the filter. You can then then click `Save` (Top right) and the phrase will be created.
 
@@ -51,7 +51,7 @@ image::add-phrase.png[Add Phrase,width=1200]
 
 === How to create a Phrase from the API
 
-You can create a Phrase through the API by sending a <<../apis/blacklist.adoc#create-a-phrase,request>> to the webservice.
+Below is an example of creating a phrase using the API.
 
 [.endpoint]
 .URI
@@ -81,7 +81,7 @@ Phrase application settings share the configuration of the Blacklist entries. In
 |===
 |[field]#Authorization# [type]#[String]#
 |The API Key of your application is required to make a request to the webservice. You
-can find this under [breadcrumb]#System -> API Keys# on the CleanSpeak Management Interface.
+can find this under [breadcrumb]#Settings -> API Keys# in the CleanSpeak Management Interface.
 |===
 
 [source,json]

@@ -6,11 +6,11 @@ description: Learn how to start and stop the CleanSpeak services
 
 == Start and Stop CleanSpeak
 
-If you use the CleanSpeak Server version, you may need to start or stop CleanSpeak periodically. If you find yourself in this situation, you'll be glad you have the know-how.
+If you using self-hosting CleanSpeak, you may need to start or stop CleanSpeak periodically. If you find yourself in this situation, you'll be glad you have the know-how.
 
 [NOTE]
 ====
-If you are using CleanSpeak Cloud, these instructions do not apply to you. CleanSpeak monitors all of our cloud deployments and will restart CleanSpeak if necessary.
+If you are using CleanSpeak Cloud, these instructions do not apply to you.
 ====
 
 

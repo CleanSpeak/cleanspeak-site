@@ -138,7 +138,7 @@ include::docs/3.x/tech/apis/_standard-delete-response-codes.adoc[]
 
 == Flag a User
 
-This API is used to flag a Content User. Once a user has been flagged they will be queued for a Moderator to review in the User Alert Queue.
+This API is used to flag a Content User. Once a user has been flagged they will be queued for a moderator to review in the User Alert queue.
 
 For example, a user may flag or report another user. In most forums and games, players have the option to report other players for various reasons such as _"the user is being offensive"_ or _"the user is bullying me"_.
 

@@ -29,6 +29,3 @@ docker run -v $(pwd)/prometheus.yaml:/etc/prometheus/prometheus.yml -p 9090:9090
 ----
 
 image::prometheus-ui.png[Prometheus Adoc,width=1200]
-
-//=== Optional Setup
-//You can also supply a logback.xml in the catalina classpath root with or without the prometheus configuration. By default we have added prometheus metrics to the logging.

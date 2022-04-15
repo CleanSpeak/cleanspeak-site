@@ -1,35 +1,29 @@
 ---
 layout: doc
 title: Exporting Filter Lists Configuration
-description: Learn how to export your Filter lists Configuration in CleanSpeak
+description: Learn how to export your Filter Lists Configuration in CleanSpeak
 ---
-
 
 == Exporting Lists Configuration
 
-
 [NOTE]
 ====
-We do not recommended making changes to your Filter Lists Configuration after exporting if you intend on importing it back into CleanSpeak.
+We do not recommended making changes to the lists after exporting if you intend on importing it back into CleanSpeak. The exported format is specific, and it must be preserved.
 ====
 
 There are a few reasons why you may want to export your filter lists configuration. You may be asked by our support team for an export to recreate an issue or assist you in modifying your list to suite your needs.
 You may also just wish to export your list in order to back up your current filter configuration prior to an upgrade or to migrate the list to a different instance of CleanSpeak.
 
-From the moderator dashboard you will click on the [breadcrumb]#Filters -> Lists# from the left navigation.
+From the CleanSpeak dashboard you will click on the [breadcrumb]#Filters -> Lists# from the left navigation.
 
 image::filter-dropdown.png[Exporting Lists, width=1200]
 
-At the very bottom of the drop down you will find the lists button.
-
-Here we see our Blacklist and Kids Chat list summary.
-You will then click on the export button found near the right corner.
+At the very bottom of the drop down you will find the lists button. Here we see our Blacklist and Kids Chat list summary. You will then click on the export button found near the right corner.
 
 image::filter-lists.png[Exporting Lists,width=1200]
 
-Once in the export lists panel you will see what you will be exporting, it is recommended you keep this as their default values.
+Once in the Export Lists panel you will see what you will be exporting, the default export configurations is recommended.
 
 image::export.png[Exporting Lists,width=1200]
 
-Once your decision is made, click the export button to export your lists and configurations.
-The default format will be saved as a `.json` file.
+When you are ready, click the export button to export your lists and configurations.

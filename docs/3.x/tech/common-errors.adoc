@@ -37,7 +37,7 @@ PATH=/usr/local/cleanspeak/cleanspeak-management-interface/java/jre1.8.0_171/bin
 keytool -import -file ${CERT} -alias "${ALIAS}" -storepass changeit -keystore /usr/local/cleanspeak/cleanspeak-management-interface/java/jre1.8.0_171/lib/security/cacerts -noprompt
 
 # Repeat for webservice
-keytool -import -file ${CERT} -alias "${ALIAS}" -storepass changeit -keystore /usr/local/cleanspeak/cleanspeak-webservice/java/jre1.8.0_171/lib/security/cacerts -noprompt
+keytool -import -file ${CERT} -alias "${ALIAS}" -storepass changeit -keystore /usr/local/cleanspeak/java/current/lib/security/cacerts -noprompt
 ----
 
 ==== Workaround (MySQL only)
@@ -49,11 +49,11 @@ An alternative solution is to use the parameter string: `&useSSL=true&verifyServ
 One solution for docker is to create a `cacerts` file similar to that of the general solution and mount it without the need to modify the provided images.
 
 . First obtain a copy of `cacerts`
-.. You can do this via `docker cp` from a running CleanSpeak container. (Emphasis on running container. You cannot copy from an image) Ex: `docker cp <containerId>:/usr/local/cleanspeak/cleanspeak-management-interface/java/jre1.8.0_171/lib/security/cacerts cacerts`
+.. You can do this via `docker cp` from a running CleanSpeak container. (Emphasis on running container. You cannot copy from an image) Ex: `docker cp <containerId>:/usr/local/cleanspeak/java/current/lib/security/cacerts cacerts`
 . Add your cert to the copy of `cacerts` using `keytool -import -file ${CERT} -alias "${ALIAS}" -storepass changeit -keystore cacerts -noprompt`
 . When starting the images, mount the `cacerts` to the containers
-.. `docker run -p 8011:8011 -v $(pwd)/cacerts:/usr/local/cleanspeak/cleanspeak-management-interface/java/jre1.8.0_171/lib/security/cacerts cleanspeak/cleanspeak-management-interface:latest`
-.. `docker run -p 8001:8001 -v $(pwd)/cacerts:/usr/local/cleanspeak/cleanspeak-webservice/java/jre1.8.0_171/lib/security/cacerts cleanspeak/cleanspeak-webservice:latest`
+.. `docker run -p 8011:8011 -v $(pwd)/cacerts:/usr/local/cleanspeak/java/current/lib/security/cacerts cleanspeak/cleanspeak-management-interface:latest`
+.. `docker run -p 8001:8001 -v $(pwd)/cacerts:/usr/local/cleanspeak/java/current/lib/security/cacerts cleanspeak/cleanspeak-webservice:latest`
 
 ==== Docker (Solution 2)
 
@@ -65,8 +65,8 @@ FROM cleanspeak/cleanspeak-management-interface:latest
 
 COPY ./cert.pem /cert.pem
 
-## Patch the truststore in the java shipped with cleanspeak
-RUN /usr/local/cleanspeak/cleanspeak-management-interface/java/jre1.8.0_171/bin/keytool -import -file /cert.pem -alias "some_name_for_a_cert" -storepass changeit -keystore /usr/local/cleanspeak/cleanspeak-management-interface/java/jre1.8.0_171/lib/security/cacerts -noprompt
+## Patch the truststore in the java shipped with CleanSpeak
+RUN /usr/local/cleanspeak/java/current/bin/keytool -import -file /cert.pem -alias "some_name_for_a_cert" -storepass changeit -keystore /usr/local/cleanspeak/java/current/lib/security/cacerts -noprompt
 
 # Allows docker to simply call run on the image
 USER cleanspeak
@@ -81,8 +81,8 @@ FROM cleanspeak/cleanspeak-webservice:latest
 
 COPY ./cert.pem /cert.pem
 
-## Patch the truststore in the java shipped with cleanspeak
-RUN /usr/local/cleanspeak/cleanspeak-webservice/java/jre1.8.0_171/bin/keytool -import -file /cert.pem -alias "some_name_for_a_cert" -storepass changeit -keystore /usr/local/cleanspeak/cleanspeak-webservice/java/jre1.8.0_171/lib/security/cacerts -noprompt
+## Patch the truststore in the java shipped with CleanSpeak
+RUN /usr/local/cleanspeak/java/current/bin/keytool -import -file /cert.pem -alias "some_name_for_a_cert" -storepass changeit -keystore /usr/local/cleanspeak/java/current/lib/security/cacerts -noprompt
 
 # Allows docker to simply call run on the image
 USER cleanspeak
@@ -132,11 +132,6 @@ And finally, merge the new `cacerts` into the ones shipped in CleanSpeak with th
 
 [source,bash]
 ----
-# Management Interface
-keytool -importkeystore -srckeystore /usr/local/cleanspeak/cleanspeak-management-interface/java/jre1.8.0_171/rds.jks -destkeystore /usr/local/cleanspeak/cleanspeak-management-interface/java/jre1.8.0_171/lib/security/cacerts \
--deststorepass changeit -srcstorepass changeit -noprompt
-
-# Webservice
-keytool -importkeystore -srckeystore /usr/local/cleanspeak/cleanspeak-webservice/java/jre1.8.0_171/rds.jks -destkeystore /usr/local/cleanspeak/cleanspeak-webservice/java/jre1.8.0_171/lib/security/cacerts \
+keytool -importkeystore -srckeystore /usr/local/cleanspeak/java/current/rds.jks -destkeystore /usr/local/cleanspeak/java/current/lib/security/cacerts \
 -deststorepass changeit -srcstorepass changeit -noprompt
 ----

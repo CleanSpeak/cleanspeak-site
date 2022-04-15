@@ -31,11 +31,11 @@ LICENSE_ID=
 ```
 
 == Docker Services
-In the above example configuration, you will find a database, search, and CleanSpeak service. Read below to understand better how each service is configured.
+In the above example configuration, you will find a database, search, and CleanSpeak service. Read below to bette understand how each service is configured.
 
 === Database Service
 
-At a minimum, you will need to either set the `POSTGRES_PASSWORD` environment variable in the DB service section or, more ideally, set the value in the host environment and leave it out of the `docker-compose.yml` file. Ensure the other properties fit your requirements. Refer to the link:system-requirements[System Requirements] for database version support.
+At a minimum, you will need to either set the `POSTGRES_PASSWORD` environment variable in the `db` service section or, more ideally, set the value in the host environment and leave it out of the `docker-compose.yml` file. Ensure the other properties fit your requirements. Refer to the link:system-requirements[System Requirements] for database version support.
 
 === Search Service
 
