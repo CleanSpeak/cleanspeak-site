@@ -58,10 +58,10 @@ Some platforms give users the ability to report content natively inside of their
 
 ## Other best practices
 
-Keep your user guidelines updated. As your community evolves you may need to change certain facets of your guidelines to keep your community as you would like it and your brand reputation intact. 
-Allow a space for open discussion about your community guidelines. Whether by email, on your channels, etc. Keep people involved so that if they have any problems, they can reach out to whoever is in charge. This can also help boost transparency.  
-If you want to foster a strong community, refrain from being “power crazy,” for lack of a better term. If you see a conversation you do not like, there are many opportunities to try to resolve the issue before taking drastic action such as banning a user. Some actions include steering conversations in other directions (in the case of public forums), or reaching out to community guideline breakers individually. 
-Do not be afraid to have fun with it if it makes sense for you. Many of the community guidelines examples linked above help set the tone they would like for their community right from the beginning.
+- Keep your user guidelines updated. As your community evolves you may need to change certain facets of your guidelines to keep your community as you would like it and your brand reputation intact. 
+- Allow a space for open discussion about your community guidelines. Whether by email, on your channels, etc. Keep people involved so that if they have any problems, they can reach out to whoever is in charge. This can also help boost transparency.  
+- If you want to foster a strong community, refrain from being “power crazy,” for lack of a better term. If you see a conversation you do not like, there are many opportunities to try to resolve the issue before taking drastic action such as banning a user. Some actions include steering conversations in other directions (in the case of public forums), or reaching out to community guideline breakers individually. 
+- Do not be afraid to have fun with it if it makes sense for you. Many of the community guidelines examples linked above help set the tone they would like for their community right from the beginning.
 
 ## Conclusion
 
