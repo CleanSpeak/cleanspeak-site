@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
+Disallow: /resources/Combatting-Hate-and-Extremism-Whitepaper.pdf
 Sitemap: https://cleanspeak.com/sitemap.xml
