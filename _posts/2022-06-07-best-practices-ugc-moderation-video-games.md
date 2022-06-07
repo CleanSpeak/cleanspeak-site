@@ -1,6 +1,6 @@
 ---
 layout: blog-post
-Title: Best Practices for Moderating User-Generated Content in Video Games
+title: Best Practices for Moderating User-Generated Content in Video Games
 author: Iwodu Odesanmi
 author_image: "/images/blog/Iwodu.png"
 excerpt_separator: "<!--more-->"

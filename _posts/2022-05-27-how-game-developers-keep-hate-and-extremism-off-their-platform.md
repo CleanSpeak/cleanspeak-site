@@ -1,6 +1,6 @@
 ---
 layout: blog-post
-Title: How Game Developers Can Keep Hate and Extremism Off Their Platforms
+title: How Game Developers Can Keep Hate and Extremism Off Their Platforms
 author: Blair Ewalt
 author_image: "/images/blog/blair.jpg"
 excerpt_separator: "<!--more-->"
