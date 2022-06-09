@@ -13,6 +13,22 @@ Hide Stuff here
 // REMEMBER TO ADD MIGRATIONS TO upgrades-patches
 
 [role=release-note]
+== Version 3.32.2
+_Released Wednesday June 8th, 2022_
+
+=== Fixed
+* Improve validation when importing a blacklist in the UI that contains a malformed locale string.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/59[GitHub Issue #59]
+* Fix PDF extension when selecting the download report. Some browsers will not correctly infer the correct PDF extension, so the file may not automatically open with a PDF viewer.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/63[GitHub Issue #63]
+* Support Elasticsearch URLs containing credentials in the user-information portion of a URL that contain URL percent encoding.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/66[GitHub Issue #66]
+
+=== Internal
+* Upgraded from Java 17.0.1+12 to Java 17.0.3+7 LTS.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/67[GitHub Issue #67]
+
+[role=release-note]
 == Version 3.32.1
 _Released Friday February 18th, 2022_
 
