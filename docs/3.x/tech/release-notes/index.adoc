@@ -14,6 +14,20 @@ Hide Stuff here
 
 [role=release-note]
 == Version 3.32.2
+_Released Friday July 8th, 2022_
+
+=== Fixed
+
+* The weekly report PDF may fail to render if the content contains unicode characters because unicode cannot be rendered by the PDF fonts.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/22[GitHub Issue #22]
+* Fix up a few remaining uses of old email addresses or web addresses in CleanSpeak.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/68[GitHub Issue #68]
+* Support Elasticsearch URLs containing credentials in the user-information portion of a URL that contain URL percent encoded `:`. This is the completed fix for the issue identified and partially resolved in `3.32.2` under ttps://github.com/CleanSpeak/cleanspeak-issues/issues/66[GitHub Issue #66].
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/69[GitHub Issue #69]
+
+
+[role=release-note]
+== Version 3.32.2
 _Released Wednesday June 8th, 2022_
 
 === Fixed
