@@ -13,7 +13,7 @@ Hide Stuff here
 // REMEMBER TO ADD MIGRATIONS TO upgrades-patches
 
 [role=release-note]
-== Version 3.32.2
+== Version 3.32.3
 _Released Friday July 8th, 2022_
 
 === Fixed
