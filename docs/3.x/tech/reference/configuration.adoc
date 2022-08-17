@@ -22,7 +22,7 @@ C:\cleanspeak\config\cleanspeak.properties
 
 === Options
 
-The following table contains all of the configuration options that CleanSpeak uses. For your convenience, you may select the type of configuration you plan to use, and the names will be updated to correspond to your preference.
+The following table contains all the configuration options that CleanSpeak uses. For your convenience, you may select the type of configuration you plan to use, and the names will be updated to correspond to your preference.
 
 Display configuration values in format:
 ++++
@@ -37,6 +37,7 @@ label.select {
   align-items: center;
   display: inline-flex !important;
   margin: 0;
+  max-width: 250px;
   padding: 0;
   position: relative;
 }
@@ -131,8 +132,9 @@ by setting this value to `false`.
 |The email address used as in the from field when CleanSpeak sends emails. _Starting in version `3.4.0` email server configuration has moved to the Management Interface._
 // END: Starting in 3.4 this moved to the Management Interface
 
-|[field]#cleanspeak-management-interface.management-port# [type]#[Integer]#
-|The port number that CleanSpeak Management Interface will use for internal Tomcat administration.
+|[field]#cleanspeak-management-interface.additional-java-args# [type]#[String]#
+|
+include::docs/3.x/tech/reference/_property-additional-jvm-args.adoc[]
 
 |[field]#cleanspeak-management-interface.http-port# [type]#[Integer]#
 |The port number that CleanSpeak Management Interface will use to accept HTTP requests.
@@ -140,13 +142,25 @@ by setting this value to `false`.
 |[field]#cleanspeak-management-interface.https-port# [type]#[Integer]#
 |The port number that CleanSpeak Management Interface will use to accept HTTPS requests.
 
+|[field]#cleanspeak-management-interface.management-port# [type]#[Integer]#
+|The port number that CleanSpeak Management Interface will use for internal Tomcat administration.
+
 |[field]#cleanspeak-management-interface.memory# [type]#[String]#
 |
 include::docs/3.x/tech/reference/_property-memory.adoc[]
 
-|[field]#cleanspeak-management-interface.additional-java-args# [type]#[String]#
-|
-include::docs/3.x/tech/reference/_property-additional-jvm-args.adoc[]
+|[field]#cleanspeak-management-interface.runtime-mode# [type]#[String]# [default]#Defaults to `development`#
+|The CleanSpeak runtime mode. The runtime mode causes some features to be modified based upon this configuration.
+
+The possible values are:
+
+* development
+* production
+
+When in the `development` runtime mode, maintenance mode will interactively assist you configuring the database and connecting to Elasticsearch if configured. Once you move CleanSpeak into production, it is recommended that you modify the runtime mode to `production`. When in production runtime mode maintenance mode will no longer be available to you which means you can be certain that your system will be sitting waiting for human input to start the upgrade process. When in `production` mode you will either need to leverage Silent Mode to automatically apply database migrations, or you will need to apply the database migrations yourself (either by hand or via a script of some sort).
+
+|[field]#cleanspeak-management-interface.silent-mode# [type]#[String]# [default]#Defaults to `false`#
+|Determines if CleanSpeak should use Silent Mode during the startup process. Silent Mode automatically applies all database migrations during startup such that you do not need to run them manually. This is the preferred mode when in production.
 
 |[field]#cleanspeak-search-engine.transport-port# [type]#[Integer]#
 |The port that the search engine will use for optimized TCP communications instead of HTTP communications.
@@ -190,8 +204,9 @@ The following is an example of a configuration for two separate search engines, 
 |
 include::docs/3.x/tech/reference/_property-additional-jvm-args.adoc[]
 
-|[field]#cleanspeak-webservice.management-port# [type]#[Integer]#
-|The port number that CleanSpeak Webservice will use for internal Tomcat administration.
+|[field]#cleanspeak-webservice.additional-java-args# [type]#[String]#
+|
+include::docs/3.x/tech/reference/_property-additional-jvm-args.adoc[]
 
 |[field]#cleanspeak-webservice.http-port# [type]#[Integer]#
 |The port number that CleanSpeak Webservice will use to accept HTTP requests.
@@ -199,20 +214,32 @@ include::docs/3.x/tech/reference/_property-additional-jvm-args.adoc[]
 |[field]#cleanspeak-webservice.https-port# [type]#[Integer]#
 |The port number that CleanSpeak Webservice will use to accept HTTPS requests.
 
+|[field]#cleanspeak-webservice.management-port# [type]#[Integer]#
+|The port number that CleanSpeak Webservice will use for internal Tomcat administration.
+
+|[field]#cleanspeak-webservice.memory# [type]#[String]#
+|
+include::docs/3.x/tech/reference/_property-memory.adoc[]
+
+|[field]#cleanspeak-webservice.runtime-mode# [type]#[String]# [default]#Defaults to `development`#
+|The CleanSpeak runtime mode. The runtime mode causes some features to be modified based upon this configuration.
+
+The possible values are:
+
+* development
+* production
+
+When in the `development` runtime mode, maintenance mode will interactively assist you configuring the database and connecting to Elasticsearch if configured. Once you move CleanSpeak into production, it is recommended that you modify the runtime mode to `production`. When in production runtime mode maintenance mode will no longer be available to you which means you can be certain that your system will be sitting waiting for human input to start the upgrade process. When in `production` mode you will either need to leverage Silent Mode to automatically apply database migrations, or you will need to apply the database migrations yourself (either by hand or via a script of some sort).
+
+|[field]#cleanspeak-webservice.silent-mode# [type]#[String]# [default]#Defaults to `false`#
+|Determines if CleanSpeak should use Silent Mode during the startup process. Silent Mode automatically applies all database migrations during startup such that you do not need to run them manually. This is the preferred mode when in production.
+
 |[field]#cleanspeak-webservice.urls# [type]#[String]#
 |A comma separated list of CleanSpeak Webservice instances.
 
 The following is an example of a single webservice running on localhost.
 
 [block-quote]#`cleanspeak-webservice.urls=http://localhost:8001`#
-
-|[field]#cleanspeak-webservice.memory# [type]#[String]#
-|
-include::docs/3.x/tech/reference/_property-memory.adoc[]
-
-|[field]#cleanspeak-webservice.additional-java-args# [type]#[String]#
-|
-include::docs/3.x/tech/reference/_property-additional-jvm-args.adoc[]
 
 |[field]#cleanspeak.search-servers# [type]#[String]# [since]#Available since 3.23.1# [default]#Defaults to `http://localhost:8021`# [deprecated]#Deprecated#
 |
