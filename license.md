@@ -132,7 +132,7 @@ Under no circumstances shall the Licensee or its employees, or third parties exe
 
 ## 13. Advertising
 
-The Company may use Licensee's name, trademark, logo (or other ancillary material provided to it by Licensee) for advertising purposes without Licensee’s prior written approval. The Company will not to use Licensee's name, trademark, logo or other ancillary material in any manner which may harm the business or reputation of Licensee.
+The Company may use Licensee's name, trademark, logo (or other ancillary material provided to it by Licensee) for advertising purposes directly related to CleanSpeak without Licensee’s prior written approval. The Company will not to use Licensee's name, trademark, logo or other ancillary material in any manner which may harm the business or reputation of Licensee.
 
 ## 14. Third Party Software
 
