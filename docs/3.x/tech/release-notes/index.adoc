@@ -13,6 +13,16 @@ Hide Stuff here
 // REMEMBER TO ADD MIGRATIONS TO upgrades-patches
 
 [role=release-note]
+== Version 3.32.5
+_Released Sunday September 10th, 2023_
+
+=== Fixed
+
+* The Finnish inflector may fail when you configure a filter entry as Finnish and the word is entirely multi-byte unicode characters instead of ASCII.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/73[GitHub Issue #73]
+
+
+[role=release-note]
 == Version 3.32.4
 _Released Tuesday June 20th, 2023_
 
