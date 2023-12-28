@@ -72,6 +72,19 @@ collation-server = utf8mb4_bin
 
 This is a system-wide configuration option, so be certain that this change won’t impact other databases and applications on the same MySQL server. Not all of these configuration options may be available, depending on your database configuration. Once you have configured the available options, you may disable this feature if the startup still fails due to this validation. See `database.mysql.enforce-utf8mb4` in the link:../reference/configuration[Configuration] reference.
 
+### Install MySQL Connector
+
+In order to use MySQL with CleanSpeak, you also need to download and install the MySQL Connector for Java. This is a manual process due to the way that Oracle licenses MySQL. Follow these steps to get the MySQL Connector into the correct location so that CleanSpeak can make a connection to your MySQL database.
+
+1. Download the MySQL Connector version 8.0.33 or newer using the Platform Independent installer from the Oracle website here: https://dev.mysql.com/downloads/connector/j/8.0.html
+2. Unzip or untar the archive you downloaded
+3. Copy the file from the archive named `mysql-connector-j-<version>.jar` to the CleanSpeak library directory. This directory is located in the installation directory at `cleanspeak-management-interface/web/WEB-INF/lib` or `cleanspeak-webservice/web/WEB-INF/lib` depending upon the service you are installing. For example, if you installed `cleanspeak-webservice` using the DEB or RPM packages, this location will be `/usr/local/cleanspeak/cleanspeak-webservice/web/WEB-INF/lib`.
+
+If you are using the CleanSpeak Docker images, you may optionally rebuild the provided images with the MySQL JDBC connector. See the following examples.
+
+- https://github.com/CleanSpeak/cleanspeak-containers/blob/master/docker/cleanspeak/cleanspeak-management-interface-mysql/Dockerfile
+- https://github.com/CleanSpeak/cleanspeak-containers/blob/master/docker/cleanspeak/cleanspeak-webservice-mysql/Dockerfile
+
 === Installing PostgreSQL
 
 ==== Linux

@@ -13,6 +13,24 @@ Hide Stuff here
 // REMEMBER TO ADD MIGRATIONS TO upgrades-patches
 
 [role=release-note]
+== Version 3.33.0
+_Released Thursday December 28th, 2023_
+
+=== Changed
+* If you are using MySQL, the installation procedure has changed. Please review the installation guide to ensure you are able to download the MySQL JDBC connector as part of your installation process. See link:/docs/3.x/tech/installation-guide/database#install-mysql-connector[Install MySQL Connector] in the Database installation guide for additional details. If you need further assistance, please open a support ticket with CleanSpeak support.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/77[GitHub Issue #77]
+
+=== Fixed
+* When a phrase match is also upgraded to a username match, a filter request may return a `500` status code with an exception in the logs.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/74[GitHub Issue #74]
+
+=== Internal
+* Upgraded PostgreSQL JDBC driver from `42.3.1` to `42.7.1`
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/76[GitHub Issue #76]
+* Upgrade Apache Tomcat from `8.5.72` to `8.5.97`
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/78[GitHub Issue #78]
+
+[role=release-note]
 == Version 3.32.5
 _Released Sunday September 10th, 2023_
 
@@ -198,7 +216,7 @@ If you are upgrading from a version of CleanSpeak older than 3.4.0, you will nee
 
 include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 
-=== Changes
+=== Changed
 * Removed System V init.d scripts from the RPM and DEB packages and replaced them with SystemD service definitions.
 * Upgraded to Java 14.
 * Upgraded to support Elasticsearch 7.x (version 6.x is still supported as well).
@@ -673,7 +691,7 @@ include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 === New
 * A full UI refresh. We hope you like it.
 
-=== Changes
+=== Changed
 * To address some common confusion between the CleanSpeak Blacklist and Whitelist, the whitelist in the UI has been renamed to Kids Chat.
 * Notification Servers are now called Webhooks to better align with industry standard naming conventions.
 
