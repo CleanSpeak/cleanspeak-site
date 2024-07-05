@@ -1,7 +1,7 @@
 ---
 layout: doc
-title: CleanSpeak Database
-description: Install a database and setup the CleanSpeak schema
+title: CleanSpeak Database/Search
+description: Install a database/search and setup the CleanSpeak schema
 ---
 
 == Database Installation
@@ -108,3 +108,7 @@ $ sudo apt-get install postgresql-contrib
 ==== Windows or macOS
 
 If you are installing PostgreSQL on a platform that does not support RPM or DEB packages, you will need to manually download it from the PostgreSQL website here: https://www.postgresql.org/
+
+== Search Installation
+
+OpenSearch has a great write up at https://opensearch.org/docs/latest/install-and-configure/install-opensearch/index/ that describes the various ways to run OpenSearch. You can also use managed services like https://aws.amazon.com/opensearch-service/[AWS OpenSearch Service].
