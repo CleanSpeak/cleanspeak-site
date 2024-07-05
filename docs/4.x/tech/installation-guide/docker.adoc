@@ -1,0 +1,160 @@
+---
+layout: doc
+title: Using CleanSpeak on Docker
+description: Deploy and test CleanSpeak using a Docker container
+---
+
+:sectnumlevels: 0
+
+== Docker Compose
+
+The CleanSpeak Docker images may be found on https://hub.docker.com/u/cleanspeak/[Docker Hub]. Use our Docker Compose example if you’re looking for a complete configuration to get up and running quickly. The following is an example, and it may not be the most recent version. Refer to the following link in https://raw.githubusercontent.com/CleanSpeak/cleanspeak-containers/master/docker/cleanspeak/docker-compose.yml[GitHub] to find the latest version.
+
+```
+curl -o docker-compose.yml https://raw.githubusercontent.com/CleanSpeak/cleanspeak-containers/master/docker/cleanspeak/docker-compose.yml
+curl -o .env https://raw.githubusercontent.com/CleanSpeak/cleanspeak-containers/master/docker/cleanspeak/.env
+docker-compose up
+```
+
+The stock `.env` file will contain the following values, and you will want to modify the `DATABASE_PASSWORD` and ensure the `POSTGRES_USER` and `POSTGRES_PASSWORD` values are correct. You will also need to ensure that you add your license key to the `LICENSE_ID` variable. You may also override any of these values using environment variables.
+```
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=postgres
+DATABASE_USER=cleanspeak
+DATABASE_PASSWORD=hkaLBM3RVnyYeYeqE3WI1w2e4Avpy0Wd5O3s3
+
+ES_JAVA_OPTS=-Xms256m -Xmx256m
+
+CLEANSPEAK_MEMORY=256M
+
+LICENSE_ID=
+```
+
+== Docker Services
+In the above example configuration, you will find a database, search, and CleanSpeak service. Read below to bette understand how each service is configured.
+
+=== Database Service
+
+At a minimum, you will need to either set the `POSTGRES_PASSWORD` environment variable in the `db` service section or, more ideally, set the value in the host environment and leave it out of the `docker-compose.yml` file. Ensure the other properties fit your requirements. Refer to the link:system-requirements[System Requirements] for database version support.
+
+=== Search Service
+
+We currently are only supporting Elasticsearch 6.3.1, do not modify the image value. Let us know if you require a different version of Elasticsearch. The remainder of the properties can be changed to whatever you need.
+
+If you would like to add additional search nodes, simply copy and paste the service section named `search1` and create as many as you'd like naming them `search2`, `search3` for example. Each will require a named volume, you may increment the name of the volume as well, for example `es_data1`, `es_data2`, `es_data3`, etc.
+
+=== CleanSpeak Management Interface Service
+
+
+
+==== Silent Configuration
+All of the environment variables are options. If not provided, a default will be utilized. Suppose you wish to perform a silent configuration which means you will not stop in maintenance mode to configure the database or search engine. In that case, you must provide the following environment variables:
+
+* `DATABASE_URL`
+* `DATABASE_ROOT_USER`
+* `SEARCH_SERVERS`
+* `LICENSE_ID`
+
+These four variables, when configured correctly, will allow CleanSpeak to silently configure itself and go directly to the setup wizard. If they are omitted, CleanSpeak will start up in Maintenance mode and require you to configure the database and search engine interactively.
+
+==== Configuration
+Review the following environment variables to customize your deployment.
+
+[cols="3a,7a"]
+[.api]
+.Environment Variables
+|===
+|DATABASE_URL [optional]#Optional#
+|The JDBC URL that CleanSpeak can use to connect to the configured database.
+
+Consider the example below and review each part of the URL string as you may need to adjust it for your configuration.
+
+[block-quote]#jdbc:postgresql://db:5432/cleanspeak#
+
+* Database type: PostgreSQL
+* Database host: db
+* Database port: 5432
+* Database name: cleanspeak
+
+In the example above, notice we have specified the PostgreSQL JDBC type, a host of `db`, a port `5432` and a database name of `cleanspeak`. The host is the service name of the database configuration, in this case it is named `db`.
+
+You may also wish to connect to a remote database, in that case you will provide your own JDBC string URL and you will not require the `db` service in your configuration.
+
+Setting this environment variable will override the `database.url` in the Configuration file. See the link:../reference/configuration[Configuration Reference] for more information.
+
+|DATABASE_ROOT_USER [optional]#Optional# [default]#Defaults to `postgres` (The default for the postgres image)#
+|The database root user that is used to create the CleanSpeak schema and CleanSpeak user.
+
+Once CleanSpeak is configured and running this value is no longer used and is never persisted.
+
+|DATABASE_ROOT_PASSWORD [optional]#Optional# [default]#Defaults to `postgres` (The default for the postgres image)#
+|The database root password that is used to create the CleanSpeak schema and CleanSpeak user. It is recommended to leave the value of this variable empty as it is shown in the example. Using this configuration, the value will be picked up from the host environment. To use the value in this way, be sure to set this named environment value before calling `docker-compose up`.
+
+Once CleanSpeak is configured and running this value is no longer used and is never persisted.
+
+|DATABASE_USER [optional]#Optional# [default]#Defaults to `cleanspeak`#
+|The database user that will be created during configuration to own the CleanSpeak schema and to connect to the database at CleanSpeak runtime.
+
+Setting this environment variable will override the `database.username` in the Configuration file. See the link:../reference/configuration[Configuration Reference] for more information.
+
+|DATABASE_PASSWORD [optional]#Optional# [default]#Defaults to `cleanspeak`#
+|The database password that will be created during configuration to own the CleanSpeak schema and to connect to the database at CleanSpeak runtime. If you are deploying this into production it is extremely important that you sent this value to something other than the default.
+
+Setting this environment variable will override the `database.password` in the Configuration file. See the link:../reference/configuration[Configuration Reference] for more information.
+
+|CLEANSPEAK_MEMORY [optional]#Optional# [default]#defaults to `256M`#
+|The RAM to assign to the Java VM for CleanSpeak.
+
+Setting this environment variable will override the `cleanspeak-*.memory` in the Configuration file. See the link:../reference/configuration[Configuration Reference] for more information.
+
+|SEARCH_SERVERS [optional]#Optional# [default]#defaults to `http://localhost:9021`#
+|A comma separated listed of URLs to connect to one or more search servers.
+
+Setting this environment variable will override the `cleanspeak.search-servers` in the Configuration file. See the link:../reference/configuration[Configuration Reference] for more information.
+
+|LICENSE_ID [optional]#Optional#
+|Your License ID. You can find your License ID by logging into your account at https://account.cleanspeak.com/account/.
+
+|===
+
+== Production Deployment
+
+Elasticsearch has a few runtime requirements that may not be met by default on your host platform. Please review the Elasticsearch Docker production mode guide for more information.
+
+* https://www.elastic.co/guide/en/elasticsearch/reference/6.3/docker.html#docker-cli-run-prod-mode
+
+For example if startup is failing and you see the following in the logs, you will need to increase `vm.max_map_count` on your host VM.
+
+[.blockquote]
+----
+2018-11-22T12:32:06.779828954Z Nov 22, 2018 12:32:06.779 PM ERROR c.inversoft.maintenance.search.ElasticsearchSilentConfigurationWorkflowTask
+  - Silent configuration was unable to complete search configuration. Entering maintenance mode. State [SERVER_DOWN]
+
+2018-11-22T13:00:05.346558595Z ERROR: [2] bootstrap checks failed
+2018-11-22T13:00:05.346600195Z [1]: memory locking requested for elasticsearch process but memory is not locked
+2018-11-22T13:00:05.346606495Z [2]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
+----
+
+== Docker Images
+
+If you want to build your from our base images, the following Docker images are available.
+
+=== CleanSpeak Management Interface
+
+```
+docker pull cleanspeak/cleanspeak-management-interface
+```
+
+=== CleanSpeak Webservice
+
+```
+docker pull cleanspeak/cleanspeak-webservice
+```
+
+=== CleanSpeak Search
+
+We do not provide a CleanSpeak Search image as the default Elasticsearch images work great.
+
+```
+docker pull docker.elastic.co/elasticsearch/elasticsearch:7.17.0
+```

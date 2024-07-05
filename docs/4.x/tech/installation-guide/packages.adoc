@@ -1,0 +1,30 @@
+---
+layout: doc
+title: CleanSpeak Packages
+description: Determine which of the CleanSpeak packages you need to install
+---
+
+== Packages
+
+When you've navigated to the CleanSpeak Downloads page after logging into your CleanSpeak account https://account.cleanspeak.com/account/ you'll be presented with several packages to download. Review the following information to understand which packages you need to download. If your target platform is Linux, using the RPM or DEB packages is preferred and provides a simple installation process. Only ZIP files are provided for Windows and macOS.
+
+=== Database Downloads
+
+The database package contains the CleanSpeak schema and migration scripts that CleanSpeak provides to support version upgrades when database changes are made. In most cases, you will not need to use this package. Instead, both CleanSpeak Management Interface and CleanSpeak WebService will enter Maintenance Mode when it is started, and this will automatically create the database or upgrade it. However, if you need to perform unattended installs or upgrades of CleanSpeak, you will need to download this package for the schema and migration SQL scripts. You can review the link:cleanspeak-management-interface#advanced-installation[Advanced Installation] portion of the link:cleanspeak-management-interface[Install CleanSpeak Management Interface] section to learn more about unattended installations and upgrades.
+
+=== Management Interface Downloads
+
+The CleanSpeak Management Interface is a web front-end that you will use to configure the filter and moderation systems and moderate content and users. You will always need to download this package since it is the core component of CleanSpeak.
+
+=== WebService Downloads
+
+The CleansSpeak WebService is the web service that contains all of the CleanSpeak APIs. This is the main integration point for your application to integrate with CleanSpeak. You will always need to download this package since it is the core component of CleanSpeak.
+
+=== Search Engine Downloads
+
+The Search Engine package contains the Elasticsearch service that CleanSpeak uses to index and provides the ability to search for users and content. You will always need to download this package since it is the core component of CleanSpeak.
+[WARNING]
+====
+You must install and start the CleanSpeak Search Engine before starting either the CleanSpeak Management Interface or the CleanSpeak WebService.
+====
+
