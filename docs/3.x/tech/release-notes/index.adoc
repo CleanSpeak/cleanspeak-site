@@ -37,6 +37,7 @@ _Released Tuesday July 9th, 2024_
 
 === Fixed
 * In CleanSpeak Maintenance Mode (typically used on initial CleanSpeak installation), changing the Database type dropdown to postgresql properly changes the port to the default Postgres port of 5432.
+* When Maintenance Mode is enabled, the progress bar, after clicking Submit, now correctly communicates the upgrade is happening.
 
 === Removed
 * `cleanspeak-search-engine` is no longer distributed as a package. The product still uses ElasticSearch or OpenSearch as before, but **you must provide and maintain** a running search instance yourself. TODO - Reference clean install here.
