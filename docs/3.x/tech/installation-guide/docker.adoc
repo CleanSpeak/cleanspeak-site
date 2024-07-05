@@ -31,7 +31,7 @@ LICENSE_ID=
 ```
 
 == Docker Services
-In the above example configuration, you will find a database, search, and CleanSpeak service. Read below to bette understand how each service is configured.
+In the above example configuration, you will find a database, search, and CleanSpeak service. Read below to better understand how each service is configured.
 
 === Database Service
 
