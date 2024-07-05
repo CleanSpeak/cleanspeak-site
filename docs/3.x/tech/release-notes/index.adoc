@@ -28,6 +28,7 @@ _Released Tuesday July 9th, 2024_
 ** Previously, you would deploy a separate Management Interface and WebService. Now it's a single application. By default, the new CleanSpeak app will listen on port 8001.
 ** API endpoints, that were previously accessible on the WebService (e.g. `/content/item/filter`) should now be accessed via `/api`, e.g. `/api/content/item/filter`. The old endpoints still work, but as of 4.0.0, they are deprecated.
 ** `/status` and `/api/status` are the equivalent of the CleanSpeak 3.x Management Interface and WebService endpoints respectively. The main difference is that `/api/status` will check that the filter is functioning properly, in addition to the basic application.
+** The new cleanspeak log file is located on Linux systems at `/usr/local/cleanspeak/logs/cleanspeak-app.log` or `C:\cleanspeak\logs\cleanspeak-app.log` on Windows systems.
 * Unauthorized API requests now return an HTTP 403 status code. Only unauthenticated requests (no/wrong API key) return a 401 status code.
 * `/status`, `/api/status`, and `/prometheus/metrics` authentication/authorization requirements have changed. The endpoint now requires at least 1 of the following:
 ** Logged in user (via browser)
