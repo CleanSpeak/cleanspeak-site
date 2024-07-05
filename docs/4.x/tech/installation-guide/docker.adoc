@@ -25,13 +25,13 @@ DATABASE_PASSWORD=hkaLBM3RVnyYeYeqE3WI1w2e4Avpy0Wd5O3s3
 
 ES_JAVA_OPTS=-Xms256m -Xmx256m
 
-CLEANSPEAK_MEMORY=256M
+CLEANSPEAK_APP_MEMORY=256M
 
 LICENSE_ID=
 ```
 
 == Docker Services
-In the above example configuration, you will find a database, search, and CleanSpeak service. Read below to bette understand how each service is configured.
+In the above example configuration, you will find a database, search, and CleanSpeak service. Read below to better understand how each service is configured.
 
 === Database Service
 
@@ -39,11 +39,11 @@ At a minimum, you will need to either set the `POSTGRES_PASSWORD` environment va
 
 === Search Service
 
-We currently are only supporting Elasticsearch 6.3.1, do not modify the image value. Let us know if you require a different version of Elasticsearch. The remainder of the properties can be changed to whatever you need.
+The image uses OpenSearch 2.x.
 
 If you would like to add additional search nodes, simply copy and paste the service section named `search1` and create as many as you'd like naming them `search2`, `search3` for example. Each will require a named volume, you may increment the name of the volume as well, for example `es_data1`, `es_data2`, `es_data3`, etc.
 
-=== CleanSpeak Management Interface Service
+=== CleanSpeak Application Service
 
 
 
@@ -102,7 +102,7 @@ Setting this environment variable will override the `database.username` in the C
 
 Setting this environment variable will override the `database.password` in the Configuration file. See the link:../reference/configuration[Configuration Reference] for more information.
 
-|CLEANSPEAK_MEMORY [optional]#Optional# [default]#defaults to `256M`#
+|CLEANSPEAK_APP_MEMORY [optional]#Optional# [default]#defaults to `256M`#
 |The RAM to assign to the Java VM for CleanSpeak.
 
 Setting this environment variable will override the `cleanspeak-*.memory` in the Configuration file. See the link:../reference/configuration[Configuration Reference] for more information.
@@ -119,9 +119,9 @@ Setting this environment variable will override the `cleanspeak.search-servers` 
 
 == Production Deployment
 
-Elasticsearch has a few runtime requirements that may not be met by default on your host platform. Please review the Elasticsearch Docker production mode guide for more information.
+OpenSearch has a few runtime requirements that may not be met by default on your host platform. Please review the Elasticsearch Docker production mode guide for more information.
 
-* https://www.elastic.co/guide/en/elasticsearch/reference/6.3/docker.html#docker-cli-run-prod-mode
+* https://opensearch.org/docs/latest/install-and-configure/install-opensearch/docker/#configure-important-host-settings
 
 For example if startup is failing and you see the following in the logs, you will need to increase `vm.max_map_count` on your host VM.
 
@@ -139,22 +139,16 @@ For example if startup is failing and you see the following in the logs, you wil
 
 If you want to build your from our base images, the following Docker images are available.
 
-=== CleanSpeak Management Interface
+=== CleanSpeak Application
 
 ```
-docker pull cleanspeak/cleanspeak-management-interface
-```
-
-=== CleanSpeak Webservice
-
-```
-docker pull cleanspeak/cleanspeak-webservice
+docker pull cleanspeak/cleanspeak-app
 ```
 
 === CleanSpeak Search
 
-We do not provide a CleanSpeak Search image as the default Elasticsearch images work great.
+We do not provide a CleanSpeak Search image as the default OpenSearch images work great.
 
 ```
-docker pull docker.elastic.co/elasticsearch/elasticsearch:7.17.0
+docker pull opensearchproject/opensearch:2
 ```
