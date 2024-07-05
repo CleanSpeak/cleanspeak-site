@@ -5,9 +5,9 @@ description: Server and third party software requirements necessary to run Clean
 ---
 
 === Hardware Sizing
-CleanSpeak is an efficient high performance piece of software. The main factor in determining your hardware needs is whether you will be storing content or not. When you store content you'll need to properly size the system to manage the database load. The hardware requirements depend on the server load which is primarily impacted by the volume of content being filtered and persisted by CleanSpeak and the number of moderators you'll have logged into the CleanSpeak Management Interface searching content and taking moderation actions.
+CleanSpeak is an efficient high performance piece of software. The main factor in determining your hardware needs is whether you will be storing content or not. When you store content you'll need to properly size the system to manage the database load. The hardware requirements depend on the server load which is primarily impacted by the volume of content being filtered and persisted by CleanSpeak and the number of moderators you'll have logged into the CleanSpeak Application searching content and taking moderation actions.
 
-If you do not intend to store content, which means you'll either be using the link:../apis/content#filtering-content[Filter Content API] or will be configuring your CleanSpeak Application to not store content, the database and disk speeds are not crucial to performance of CleanSpeak. With this type of usage you may choose to run the database and all of the CleanSpeak web services on the same system. Be aware that running all services on the same system does present a single point of failure in your architecture.
+If you do not intend to store content, which means you'll either be using the link:../apis/content#filtering-content[Filter Content API] or will be configuring your CleanSpeak Application to not store content, the database and disk speeds are not crucial to performance of CleanSpeak. With this type of usage you may choose to run the database and the CleanSpeak Application on the same system. Be aware that running all services on the same system does present a single point of failure in your architecture.
 
 *CleanSpeak Resource Usage Overview:*
 
@@ -36,11 +36,7 @@ CleanSpeak is capable of running on most modern operating systems. Below is a li
 Many other operating systems can run CleanSpeak but are not officially supported. Any operating system capable of running the version of Java expected by CleanSpeak should be capable of running CleanSpeak.
 
 === Java
-If you install CleanSpeak via the ZIP package before version 3.1.4, you must install Java JDK 1.8 manually. If you're using CleanSpeak version 3.1.4 or later, Java is bundled in the downloaded package and there is no additional configuration required.
-
-* Version 3.32.0 and beyond will download and utilize Java 17
-* Versions 3.30.0 to 3.31.4 will download and utilize Java 14
-* Anything older than version 3.30.0 will run on Java 8
+Java is bundled in the downloaded package and there is no additional configuration required.
 
 === Database
 CleanSpeak supports the following two databases.
@@ -49,11 +45,11 @@ CleanSpeak supports the following two databases.
 * PostgreSQL 10 or newer
 
 === Availability
-If you're planning your architecture for high availability, we recommend separating the CleanSpeak web services and database onto different servers. CleanSpeak is comprised of a database and three web services: the Search Engine, WebService API, and the Management Interface. Each of these components communicates through a network connection so they can run on the same server or separate servers to accommodate availability requirements.
+If you're planning your architecture for high availability, we recommend separating the CleanSpeak Application and database onto different servers. CleanSpeak is comprised of a database, search engine, and one web service (CleanSpeak Application). Each of these components communicates through a network connection so they can run on the same server or separate servers to accommodate availability requirements.
 
-A common enterprise topology example is provided below. In this example, a load balancer is used to distribute the API requests between two instances of the CleanSpeak WebService. Each WebService and Management Interface server has a connection to the same database. Only one server is running the CleanSpeak Management Interface as this service does not usually need to be redundant. If you are using the Moderation capabilities and require human moderators to have access to the CleanSpeak Management Interface to perform moderation tasks, this webservice should also be configured as redundant.
+A common enterprise topology example is provided below. In this example, a load balancer is used to distribute the API requests between two instances of the CleanSpeak Application. Each CleanSpeak Application server has a connection to the same database.
 
-Note that the CleanSpeak WebService will continue to operate even if the CleanSpeak Management Interface is not available. The database can be clustered or if you’re using something like Amazon RDS, there is some inherent redundancy already built into the system.
+The database can be clustered or if you’re using something like Amazon RDS, there is some inherent redundancy already built into the system.
 
 CleanSpeak utilizes Elasticsearch which natively supports clustering. This service may also be horizontally scaled for redundancy and performance reasons.
 
