@@ -1,7 +1,12 @@
 <footer>
   <div>
     <div>
+      {% if page.url contains "3.x" %}
       <p><em>CleanSpeak Documentation 3.x</em></p>
+      {% endif %}
+      {% if page.url contains "4.x" %}
+      <p><em>CleanSpeak Documentation 4.x</em></p>
+      {% endif %}
     </div>
     <div>
       <p>
