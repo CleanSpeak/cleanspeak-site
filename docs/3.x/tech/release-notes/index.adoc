@@ -38,10 +38,11 @@ _Released Tuesday July 9th, 2024_
 * In CleanSpeak Maintenance Mode (typically used on initial CleanSpeak installation), changing the Database type dropdown to postgresql properly changes the port to the default Postgres port of 5432.
 
 === Removed
-* `cleanspeak-search-engine` is no longer distributed as a package. The product still uses ElasticSearch or OpenSearch as before, but you must provide a running search instance yourself. TODO - Reference clean install here.
+* `cleanspeak-search-engine` is no longer distributed as a package. The product still uses ElasticSearch or OpenSearch as before, but **you must provide and maintain** a running search instance yourself. TODO - Reference clean install here.
 
 === Internal
 * Remove Apache Tomcat as the underlying application server, in favor of a more modern HTTP server.
+* Upgraded Java from `17.0.3+7` to `17.0.8.1+1`
 * Upgraded PostgreSQL JDBC driver from `42.7.1` to `42.7.2`
 * Upgraded Elasticsearch client from version `7.17.16` to `8.12.2`
 ** Daniel - we have a lot of dependency changes with this release but it seems like past release notes only mentioned major deps.
