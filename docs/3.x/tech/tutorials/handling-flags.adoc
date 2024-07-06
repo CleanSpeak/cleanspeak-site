@@ -29,7 +29,7 @@ curl -s -XPOST \
              "reporterId": "91303ce2-ee40-48e7-98dc-354c051d0b78" \
            } \
          }' \
-     http://localhost:8011/content/user/flag/ec37ab10-9ba1-11e6-bdf4-0800200c9a66
+     http://localhost:8001/content/user/flag/ec37ab10-9ba1-11e6-bdf4-0800200c9a66
 ----
 
 The key components of this API call are as follows:
@@ -68,7 +68,7 @@ curl -s -XPOST \
              "reporterId": "91303ce2-ee40-48e7-98dc-354c051d0b78" \
            }
          }' \
-     http://localhost:8011/content/user/flag/ec37ab10-9ba1-11e6-bdf4-0800200c9a66
+     http://localhost:8001/content/user/flag/ec37ab10-9ba1-11e6-bdf4-0800200c9a66
 ----
 
 The key components of this API call are as follows:
