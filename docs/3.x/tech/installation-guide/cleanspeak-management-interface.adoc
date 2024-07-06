@@ -183,7 +183,7 @@ psql -Ucleanspeak cleanspeak < postgresql.sql
 
 === Configuration
 
-Before starting CleanSpeak Management Interface for the first time, you'll need to add your license Id and verify your database connection in the the CleanSpeak configuration. The name of this file is `cleanspeak.properties`.
+Before starting CleanSpeak Management Interface for the first time, you'll need to add your license Id and verify your database connection in the CleanSpeak configuration. The name of this file is `cleanspeak.properties`.
 
 The configuration file may be found in the following directory, assuming you installed it in the default locations. If you have installed it in an alternate location, the path to this file will be different.
 

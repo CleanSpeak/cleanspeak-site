@@ -6,7 +6,7 @@
 |The flag object.
 
 |[field]#flag.applicationId# [type]#[String]# [required]#Required#
-|The Id of the application the the flag was sent from. For example if the user flag originated from your chat application, you would specify the Id of the CleanSpeak application being used for your chat content.
+|The Id of the application the flag was sent from. For example if the user flag originated from your chat application, you would specify the Id of the CleanSpeak application being used for your chat content.
 
 |[field]#flag.comment# [type]#[String]# [optional]#Optional#
 |An optional description to provide additional details for the reason the content user was flagged.
