@@ -1,0 +1,11 @@
+scrape_configs:
+  - job_name: CleanSpeak
+    metrics_path: /prometheus/metrics
+    scheme: http
+    static_configs:
+      - targets: ['host.docker.internal:8001']
+    basic_auth:
+      # this should literally be apikey
+      username: "apikey"
+      # Put your key, configured in CleanSpeak, here
+      password: "your_api_key"

@@ -14,13 +14,22 @@ Available since `3.25.0`
 Prometheus is a tool to monitor metrics and setup alerts in the case that some metric has responded negatively for an extended period. Setting this up with CleanSpeak is easy.
 
 === Setup
-The only requirement to hookup CleanSpeak is to direct Prometheus to the CleanSpeak endpoints. We used the following configuration for a CleanSpeak instance running locally on the docker host. (You can reach the docker host using the hostname `host.docker.internal` on macOS and Windows. By default the CleanSpeak Management Interface runs on `8011` and CleanSpeak Webservice runs on `8001`)
+
+The primary requirement to hookup CleanSpeak is to direct Prometheus to the CleanSpeak endpoints. We used the following configuration for a CleanSpeak instance running locally on the docker host. (You can reach the docker host using the hostname `host.docker.internal` on macOS and Windows. By default, for 4.x, CleanSpeak runs on `8001` and for 3.x the CleanSpeak Management Interface runs on `8011` and CleanSpeak Webservice runs on `8001`)
 
 [source,yaml]
-.prometheus.yaml
+.prometheus.yaml (3x)
 ----
 include::docs/3.x/tech/src/yaml/prometheus.yaml[]
 ----
+
+[source,yaml]
+.prometheus.yaml (4x)
+----
+include::docs/4.x/tech/src/yaml/prometheus.yaml[]
+----
+
+(NOTE that in 4.x, you must either supply an API key or connect from localhost with `cleanspeak-app.local-metrics.enabled` in the config file.
 
 We then started prometheus with
 [source,bash]
