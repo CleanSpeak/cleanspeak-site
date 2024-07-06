@@ -10,8 +10,8 @@ When you've navigated to the CleanSpeak Downloads page after logging into your C
 
 === Database Downloads
 
-The database package contains the CleanSpeak schema and migration scripts that CleanSpeak provides to support version upgrades when database changes are made. In most cases, you will not need to use this package. Instead, the CleanSpeak Application will enter Maintenance Mode when it is started, and this will automatically create the database or upgrade it. However, if you need to perform unattended installs or upgrades of CleanSpeak, you will need to download this package for the schema and migration SQL scripts. You can review the link:cleanspeak-app#advanced-installation[Advanced Installation] portion of the link:cleanspeak-app[Install CleanSpeak Application] section to learn more about unattended installations and upgrades.
+The database package contains the CleanSpeak schema and migration scripts that CleanSpeak provides to support version upgrades when database changes are made. In most cases, you will not need to use this package. Instead, CleanSpeak will enter Maintenance Mode when it is started, and this will automatically create the database or upgrade it. However, if you need to perform unattended installs or upgrades of CleanSpeak, you will need to download this package for the schema and migration SQL scripts. You can review the link:cleanspeak-app#advanced-installation[Advanced Installation] portion of the link:cleanspeak-app[Install CleanSpeak] section to learn more about unattended installations and upgrades.
 
-=== CleanSpeak Application Downloads
+=== CleanSpeak Downloads
 
 You will always need to download this package since it is the core component of CleanSpeak.

@@ -1,18 +1,18 @@
 ---
 layout: doc
-title: CleanSpeak Application Installation
-description: Install the CleanSpeak Application bundle that allows you to configure CleanSpeak and moderate your content and users
+title: CleanSpeak Installation
+description: Install the CleanSpeak bundle that allows you to configure CleanSpeak and moderate your content and users
 ---
 
 == Download the Packages
 
-This guide will assist you with installing the CleanSpeak Application on your server (Linux, macOS, or Windows) and works equally well for development environments.
+This guide will assist you with installing CleanSpeak on your server (Linux, macOS, or Windows) and works equally well for development environments.
 
-Log into the CleanSpeak website at https://account.cleanspeak.com/account/, navigate to the Licenses section, and click on Download CleanSpeak. You will need to download the CleanSpeak Application package that matches the operating system you will be installing CleanSpeak on.
+Log into the CleanSpeak website at https://account.cleanspeak.com/account/, navigate to the Licenses section, and click on Download CleanSpeak. You will need to download the CleanSpeak package that matches the operating system you will be installing CleanSpeak on.
 
 == Red Hat
 
-Use the RPM bundle to install on a Red Hat system (including Fedora and CentOS). Execute this command to install the CleanSpeak Application RPM (replace with the correct `<version>` number):
+Use the RPM bundle to install on a Red Hat system (including Fedora and CentOS). Execute this command to install the CleanSpeak RPM (replace with the correct `<version>` number):
 
 [source,shell]
 ----
@@ -21,7 +21,7 @@ $ sudo rpm -i cleanspeak-app-<version>.rpm
 
 == Debian
 
-Use the DEB bundle to install on a Debian system (including Ubuntu, Mint, and Debian base). Execute this command to install the CleanSpeak Application DEB (replace `<version>` with the correct version number):
+Use the DEB bundle to install on a Debian system (including Ubuntu, Mint, and Debian base). Execute this command to install the CleanSpeak DEB (replace `<version>` with the correct version number):
 
 [source,shell]
 ----
@@ -30,7 +30,7 @@ $ sudo dpkg -i cleanspeak-app-<version>.deb
 
 == macOS
 
-To install on macOS, use the ZIP bundle. Extract the CleanSpeak Application ZIP file anywhere on the file system. Remember where you extract the file. This location will be referred to as `CLEANSPEAK_HOME`. We suggest extracting this file to a directory like `/usr/local/cleanspeak`.
+To install on macOS, use the ZIP bundle. Extract the CleanSpeak ZIP file anywhere on the file system. Remember where you extract the file. This location will be referred to as `CLEANSPEAK_HOME`. We suggest extracting this file to a directory like `/usr/local/cleanspeak`.
 
 [NOTE]
 ====
@@ -48,7 +48,7 @@ Once the zip bundle has been extracted, the directory structure should look simi
 
 == Windows
 
-To install on Windows, use the ZIP bundle. Extract the CleanSpeak Application ZIP file anywhere on the file system. Remember where you extract the file. This location will be referred to as `CLEANSPEAK_HOME`. We suggest extracting this file to a directory such as `C:\cleanspeak` on Windows.
+To install on Windows, use the ZIP bundle. Extract the CleanSpeak ZIP file anywhere on the file system. Remember where you extract the file. This location will be referred to as `CLEANSPEAK_HOME`. We suggest extracting this file to a directory such as `C:\cleanspeak` on Windows.
 
 Once the zip bundle has been extracted, the directory structure should look similar. If you installed somewhere other than the default `CLEANSPEAK_HOME`, your directory structure would be different, this is only shown as an example.
 
@@ -69,7 +69,7 @@ C:\cleanspeak\cleanspeak-app\bin>CleanSpeakApp.exe /install
 
 == Service Name
 
-As long as your installation method installed CleanSpeak Application as a service, the service name will be as follows:
+As long as your installation method installed CleanSpeak as a service, the service name will be as follows:
 
 [cols="4h,6m"]
 |===
@@ -79,9 +79,9 @@ As long as your installation method installed CleanSpeak Application as a servic
 
 You can use the operating system commands to start, stop and check the status of CleanSpeak using this service name.
 
-== Start CleanSpeak App
+== Start CleanSpeak
 
-Next, you need to start CleanSpeak Application so that you can enter Maintenance Mode and allow CleanSpeak to create the database. Use the instructions below to start CleanSpeak based on the platform you installed it on. Also, note that the `CLEANSPEAK_HOME` directory is where you installed the CleanSpeak Application.
+Next, you need to start CleanSpeak so that you can enter Maintenance Mode and allow CleanSpeak to create the database. Use the instructions below to start CleanSpeak based on the platform you installed it on. Also, note that the `CLEANSPEAK_HOME` directory is where you installed CleanSpeak.
 
 [NOTE]
 ====
@@ -117,7 +117,7 @@ C:\> net start CleanSpeakApp
 
 == Maintenance Mode
 
-You will access the CleanSpeak Maintenance Mode setup via the browser. If you installed the CleanSpeak Application on your local machine, you'd access this interface by opening \http://localhost:8001 in your browser. If CleanSpeak is running on a remote server, change the server name in the URL to match your server's name.
+You will access the CleanSpeak Maintenance Mode setup via the browser. If you installed CleanSpeak on your local machine, you'd access this interface by opening \http://localhost:8001 in your browser. If CleanSpeak is running on a remote server, change the server name in the URL to match your server's name.
 
 The first step of Maintenance Mode will prompt you to to enter your database details with a screen like this:
 
@@ -131,11 +131,11 @@ You should see a screen that looks like this:
 
 image::maintenance-mode-license.png[Maintenance Mode License Page,width=1200]
 
-After you enter your license ID and your first user's email address and password, the CleanSpeak Application will be fully installed, configured, and running.
+After you enter your license ID and your first user's email address and password, CleanSpeak will be fully installed, configured, and running.
 
 == Advanced Installation
 
-These instructions will assist you in editing the CleanSpeak Application configuration file and installing the database schema via the command-line. You can skip this section if you used Maintenance Mode to configure the CleanSpeak Application.
+These instructions will assist you in editing the CleanSpeak configuration file and installing the database schema via the command-line. You can skip this section if you used Maintenance Mode to configure CleanSpeak.
 
 === Database Schema
 
@@ -179,7 +179,7 @@ psql -Ucleanspeak cleanspeak < postgresql.sql
 
 === Configuration
 
-Before starting the CleanSpeak Application for the first time, you'll need to add your license Id and verify your database connection in the CleanSpeak configuration. The name of this file is `cleanspeak.properties`.
+Before starting CleanSpeak for the first time, you'll need to add your license Id and verify your database connection in the CleanSpeak configuration. The name of this file is `cleanspeak.properties`.
 
 The configuration file may be found in the following directory, assuming you installed it in the default locations. If you have installed it in an alternate location, the path to this file will be different.
 
@@ -209,4 +209,4 @@ database.username=cleanspeak
 database.password=cleanspeak
 ----
 
-The CleanSpeak Application should now be configured, the database should be created, and everything should be ready to run. You can start the the CleanSpeak Application using the instructions in the <<Start CleanSpeak App, Start the CleanSpeak Application>> section above.
+CleanSpeak should now be configured, the database should be created, and everything should be ready to run. You can start CleanSpeak using the instructions in the <<Start CleanSpeak, Start CleanSpeak>> section above.

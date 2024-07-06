@@ -14,13 +14,13 @@ support@cleanspeak.com if you have additional questions.
 === Required ports
 See the link:../reference/configuration[Configuration Reference] for more information on default port configuration. The documentation below assumes the default port configuration.
 
-**CleanSpeak Application**
+**CleanSpeak**
 
 To access CleanSpeak, you'll need to open port `8001`.
 
 **ElasticSearch/OpenSearch**
 
-Suppose ElasticSearch/OpenSearch is running on the same system as the CleanSpeak Application. If you're only running a single instance of CleanSpeak, then no external ports should be allowed for CleanSpeak Search Engine. In this scenario, the CleanSpeak Application will access the Elasticsearch service on port `9200` on the localhost address, and traffic to ports `9200` and `9300` can be blocked from any address with the exception of the localhost.
+Suppose ElasticSearch/OpenSearch is running on the same system as CleanSpeak. If you're only running a single instance of CleanSpeak, then no external ports should be allowed for CleanSpeak Search Engine. In this scenario, CleanSpeak will access the Elasticsearch service on port `9200` on the localhost address, and traffic to ports `9200` and `9300` can be blocked from any address with the exception of the localhost.
 
 If CleanSpeak services are installed on multiple servers, and those servers can communicate across a private network using a site-local address, then in this scenario, you will need to allow access to ports `9200` and `9300` on the site-local IP address in addition to the localhost address.
 

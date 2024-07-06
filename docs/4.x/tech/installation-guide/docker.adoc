@@ -43,7 +43,7 @@ The image uses OpenSearch 2.x.
 
 If you would like to add additional search nodes, simply copy and paste the service section named `search1` and create as many as you'd like naming them `search2`, `search3` for example. Each will require a named volume, you may increment the name of the volume as well, for example `es_data1`, `es_data2`, `es_data3`, etc.
 
-=== CleanSpeak Application Service
+=== CleanSpeak Service
 
 
 
@@ -139,7 +139,7 @@ For example if startup is failing and you see the following in the logs, you wil
 
 If you want to build your from our base images, the following Docker images are available.
 
-=== CleanSpeak Application
+=== CleanSpeak
 
 ```
 docker pull cleanspeak/cleanspeak-app
