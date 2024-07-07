@@ -15,12 +15,18 @@ Content Users are also automatically created when content is sent to the Moderat
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#POST# [uri]#/content/user/`\{contentUserId\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#POST# [uri]#/api/content/user/`\{contentUserId\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -48,12 +54,18 @@ This API is used to retrieve an existing Content User.
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/content/user/`\{contentUserId\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/content/user/`\{contentUserId\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -79,12 +91,18 @@ This API is used to update an existing Content User.
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#PUT# [uri]#/content/user/`\{contentUserId\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#PUT# [uri]#/api/content/user/`\{contentUserId\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -117,12 +135,18 @@ This might be necessary for https://www.ftc.gov/enforcement/rules/rulemaking-reg
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#DELETE# [uri]#/content/user/`\{contentUserId\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#DELETE# [uri]#/api/content/user/`\{contentUserId\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -144,12 +168,18 @@ For example, a user may flag or report another user. In most forums and games, p
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#POST# [uri]#/content/user/flag/`\{contentUserId\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#POST# [uri]#/api/content/user/flag/`\{contentUserId\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -164,7 +194,7 @@ include::docs/3.x/tech/apis/_flag-content-user-request-body.adoc[]
 
 :no_body:
 :code_404:
-  include::docs/3.x/tech/apis/_standard-post-response-codes.adoc[]
+include::docs/3.x/tech/apis/_standard-post-response-codes.adoc[]
 
 // Unset the variables used in this part.
 :no_body!:
