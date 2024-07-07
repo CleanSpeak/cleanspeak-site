@@ -45,12 +45,18 @@ The following configuration is not contained in the backup and as such will also
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/system/backup#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/system/backup#
+--
+				
 [.example]
 --
 In the following cURL example a backup is requested and saved to a file named `backup.zip`. Note this example has omitted the required `Authorization` header, see link:authentication[Authentication].
@@ -89,12 +95,18 @@ It is recommended that if you intend to use the backup and restore APIs in a pro
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#POST# [uri]#/system/restore#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#POST# [uri]#/api/system/restore#
+--
+				
 [.example]
 --
 The following cURL example assumes a file named `backup.zip` exists in the current directory. Note this example has omitted the required `Authorization` header, see link:authentication[Authentication].

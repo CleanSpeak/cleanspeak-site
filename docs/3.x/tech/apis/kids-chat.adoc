@@ -50,12 +50,18 @@ This API is used to retrieve the entire Whitelist. You should use this API if yo
 The Whitelist may contain in excess of 10,000 words and disallowed phrases. This API will return the entire list in the response body which may be several megabytes in size.
 ====
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/filter/whitelist#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/filter/whitelist#
+--
+				
 === Response
 
 // Get Never returns 400 or 404
@@ -80,12 +86,18 @@ Available since 3.9.0
 
 === Retrieve by Id
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/filter/whitelist/allowed/`\{id\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/filter/whitelist/allowed/`\{id\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -96,12 +108,18 @@ Available since 3.9.0
 
 === Retrieve by Text and Locale
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/filter/whitelist/allowed``?text=\{text\}&locale=\{locale\}``#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/filter/whitelist/allowed``?text=\{text\}&locale=\{locale\}``#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -128,12 +146,18 @@ Available since 3.9.0
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/filter/whitelist/allowed``?startRow={startRow}&numberOfResults={numberOfResults}&sort[0].field={sort.field}&sort[0].order={sort.order}``#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/filter/whitelist/allowed``?startRow={startRow}&numberOfResults={numberOfResults}&sort[0].field={sort.field}&sort[0].order={sort.order}``#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -184,12 +208,18 @@ Available since 3.11.0
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/filter/whitelist/allowed/search``?text={text}&startRow={startRow}&numberOfResults={numberofResults}``#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/filter/whitelist/allowed/search``?text={text}&startRow={startRow}&numberOfResults={numberofResults}``#
+--
+				
 [NOTE]
 ====
 Only a select few options are shown in the example url above. See below for all options.
@@ -249,12 +279,18 @@ Available since 3.9.0
 
 === Delete by Id
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#DELETE# [uri]#/filter/whitelist/allowed/`\{id\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#DELETE# [uri]#/api/filter/whitelist/allowed/`\{id\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -276,12 +312,18 @@ Available since 3.9.0
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#POST# [uri]#/filter/whitelist/allowed#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#POST# [uri]#/api/filter/whitelist/allowed#
+--
+				
 include::docs/3.x/tech/apis/allowed/_whitelist-allowed-request-body.adoc[]
 
 === Response
@@ -299,12 +341,18 @@ Available since 3.9.0
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#PUT# [uri]#/filter/whitelist/allowed/`\{id\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#PUT# [uri]#/api/filter/whitelist/allowed/`\{id\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -330,12 +378,18 @@ Available since 3.9.0
 
 === Retrieve by Id
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/filter/whitelist/tag/``{id}``#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/filter/whitelist/tag/``{id}``#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -346,12 +400,18 @@ Available since 3.9.0
 
 === Retrieve by Name
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/filter/whitelist/tag``?name={name}``#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/filter/whitelist/tag``?name={name}``#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -375,12 +435,18 @@ Available since 3.9.0
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/filter/whitelist/tag#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/filter/whitelist/tag#
+--
+				
 === Response
 
 :never_missing:
@@ -398,12 +464,18 @@ Available since 3.9.0
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#DELETE# [uri]#/filter/whitelist/tag/``{id}``#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#DELETE# [uri]#/api/filter/whitelist/tag/``{id}``#
+--
+				
 === Response
 
 include::docs/3.x/tech/apis/_standard-delete-response-codes.adoc[]
@@ -417,12 +489,18 @@ Available since 3.9.0
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#POST# [uri]#/filter/whitelist/tag#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#POST# [uri]#/api/filter/whitelist/tag#
+--
+				
 include::docs/3.x/tech/apis/tag/_whitelist-tag-request.adoc[]
 
 === Response
@@ -442,12 +520,18 @@ Retrieve a disallowed phrase by Id.
 Available since 3.10.0
 ====
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/filter/whitelist/disallowed-phrase/``{id}``#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/filter/whitelist/disallowed-phrase/``{id}``#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -473,12 +557,18 @@ This API retrieves all of the disallowed phrases at once.
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/filter/whitelist/disallowed-phrase#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/filter/whitelist/disallowed-phrase#
+--
+				
 === Response
 
 :never_missing:
@@ -496,12 +586,18 @@ Available since 3.10.0
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/filter/whitelist/disallowed-phrase/``{id}``#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/filter/whitelist/disallowed-phrase/``{id}``#
+--
+				
 [cols="3a,7a"]
 [.api]
 |===
@@ -522,12 +618,18 @@ Available since 3.10.0
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#POST# [uri]#/filter/whitelist/disallowed-phrase#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#POST# [uri]#/api/filter/whitelist/disallowed-phrase#
+--
+				
 include::docs/3.x/tech/apis/phrase/_whitelist-phrase-post-request.adoc[]
 
 === Response
@@ -547,12 +649,18 @@ Available since 3.10.0
 
 Retrieve a single advanced disallowed phrase by id.
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/filter/whitelist/disallowed-phrase/advanced/``{id}``#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/filter/whitelist/disallowed-phrase/advanced/``{id}``#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -578,12 +686,18 @@ Retrieves all of the advanced disallowed phrases.
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/filter/whitelist/disallowed-phrase/advanced#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/filter/whitelist/disallowed-phrase/advanced#
+--
+				
 === Response
 
 :never_missing:
@@ -601,12 +715,18 @@ Available since 3.10.0
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/filter/whitelist/disallowed-phrase/advanced/``{id}``#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/filter/whitelist/disallowed-phrase/advanced/``{id}``#
+--
+				
 === Response
 
 include::docs/3.x/tech/apis/_standard-delete-response-codes.adoc[]
@@ -620,12 +740,18 @@ Available since 3.10.0
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#POST# [uri]#/filter/whitelist/disallowed-phrase/advanced#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#POST# [uri]#/api/filter/whitelist/disallowed-phrase/advanced#
+--
+				
 include::docs/3.x/tech/apis/phrase/advanced/_whitelist-advancedPhrase-post-request.adoc[]
 
 === Response
