@@ -260,23 +260,34 @@ This API is used to send content to CleanSpeak to be filtered. Content sent to t
 This API should be avoided unless you have a very specific need to only perform filtering and want all of the filter matches back. For most situations, the <<Moderate Content, Moderate Content>> API should be used instead.
 ====
 
-=== Request
+=== Request (3.x)
 
 
 [.endpoint]
-.URI (3.x, deprecated in 4.0.0)
+.URI
 --
 [method]#POST# [uri]#/content/item/filter#
 --
-[.endpoint]
-.URI (4.x)
---
-[method]#POST# [uri]#/api/content/item/filter#
---
-				
+
 include::docs/3.x/tech/apis/_filter-content-request-body.adoc[]
 
 === Response
+
+include::docs/3.x/tech/apis/_filter-content-response-codes.adoc[]
+
+include::docs/3.x/tech/apis/_filter-content-response-body.adoc[]
+
+=== Request (4.x)
+
+[.endpoint]
+.URI
+--
+[method]#POST# [uri]#/api/content/item/filter#
+--
+
+include::docs/4.x/tech/apis/_filter-content-request-body.adoc[]
+
+=== Response (4.x)
 
 include::docs/3.x/tech/apis/_filter-content-response-codes.adoc[]
 
