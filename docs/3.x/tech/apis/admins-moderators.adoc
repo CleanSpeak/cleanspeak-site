@@ -10,12 +10,18 @@ This API is used to create a new Admin or Moderator.
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#POST# [uri]#/system/user#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#POST# [uri]#/api/system/user#
+--
+				
 :http_method: POST
 include::docs/3.x/tech/apis/_user-request-body.adoc[]
 
@@ -35,12 +41,18 @@ This API is used to retrieve an existing Admin or Moderator.
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/system/user/`\{userId\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/system/user/`\{userId\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -62,12 +74,18 @@ This API is used to update an existing Admin or Moderator.
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#PUT# [uri]#/system/user/`\{userId\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#PUT# [uri]#/api/system/user/`\{userId\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -99,12 +117,18 @@ A deleted user cannot log into CleanSpeak, be retrieved using the <<Retrieve a U
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#DELETE# [uri]#/system/user/`\{userId\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#DELETE# [uri]#/api/system/user/`\{userId\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
