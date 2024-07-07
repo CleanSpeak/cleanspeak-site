@@ -84,10 +84,16 @@ _Example Parameter_
 |Object that defines Machine Learning options.
 
 |[field]#ml.disabled# [type]#[Boolean]# [optional]#Optional# [default]#defaults to `true`#
-|This parameter disables the Machine Learning filter completely. When this parameter is set to `true` all other nested `ml` parameters will be ignored.
+|This parameter disables the Machine Learning filter completely. When this parameter is set to `true` all other nested `ml` parameters will be ignored. Use of these ML models is available for an additional cost. If your license does not include ML and this value is set to `false`, the response will include an HTTP 402 response code with an `UnlicensedFeatureException` error.
+
+|[field]#ml.locales# [type]#[List<String>]# [optional]#Optional#
+|TBD. Is it a list of string??
+
+|[field]#ml.minimumSeverity# [type]#[String]# [optional]#Optional#
+|TBD. sss
 
 |[field]#ml.models# [type]#[List<String>]# [required]#Required#
-|Which ML models to pass content through. Valid options are `affinity`, `compassion`, `curiosity`, `identityAttack`, `insult`, `nuance`, `personalStory`, `profanity`, `reasoning`, `respect`, `severeToxicity`, `toxicity`, `threat`.
+|Which ML models to pass content through. Valid options are `affinity`, `compassion`, `curiosity`, `identityAttack`, `insult`, `nuance`, `personalStory`, `profanity`, `reasoning`, `respect`, `severeToxicity`, `toxicity`, `threat`. For details on what these mean, see
 
 |[field]#phoneNumbers# [type]#[Object]# [optional]#Optional#
 |Object that defines the phone number filter options.
