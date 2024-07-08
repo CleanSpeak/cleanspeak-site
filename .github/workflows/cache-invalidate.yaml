@@ -1,0 +1,22 @@
+name: cache-invalidate
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  cache-invalidate:
+    runs-on: cleanspeak-standard
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: aws auth
+        uses: CleanSpeak/cleanspeak-actions/aws-auth@v1
+        with:
+          aws-region: us-west-2
+          environment: prod
+
+      - name: Invalidate cache
+        run: |
+          CLOUDFRONT_DISTRIBUTION_ID=$(grep cloudfront_distribution_id s3_website.yml|awk -F: '{print $2}' |sed 's/ //g')
+          aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
