@@ -3,7 +3,6 @@ layout: doc
 title: Content APIs
 description: APIs to moderate and filter your user-generated content with CleanSpeak
 ---
-FOOBARR
 
 == Overview
 
@@ -13,9 +12,7 @@ This page contains the APIs that are used to send content to CleanSpeak for mode
 * <<Update Content, Update Content>>
 * <<Proxy Moderate Content, Proxy Moderate Content>>
 * <<Proxy Update Content, Proxy Update Content>>
-* Filter Content
-** <<Filter Content (3.x), CleanSpeak 3.x>>
-** <<Filter Content (4.x), CleanSpeak 4.x>>
+* <<Filter Content, Filter Content>>
 * <<Flagging Content, Flagging Content>>
 * <<Batch Filter Content, Batch Filter Content>>
 * <<Batch Moderate Content, Batch Moderate Content>>
@@ -254,7 +251,7 @@ This will be forwarded using a `POST` method to the destination configured in th
 
 include::docs/3.x/tech/apis/_moderate-content-response-body.adoc[]
 
-== Filter Content (3.x)
+== Filter Content
 
 This API is used to send content to CleanSpeak to be filtered. Content sent to this API is not persisted by CleanSpeak and does not use the CleanSpeak Application filter rules. To use Application filter rules and other more advanced features of CleanSpeak see <<Moderate Content, Moderate Content>>.
 
@@ -279,38 +276,6 @@ include::docs/3.x/tech/apis/_filter-content-request-body.adoc[]
 include::docs/3.x/tech/apis/_filter-content-response-codes.adoc[]
 
 include::docs/3.x/tech/apis/_filter-content-response-body.adoc[]
-
-== Filter Content (4.x)
-
-This API is used to send content to CleanSpeak to be filtered. Content sent to this API is not persisted by CleanSpeak and does not use the CleanSpeak Application filter rules. To use Application filter rules and other more advanced features of CleanSpeak see <<Moderate Content, Moderate Content>>.
-
-[NOTE]
-====
-This API should be avoided unless you have a very specific need to only perform filtering and want all of the filter matches back. For most situations, the <<Moderate Content, Moderate Content>> API should be used instead.
-====
-
-[NOTE]
-====
-The only difference between the 3.x and 4.x endpoints is the addition of Machine Learning fields in 4.x.
-====
-
-
-=== Request
-
-[.endpoint]
-.URI
---
-[method]#POST# [uri]#/api/content/item/filter#
---
-
-include::docs/4.x/tech/apis/_filter-content-request-body.adoc[]
-
-=== Response
-
-include::docs/3.x/tech/apis/_filter-content-response-codes.adoc[]
-
-include::docs/4.x/tech/apis/_filter-content-response-body.adoc[]
-
 
 == Flagging Content
 

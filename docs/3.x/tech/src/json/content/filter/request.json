@@ -1,6 +1,6 @@
 {
   "blacklist": {
-    "ignoreCharacters": "qxz",
+    "ignorableCharacters": "qxz",
     "locales": [
       "en"
     ],
@@ -29,6 +29,10 @@
     ],
     "maximumMatchLength": "100",
     "spacePenalty": "-0.2"
+  },
+  "ml": {
+    "disabled": false,
+    "models": ["insult", "profanity"]
   },
   "phoneNumbers": {
     "maximumMatchLength": "20",

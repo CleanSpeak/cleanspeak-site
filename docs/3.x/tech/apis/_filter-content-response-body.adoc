@@ -1,6 +1,6 @@
 [cols="3a,7a"]
 [.api]
-.Response Body (3.x)
+.Response Body
 |===
 |[field]#matches# [type]#[Array]#
 |The array of matches returned by the filter request.
@@ -45,6 +45,7 @@ This field will only be present on a `unicode` type match.
 * `characters`
 * `emails`
 * `phoneNumbers`
+* `ml` [since]#Available since 4.0.0#
 * `urls`
 * `words`
 * `whitelist`
@@ -52,7 +53,7 @@ This field will only be present on a `unicode` type match.
 * `username`
 
 |[field]#matches``[x]``.tags# [type]#[Array<String>]#
-|A list of Blacklist Tags that a match contains.
+|A list of Blacklist or Machine Learning Tags that a match contains. Machine Learning tags will be prefixed by `ML` and currently just reflect the model that was matched.
 
 |[field]#matches``[x]``.whitelistResult# [type]#[String]#
 |A whitelist result status.
@@ -82,6 +83,11 @@ For example, consider the following content.
 [block-quote]#Piss off jerk#
 
 Assuming `piss` and `jerk` are returned as matches, the following replacement string would be returned `\\*** off \****`.
+
+[NOTE]
+====
+Machine Learning results currently do not support word level text replacement since they focus on attributes of the content as a whole.
+====
 
 |===
 
