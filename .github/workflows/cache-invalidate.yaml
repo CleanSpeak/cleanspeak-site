@@ -7,21 +7,18 @@ on:
       - jj/cache-invalidate  # temp - remove me
   workflow_dispatch:
 
-permissions:
-  id-token: write
-  contents: read
-
 jobs:
   cache-invalidate:
     runs-on: cleanspeak-standard
     steps:
       - uses: actions/checkout@v4
 
-      - name: aws auth
-        uses: CleanSpeak/cleanspeak-actions/aws-auth@v1
+      - name: set aws credentials
+        uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-region: us-west-2
-          environment: prod
+          role-to-assume: ${{ secrets.ACTIONS_RUNNER_ROLE_PROD }}
+          role-session-name: github-actions
+          aws-region: us-east-1
 
       - name: Invalidate cache
         run: |
