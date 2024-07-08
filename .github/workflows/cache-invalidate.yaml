@@ -7,6 +7,10 @@ on:
       - jj/cache-invalidate  # temp - remove me
   workflow_dispatch:
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   cache-invalidate:
     runs-on: ubuntu-latest
