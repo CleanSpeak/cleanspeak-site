@@ -169,7 +169,7 @@ _Example Parameter_
 |===
 
 [source,json]
-.Example Request JSON
+.Example 3.x Request JSON
 ----
 include::../src/json/content/filter/request.json[]
 ----

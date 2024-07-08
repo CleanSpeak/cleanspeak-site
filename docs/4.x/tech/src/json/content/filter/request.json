@@ -1,68 +1,7 @@
 {
-  "blacklist": {
-    "ignoreCharacters": "qxz",
-    "locales": [
-      "en"
-    ],
-    "minimumSeverity": "medium",
-    "tags": [
-      "Vulgarity",
-      "Sexual"
-    ]
-  },
-  "content": "fuck A bill at test.net 332-999 eight767 abcd my address\u0000",
-  "characters": [
-    "A",
-    "3"
-  ],
-  "contentType": "text",
-  "emails": {
-    "domainQuality": [
-      {
-        "domain": "net",
-        "quality": "0.8"
-      },
-      {
-        "domain": "xyz",
-        "quality": "0.1"
-      }
-    ],
-    "maximumMatchLength": "100",
-    "spacePenalty": "-0.2"
-  },
+  "content": "you look like an idiot",
   "ml": {
     "disabled": false,
     "models": ["insult"]
-  },
-  "phoneNumbers": {
-    "maximumMatchLength": "20",
-    "minimumMatchLength": "3",
-    "separatorPenalty": "-0.3",
-    "spacePenalty": "-0.1",
-    "wordPenalty": "-0.3"
-  },
-  "replaceChar": "x",
-  "unicode": {
-    "ranges": [
-      "\\u0000-\\u0001"
-    ]
-  },
-  "urls": {
-    "domainQuality": [
-      {
-        "domain": "net",
-        "quality": "0.8"
-      },
-      {
-        "domain": "xyz",
-        "quality": "0.1"
-      }
-    ],
-    "maximumMatchLength": "50",
-    "spacePenalty": "-0.2"
-  },
-  "words": [
-    "abcd",
-    "competitor"
-  ]
+  }
 }
