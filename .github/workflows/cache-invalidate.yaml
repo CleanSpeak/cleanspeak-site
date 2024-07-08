@@ -1,0 +1,26 @@
+name: cache-invalidate
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  cache-invalidate:
+    runs-on: cleanspeak-standard
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: set aws credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.ACTIONS_RUNNER_ROLE_PROD }}
+          role-session-name: github-actions
+          aws-region: us-east-1
+
+      - name: invalidate cache
+        run: |
+          CLOUDFRONT_DISTRIBUTION_ID=$(grep cloudfront_distribution_id s3_website.yml|awk -F: '{print $2}' |sed 's/ //g')
+          aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
