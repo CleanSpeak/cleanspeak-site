@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master
-      - jj/cache-invalidate  # temp - remove me
   workflow_dispatch:
 
 jobs:
