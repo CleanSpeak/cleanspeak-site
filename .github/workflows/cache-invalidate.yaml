@@ -9,9 +9,10 @@ on:
 
 jobs:
   cache-invalidate:
-    runs-on: cleanspeak-standard
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: checkout
+        uses: actions/checkout@v4
 
       - name: set aws credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -20,7 +21,13 @@ jobs:
           role-session-name: github-actions
           aws-region: us-east-1
 
-      - name: Invalidate cache
+      - name: setup python
+        uses: actions/setup-python@v5
+
+      - name: install aws cli
+        run: pip install awscli
+
+      - name: invalidate cache
         run: |
           CLOUDFRONT_DISTRIBUTION_ID=$(grep cloudfront_distribution_id s3_website.yml|awk -F: '{print $2}' |sed 's/ //g')
           aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
