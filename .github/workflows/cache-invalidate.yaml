@@ -21,6 +21,7 @@ jobs:
       - name: set aws credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
+          role-chaining: true
           role-to-assume: ${{ secrets.ACTIONS_RUNNER_ROLE_PROD }}
           role-session-name: github-actions
           aws-region: us-east-1
