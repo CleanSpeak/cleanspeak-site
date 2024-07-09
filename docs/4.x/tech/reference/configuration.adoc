@@ -119,11 +119,17 @@ include::docs/4.x/tech/reference/_property-additional-jvm-args.adoc[]
 |[field]#cleanspeak-app.http.port# [type]#[Integer]# [required]#Required#
 |The port number that CleanSpeak will use to accept HTTP requests.
 
+|[field]#cleanspeak-webservice.http.port# [type]#[Integer]# [deprecated]#Deprecated#
+|The port number that CleanSpeak will use to accept HTTP requests. Deprecated in favor of `cleanspeak-app.http.port`.
+
 |[field]#cleanspeak-app.https.enabled# [type]#[Boolean]# [default]#defaults to `false`#
 |Whether CleanSpeak will serve HTTPS requests from `cleanspeak-app.https.port`
 
 |[field]#cleanspeak-app.https.port# [type]#[Integer]#
 |The port number that CleanSpeak will use to accept HTTPS requests IF `cleanspeak-app.https.enabled` is set to `true`
+
+|[field]#cleanspeak-webservice.https.port# [type]#[Integer]# [deprecated]#Deprecated#
+|The port number that CleanSpeak will use to accept HTTPS requests IF `cleanspeak-app.https.enabled` is set to `true`. Deprecated in favor of `cleanspeak-app.https.port`.
 
 |[field]#cleanspeak-app.https.certificate# [type]#[String]#
 |PEM encoded TLS certificates to use. Either this or `cleanspeak-app.https.certificate-file` must be set if `cleanspeak-app.https.enabled` is set to `true`
@@ -154,6 +160,9 @@ The possible values are:
 
 When in the `development` runtime mode, maintenance mode will interactively assist you configuring the database and connecting to Elasticsearch if configured. Once you move CleanSpeak into production, it is recommended that you modify the runtime mode to `production`. When in production runtime mode maintenance mode will no longer be available to you which means you can be certain that your system will be sitting waiting for human input to start the upgrade process. When in `production` mode you will either need to leverage Silent Mode to automatically apply database migrations, or you will need to apply the database migrations yourself (either by hand or via a script of some sort).
 
+|[field]#cleanspeak-webservice.runtime-mode# [type]#[String]# [deprecated]#Deprecated#
+|The CleanSpeak runtime mode. Deprecated in favor of `cleanspeak-app.runtime-mode`.
+
 |[field]#cleanspeak-app.session.timeout# [type]#[String]# [default]#Defaults to `30M`#
 |The maximum idle time of a CleanSpeak user's session before they must login again, formatted as a Java duration (see https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/Duration.html#parse(java.lang.CharSequence)[format]). As long as the user's browser is active with CleanSpeak, their session will keep extending up until the value of `cleanspeak-app.session.max-age`.
 
@@ -162,6 +171,9 @@ When in the `development` runtime mode, maintenance mode will interactively assi
 
 |[field]#cleanspeak-app.silent-mode# [type]#[String]# [default]#Defaults to `false`#
 |Determines if CleanSpeak should use Silent Mode during the startup process. Silent Mode automatically applies all database migrations during startup such that you do not need to run them manually. This is the preferred mode when in production.
+
+|[field]#cleanspeak-webservice.silent-mode# [type]#[String]# [deprecated]#Deprecated#
+|Determines if CleanSpeak should use Silent Mode during the startup process. Deprecated in favor of `cleanspeak-app.silent-mode`.
 
 |[field]#proxy.host# [type]#[String]#
 |The proxy host used for egress network traffic. To enable this egress proxy, you must configure both the [field]#proxy.host# and [field]#proxy.port#.
