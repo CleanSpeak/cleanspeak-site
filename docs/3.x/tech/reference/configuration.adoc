@@ -1,6 +1,6 @@
 ---
 layout: doc
-title: Configuration Reference
+title: Configuration Reference (3.x)
 description: All of the configuration options of CleanSpeak stored in the cleanspeak.properties file
 ---
 
