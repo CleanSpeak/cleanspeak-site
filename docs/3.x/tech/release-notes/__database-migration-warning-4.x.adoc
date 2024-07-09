@@ -4,7 +4,7 @@
 
 The database schema has changed and an upgrade is required for this version of CleanSpeak. You will be prompted to upgrade the database by maintenance mode before you may login.
 
-See link:../upgrades-patches/3.x-3.x#database[Upgrades/Patches] for more information about database migrations.
+See link:../upgrades-patches/3.x-4.x#database[Upgrades/Patches] for more information about database migrations.
 
 ifdef::migration_message[]
 {migration_message}

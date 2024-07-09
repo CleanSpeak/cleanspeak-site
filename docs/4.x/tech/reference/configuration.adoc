@@ -1,0 +1,309 @@
+---
+layout: doc
+title: Configuration Reference
+description: All of the configuration options of CleanSpeak stored in the cleanspeak.properties file
+---
+
+== Configuration (4.x)
+
+Most of the CleanSpeak configuration is performed in the Management Interface. However, some configuration is provided through a configuration file. You may modify this file in order to change your configuration, CleanSpeak will need to be restarted to pick up changes to this configuration. Assuming you installed it in the default locations, the configuration file may be found in the following directory. If you have installed it in an alternate location the path to this file will be different.
+
+[.command-line]
+.Linux and macOS
+----
+/usr/local/cleanspeak/config/cleanspeak.properties
+----
+
+[.command-line]
+.Windows
+----
+C:\cleanspeak\config\cleanspeak.properties
+----
+
+=== Options
+
+The following table contains all the configuration options that CleanSpeak uses. For your convenience, you may select the type of configuration you plan to use, and the names will be updated to correspond to your preference.
+
+Display configuration values in format:
+++++
+<style>
+dd p.deprecated {
+  color: #B20000;
+  font-weight: 500;
+  margin-bottom: 0 !important;
+  margin-top: 25px !important;
+}
+label.select {
+  align-items: center;
+  display: inline-flex !important;
+  margin: 0;
+  max-width: 250px;
+  padding: 0;
+  position: relative;
+}
+label.select select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: #fff;
+  border: 1px solid #919A9C;
+  border-radius: 3px;
+  box-shadow: 0 0 0 0 rgba(0,0,0,0);
+  color: #0f1314;
+  font-size: 14px;
+  padding: 10px 50px 10px 13px;
+  transition: box-shadow 0.2s ease-in-out;
+}
+label.select:after {
+  content: "\f107";
+  display: inline-block;
+  font-family: 'Font Awesome 5 Pro', FontAwesome;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+  font-weight: 500;
+  pointer-events: none;
+  position: absolute;
+  right: 10px;
+  text-decoration: none;
+  text-rendering: auto;
+}
+</style>
+<label class="select" style="width: 100%;">
+  <select id="configuration-type" class="select" style="width: 100%; margin-bottom: 5px;">
+    <option value="config-file">Configuration File Properties</option>
+    <option value="environment">Environment Variable</option>
+    <option value="java-system-property">Java system property</option>
+  </select>
+</label>
+++++
+
+[cols="3a,7a"]
+[.api]
+.Properties
+|===
+|[field]#license.id# [type]#[String]#
+|Your License ID. You can find your License ID by logging into your account at https://account.cleanspeak.com/account/.
+
+|[field]#database.url# [type]#[String]#
+|A JDBC URL for your database.
+
+For MySQL, this URL will look something like this:
+
+[block-quote]#`database.url=jdbc:mysql://localhost:3306/cleanspeak?serverTimezone=UTC`#
+
+For PostgreSQL, this URL will look something like this:
+
+[block-quote]#`database.url=jdbc:postgresql://localhost:5432/cleanspeak`#
+
+If you are using MySQL, you must include the `serverTimezone=UTC` parameter in the URL. The `?` character is the same as a standard URL parameter, so if you have additional parameters, you should only have a single `?` and parameters should be separated by `&`.
+
+Some MySQL services such as Microsoft Azure may require a specific version of TLS to connect successfully. At the time of writing this note, the MySQL connector will not attempt to utilize TLSv1.2 by default, so when connecting to a service that requires this version you will need to explicitly request this version of TLS on the connection string. For example, appending this `enabledTLSProtocols=TLSv1.2` to the connection string will allow you to successfully connect to an Azure managed MySQL database. See https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-reference-using-ssl.html[MySQL Connector : Connecting Securely UsingSSL] for additional information.
+
+|[field]#database.username# [type]#[String]#
+|The username used to connect to the database.
+
+|[field]#database.password# [type]#String#
+|The password used to connect to the database.
+
+|[field]#database.mysql.enforce-utf8mb4# [type]#[String]# [default]#defaults to `true`#
+|When set to `true` and using MySQL, full 4 byte unique configuration is enforced at startup.
+
+If this validation is not desired or not it is not possible to modify your MySQL configuration so satisfy the validation, disable this check
+by setting this value to `false`.
+
+// START: Starting in 3.4 this moved to the Management Interface
+|[field]#email.host# [type]#[String]# [required]#Required# [deprecated]#Deprecated#
+|The hostname of your SMTP server. _Starting in version `3.4.0` email server configuration has moved to the Management Interface._
+
+|[field]#email.port# [type]#[Integer]# [required]#Required# [deprecated]#Deprecated#
+|The SMTP port. By default SMTP servers use port 25, 587 for SSL(TLS) connections and less commonly port 465 (SSL). _Starting in version `3.4.0` email server configuration has moved to the Management Interface._
+
+|[field]#email.ssl# [type]#[Boolean]# [required]#Required# [deprecated]#Deprecated#
+|Set to `true` to enable an SSL connection to the SMTP server. _Starting in version `3.4.0` email server configuration has moved to the Management Interface._
+
+|[field]#email.username# [type]#[String]# [required]#Required# [deprecated]#Deprecated#
+|The username used to connect to your email server. _Starting in version `3.4.0` email server configuration has moved to the Management Interface._
+
+|[field]#email.password# [type]#[String]# [optional]#Optional# [deprecated]#Deprecated#
+|The password used to connect to your email server. _Starting in version `3.4.0` email server configuration has moved to the Management Interface._
+
+|[field]#email.from# [type]#[String]# [required]#Required# [deprecated]#Deprecated#
+|The email address used as in the from field when CleanSpeak sends emails. _Starting in version `3.4.0` email server configuration has moved to the Management Interface._
+// END: Starting in 3.4 this moved to the Management Interface
+
+|[field]#cleanspeak-management-interface.additional-java-args# [type]#[String]#
+|
+include::docs/3.x/tech/reference/_property-additional-jvm-args.adoc[]
+
+|[field]#cleanspeak-management-interface.http-port# [type]#[Integer]#
+|The port number that CleanSpeak Management Interface will use to accept HTTP requests.
+
+|[field]#cleanspeak-management-interface.https-port# [type]#[Integer]#
+|The port number that CleanSpeak Management Interface will use to accept HTTPS requests.
+
+|[field]#cleanspeak-management-interface.management-port# [type]#[Integer]#
+|The port number that CleanSpeak Management Interface will use for internal Tomcat administration.
+
+|[field]#cleanspeak-management-interface.memory# [type]#[String]#
+|
+include::docs/3.x/tech/reference/_property-memory.adoc[]
+
+|[field]#cleanspeak-management-interface.runtime-mode# [type]#[String]# [default]#Defaults to `development`#
+|The CleanSpeak runtime mode. The runtime mode causes some features to be modified based upon this configuration.
+
+The possible values are:
+
+* development
+* production
+
+When in the `development` runtime mode, maintenance mode will interactively assist you configuring the database and connecting to Elasticsearch if configured. Once you move CleanSpeak into production, it is recommended that you modify the runtime mode to `production`. When in production runtime mode maintenance mode will no longer be available to you which means you can be certain that your system will be sitting waiting for human input to start the upgrade process. When in `production` mode you will either need to leverage Silent Mode to automatically apply database migrations, or you will need to apply the database migrations yourself (either by hand or via a script of some sort).
+
+|[field]#cleanspeak-management-interface.silent-mode# [type]#[String]# [default]#Defaults to `false`#
+|Determines if CleanSpeak should use Silent Mode during the startup process. Silent Mode automatically applies all database migrations during startup such that you do not need to run them manually. This is the preferred mode when in production.
+
+|[field]#cleanspeak-search-engine.transport-port# [type]#[Integer]#
+|The port that the search engine will use for optimized TCP communications instead of HTTP communications.
+
+|[field]#cleanspeak-search-engine.http-port# [type]#[Integer]#
+|The port number that the Search Engine will use to accept HTTP requests.
+
+|[field]#cleanspeak-search-engine.memory# [type]#[String]#
+|
+include::docs/3.x/tech/reference/_property-memory.adoc[]
+
+|[field]#cleanspeak-search-engine.hosts# [type]#[String]# [default]#defaults to `\_local_`#
+|This parameter indicates which address or network interfaces to bind during service startup. The default value will cause the service to bind  any
+loopback address on the system such as `127.0.0.1`.
+
+This default value is sufficient for running CleanSpeak Webservice, CleanSpeak Management Interface, and the Search Engine on the same server. If you run the Search Engine on a separate system than
+Cleanspeak Management Interface or CleanSpeak Webservice you will need to modify this value. You may specify a single hostname or IP address or one of the special values in any combination.
+
+Special values include:
+
+* `\_[networkInterface]_` - Addresses of a network interface, for example `\_en0_`
+* `\_local_` - Any loopback address on the system, for example `127.0.0.1`
+* `\_site_` - Any site-local addresses on the system, for example `192.168.0.1`.
+* `\_global_` - Any globally-scoped addresses on the system, for example `8.8.8.8`.
+
+The following is an example to bind to `localhost` as well as any site local addresses on the system such at `192.168.1.42`.
+
+[block-quote]#`cleanspeak-search-engine.hosts=\_local_,\_site_`#
+
+|[field]#cleanspeak-search-engine.servers# [type]#[String]#
+|A comma separated list of stand-alone search engine servers that will be used by CleanSpeak.
+
+The following is an example of a configuration for two separate search engines, one running on localhost and the other is on remote system.
+
+[block-quote]#`cleanspeak-search-engine.servers=localhost:8020,search2.example.com:8020`#
+
+|[field]#cleanspeak-search-engine.data-directory# [type]#[String]#
+|The location on disk where CleanSpeak Search Engine will store its data. This value is defaulted if not specified and generally should not be modified.
+
+|[field]#cleanspeak-search-engine.additional-java-args# [type]#[String]#
+|
+include::docs/3.x/tech/reference/_property-additional-jvm-args.adoc[]
+
+|[field]#cleanspeak-webservice.additional-java-args# [type]#[String]#
+|
+include::docs/3.x/tech/reference/_property-additional-jvm-args.adoc[]
+
+|[field]#cleanspeak-webservice.http-port# [type]#[Integer]#
+|The port number that CleanSpeak Webservice will use to accept HTTP requests.
+
+|[field]#cleanspeak-webservice.https-port# [type]#[Integer]#
+|The port number that CleanSpeak Webservice will use to accept HTTPS requests.
+
+|[field]#cleanspeak-webservice.management-port# [type]#[Integer]#
+|The port number that CleanSpeak Webservice will use for internal Tomcat administration.
+
+|[field]#cleanspeak-webservice.memory# [type]#[String]#
+|
+include::docs/3.x/tech/reference/_property-memory.adoc[]
+
+|[field]#cleanspeak-webservice.runtime-mode# [type]#[String]# [default]#Defaults to `development`#
+|The CleanSpeak runtime mode. The runtime mode causes some features to be modified based upon this configuration.
+
+The possible values are:
+
+* development
+* production
+
+When in the `development` runtime mode, maintenance mode will interactively assist you configuring the database and connecting to Elasticsearch if configured. Once you move CleanSpeak into production, it is recommended that you modify the runtime mode to `production`. When in production runtime mode maintenance mode will no longer be available to you which means you can be certain that your system will be sitting waiting for human input to start the upgrade process. When in `production` mode you will either need to leverage Silent Mode to automatically apply database migrations, or you will need to apply the database migrations yourself (either by hand or via a script of some sort).
+
+|[field]#cleanspeak-webservice.silent-mode# [type]#[String]# [default]#Defaults to `false`#
+|Determines if CleanSpeak should use Silent Mode during the startup process. Silent Mode automatically applies all database migrations during startup such that you do not need to run them manually. This is the preferred mode when in production.
+
+|[field]#cleanspeak-webservice.urls# [type]#[String]#
+|A comma separated list of CleanSpeak Webservice instances.
+
+The following is an example of a single webservice running on localhost.
+
+[block-quote]#`cleanspeak-webservice.urls=http://localhost:8001`#
+
+|[field]#cleanspeak.search-servers# [type]#[String]# [since]#Available since 3.23.1# [default]#Defaults to `http://localhost:8021`# [deprecated]#Deprecated#
+|
+Specify the location of your CleanSpeak Search servers. Multiple values may be specified using a comma separator.
+This configuration is used by CleanSpeak App to connect to the ElasticSearch nodes. The specified port should be the
+configured value for 'cleanspeak-search-engine.http-port'.
+
+Single host example: `http://localhost:8021`
+Multiple hosts example: `http://localhost:8021,http://192.168.1.42:8021`
+
+|[field]#proxy.host# [type]#[String]# [since]#Available since 3.23.3#
+|The proxy host used for egress network traffic. To enable this egress proxy, you must configure both the [field]#proxy.host# and [field]#proxy.port#.
+
+|[field]#proxy.port# [type]#[String]# [since]#Available since 3.23.3#
+|The proxy port used for egress network traffic. To enable this egress proxy, you must configure both the [field]#proxy.host# and [field]#proxy.port#.
+
+|[field]#proxy.username# [type]#[String]# [since]#Available since 3.23.3#
+|The proxy username for egress network traffic. To enable authentication with your proxy, you must configure both the [field]#proxy.username# and [field]#proxy.password#.
+
+|[field]#proxy.password# [type]#[String]# [since]#Available since 3.23.3#
+|The proxy password for egress network traffic. To enable authentication with your proxy, you must configure both the [field]#proxy.username# and [field]#proxy.password#.
+
+|[field]#search.servers# [type]#[String]# [since]#Available since 3.30.0#
+|The `http` or `https` URL to the Elasticsearch service. To specify more than one value, use a comma separated list.
+
+Single host example: `http://localhost:8021`
+Multiple hosts example: `http://localhost:8021,http://192.168.1.42:8021`
+
+Note the default port of `8021` is used by the `cleanspeak-search-service`, if you are using a standalone Elasticsearch service the port is more likely `9200`.
+|===
+
+++++
+<script>
+var redraw = function() {
+  var selected = select.options[select.selectedIndex].value;
+  localStorage.setItem('configuration-type', selected);
+  for (var i = 0; i < elements.length; i++) {
+    var element = elements[i];
+    element.data = element.data || {};
+    element.data.property = element.data.property || element.innerHTML;
+    if (selected === 'config-file') {
+      element.innerHTML = element.data.property;
+    } else if (selected === 'environment') {
+      element.innerHTML = element.data.property.replaceAll('.', '_').replaceAll('-', '_').toUpperCase();
+    } else {
+      element.innerHTML = '-D' + element.data.property;
+    }
+  }
+}
+
+var elements = document.querySelectorAll('table.api tbody tr td .field');
+var select = document.getElementById('configuration-type');
+var saved = localStorage.getItem('configuration-type');
+if (saved) {
+  var options = select.getElementsByTagName('option');
+  for (var j = 0; j < options.length; j++) {
+    if (options[j].value === saved) {
+       options[j].selected = true;
+       redraw();
+       break;
+    }
+  }
+}
+
+select.addEventListener('change', redraw);
+</script>
+++++

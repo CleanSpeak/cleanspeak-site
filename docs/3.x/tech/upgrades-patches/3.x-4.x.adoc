@@ -13,6 +13,12 @@ To download or check on the latest updates, please visit your https://account.cl
 If you are upgrading to CleanSpeak version 4.x from 1.x or 2.x, reference link:2.x-3.x[2.x to 3.x] for details on getting to 3.x first.
 ====
 
+* <<Linux, Linux>>
+* <<Windows, Windows>>
+* <<Database, Database>>
+* <<Tomcat Removal, Tomcat Removal>>
+* <<Deprecated properties, Deprecated properties>>
+
 === Linux
 
 Updating your application is easy if you installed using the RPM or Debian packages. All you need to do is to issue an update command to the dpkg or rpm program and specify the new package file. Here is an example:
@@ -73,3 +79,15 @@ cleanspeak-database-schema
       |
       |- 4.0.0.sql
 ----
+
+=== Tomcat Removal
+
+As noted in the link:../release-notes[Release Notes], CleanSpeak 4.0.0 removes Apache Tomcat as the underlying application server. The new `cleanspeak-app` Debian and RPM package will remove Tomcat libraries and scripts. Just some log directories will remain,
+
+Now that Tomcat is no longer in use, if you previously configured Tomcat with TLS (as opposed to do doing TLS termination at a load balancer in front of CleanSpeak), you will need to configure your certificates and private keys in a different place.
+
+Instead of using a JKS `keystore`, you will need to either configure the PEM text for your certs/keys in the cleanspeak properties file or point the properties file at files containing the certs/keys. See link:../../../4.x/tech/reference/configuration[Configuration] for more details.
+
+=== Deprecated properties
+
+TBD
