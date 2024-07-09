@@ -16,13 +16,13 @@ Hide Stuff here
 == Version 4.0.0
 _Released Tuesday July 9th, 2024_
 
-include::docs/3.x/tech/release-notes/__database-migration-warning-4.x.adoc[]
+include::docs/4.x/tech/release-notes/__database-migration-warning.adoc[]
 
 [WARNING.general-warning]
 ====
 *Please Read*
 
-CleanSpeak 4.0 changes the services/applications used. For more detailed information, see link:../upgrades-patches/3.x-4.x[3.x to 4.x]
+CleanSpeak 4.0 changes the services/applications used. For more detailed information, see link:../../../4.x/tech/upgrades-patches/3.x-4.x[3.x to 4.x]
 ====
 
 

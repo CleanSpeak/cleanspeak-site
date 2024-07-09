@@ -82,7 +82,7 @@ cleanspeak-database-schema
 
 === Tomcat Removal
 
-As noted in the link:../release-notes[Release Notes], CleanSpeak 4.0.0 removes Apache Tomcat as the underlying application server. The new `cleanspeak-app` Debian and RPM package will remove Tomcat libraries and scripts. Just some log directories will remain,
+As noted in the link:../../../3.x/tech/release-notes[Release Notes], CleanSpeak 4.0.0 removes Apache Tomcat as the underlying application server. The new `cleanspeak-app` Debian and RPM package will remove Tomcat libraries and scripts. Just some log directories will remain,
 
 Now that Tomcat is no longer in use, if you previously configured Tomcat with TLS (as opposed to do doing TLS termination at a load balancer in front of CleanSpeak), you will need to configure your certificates and private keys in a different place.
 
