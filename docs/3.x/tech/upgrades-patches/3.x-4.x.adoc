@@ -20,22 +20,18 @@ Updating your application is easy if you installed using the RPM or Debian packa
 [source,shell]
 .Red Hat
 ----
-$ sudo rpm -U cleanspeak-search-engine-<version>.rpm
-$ sudo rpm -U cleanspeak-webservice-<version>.rpm
-$ sudo rpm -U cleanspeak-management-interface-<version>.rpm
+$ sudo rpm -U cleanspeak-app-<version>.rpm
 ----
 
 [source,shell]
 .Debian
 ----
-$ sudo dpkg -i cleanspeak-search-engine-<version>.deb
-$ sudo dpkg -i cleanspeak-webservice-<version>.deb
-$ sudo dpkg -i cleanspeak-management-interface-<version>.deb
+$ sudo dpkg -i cleanspeak-app-<version>.deb
 ----
 
 [NOTE]
 ====
-Running the update script will shut down the CleanSpeak service if it is running. The service will need to be restarted after the update is finished.
+Running the update script will shut down the CleanSpeak service if it is running. The service (now named `cleanspeak-app`) will need to be restarted after the update is finished.
 ====
 
 === Windows
@@ -46,7 +42,7 @@ On Windows, the steps required are different. Follow these steps to upgrade your
 2. Shut-down your Tomcat or your JEE server
 3. Rename the CLEANSPEAK_HOME/web directory to something meaningful like web-2009-06-07 (this is helpful in case you need to revert to this version of the application)
 4. Extract the update bundle to the CLEANSPEAK_HOME directory. This will place a new directory called web in the directory
-5. Restart Tomcat
+5. Start the service using the new, native HTTP server method. See link:../../../4.x/tech/tutorials/start-and-stop[Start and Stop CleanSpeak] for more details on how to start CleanSpeak 4.0 on Windows.
 
 === Database
 
@@ -64,7 +60,7 @@ Depending on your current version and the new version you will be updating to yo
 When upgrading your database from a previous version, be sure to only run the scripts located in the migrations folder, the base files mysql.sql and postgresql.sql should only be used during a clean installation when no database schema is present.
 ====
 
-Inside of the database schema zip file, you will find the following CleanSpeak 3.x migrations, run in this order, starting with the first migration that is
+Inside of the database schema zip file, you will find the following CleanSpeak 4.x migrations, run in this order, starting with the first migration that is
 greater than the version you are coming from, and ending with the version that is less than or equal to the target version.
 
 [source]
@@ -75,43 +71,5 @@ cleanspeak-database-schema
     |
     mysql | postgresql
       |
-      |- 3.0.5.sql
-      |- 3.0.10.sql
-      |- 3.1.0.sql
-      |- 3.1.3.sql
-      |- 3.2.0.sql
-      |- 3.3.0.sql
-      |- 3.3.2.sql
-      |- 3.4.0-RC.1.sql
-      |- 3.4.0-RC.2.sql
-      |- 3.4.0-RC.3.sql
-      |- 3.4.4.sql
-      |- 3.4.6.sql
-      |- 3.5.1.sql
-      |- 3.6.0.sql
-      |- 3.7.0.sql
-      |- 3.9.0.sql
-      |- 3.9.2.sql
-      |- 3.12.0.sql
-      |- 3.13.0.sql
-      |- 3.13.2.sql
-      |- 3.14.0.sql
-      |- 3.14.1.sql
-      |- 3.15.0.sql
-      |- 3.16.0.sql
-      |- 3.17.0.sql
-      |- 3.17.2.sql
-      |- 3.18.0.sql
-      |- 3.20.0.sql
-      |- 3.23.0.sql
-      |- 3.23.1.sql
-      |- 3.24.0.sql
-      |- 3.24.5.sql
-      |- 3.25.0.sql
-      |- 3.26.0.sql
-      |- 3.27.0.sql
-      |- 3.28.0.sql
-      |- 3.30.0.sql
-      |- 3.32.0.sql
       |- 4.0.0.sql
 ----
