@@ -35,7 +35,7 @@ CleanSpeak 4.0 changes the services/applications used. For more detailed informa
 
 === Changed
 * CleanSpeak is now a single package
-** Previously, you would deploy a separate Management Interface and WebService. Now it's a single application. By default, the new CleanSpeak app will listen on port 8001
+** Previously, you would deploy a separate Management Interface and WebService. Now it's a single application. By default, the new CleanSpeak app will listen on port 8001. Any documentation references to Management Interface simply mean navigating in your browser to CleanSpeak on a single port.
 ** API endpoints, that were previously accessible on the WebService (e.g. `/content/item/filter`) should now be accessed via `/api`, e.g. `/api/content/item/filter`. The old endpoints still work, but as of 4.0.0, they are deprecated
 ** `/status` and `/api/status` are the equivalent of the CleanSpeak 3.x Management Interface and WebService endpoints respectively. The main difference is that `/api/status` will check that the filter is functioning properly, in addition to the basic application
 ** The new cleanspeak log file is located on Linux systems at `/usr/local/cleanspeak/logs/cleanspeak-app.log` or `C:\cleanspeak\logs\cleanspeak-app.log` on Windows systems

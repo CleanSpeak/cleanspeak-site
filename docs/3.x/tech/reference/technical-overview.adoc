@@ -6,7 +6,26 @@ description: A brief overview of the CleanSpeak Profanity Filtering and Moderati
 
 == Technical Overview
 
-CleanSpeak is a software solution that filters and moderates user-generated content. CleanSpeak is composed of four components: WebService, Management Interface, Search Engine, and a Database. Each component can be installed on a single server/VM or you can install multiple components on a single server/VM. If you are running in the CleanSpeak Cloud, all of these components are installed on a single private cloud server. Additionally, enterprise deployments can be scaled by load balancing WebServices for throughput and sharding Search Engines for indexing content. Throughput, requirements, and other metrics are described below.
+CleanSpeak is a software solution that filters and moderates user-generated content. CleanSpeak 4.0.0 is composed of 3 components: Application, Database, and ElasticSearch/OpenSearch. Each component can be installed on a single server/VM or you can install multiple components on a single server/VM. If you are running in the CleanSpeak Cloud, all of these components are installed on a single private cloud server. Additionally, enterprise deployments can be scaled by load balancing for throughput and sharding Search Engines for indexing content. Throughput, requirements, and other metrics are described below.
+
+=== CleanSpeak 4.x
+
+The *CleanSpeak App* is built on RESTful, HTTP architecture where the client (your application) makes HTTP requests to the CleanSpeak APIs to perform specific functions within the CleanSpeak system. These functions include: Filtering text, storing/queueing content for moderator review, and storing user details.
+
+The *Management Interface*, formerly a separate component, is a graphical user interface to manage filtering lists, review and search for content, review user details, and perform actions that have an immediate effect in the client application, such as deleting forum posts or suspending users.
+
+*ElasticSearch/OpenSearch* indexes content from the database for immediate, full-text search abilities within the Management Interface/App.
+
+The *Database* is a relational database. We currently support MySQL and PostgreSQL.
+
+The *Moderation Event Webservice* is developed by you to receive events from CleanSpeak when user is actioned and take the appropriate action in your application.
+
+image:technical-overview-diagram-v4.png[Technical Overview]
+
+
+=== CleanSpeak 3.x
+
+CleanSpeak 3.x is composed of four components: WebService, Management Interface, Search Engine, and a Database.
 
 The *WebService* is built on RESTful, HTTP architecture where the client (your application) makes HTTP requests to the WebService server to perform specific functions within the CleanSpeak system. These functions include: Filtering text, storing/queueing content for moderator review, and storing user details.
 

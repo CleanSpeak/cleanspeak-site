@@ -6,7 +6,7 @@ description: All of the configuration options of CleanSpeak stored in the cleans
 
 == Configuration (4.x)
 
-Most of the CleanSpeak configuration is performed in the Management Interface. However, some configuration is provided through a configuration file. You may modify this file in order to change your configuration, CleanSpeak will need to be restarted to pick up changes to this configuration. Assuming you installed it in the default locations, the configuration file may be found in the following directory. If you have installed it in an alternate location the path to this file will be different.
+Most of the CleanSpeak configuration is performed in the app in the browser. However, some configuration is provided through a configuration file. You may modify this file in order to change your configuration, CleanSpeak will need to be restarted to pick up changes to this configuration. Assuming you installed it in the default locations, the configuration file may be found in the following directory. If you have installed it in an alternate location the path to this file will be different.
 
 [.command-line]
 .Linux and macOS
