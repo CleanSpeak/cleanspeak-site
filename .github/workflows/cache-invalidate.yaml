@@ -3,8 +3,8 @@ name: cache-invalidate
 on:
   # Run every 10 minutes, July 8 thru July 9
   # This is only for the site rollout and should be removed after 2024-07-09
-  schedule:
-    - cron: '*/10 * 8-9 7 *'
+  # schedule:
+  #   - cron: '*/10 * 8-9 7 *'
   push:
     branches:
       - master
