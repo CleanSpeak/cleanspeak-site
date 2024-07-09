@@ -137,6 +137,9 @@ include::docs/4.x/tech/reference/_property-additional-jvm-args.adoc[]
 |[field]#cleanspeak-app.https.private-key-file# [type]#[String]#
 |Path to a file containing a PEM encoded TLS private key. Either this or `cleanspeak-app.https.private-key` must be set if `cleanspeak-app.https.enabled` is set to `true`
 
+|[field]#cleanspeak-app.local-metrics.enabled# [type]#[Boolean]# [default]#defaults to `false`#
+|If enabled, HTTP requests without a browser session and without an API key that originate from localhost will be allowed to access `/status`, `/api/status`, and `/prometheus/metrics`.
+
 |[field]#cleanspeak-app.memory# [type]#[String]#
 |
 include::docs/4.x/tech/reference/_property-memory.adoc[]
