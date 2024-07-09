@@ -52,5 +52,3 @@ A common enterprise topology example is provided below. In this example, a load 
 The database can be clustered or if you’re using something like Amazon RDS, there is some inherent redundancy already built into the system.
 
 CleanSpeak utilizes Elasticsearch which natively supports clustering. This service may also be horizontally scaled for redundancy and performance reasons.
-
-image:install-guide-availability-architecture.png[Enterprise Architecture]
