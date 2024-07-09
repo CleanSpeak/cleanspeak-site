@@ -16,6 +16,8 @@ Hide Stuff here
 == Version 4.0.0
 _Released Tuesday July 9th, 2024_
 
+include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
+
 === Enhancements
 * Machine learning models are now incorporated into CleanSpeak. These can be utilized on both the `/api/content/item/filter` endpoint or the moderation endpoint using a configured application. Use of these ML models is available for an additional cost.
 * A new `/api/health` endpoint is available for health checks, which can be helpful for Kubernetes use cases. It performs a more fundamental (e.g. just app server and database query response) check that's less likely to be noisy under load than `/api/status`.
