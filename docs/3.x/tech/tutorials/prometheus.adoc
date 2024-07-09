@@ -29,7 +29,12 @@ include::docs/3.x/tech/src/yaml/prometheus.yaml[]
 include::docs/4.x/tech/src/yaml/prometheus.yaml[]
 ----
 
-(NOTE that in 4.x, you must either supply an API key or connect from localhost with `cleanspeak-app.local-metrics.enabled` in the config file.
+
+[NOTE]
+====
+in 4.x, you must either supply an API key as the example above does OR connect from localhost with `cleanspeak-app.local-metrics.enabled` in the config file
+====
+
 
 We then started prometheus with
 [source,bash]
