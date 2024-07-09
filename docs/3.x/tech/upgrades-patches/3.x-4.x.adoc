@@ -1,18 +1,16 @@
 ---
 layout: doc
-title: Upgrades and Patches
+title: CleanSpeak Major Version Upgrade (3.x to 4.x)
 description: Learn how to upgrade and patch CleanSpeak using our bundles and migration scripts
 ---
 
-== CleanSpeak Updates and Patches
+== CleanSpeak Major Version Upgrade (3.x to 4.x)
 
 To download or check on the latest updates, please visit your https://account.cleanspeak.com/account/[CleanSpeak Account] and find the Download link for your license.
 
 [WARNING]
 ====
-Upgrading to 3.x from a prior version
-
-If you are upgrading to CleanSpeak version 3.x from 1.x or 2.x, reference link:previous-versions[Previous Versions] for details.
+If you are upgrading to CleanSpeak version 4.x from 1.x or 2.x, reference link:2.x-3.x[2.x to 3.x] for details on getting to 3.x first.
 ====
 
 === Linux
