@@ -17,6 +17,7 @@ If you are upgrading to CleanSpeak version 4.x from 1.x or 2.x, reference link:2
 * <<Windows, Windows>>
 * <<Database, Database>>
 * <<Tomcat Removal, Tomcat Removal>>
+* <<Status and metrics authentication changes, Status and metrics authentication changes>>
 * <<Deprecated properties, Deprecated properties>>
 
 === Linux
@@ -82,12 +83,30 @@ cleanspeak-database-schema
 
 === Tomcat Removal
 
-As noted in the link:../../../3.x/tech/release-notes[Release Notes], CleanSpeak 4.0.0 removes Apache Tomcat as the underlying application server. The new `cleanspeak-app` Debian and RPM package will remove Tomcat libraries and scripts. Just some log directories will remain,
+As noted in the link:../../../3.x/tech/release-notes[Release Notes], CleanSpeak 4.0.0 removes Apache Tomcat as the underlying application server. The new `cleanspeak-app` Debian and RPM package will remove Tomcat libraries and scripts.
 
-Now that Tomcat is no longer in use, if you previously configured Tomcat with TLS (as opposed to do doing TLS termination at a load balancer in front of CleanSpeak), you will need to configure your certificates and private keys in a different place.
+1. The upgrade will leave some Tomcat files intact, including `catalina*.log`, `host-manager*.log`, `localhost*.log` files, and `work`. You can remove them after your upgrade is complete.
+2. If you previously configured Tomcat with TLS (as opposed to do doing TLS termination at a load balancer in front of CleanSpeak), you will need to configure your certificates and private keys in a different place. Instead of using a JKS `keystore`, you will need to either configure the PEM text for your certs/keys in the cleanspeak properties file or point the properties file at files containing the certs/keys. See link:../../../4.x/tech/reference/configuration[Configuration] for more details.
+3. If you customized your session settings with Tomcat, see the `cleanspeak-app.session.timeout` and `cleanspeak-app.session.max-age` settings at link:../../../4.x/tech/reference/configuration[Configuration] for more details.
 
-Instead of using a JKS `keystore`, you will need to either configure the PEM text for your certs/keys in the cleanspeak properties file or point the properties file at files containing the certs/keys. See link:../../../4.x/tech/reference/configuration[Configuration] for more details.
+=== Status and metrics authentication changes
+
+In CleanSpeak 4.x, `/api/status`, `/prometheus/metrics`, and `/status` require at least 1 of the following:
+
+* Logged in user (via browser)
+* API key
+* Request from localhost with `cleanspeak-app.local-metrics.enabled` set to `true` in the configuration file
+
+If you have any automated checks monitoring CleanSpeak, don't forget to take this into consideration.
 
 === Deprecated properties
 
-TBD
+CleanSpeak 4.0.0 uses the HTTP and HTTPS ports from the 3.x WebService to try and avoid dependent system changes. This is port 8001 by default on a new CleanSpeak 4.0 system or on an upgraded system, whatever was configured as `cleanspeak-webservice.http.port`.
+
+At your convenience, change the following properties from their non-deprecated names.
+
+* `cleanspeak-webservice.http.port` -> `cleanspeak-app.http.port`
+* `cleanspeak-webservice.https.port` -> `cleanspeak-app.https.port`
+* `cleanspeak-webservice.runtime-mode` -> `cleanspeak-app.runtime-mode`
+
+link:../../../4.x/tech/reference/configuration[Configuration] notes the complete list of properties and what is deprecated.
