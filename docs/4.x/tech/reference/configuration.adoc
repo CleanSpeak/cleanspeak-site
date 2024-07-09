@@ -85,7 +85,7 @@ label.select:after {
 |[field]#license.id# [type]#[String]#
 |Your License ID. You can find your License ID by logging into your account at https://account.cleanspeak.com/account/.
 
-|[field]#database.url# [type]#[String]#
+|[field]#database.url# [type]#[String]# [required]#Required#
 |A JDBC URL for your database.
 
 For MySQL, this URL will look something like this:
@@ -100,10 +100,10 @@ If you are using MySQL, you must include the `serverTimezone=UTC` parameter in t
 
 Some MySQL services such as Microsoft Azure may require a specific version of TLS to connect successfully. At the time of writing this note, the MySQL connector will not attempt to utilize TLSv1.2 by default, so when connecting to a service that requires this version you will need to explicitly request this version of TLS on the connection string. For example, appending this `enabledTLSProtocols=TLSv1.2` to the connection string will allow you to successfully connect to an Azure managed MySQL database. See https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-reference-using-ssl.html[MySQL Connector : Connecting Securely UsingSSL] for additional information.
 
-|[field]#database.username# [type]#[String]#
+|[field]#database.username# [type]#[String]# [required]#Required#
 |The username used to connect to the database.
 
-|[field]#database.password# [type]#String#
+|[field]#database.password# [type]#String# [required]#Required#
 |The password used to connect to the database.
 
 |[field]#database.mysql.enforce-utf8mb4# [type]#[String]# [default]#defaults to `true`#
@@ -116,11 +116,26 @@ by setting this value to `false`.
 |
 include::docs/4.x/tech/reference/_property-additional-jvm-args.adoc[]
 
-|[field]#cleanspeak-app.http.port# [type]#[Integer]#
-|The port number that CleanSpeak Management Interface will use to accept HTTP requests.
+|[field]#cleanspeak-app.http.port# [type]#[Integer]# [required]#Required#
+|The port number that CleanSpeak will use to accept HTTP requests.
+
+|[field]#cleanspeak-app.https.enabled# [type]#[Boolean]# [default]#defaults to `false`#
+|Whether CleanSpeak will serve HTTPS requests from `cleanspeak-app.https.port`
 
 |[field]#cleanspeak-app.https.port# [type]#[Integer]#
-|The port number that CleanSpeak Management Interface will use to accept HTTPS requests.
+|The port number that CleanSpeak will use to accept HTTPS requests IF `cleanspeak-app.https.enabled` is set to `true`
+
+|[field]#cleanspeak-app.https.certificate# [type]#[String]#
+|PEM encoded TLS certificates to use. Either this or `cleanspeak-app.https.certificate-file` must be set if `cleanspeak-app.https.enabled` is set to `true`
+
+|[field]#cleanspeak-app.https.certificate-file# [type]#[String]#
+|Path to a file containing a PEM encoded TLS certificate. Either this or `cleanspeak-app.https.certificate` must be set if `cleanspeak-app.https.enabled` is set to `true`
+
+|[field]#cleanspeak-app.https.private-key# [type]#[String]#
+|PEM encoded TLS private key to use. Either this or `cleanspeak-app.https.private-key-file` must be set if `cleanspeak-app.https.enabled` is set to `true`
+
+|[field]#cleanspeak-app.https.private-key-file# [type]#[String]#
+|Path to a file containing a PEM encoded TLS private key. Either this or `cleanspeak-app.https.private-key` must be set if `cleanspeak-app.https.enabled` is set to `true`
 
 |[field]#cleanspeak-app.memory# [type]#[String]#
 |
@@ -139,19 +154,19 @@ When in the `development` runtime mode, maintenance mode will interactively assi
 |[field]#cleanspeak-app.silent-mode# [type]#[String]# [default]#Defaults to `false`#
 |Determines if CleanSpeak should use Silent Mode during the startup process. Silent Mode automatically applies all database migrations during startup such that you do not need to run them manually. This is the preferred mode when in production.
 
-|[field]#proxy.host# [type]#[String]# [since]#Available since 3.23.3#
+|[field]#proxy.host# [type]#[String]#
 |The proxy host used for egress network traffic. To enable this egress proxy, you must configure both the [field]#proxy.host# and [field]#proxy.port#.
 
-|[field]#proxy.port# [type]#[String]# [since]#Available since 3.23.3#
+|[field]#proxy.port# [type]#[String]#
 |The proxy port used for egress network traffic. To enable this egress proxy, you must configure both the [field]#proxy.host# and [field]#proxy.port#.
 
-|[field]#proxy.username# [type]#[String]# [since]#Available since 3.23.3#
+|[field]#proxy.username# [type]#[String]#
 |The proxy username for egress network traffic. To enable authentication with your proxy, you must configure both the [field]#proxy.username# and [field]#proxy.password#.
 
-|[field]#proxy.password# [type]#[String]# [since]#Available since 3.23.3#
+|[field]#proxy.password# [type]#[String]#
 |The proxy password for egress network traffic. To enable authentication with your proxy, you must configure both the [field]#proxy.username# and [field]#proxy.password#.
 
-|[field]#search.servers# [type]#[String]# [since]#Available since 3.30.0#
+|[field]#search.servers# [type]#[String]# [required]#Required#
 |The `http` or `https` URL to the Elasticsearch service. To specify more than one value, use a comma separated list.
 
 Single host example: `http://localhost:9200`
