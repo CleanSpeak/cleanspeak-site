@@ -51,6 +51,10 @@ include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 * Upgraded Elasticsearch client from version `7.17.16` to `8.12.2`
 ** Daniel - we have a lot of dependency changes with this release but it seems like past release notes only mentioned major deps.
 
+
+=== Known limitations
+* Machine Learning capability is supported through proxy servers that are configured via the `proxy.host` and related options (see link:../reference/configuration[Configuration]). However, proxy servers that require authentication through the `proxy.username` and `proxy.password` properties are not currently supported. This is due to a known JDK issue.
+
 [role=release-note]
 == Version 3.33.0
 _Released Thursday December 28th, 2023_
