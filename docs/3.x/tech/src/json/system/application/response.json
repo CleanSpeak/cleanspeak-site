@@ -166,6 +166,282 @@
           ]
         }
       },
+      "mlFilterConfiguration": {
+        "affinityConfig": {
+          "enabled": false,
+          "rules": {
+            "mild": {
+              "action": "allow",
+              "score": 40
+            },
+            "medium": {
+              "action": "allow",
+              "score": 50
+            },
+            "high": {
+              "action": "allow",
+              "score": 60
+            },
+            "severe": {
+              "action": "allow",
+              "score": 70
+            }
+          }
+        },
+        "compassionConfig": {
+          "enabled": false,
+          "rules": {
+            "mild": {
+              "action": "allow",
+              "score": 40
+            },
+            "medium": {
+              "action": "allow",
+              "score": 50
+            },
+            "high": {
+              "action": "allow",
+              "score": 60
+            },
+            "severe": {
+              "action": "allow",
+              "score": 70
+            }
+          }
+        },
+        "curiosityConfig": {
+          "enabled": false,
+          "rules": {
+            "mild": {
+              "action": "allow",
+              "score": 40
+            },
+            "medium": {
+              "action": "allow",
+              "score": 50
+            },
+            "high": {
+              "action": "allow",
+              "score": 60
+            },
+            "severe": {
+              "action": "allow",
+              "score": 70
+            }
+          }
+        },
+        "enabled": false,
+        "identityAttackConfig": {
+          "enabled": false,
+          "rules": {
+            "mild": {
+              "action": "allow",
+              "score": 40
+            },
+            "medium": {
+              "action": "allow",
+              "score": 50
+            },
+            "high": {
+              "action": "allow",
+              "score": 60
+            },
+            "severe": {
+              "action": "allow",
+              "score": 70
+            }
+          }
+        },
+        "insultConfig": {
+          "enabled": false,
+          "rules": {
+            "mild": {
+              "action": "allow",
+              "score": 40
+            },
+            "medium": {
+              "action": "allow",
+              "score": 50
+            },
+            "high": {
+              "action": "allow",
+              "score": 60
+            },
+            "severe": {
+              "action": "allow",
+              "score": 70
+            }
+          }
+        },
+        "nuanceConfig": {
+          "enabled": false,
+          "rules": {
+            "mild": {
+              "action": "allow",
+              "score": 40
+            },
+            "medium": {
+              "action": "allow",
+              "score": 50
+            },
+            "high": {
+              "action": "allow",
+              "score": 60
+            },
+            "severe": {
+              "action": "allow",
+              "score": 70
+            }
+          }
+        },
+        "personalStoryConfig": {
+          "enabled": false,
+          "rules": {
+            "mild": {
+              "action": "allow",
+              "score": 40
+            },
+            "medium": {
+              "action": "allow",
+              "score": 50
+            },
+            "high": {
+              "action": "allow",
+              "score": 60
+            },
+            "severe": {
+              "action": "allow",
+              "score": 70
+            }
+          }
+        },
+        "profanityConfig": {
+          "enabled": false,
+          "rules": {
+            "mild": {
+              "action": "allow",
+              "score": 40
+            },
+            "medium": {
+              "action": "allow",
+              "score": 50
+            },
+            "high": {
+              "action": "allow",
+              "score": 60
+            },
+            "severe": {
+              "action": "allow",
+              "score": 70
+            }
+          }
+        },
+        "reasoningConfig": {
+          "enabled": false,
+          "rules": {
+            "mild": {
+              "action": "allow",
+              "score": 40
+            },
+            "medium": {
+              "action": "allow",
+              "score": 50
+            },
+            "high": {
+              "action": "allow",
+              "score": 60
+            },
+            "severe": {
+              "action": "allow",
+              "score": 70
+            }
+          }
+        },
+        "respectConfig": {
+          "enabled": false,
+          "rules": {
+            "mild": {
+              "action": "allow",
+              "score": 40
+            },
+            "medium": {
+              "action": "allow",
+              "score": 50
+            },
+            "high": {
+              "action": "allow",
+              "score": 60
+            },
+            "severe": {
+              "action": "allow",
+              "score": 70
+            }
+          }
+        },
+        "severeToxicityConfig": {
+          "enabled": false,
+          "rules": {
+            "mild": {
+              "action": "allow",
+              "score": 40
+            },
+            "medium": {
+              "action": "allow",
+              "score": 50
+            },
+            "high": {
+              "action": "allow",
+              "score": 60
+            },
+            "severe": {
+              "action": "allow",
+              "score": 70
+            }
+          }
+        },
+        "threatConfig": {
+          "enabled": false,
+          "rules": {
+            "mild": {
+              "action": "allow",
+              "score": 40
+            },
+            "medium": {
+              "action": "allow",
+              "score": 50
+            },
+            "high": {
+              "action": "allow",
+              "score": 60
+            },
+            "severe": {
+              "action": "allow",
+              "score": 70
+            }
+          }
+        },
+        "toxicityConfig": {
+          "enabled": false,
+          "rules": {
+            "mild": {
+              "action": "allow",
+              "score": 40
+            },
+            "medium": {
+              "action": "allow",
+              "score": 50
+            },
+            "high": {
+              "action": "allow",
+              "score": 60
+            },
+            "severe": {
+              "action": "allow",
+              "score": 70
+            }
+          }
+        }
+      },
       "unicodeFilterRule": {
         "action": "allow"
       },
