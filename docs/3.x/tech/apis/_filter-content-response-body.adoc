@@ -92,7 +92,7 @@ Machine Learning results currently do not support word level text replacement si
 |===
 
 [source,json]
-.Example 3.x Response JSON
+.Example Response JSON
 ----
 include::../src/json/content/filter/response.json[]
 ----

@@ -262,11 +262,15 @@ This API should be avoided unless you have a very specific need to only perform 
 
 === Request
 
-
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#POST# [uri]#/content/item/filter#
+--
+[.endpoint]
+.URI (4.x)
+--
+[method]#POST# [uri]#/api/content/item/filter#
 --
 
 include::docs/3.x/tech/apis/_filter-content-request-body.adoc[]
