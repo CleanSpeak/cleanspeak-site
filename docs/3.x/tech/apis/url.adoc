@@ -55,12 +55,18 @@ URL Whitelist Tags are used to associate Whitelisted URLs with applications that
 
 Retrieve a TLD by name
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/filter/url/tld/`\{name\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/filter/url/tld/`\{name\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -79,12 +85,18 @@ include::docs/3.x/tech/apis/tld/_single-response.adoc[]
 
 Retrieve all TLDs
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/filter/url/tld#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/filter/url/tld#
+--
+				
 === Response
 
 :never_missing:
@@ -101,12 +113,18 @@ include::docs/3.x/tech/apis/tld/_multiple-response.adoc[]
 
 Create a TLD
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#POST# [uri]#/filter/url/tld#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#POST# [uri]#/api/filter/url/tld#
+--
+				
 include::docs/3.x/tech/apis/tld/_post-request.adoc[]
 
 === Response
@@ -121,12 +139,18 @@ include::docs/3.x/tech/apis/tld/_single-response.adoc[]
 
 Create many TLDs
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#POST# [uri]#/filter/url/tld#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#POST# [uri]#/api/filter/url/tld#
+--
+				
 [NOTE]
 ====
 Since both of the create TLD APIs use the same URL, providing both `tld` and `tlds` in the request will prefer the create single TLD variant.
@@ -146,12 +170,18 @@ include::docs/3.x/tech/apis/tld/_multiple-response.adoc[]
 
 Update a TLD by name
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#PUT# [uri]#/filter/url/tld/`\{name\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#PUT# [uri]#/api/filter/url/tld/`\{name\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -174,12 +204,18 @@ include::docs/3.x/tech/apis/tld/_single-response.adoc[]
 
 Delete a TLD by name
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#DELETE# [uri]#/filter/url/tld/`\{name\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#DELETE# [uri]#/api/filter/url/tld/`\{name\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -200,12 +236,18 @@ include::docs/3.x/tech/apis/_standard-delete-response-codes.adoc[]
 
 Retrieve a whitelisted URL by Id
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/filter/url/`\{id\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/filter/url/`\{id\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -226,12 +268,18 @@ include::docs/3.x/tech/apis/whitelistedURL/_single-response.adoc[]
 
 Retrieve all Whitelisted URLs
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/filter/url#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/filter/url#
+--
+				
 === Response
 
 :never_missing:
@@ -248,12 +296,18 @@ include::docs/3.x/tech/apis/whitelistedURL/_multiple-response.adoc[]
 
 Create a Whitelisted URL
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#POST# [uri]#/filter/url#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#POST# [uri]#/api/filter/url#
+--
+				
 include::docs/3.x/tech/apis/whitelistedURL/_post-request.adoc[]
 
 === Response
@@ -268,12 +322,18 @@ include::docs/3.x/tech/apis/whitelistedURL/_single-response.adoc[]
 
 Update a Whitelisted URL by name
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#PUT# [uri]#/filter/url/`\{id\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#PUT# [uri]#/api/filter/url/`\{id\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -296,12 +356,18 @@ include::docs/3.x/tech/apis/whitelistedURL/_single-response.adoc[]
 
 Delete a Whitelisted URL by Id
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#DELETE# [uri]#/filter/url/`\{id\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#DELETE# [uri]#/api/filter/url/`\{id\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -319,12 +385,18 @@ include::docs/3.x/tech/apis/_standard-delete-response-codes.adoc[]
 === Request by Id
 
 Retrieve a URL Whitelist Tag by Id
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/filter/url/tag/`\{id\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/filter/url/tag/`\{id\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -336,12 +408,18 @@ Retrieve a URL Whitelist Tag by Id
 === Request by Name
 
 Retrieve a URL Whitelist Tag by name
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/filter/url/tag/`\{name\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/filter/url/tag/`\{name\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -362,12 +440,18 @@ include::docs/3.x/tech/apis/urlWhitelistTag/_single-response.adoc[]
 
 Retrieve all of the URL Whitelist Tags
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/filter/url/tag#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/filter/url/tag#
+--
+				
 === Response
 
 :never_missing:
@@ -384,12 +468,18 @@ include::docs/3.x/tech/apis/urlWhitelistTag/_multiple-response.adoc[]
 
 Create a URL Whitelist Tag
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#POST# [uri]#/filter/url/tag#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#POST# [uri]#/api/filter/url/tag#
+--
+				
 include::docs/3.x/tech/apis/urlWhitelistTag/_post-request.adoc[]
 
 === Response
@@ -404,12 +494,18 @@ include::docs/3.x/tech/apis/urlWhitelistTag/_single-response.adoc[]
 
 Update a URL Whitelist Tag
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#PUT# [uri]#/filter/url/tag/`\{id\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#PUT# [uri]#/api/filter/url/tag/`\{id\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -432,12 +528,18 @@ include::docs/3.x/tech/apis/urlWhitelistTag/_single-response.adoc[]
 
 Delete a URL Whitelist Tag by Id
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#DELETE# [uri]#/filter/url/tag/`\{id\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#DELETE# [uri]#/api/filter/url/tag/`\{id\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters

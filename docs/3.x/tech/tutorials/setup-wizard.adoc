@@ -6,7 +6,7 @@ description: Learn how to setup CleanSpeak and get started using the Setup Wizar
 
 == Setup Wizard
 
-When you first start CleanSpeak and open the CleanSpeak Management Interface in your web browser, you will be presented with a Setup Wizard to guide you through the initial steps of configuring CleanSpeak. The Setup Wizard screen looks like this:
+When you first start CleanSpeak and open the CleanSpeak Management Interface (3.x)/CleanSpeak Application (4.x) in your web browser, you will be presented with a Setup Wizard to guide you through the initial steps of configuring CleanSpeak. The Setup Wizard screen looks like this:
 
 image::setup-wizard.png[Setup Wizard,width=1200]
 

@@ -18,19 +18,31 @@ This API is used to create a new application. A CleanSpeak application defines a
 === Request
 
 Create an Application with an automatically generated Id
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#POST# [uri]#/system/application#
 --
-
-Create an Application with the provided Id
 [.endpoint]
-.URI
+.URI (4.x)
+--
+[method]#POST# [uri]#/api/system/application#
+--
+				
+Create an Application with the provided Id
+
+[.endpoint]
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#POST# [uri]#/system/application/`\{applicationId\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#POST# [uri]#/api/system/application/`\{applicationId\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -58,12 +70,18 @@ This API is used to retrieve an application and its configuration.
 === Request
 
 Retrieve a single application by Id
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/system/application/`\{applicationId\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/system/application/`\{applicationId\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -73,12 +91,18 @@ Retrieve a single application by Id
 |===
 
 Retrieve all applications
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/system/application#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/system/application#
+--
+				
 === Response
 
 :http_method: GET
@@ -95,12 +119,18 @@ This API is used to update an application.
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#PUT# [uri]#/system/application/`\{applicationId\}`#
 --
-[cols="3a,7a"]
+[.endpoint]
+.URI (4.x)
+--
+[method]#PUT# [uri]#/api/system/application/`\{applicationId\}`#
+--
+				[cols="3a,7a"]
 [.api]
 .Request Parameters
 |===
@@ -132,12 +162,18 @@ Deleting an application from CleanSpeak removes all of the configuration, conten
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#DELETE# [uri]#/system/application/`\{applicationId\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#DELETE# [uri]#/api/system/application/`\{applicationId\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters

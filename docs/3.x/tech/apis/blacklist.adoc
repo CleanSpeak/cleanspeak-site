@@ -64,12 +64,18 @@ Whitelist
 === Retrieve by Id
 
 Retrieve a dictionary entry by Id
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/filter/blacklist/dictionary/`\{id\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/filter/blacklist/dictionary/`\{id\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -81,12 +87,18 @@ Retrieve a dictionary entry by Id
 === Retrieve by text and locale
 
 Retrieve a dictionary entry by its unique text and locale
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/filter/blacklist/dictionary``?text=\{text\}&locale=\{locale\}``#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/filter/blacklist/dictionary``?text=\{text\}&locale=\{locale\}``#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -109,12 +121,18 @@ include::docs/3.x/tech/apis/dictionary/_blacklist-dictionary-single-response.ado
 === Request
 
 Use known attributes of entries to find a set of dictionary entries.
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/filter/blacklist/dictionary/search``?startRow=\{startRow\}&numberOfResults=\{numberOfResults\}&locale={locale}&sort[0].field=\{field\}&sort[0].order=\{order\}``#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/filter/blacklist/dictionary/search``?startRow=\{startRow\}&numberOfResults=\{numberOfResults\}&locale={locale}&sort[0].field=\{field\}&sort[0].order=\{order\}``#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -160,12 +178,18 @@ This API is used to create dictionary entries. Creating a dictionary entry using
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#POST# [uri]#/filter/blacklist/dictionary#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#POST# [uri]#/api/filter/blacklist/dictionary#
+--
+				
 include::docs/3.x/tech/apis/dictionary/_blacklist-dictionary-post-request.adoc[]
 
 === Response
@@ -187,12 +211,18 @@ Available since 3.12.0
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#PUT# [uri]#/filter/blacklist/dictionary/`\{id\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#PUT# [uri]#/api/filter/blacklist/dictionary/`\{id\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -207,12 +237,18 @@ include::docs/3.x/tech/apis/dictionary/_blacklist-dictionary-post-request.adoc[]
 
 Allows you to delete a dictionary entry by Id. Deleting a dictionary entry using this API bypasses the approval process.
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#DELETE# [uri]#/filter/blacklist/dictionary/`\{id\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#DELETE# [uri]#/api/filter/blacklist/dictionary/`\{id\}`#
+--
+				
 === Request
 
 [cols="3a,7a"]
@@ -238,12 +274,18 @@ This API has been available since 3.11.0
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#DELETE# [uri]#/filter/blacklist/dictionary/bulk``?locale={locale}``#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#DELETE# [uri]#/api/filter/blacklist/dictionary/bulk``?locale={locale}``#
+--
+				
 This request deletes ALL Dictionary Entries of a given locale.
 
 [cols="3a,7a"]
@@ -263,12 +305,18 @@ include::docs/3.x/tech/apis/_standard-delete-response-codes.adoc[]
 
 === Retrieve by Id
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/filter/blacklist/tag/`\{id\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/filter/blacklist/tag/`\{id\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -279,12 +327,18 @@ include::docs/3.x/tech/apis/_standard-delete-response-codes.adoc[]
 
 === Retrieve by name
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/filter/blacklist/tag``?name=\{name\}``#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/filter/blacklist/tag``?name=\{name\}``#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -303,12 +357,18 @@ include::docs/3.x/tech/apis/tag/_blacklist-tag-single-response.adoc[]
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/filter/blacklist/tag#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/filter/blacklist/tag#
+--
+				
 === Response
 
 :never_missing:
@@ -321,12 +381,18 @@ include::docs/3.x/tech/apis/tag/_blacklist-tag-multi-response.adoc[]
 
 == Create a Tag
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#POST# [uri]#/filter/blacklist/tag#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#POST# [uri]#/api/filter/blacklist/tag#
+--
+				
 === Request
 
 include::docs/3.x/tech/apis/tag/_blacklist-tag-request.adoc[]
@@ -339,12 +405,18 @@ include::docs/3.x/tech/apis/tag/_blacklist-tag-single-response.adoc[]
 
 == Delete a Tag
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#DELETE# [uri]#/filter/blacklist/tag/`\{id\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#DELETE# [uri]#/api/filter/blacklist/tag/`\{id\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -368,12 +440,18 @@ Available since 3.9.0
 
 === Retrieve by Id
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/filter/blacklist/entry/`\{id\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/filter/blacklist/entry/`\{id\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -385,12 +463,18 @@ Available since 3.9.0
 
 === Retrieve by text and locale
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/filter/blacklist/entry``?text=\{text\}&locale=\{locale\}``#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/filter/blacklist/entry``?text=\{text\}&locale=\{locale\}``#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -417,12 +501,18 @@ Available since 3.9.0
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/filter/blacklist/entry/search``?text={text}&startRow={startRow}&numberOfResults={numberOfResults}``#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/filter/blacklist/entry/search``?text={text}&startRow={startRow}&numberOfResults={numberOfResults}``#
+--
+				
 [NOTE]
 ====
 Not all parameters are shown in this URI, see the table below for the full list.
@@ -511,12 +601,18 @@ Available since 3.9.0
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#POST# [uri]#/filter/blacklist/entry#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#POST# [uri]#/api/filter/blacklist/entry#
+--
+				
 include::docs/3.x/tech/apis/entry/_blacklist-entry-postput-request.adoc[]
 
 === Response
@@ -534,12 +630,18 @@ Available since 3.9.0
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#DELETE# [uri]#/filter/blacklist/entry/`\{id\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#DELETE# [uri]#/api/filter/blacklist/entry/`\{id\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -563,12 +665,18 @@ This API has been available since 3.11.0
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#DELETE# [uri]#/filter/blacklist/entry/bulk``?locale={locale}``#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#DELETE# [uri]#/api/filter/blacklist/entry/bulk``?locale={locale}``#
+--
+				
 This request deletes ALL Filter Entries of a given locale.
 
 [cols="3a,7a"]
@@ -593,12 +701,18 @@ Available since 3.9.0
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#PUT# [uri]#/filter/blacklist/entry/`\{id\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#PUT# [uri]#/api/filter/blacklist/entry/`\{id\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Paramters
@@ -624,12 +738,18 @@ Available since 3.18.0
 
 === Retrieve by Id
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/filter/blacklist/phrase/`\{id\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/filter/blacklist/phrase/`\{id\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -646,12 +766,18 @@ include::docs/3.x/tech/apis/phrase/_blacklist-phrase-single-response.adoc[]
 
 === Retrieve all Phrases
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/filter/blacklist/phrase#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/filter/blacklist/phrase#
+--
+				
 === Response
 
 :never_missing:
@@ -669,12 +795,18 @@ Available since 3.18.0
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#POST# [uri]#/filter/blacklist/phrase#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#POST# [uri]#/api/filter/blacklist/phrase#
+--
+				
 include::docs/3.x/tech/apis/phrase/_blacklist-phrase-postput-request.adoc[]
 
 === Response
@@ -692,12 +824,18 @@ Available since 3.18.0
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#PUT# [uri]#/filter/blacklist/phrase/`\{id\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#PUT# [uri]#/api/filter/blacklist/phrase/`\{id\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -723,12 +861,18 @@ Available since 3.18.0
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#DELETE# [uri]#/filter/blacklist/phrase/`\{id\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#DELETE# [uri]#/api/filter/blacklist/phrase/`\{id\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -750,12 +894,18 @@ Available since 3.23.0
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/filter/blacklist/whitelist/`\{id\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/filter/blacklist/whitelist/`\{id\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 |===
@@ -773,12 +923,18 @@ include::docs/3.x/tech/apis/whitelist/_whitelist-entry-single-response.adoc[]
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#GET# [uri]#/filter/blacklist/whitelist/#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#GET# [uri]#/api/filter/blacklist/whitelist/#
+--
+				
 === Response
 
 :never_missing:
@@ -791,12 +947,18 @@ include::docs/3.x/tech/apis/whitelist/_whitelist-entry-multiple-response.adoc[]
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#POST# [uri]#/filter/blacklist/whitelist/#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#POST# [uri]#/api/filter/blacklist/whitelist/#
+--
+				
 include::docs/3.x/tech/apis/whitelist/_whitelist-entry-postput-request.adoc[]
 
 === Response
@@ -809,12 +971,18 @@ include::docs/3.x/tech/apis/whitelist/_whitelist-entry-single-response.adoc[]
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#PUT# [uri]#/filter/blacklist/whitelist/`\{id\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#PUT# [uri]#/api/filter/blacklist/whitelist/`\{id\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 |===
@@ -834,12 +1002,18 @@ include::docs/3.x/tech/apis/whitelist/_whitelist-entry-single-response.adoc[]
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#DELETE# [uri]#/filter/blacklist/whitelist/`\{id\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#DELETE# [uri]#/api/filter/blacklist/whitelist/`\{id\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 |===

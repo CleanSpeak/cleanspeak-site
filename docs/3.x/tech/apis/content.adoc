@@ -47,19 +47,31 @@ Persistent content such as forum posts must include a content ID (UUID) in order
 === Request
 
 For Transient content, do not provide a unique identifier on the API request, CleanSpeak will generate this on your behalf.
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#POST# [uri]#/content/item/moderate#
 --
-
-For persistent content you will need to provide a unique identifier (UUID) on the API request. When using this API with persistent content you'll need to first ensure your Application configuration is set to Persistent Content Type. If you have not done this the API request will fail with an error message indicating you have not yet configured your Application.
 [.endpoint]
-.URI
+.URI (4.x)
+--
+[method]#POST# [uri]#/api/content/item/moderate#
+--
+				
+For persistent content you will need to provide a unique identifier (UUID) on the API request. When using this API with persistent content you'll need to first ensure your Application configuration is set to Persistent Content Type. If you have not done this the API request will fail with an error message indicating you have not yet configured your Application.
+
+[.endpoint]
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#POST# [uri]#/content/item/moderate/`\{contentItemId\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#POST# [uri]#/api/content/item/moderate/`\{contentItemId\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -86,12 +98,18 @@ Like the Filter Content API the same filtering is performed on content sent to t
 === Request
 
 You need to provide the unique identifier (UUID) of the content being updated on the API request.
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#PUT# [uri]#/content/item/moderate/`\{contentItemId\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#PUT# [uri]#/api/content/item/moderate/`\{contentItemId\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -138,19 +156,31 @@ Persistent content such as forum posts must include a content ID (UUID) in order
 === Request
 
 For Transient content, do not provide a unique identifier on the API request, CleanSpeak will generate this on your behalf.
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#POST# [uri]#/content/item/moderate/proxy#
 --
-
-For persistent content you will need to provide a unique identifier (UUID) on the API request. When using this API with persistent content you'll need to first ensure your Application configuration is set to Persistent Content Type. If you have not done this the API request will fail with an error message indicating you have not yet configured your Application.
 [.endpoint]
-.URI
+.URI (4.x)
+--
+[method]#POST# [uri]#/api/content/item/moderate/proxy#
+--
+				
+For persistent content you will need to provide a unique identifier (UUID) on the API request. When using this API with persistent content you'll need to first ensure your Application configuration is set to Persistent Content Type. If you have not done this the API request will fail with an error message indicating you have not yet configured your Application.
+
+[.endpoint]
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#POST# [uri]#/content/item/moderate/proxy/`\{contentItemId\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#POST# [uri]#/api/content/item/moderate/proxy/`\{contentItemId\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -187,12 +217,18 @@ Like the Filter Content API the same filtering is performed on content sent to t
 === Request
 
 You need to provide the unique identifier (UUID) of the content being updated on the API request.
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#PUT# [uri]#/content/item/moderate/proxy/`\{contentItemId\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#PUT# [uri]#/api/content/item/moderate/proxy/`\{contentItemId\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -227,9 +263,14 @@ This API should be avoided unless you have a very specific need to only perform 
 === Request
 
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#POST# [uri]#/content/item/filter#
+--
+[.endpoint]
+.URI (4.x)
+--
+[method]#POST# [uri]#/api/content/item/filter#
 --
 
 include::docs/3.x/tech/apis/_filter-content-request-body.adoc[]
@@ -240,7 +281,6 @@ include::docs/3.x/tech/apis/_filter-content-response-codes.adoc[]
 
 include::docs/3.x/tech/apis/_filter-content-response-body.adoc[]
 
-
 == Flagging Content
 
 This API is used to flag content that has already been sent into CleanSpeak. Flagged content will be queued for a moderator to review in the Content Alert queue.
@@ -249,12 +289,18 @@ For example, this API may be used to allow users to flag a forum post for inappr
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#POST# [uri]#/content/item/flag/`\{contentItemId\}`#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#POST# [uri]#/api/content/item/flag/`\{contentItemId\}`#
+--
+				
 [cols="3a,7a"]
 [.api]
 .Request Parameters
@@ -291,12 +337,18 @@ This API can be called synchronously or asynchronously. If the `callbackURL` is 
 
 === Request
 
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#POST# [uri]#/content/item/batch-filter#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#POST# [uri]#/api/content/item/batch-filter#
+--
+				
 include::docs/3.x/tech/apis/_batch-filter-content-request-body.adoc[]
 
 === Response
@@ -327,19 +379,31 @@ This API can be called synchronously or asynchronously. If the `callbackURL` is 
 === Request
 
 For new content, you must use the POST request:
+
 [.endpoint]
-.URI
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#POST# [uri]#/content/item/batch-moderate#
 --
-
-For updating content, you must use the PUT request:
 [.endpoint]
-.URI
+.URI (4.x)
+--
+[method]#POST# [uri]#/api/content/item/batch-moderate#
+--
+				
+For updating content, you must use the PUT request:
+
+[.endpoint]
+.URI (3.x, deprecated in 4.0.0)
 --
 [method]#PUT# [uri]#/content/item/batch-moderate#
 --
-
+[.endpoint]
+.URI (4.x)
+--
+[method]#PUT# [uri]#/api/content/item/batch-moderate#
+--
+				
 include::docs/3.x/tech/apis/_batch-moderate-content-request-body.adoc[]
 
 === Response

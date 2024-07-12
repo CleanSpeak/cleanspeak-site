@@ -6,7 +6,7 @@ description: Learn how to handle events that CleanSpeak sends to your Webhooks
 
 == Handling Events
 
-The CleanSpeak webhook system is designed to provide feedback to your servers when certain actions are taken inside of CleanSpeak. All events are sent from CleanSpeak to the webhooks you configure via the Management Interface. These events are sent via an HTTP POST using `application/json` data. This is similar to the webservice API except in reverse. Instead of you calling an API, the API calls your system with data as it happens.
+The CleanSpeak webhook system is designed to provide feedback to your servers when certain actions are taken inside of CleanSpeak. All events are sent from CleanSpeak to the webhooks you configure. These events are sent via an HTTP POST using `application/json` data. This is similar to the API except in reverse. Instead of you calling an API, the API calls your system with data as it happens.
 
 There are five types of events that CleanSpeak will send:
 
@@ -22,7 +22,7 @@ Each of the event types are covered in detail below:
 
 == Content Approvals
 
-The Pre-Approval Queue supports the approval and rejection of content. Moderators login to the CleanSpeak Management Interface and from there can approve and reject content. Once moderators have approved or rejected content, CleanSpeak will send events back into your system using the JSON format described below.
+The Pre-Approval Queue supports the approval and rejection of content. Moderators login to CleanSpeak and from there can approve and reject content. Once moderators have approved or rejected content, CleanSpeak will send events back into your system using the JSON format described below.
 
 === Request
 
@@ -124,12 +124,12 @@ When the action is started by a moderator, the phase will be "start". If a moder
 |[field]#reason# [type]#[String]#
 |The reason the moderator selected.
 
-Reasons are configured in the management interface via [breadcrumb]#Settings -> User Actions -> Reasons#. This value will be `null` when no reasons are selected or configured.
+Reasons are configured via [breadcrumb]#Settings -> User Actions -> Reasons#. This value will be `null` when no reasons are selected or configured.
 
 |[field]#reasonCode# [type]#[String]#
 |The reason code the moderator selected.
 
-Reasons are configured in the management interface via [breadcrumb]#Settings -> User Actions -> Reasons#. This value will be `null` when no reasons are selected or configured.
+Reasons are configured via [breadcrumb]#Settings -> User Actions -> Reasons#. This value will be `null` when no reasons are selected or configured.
 
 |[field]#userId# [type]#[UUID]#
 |This parameter specifies the unique identifier of the user the action is being performed. This ID is equivalent to the ‘contentItem.senderId’ you provide when moderating and storing content.
@@ -241,7 +241,7 @@ CleanSpeak expects that the event request handler will return a `200` status cod
 Available since `3.27.0`
 ====
 
-When filter configuration is changed via the UI, the configuration goes to a pending approval state. Only when that configuration is approved by an administrator will it become active in the live state of the filters used by the webservice. When this approval happens, you can view the changes via this event. (Note: Changes via the API bypass the approval queue and thus will not trigger this event)
+When filter configuration is changed via the UI, the configuration goes to a pending approval state. Only when that configuration is approved by an administrator will it become active in the live state of the filters used by the API. When this approval happens, you can view the changes via this event. (Note: Changes via the API bypass the approval queue and thus will not trigger this event)
 
 === Request
 
@@ -323,11 +323,11 @@ In order to appropriately handle requests from the CleanSpeak event system, you 
 
 === Responses
 
-Your event handler must handle the REST API request described above and send back an appropriate response. Your event webService must send back to CleanSpeak an HTTP response code that indicates whether or not the event was successfully handled or not. If your WebService handled the event properly, it must send back an HTTP response status code of `200`. If there was any type of error or failure, your WebService must send back an HTTP response status code of `500`.
+Your event handler must handle the REST API request described above and send back an appropriate response. Your event API must send back to CleanSpeak an HTTP response code that indicates whether or not the event was successfully handled or not. If your API handled the event properly, it must send back an HTTP response status code of `200`. If there was any type of error or failure, your API must send back an HTTP response status code of `500`.
 
 === Configuration
 
-Once your event handler is complete and listening for event requests, you must configure your event handler URL. CleanSpeak refers to event handlers as event Servers and they are configured via the Management Interface under [breadcrumb]#Settings -> Webhooks# menu option. If you have multiple event servers configured for a single Application, they must all correctly handle the event for the transaction to succeed.
+Once your event handler is complete and listening for event requests, you must configure your event handler URL. CleanSpeak refers to event handlers as event Servers and they are configured under [breadcrumb]#Settings -> Webhooks# menu option. If you have multiple event servers configured for a single Application, they must all correctly handle the event for the transaction to succeed.
 
 === Securing
 

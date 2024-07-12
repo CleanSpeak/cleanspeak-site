@@ -3,8 +3,8 @@
     <ul>
       <li><a href="/docs/3.x/tech/getting-started/" {% if page.url == "/docs/3.x/tech/getting-started/" %}class="active"{% endif %}><i class="fa fa-fw fa-road"></i>Getting Started</a></li>
       <li>
-        <a href="#"{% if page.url contains "/installation-guide/" %} class="open"{% endif %}><i class="fa fa-fw fa-download"></i>Installation Guide<i class="fa fa-fw fa-angle-right sub-menu"></i></a>
-        <ul{% if page.url contains "/installation-guide/" %} class="active"{% endif %}>
+        <a href="#"{% if page.url contains "/installation-guide/" %} class="open"{% endif %}><i class="fa fa-fw fa-download"></i>Installation Guide (3.x)<i class="fa fa-fw fa-angle-right sub-menu"></i></a>
+        <ul{% if page.url contains "3.x/tech/installation-guide" %} class="active"{% endif %}>
           <li><a href="/docs/3.x/tech/installation-guide/system-requirements" {% if page.url == "/docs/3.x/tech/installation-guide/system-requirements" %}class="active"{% endif %}>System Requirements</a></li>
           <li><a href="/docs/3.x/tech/installation-guide/server-layout" {% if page.url == "/docs/3.x/tech/installation-guide/server-layout" %}class="active"{% endif %}>Server Layout</a></li>
           <li><a href="/docs/3.x/tech/installation-guide/packages" {% if page.url == "/docs/3.x/tech/installation-guide/packages" %}class="active"{% endif %}>Packages</a></li>
@@ -16,6 +16,18 @@
           <li><a href="/docs/3.x/tech/installation-guide/docker" {% if page.url == "/docs/3.x/tech/installation-guide/docker" %}class="active"{% endif %}>Docker</a></li>
         </ul>
       </li>
+    <li>
+      <a href="#"{% if page.url contains "4.x/tech/installation-guide" %} class="open"{% endif %}><i class="fa fa-fw fa-download"></i>Installation Guide (4.x)<i class="fa fa-fw fa-angle-right sub-menu"></i></a>
+      <ul{% if page.url contains "4.x/tech/installation-guide" %} class="active"{% endif %}>
+      <li><a href="/docs/4.x/tech/installation-guide/system-requirements" {% if page.url == "/docs/4.x/tech/installation-guide/system-requirements" %}class="active"{% endif %}>System Requirements</a></li>
+      <li><a href="/docs/4.x/tech/installation-guide/server-layout" {% if page.url == "/docs/4.x/tech/installation-guide/server-layout" %}class="active"{% endif %}>Server Layout</a></li>
+      <li><a href="/docs/4.x/tech/installation-guide/packages" {% if page.url == "/docs/4.x/tech/installation-guide/packages" %}class="active"{% endif %}>Packages</a></li>
+      <li><a href="/docs/4.x/tech/installation-guide/database-search" {% if page.url == "/docs/4.x/tech/installation-guide/database-search" %}class="active"{% endif %}>Database/Search</a></li>
+      <li><a href="/docs/4.x/tech/installation-guide/cleanspeak-app" {% if page.url == "/docs/4.x/tech/installation-guide/cleanspeak-app" %}class="active"{% endif %}>CleanSpeak Application</a></li>
+      <li><a href="/docs/4.x/tech/installation-guide/securing" {% if page.url == "/docs/4.x/tech/installation-guide/securing" %}class="active"{% endif %}>Securing</a></li>
+      <li><a href="/docs/4.x/tech/installation-guide/docker" {% if page.url == "/docs/4.x/tech/installation-guide/docker" %}class="active"{% endif %}>Docker</a></li>
+      </ul>
+    </li>
       <li>
         <a href="#"{% if page.url contains "/tutorials/" %} class="open"{% endif %}><i class="fa fa-fw fa-graduation-cap"></i>Tutorials<i class="fa fa-fw fa-angle-right sub-menu"></i></a>
         <ul{% if page.url contains "/tutorials/" %} class="active"{% endif %}>
@@ -28,7 +40,8 @@
           <li><a href="/docs/3.x/tech/tutorials/handling-flags" {% if page.url == "/docs/3.x/tech/tutorials/handling-flags" %}class="active"{% endif %}>Handling Flags</a></li>
           <li><a href="/docs/3.x/tech/tutorials/handling-events" {% if page.url == "/docs/3.x/tech/tutorials/handling-events" %}class="active"{% endif %}>Handling Events</a></li>
           <li><a href="/docs/3.x/tech/tutorials/exporting-lists" {% if page.url == "/docs/3.x/tech/tutorials/exporting-lists" %}class="active"{% endif %}>Exporting Lists</a></li>
-          <li><a href="/docs/3.x/tech/tutorials/start-and-stop" {% if page.url == "/docs/3.x/tech/tutorials/start-and-stop" %}class="active"{% endif %}>Start and Stop CleanSpeak</a></li>
+          <li><a href="/docs/3.x/tech/tutorials/start-and-stop" {% if page.url == "/docs/3.x/tech/tutorials/start-and-stop" %}class="active"{% endif %}>Start and Stop CleanSpeak (3.x) </a></li>
+          <li><a href="/docs/4.x/tech/tutorials/start-and-stop" {% if page.url == "/docs/4.x/tech/tutorials/start-and-stop" %}class="active"{% endif %}>Start and Stop CleanSpeak (4.x) </a></li>
           <li><a href="/docs/3.x/tech/tutorials/prometheus" {% if page.url == "/docs/3.x/tech/tutorials/prometheus" %}class="active"{% endif %}>Configure Prometheus</a></li>
           <li>
             <a href="#"{% if page.url contains "/tutorials/media-filter/" %} class="open"{% endif %}><i class="fa fa-fw fa-picture-o"></i>Media Filter<i class="fa fa-fw fa-angle-right sub-menu"></i></a>
@@ -62,13 +75,14 @@
           <li><a href="/docs/3.x/tech/apis/admins-moderators" {% if page.url == "/docs/3.x/tech/apis/admins-moderators" %}class="active"{% endif %}>Admins/Moderators</a></li>
           <li><a href="/docs/3.x/tech/apis/system" {% if page.url == "/docs/3.x/tech/apis/system" %}class="active"{% endif %}>System</a></li>
           <li><a href="/docs/3.x/tech/apis/kids-chat" {% if page.url == "/docs/3.x/tech/apis/kids-chat" %}class="active"{% endif %}>Kids Chat</a></li>
-          <li><a href="/docs/3.x/tech/apis/status" {% if page.url == "/docs/3.x/tech/apis/status" %}class="active"{% endif %}>Status</a></li>
+          <li><a href="/docs/3.x/tech/apis/status" {% if page.url == "/docs/3.x/tech/apis/status" %}class="active"{% endif %}>Status/Health</a></li>
         </ul>
       </li>
       <li>
         <a href="#"{% if page.url contains "/reference/" %} class="open"{% endif %}><i class="fa fa-fw fa-book"></i>Reference<i class="fa fa-fw fa-angle-right sub-menu"></i></a>
         <ul{% if page.url contains "/reference/" %} class="active"{% endif %}>
-          <li><a href="/docs/3.x/tech/reference/configuration" {% if page.url == "/docs/3.x/tech/reference/configuration" %}class="active"{% endif %}>Configuration</a></li>
+          <li><a href="/docs/3.x/tech/reference/configuration" {% if page.url == "/docs/3.x/tech/reference/configuration" %}class="active"{% endif %}>Configuration (3.x)</a></li>
+          <li><a href="/docs/4.x/tech/reference/configuration" {% if page.url == "/docs/4.x/tech/reference/configuration" %}class="active"{% endif %}>Configuration (4.x)</a></li>
           <li><a href="/docs/3.x/tech/reference/data-types" {% if page.url == "/docs/3.x/tech/reference/data-types" %}class="active"{% endif %}>Data Types</a></li>
           <li><a href="/docs/3.x/tech/reference/technical-overview" {% if page.url == "/docs/3.x/tech/reference/technical-overview" %}class="active"{% endif %}>Technical Overview</a></li>
         </ul>
@@ -76,8 +90,9 @@
       <li>
         <a href="#"{% if page.url contains "/upgrades-patches/" %} class="open"{% endif %}><i class="fa fa-fw fa-upload"></i>Upgrades/Patches<i class="fa fa-fw fa-angle-right sub-menu"></i></a>
         <ul{% if page.url contains "/upgrades-patches/" %} class="active"{% endif %}>
-          <li><a href="/docs/3.x/tech/upgrades-patches/overview" {% if page.url == "/docs/3.x/tech/upgrades-patches/overview" %}class="active"{% endif %}>Overview</a></li>
-          <li><a href="/docs/3.x/tech/upgrades-patches/previous-versions" {% if page.url == "/docs/3.x/tech/upgrades-patches/previous-versions" %}class="active"{% endif %}>Previous Versions</a></li>
+          <li><a href="/docs/4.x/tech/upgrades-patches/3.x-4.x" {% if page.url == "/docs/4.x/tech/upgrades-patches/3.x-4.x" %}class="active"{% endif %}>3.x to 4.x</a></li>
+          <li><a href="/docs/3.x/tech/upgrades-patches/3.x-3.x" {% if page.url == "/docs/3.x/tech/upgrades-patches/3.x-3.x" %}class="active"{% endif %}>3.x to 3.x</a></li>
+          <li><a href="/docs/3.x/tech/upgrades-patches/2.x-3.x" {% if page.url == "/docs/3.x/tech/upgrades-patches/2.x-3.x" %}class="active"{% endif %}>2.x to 3.x</a></li>
         </ul>
       </li>
       <li><a href="/docs/3.x/tech/release-notes/" {% if page.url == "/docs/3.x/tech/release-notes/" %}class="active"{% endif %}><i class="fa fa-fw fa-list-ol"></i>Release Notes</a></li>

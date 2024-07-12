@@ -80,6 +80,37 @@ _Example Parameter_
 |[field]#emails.spacePenalty# [type]#[Double]# [optional]#Optional# [default]#defaults to -0.05#
 |This parameter specifies a penalty applied to the quality score if the match contains any spaces. For example, `user@ example.com` contains a space so the space penalty value will be added to the quality score. The email space penalty is applied once regardless of the number of spaces found in the match.
 
+|[field]#ml.disabled# [type]#[Boolean]# [optional]#Optional# [default]#defaults to `true`# [since]#Available since 4.0.0#
+|This parameter disables the Machine Learning filter completely. When this parameter is set to `true` all other nested `ml` parameters will be ignored. Use of these ML models is available for an additional cost. If your license does not include ML and this value is set to `false`, the response will include an HTTP 402 response code with an `UnlicensedFeatureException` error.
+
+|[field]#ml.locales# [type]#[Array<String>]# [optional]#Optional# [since]#Available since 4.0.0#
+|This parameter supplies which locales/languages the Machine Learning models should be utilized with. When this parameter is omitted, language auto detection is attempted. See link:../reference/data-types#locales[Locales].
+
+|[field]#ml.minimumSeverity# [type]#[String]# [optional]#Optional# [since]#Available since 4.0.0#
+|This parameter specifies the minimum severity that Machine Learning matches must have to be included in the response. When this parameter is omitted all matches will be returned regardless of severity. Possible values:
+
+* `mild`
+* `medium`
+* `high`
+* `severe`
+
+|[field]#ml.models# [type]#[List<String>]# [required]#Required# [since]#Available since 4.0.0#
+|Which ML models to pass content through. Valid options are
+
+* `affinity` - references shared interests, motivations or outlooks between the content author and another individual, group or entity
+* `compassion` - identifies with or shows concern, empathy, or support for the feelings/emotions of others
+* `curiosity` - attempts to clarify or ask follow-up questions to better understand another person or idea
+* `identityAttack` - negative or hateful comments targeting someone because of their identity
+* `insult` - insulting, inflammatory, or negative comment towards a person or a group of people
+* `nuance` - incorporates multiple points of view in an attempt to provide a full picture or contribute useful detail and/or context
+* `personalStory`- includes a personal experience or story as a source of support for the statements made in the comment
+* `profanity` - swear words, curse words, or other obscene or profane language
+* `reasoning` - makes specific or well-reasoned points to provide a fuller understanding of the topic without disrespect or provocation
+* `respect` - shows deference or appreciation to others, or acknowledges the validity of another person
+* `severeToxicity` - very specific and volatile hate speech, usually referencing catch phrases of recognized hate groups
+* `toxicity` - a rude, disrespectful, or unreasonable comment that is likely to make people leave a discussion
+* `threat` - describes an intention to inflict pain, injury, or violence against an individual or group
+
 |[field]#phoneNumbers# [type]#[Object]# [optional]#Optional#
 |Object that defines the phone number filter options.
 

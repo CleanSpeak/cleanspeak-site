@@ -1,0 +1,110 @@
+---
+layout: doc
+title: Start and Stop CleanSpeak
+description: Learn how to start and stop the CleanSpeak services
+---
+
+== Start and Stop CleanSpeak
+
+If you using self-hosting CleanSpeak, you may need to start or stop CleanSpeak periodically. If you find yourself in this situation, you'll be glad you have the know-how.
+
+[NOTE]
+====
+If you are using CleanSpeak Cloud, these instructions do not apply to you.
+====
+
+
+[NOTE]
+====
+*Note* that you *MUST* start ElasticSearch/OpenSearch before starting CleanSpeak. You should also shutdown the ElasticSearch/OpenSearch last. CleanSpeak utilizes ElasticSearch/OpenSearch and the database for persisting and retrieving content.
+====
+
+The following examples will make the assumption that all of the services are running on the same server. Based upon how you have installed CleanSpeak you may or may not have all of the services running on the same server.
+
+The macOS and Windows instructions assume an installation directory of `/usr/local/cleanspeak` and `\cleanspeak` respectively. Please adjust to your specific installation directory.
+
+=== Linux
+When you install CleanSpeak using our Debian or RPM packages a service is registered. It is recommended you utilize these services to start and stop CleanSpeak. Starting in CleanSpeak version `3.4.1` if the version of Linux supports `systemd` you may use the `systemctl` command as well to manage services.
+
+The only service name in CleanSpeak 4.x is `cleanspeak-app`
+
+[source,shell]
+.Start CleanSpeak
+----
+$ sudo service cleanspeak-app start
+----
+
+[source,shell]
+.Stop CleanSpeak
+----
+$ sudo service cleanspeak-app stop
+----
+
+If you'd like to use the `systemctl` command instead, the syntax is similar to the `service` command. For example, to check the status, stop and then start CleanSpeak using the `systemctl` command
+
+[source,shell]
+.Check Status, then Stop and Start CleanSpeak
+----
+$ systemctl status cleanspeak-app.service
+$ systemctl stop cleanspeak-app.service
+$ systemctl start cleanspeak-app.service
+----
+
+If you'd prefer to use the native scripts you may follow the macOS instructions, the same scripts may be executed on Linux.
+
+=== macOS
+
+[source,shell]
+.Start CleanSpeak
+----
+# The process will start and remaining running. If you wish to kill it, just press Control-C.
+$ /usr/local/cleanspeak/cleanspeak-app/bin/start.sh
+----
+
+Elasticsearch should be stopped last.
+
+=== Windows
+
+*Start and Stop services using the native scripts*
+
+[source,shell]
+.Start CleanSpeak
+----
+> \cleanspeak\cleanspeak-app\bin\start.ps1
+----
+
+[source,shell]
+.Stop CleanSpeak
+----
+> \cleanspeak\cleanspeak-app\bin\stop.ps1
+----
+
+Elasticsearch should be stopped last.
+
+*Start and Stop services using Windows Services*
+
+We also provide support for running CleanSpeak as a Windows service.
+
+[source,shell]
+.Register Windows Services
+----
+> \cleanspeak\cleanspeak-app\bin\CleanSpeakApp.exe /install
+----
+
+[source,shell]
+.Unregister Windows Services
+----
+> \cleanspeak\cleanspeak-app\bin\CleanSpeakApp.exe /uninstall
+----
+
+[source,shell]
+.Start Services
+----
+> net start CleanSpeakApp
+----
+
+[source,shell]
+.Stop Services
+----
+> net stop CleanSpeakApp
+----

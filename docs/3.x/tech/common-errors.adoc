@@ -31,12 +31,12 @@ CERT=/location/of/the/cert/you/want/to/add
 ALIAS=a_name_for_this_cert
 
 # Add the keytool to the path
-PATH=/usr/local/cleanspeak/cleanspeak-management-interface/java/jre1.8.0_171/bin:$PATH
+PATH=/usr/local/cleanspeak/java/current/bin:$PATH
 
 # This command adds the given cert under the name provided in alias to the cacerts that CleanSpeak uses
-keytool -import -file ${CERT} -alias "${ALIAS}" -storepass changeit -keystore /usr/local/cleanspeak/cleanspeak-management-interface/java/jre1.8.0_171/lib/security/cacerts -noprompt
+keytool -import -file ${CERT} -alias "${ALIAS}" -storepass changeit -keystore /usr/local/cleanspeak/java/current/lib/security/cacerts -noprompt
 
-# Repeat for webservice
+# Repeat for webservice (if on CleanSpeak 3.x)
 keytool -import -file ${CERT} -alias "${ALIAS}" -storepass changeit -keystore /usr/local/cleanspeak/java/current/lib/security/cacerts -noprompt
 ----
 
@@ -51,11 +51,11 @@ One solution for docker is to create a `cacerts` file similar to that of the gen
 . First obtain a copy of `cacerts`
 .. You can do this via `docker cp` from a running CleanSpeak container. (Emphasis on running container. You cannot copy from an image) Ex: `docker cp <containerId>:/usr/local/cleanspeak/java/current/lib/security/cacerts cacerts`
 . Add your cert to the copy of `cacerts` using `keytool -import -file ${CERT} -alias "${ALIAS}" -storepass changeit -keystore cacerts -noprompt`
-. When starting the images, mount the `cacerts` to the containers
+. When starting the images, mount the `cacerts` to the containers (these are 3.x container images, 4.x is a single image of `cleanspeak/cleanspeak-app`)
 .. `docker run -p 8011:8011 -v $(pwd)/cacerts:/usr/local/cleanspeak/java/current/lib/security/cacerts cleanspeak/cleanspeak-management-interface:latest`
 .. `docker run -p 8001:8001 -v $(pwd)/cacerts:/usr/local/cleanspeak/java/current/lib/security/cacerts cleanspeak/cleanspeak-webservice:latest`
 
-==== Docker (Solution 2)
+==== Docker (Solution 2) - 3.x
 
 An alternative solution is to create a `dockerfile` like the following that allows you to have an image with the modified `cacerts` file and no need to mount a volume/file.
 
@@ -90,6 +90,26 @@ CMD /usr/local/cleanspeak/cleanspeak-webservice/apache-tomcat/bin/catalina.sh ru
 ----
 
 Build and use these new images in place of the ones we ship. To update CleanSpeak, simply pull the CleanSpeak images and build these dockerfiles again.
+
+==== Docker (Solution 2) - 4.x
+
+An alternative solution is to create a `dockerfile` like the following that allows you to have an image with the modified `cacerts` file and no need to mount a volume/file.
+
+[source,dockerfile]
+----
+FROM cleanspeak/cleanspeak-app:latest
+
+COPY ./cert.pem /cert.pem
+
+## Patch the truststore in the java shipped with CleanSpeak
+RUN /usr/local/cleanspeak/java/current/bin/keytool -import -file /cert.pem -alias "some_name_for_a_cert" -storepass changeit -keystore /usr/local/cleanspeak/java/current/lib/security/cacerts -noprompt
+
+# Allows docker to simply call run on the image
+USER cleanspeak
+CMD /usr/local/cleanspeak/cleanspeak-app/bin/start.sh
+----
+
+Build and use this new image in place of the ones we ship. To update CleanSpeak, simply pull the CleanSpeak images and build these dockerfiles again.
 
 ==== Many certs (advanced)
 

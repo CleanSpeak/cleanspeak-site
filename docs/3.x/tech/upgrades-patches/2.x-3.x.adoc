@@ -4,7 +4,7 @@ title: Previous Versions
 description: Learn how to upgrade from older versions of CleanSpeak to 3.x
 ---
 
-== Upgrading from Previous Versions
+== Upgrading from 2.x to 3.x
 
 The CleanSpeak database changed significantly with version 3.0 for storing content and users. Required fields, data types, and other details are different than previous versions of CleanSpeak. For this reason, a database migration script is not available to migrate from prior CleanSpeak versions to 3.0. This was an intentional decision to help us start fresh and take CleanSpeak to the next level.
 

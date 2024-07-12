@@ -1,0 +1,233 @@
+---
+layout: doc
+title: Configuration Reference (4.x)
+description: All of the configuration options of CleanSpeak stored in the cleanspeak.properties file
+---
+
+== Configuration (4.x)
+
+Most of the CleanSpeak configuration is performed in the app in the browser. However, some configuration is provided through a configuration file. You may modify this file in order to change your configuration, CleanSpeak will need to be restarted to pick up changes to this configuration. Assuming you installed it in the default locations, the configuration file may be found in the following directory. If you have installed it in an alternate location the path to this file will be different.
+
+[.command-line]
+.Linux and macOS
+----
+/usr/local/cleanspeak/config/cleanspeak.properties
+----
+
+[.command-line]
+.Windows
+----
+C:\cleanspeak\config\cleanspeak.properties
+----
+
+=== Options
+
+The following table contains all the configuration options that CleanSpeak uses. For your convenience, you may select the type of configuration you plan to use, and the names will be updated to correspond to your preference.
+
+Display configuration values in format:
+++++
+<style>
+dd p.deprecated {
+  color: #B20000;
+  font-weight: 500;
+  margin-bottom: 0 !important;
+  margin-top: 25px !important;
+}
+label.select {
+  align-items: center;
+  display: inline-flex !important;
+  margin: 0;
+  max-width: 250px;
+  padding: 0;
+  position: relative;
+}
+label.select select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: #fff;
+  border: 1px solid #919A9C;
+  border-radius: 3px;
+  box-shadow: 0 0 0 0 rgba(0,0,0,0);
+  color: #0f1314;
+  font-size: 14px;
+  padding: 10px 50px 10px 13px;
+  transition: box-shadow 0.2s ease-in-out;
+}
+label.select:after {
+  content: "\f107";
+  display: inline-block;
+  font-family: 'Font Awesome 5 Pro', FontAwesome;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+  font-weight: 500;
+  pointer-events: none;
+  position: absolute;
+  right: 10px;
+  text-decoration: none;
+  text-rendering: auto;
+}
+</style>
+<label class="select" style="width: 100%;">
+  <select id="configuration-type" class="select" style="width: 100%; margin-bottom: 5px;">
+    <option value="config-file">Configuration File Properties</option>
+    <option value="environment">Environment Variable</option>
+    <option value="java-system-property">Java system property</option>
+  </select>
+</label>
+++++
+
+[cols="3a,7a"]
+[.api]
+.Properties
+|===
+|[field]#license.id# [type]#[String]#
+|Your License ID. You can find your License ID by logging into your account at https://account.cleanspeak.com/account/.
+
+|[field]#database.url# [type]#[String]# [required]#Required#
+|A JDBC URL for your database.
+
+For MySQL, this URL will look something like this:
+
+[block-quote]#`database.url=jdbc:mysql://localhost:3306/cleanspeak?serverTimezone=UTC`#
+
+For PostgreSQL, this URL will look something like this:
+
+[block-quote]#`database.url=jdbc:postgresql://localhost:5432/cleanspeak`#
+
+If you are using MySQL, you must include the `serverTimezone=UTC` parameter in the URL. The `?` character is the same as a standard URL parameter, so if you have additional parameters, you should only have a single `?` and parameters should be separated by `&`.
+
+Some MySQL services such as Microsoft Azure may require a specific version of TLS to connect successfully. At the time of writing this note, the MySQL connector will not attempt to utilize TLSv1.2 by default, so when connecting to a service that requires this version you will need to explicitly request this version of TLS on the connection string. For example, appending this `enabledTLSProtocols=TLSv1.2` to the connection string will allow you to successfully connect to an Azure managed MySQL database. See https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-reference-using-ssl.html[MySQL Connector : Connecting Securely UsingSSL] for additional information.
+
+|[field]#database.username# [type]#[String]# [required]#Required#
+|The username used to connect to the database.
+
+|[field]#database.password# [type]#String# [required]#Required#
+|The password used to connect to the database.
+
+|[field]#database.mysql.enforce-utf8mb4# [type]#[String]# [default]#defaults to `true`#
+|When set to `true` and using MySQL, full 4 byte unique configuration is enforced at startup.
+
+If this validation is not desired or not it is not possible to modify your MySQL configuration so satisfy the validation, disable this check
+by setting this value to `false`.
+
+|[field]#cleanspeak-app.additional-java-args# [type]#[String]#
+|
+include::docs/4.x/tech/reference/_property-additional-jvm-args.adoc[]
+
+|[field]#cleanspeak-app.http.port# [type]#[Integer]# [required]#Required#
+|The port number that CleanSpeak will use to accept HTTP requests.
+
+|[field]#cleanspeak-webservice.http.port# [type]#[Integer]# [deprecated]#Deprecated#
+|The port number that CleanSpeak will use to accept HTTP requests. Deprecated in favor of `cleanspeak-app.http.port`.
+
+|[field]#cleanspeak-app.https.enabled# [type]#[Boolean]# [default]#defaults to `false`#
+|Whether CleanSpeak will serve HTTPS requests from `cleanspeak-app.https.port`
+
+|[field]#cleanspeak-app.https.port# [type]#[Integer]#
+|The port number that CleanSpeak will use to accept HTTPS requests IF `cleanspeak-app.https.enabled` is set to `true`
+
+|[field]#cleanspeak-webservice.https.port# [type]#[Integer]# [deprecated]#Deprecated#
+|The port number that CleanSpeak will use to accept HTTPS requests IF `cleanspeak-app.https.enabled` is set to `true`. Deprecated in favor of `cleanspeak-app.https.port`.
+
+|[field]#cleanspeak-app.https.certificate# [type]#[String]#
+|PEM encoded TLS certificates to use. Either this or `cleanspeak-app.https.certificate-file` must be set if `cleanspeak-app.https.enabled` is set to `true`
+
+|[field]#cleanspeak-app.https.certificate-file# [type]#[String]#
+|Path to a file containing a PEM encoded TLS certificate. Either this or `cleanspeak-app.https.certificate` must be set if `cleanspeak-app.https.enabled` is set to `true`
+
+|[field]#cleanspeak-app.https.private-key# [type]#[String]#
+|PEM encoded TLS private key to use. Either this or `cleanspeak-app.https.private-key-file` must be set if `cleanspeak-app.https.enabled` is set to `true`
+
+|[field]#cleanspeak-app.https.private-key-file# [type]#[String]#
+|Path to a file containing a PEM encoded TLS private key. Either this or `cleanspeak-app.https.private-key` must be set if `cleanspeak-app.https.enabled` is set to `true`
+
+|[field]#cleanspeak-app.local-metrics.enabled# [type]#[Boolean]# [default]#defaults to `false`#
+|If enabled, HTTP requests without a browser session and without an API key that originate from localhost will be allowed to access `/status`, `/api/status`, and `/prometheus/metrics`.
+
+|[field]#cleanspeak-app.memory# [type]#[String]#
+|
+include::docs/4.x/tech/reference/_property-memory.adoc[]
+
+|[field]#cleanspeak-app.runtime-mode# [type]#[String]# [default]#Defaults to `development`#
+|The CleanSpeak runtime mode. The runtime mode causes some features to be modified based upon this configuration.
+
+The possible values are:
+
+* development
+* production
+
+When in the `development` runtime mode, maintenance mode will interactively assist you configuring the database and connecting to Elasticsearch if configured. Once you move CleanSpeak into production, it is recommended that you modify the runtime mode to `production`. When in production runtime mode maintenance mode will no longer be available to you which means you can be certain that your system will be sitting waiting for human input to start the upgrade process. When in `production` mode you will either need to leverage Silent Mode to automatically apply database migrations, or you will need to apply the database migrations yourself (either by hand or via a script of some sort).
+
+|[field]#cleanspeak-webservice.runtime-mode# [type]#[String]# [deprecated]#Deprecated#
+|The CleanSpeak runtime mode. Deprecated in favor of `cleanspeak-app.runtime-mode`.
+
+|[field]#cleanspeak-app.session.timeout# [type]#[String]# [default]#Defaults to `30M`#
+|The maximum idle time of a CleanSpeak user's session before they must login again, formatted as a Java duration (see https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/Duration.html#parse(java.lang.CharSequence)[format]). As long as the user's browser is active with CleanSpeak, their session will keep extending up until the value of `cleanspeak-app.session.max-age`.
+
+|[field]#cleanspeak-app.session.max-age# [type]#[String]# [default]#Defaults to `24H`#
+|The absolute maximum length of a CleanSpeak user's session before they must login again, formatted as a Java duration (see https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/Duration.html#parse(java.lang.CharSequence)[format]).
+
+|[field]#cleanspeak-app.silent-mode# [type]#[String]# [default]#Defaults to `false`#
+|Determines if CleanSpeak should use Silent Mode during the startup process. Silent Mode automatically applies all database migrations during startup such that you do not need to run them manually. This is the preferred mode when in production.
+
+|[field]#cleanspeak-webservice.silent-mode# [type]#[String]# [deprecated]#Deprecated#
+|Determines if CleanSpeak should use Silent Mode during the startup process. Deprecated in favor of `cleanspeak-app.silent-mode`.
+
+|[field]#proxy.host# [type]#[String]#
+|The proxy host used for egress network traffic. To enable this egress proxy, you must configure both the [field]#proxy.host# and [field]#proxy.port#.
+
+|[field]#proxy.port# [type]#[String]#
+|The proxy port used for egress network traffic. To enable this egress proxy, you must configure both the [field]#proxy.host# and [field]#proxy.port#.
+
+|[field]#proxy.username# [type]#[String]#
+|The proxy username for egress network traffic. To enable authentication with your proxy, you must configure both the [field]#proxy.username# and [field]#proxy.password#.
+
+|[field]#proxy.password# [type]#[String]#
+|The proxy password for egress network traffic. To enable authentication with your proxy, you must configure both the [field]#proxy.username# and [field]#proxy.password#.
+
+|[field]#search.servers# [type]#[String]# [required]#Required#
+|The `http` or `https` URL to the Elasticsearch service. To specify more than one value, use a comma separated list.
+
+Single host example: `http://localhost:9200`
+Multiple hosts example: `http://localhost:9200,http://192.168.1.42:9200`
+
+|===
+
+++++
+<script>
+var redraw = function() {
+  var selected = select.options[select.selectedIndex].value;
+  localStorage.setItem('configuration-type', selected);
+  for (var i = 0; i < elements.length; i++) {
+    var element = elements[i];
+    element.data = element.data || {};
+    element.data.property = element.data.property || element.innerHTML;
+    if (selected === 'config-file') {
+      element.innerHTML = element.data.property;
+    } else if (selected === 'environment') {
+      element.innerHTML = element.data.property.replaceAll('.', '_').replaceAll('-', '_').toUpperCase();
+    } else {
+      element.innerHTML = '-D' + element.data.property;
+    }
+  }
+}
+
+var elements = document.querySelectorAll('table.api tbody tr td .field');
+var select = document.getElementById('configuration-type');
+var saved = localStorage.getItem('configuration-type');
+if (saved) {
+  var options = select.getElementsByTagName('option');
+  for (var j = 0; j < options.length; j++) {
+    if (options[j].value === saved) {
+       options[j].selected = true;
+       redraw();
+       break;
+    }
+  }
+}
+
+select.addEventListener('change', redraw);
+</script>
+++++

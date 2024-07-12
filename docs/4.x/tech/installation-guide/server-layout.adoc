@@ -1,0 +1,33 @@
+---
+layout: doc
+title: CleanSpeak Server Layout
+description: Various server layouts for CleanSpeak that will help you determine how to install and deploy each component
+---
+
+== Server Layouts
+
+To help you determine the best server layout, look over the diagrams below and determine which layout works best for your dev, staging and production environments.
+
+=== One Server
+
+image::4.x/one-server.png[]
+
+This configuration uses a single server to host all of the components for CleanSpeak.
+
+This setup is ideal for these uses:
+
+* Development machines or servers
+* QA environments
+* Some staging and production setups
+
+=== Two Servers
+
+image::4.x/two-servers.png[]
+
+This configuration uses two separate servers to host CleanSpeak.
+
+This setup is ideal for these uses:
+
+* Staging environments
+* Production environments
+

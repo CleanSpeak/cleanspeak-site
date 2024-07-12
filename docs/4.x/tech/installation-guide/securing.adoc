@@ -1,0 +1,30 @@
+---
+layout: doc
+title: Securing CleanSpeak services
+description: Secure your installation by limiting network traffic
+---
+
+:sectnumlevels: 0
+
+== Overview
+
+If you're installing CleanSpeak on your own server, use the following guide as a baseline for securing the services. Please contact
+support@cleanspeak.com if you have additional questions.
+
+=== Required ports
+See the link:../reference/configuration[Configuration Reference] for more information on default port configuration. The documentation below assumes the default port configuration.
+
+**CleanSpeak**
+
+To access CleanSpeak, you'll need to open port `8001`.
+
+**ElasticSearch/OpenSearch**
+
+Suppose ElasticSearch/OpenSearch is running on the same system as CleanSpeak. If you're only running a single instance of CleanSpeak, then no external ports should be allowed for CleanSpeak Search Engine. In this scenario, CleanSpeak will access the Elasticsearch service on port `9200` on the localhost address, and traffic to ports `9200` and `9300` can be blocked from any address with the exception of the localhost.
+
+If CleanSpeak services are installed on multiple servers, and those servers can communicate across a private network using a site-local address, then in this scenario, you will need to allow access to ports `9200` and `9300` on the site-local IP address in addition to the localhost address.
+
+It is not recommended to expose ElasticSearch/OpenSearch to any public network. If this is a requirement, then a firewall should be
+used to limit traffic based upon the source and destination IP address to the service.
+
+The `9300` port is utilized by Elasticsearch for internal communication, including clustering. The `9200` port is the HTTP port exposed by Elasticsearch for API requests to the search index. Elasticsearch for API requests to the search index.
