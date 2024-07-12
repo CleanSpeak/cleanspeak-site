@@ -24,7 +24,7 @@ target(name: "optimize-images", description: "Uses ImageOptim to reduce image si
   }
 }
 
-target(name: "push", description: "Push the site to cleanspeak.com") {
+target(name: "push", description: "Push the site to old.cleanspeak.com") {
   // Skip checking Git if we are forced to do so (use the force Luke)
   if (!switches.has("force")) {
     output.infoln("Checking git")
@@ -40,7 +40,7 @@ target(name: "push", description: "Push the site to cleanspeak.com") {
   }
 
   // Allow the command line switch --user to specify a different user on the SSH command
-  def host = "cleanspeak.com"
+  def host = "old.cleanspeak.com"
   if (switches.has("user")) {
     host = switches.values("user")[0] + "@" + host
   }
