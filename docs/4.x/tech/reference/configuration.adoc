@@ -82,9 +82,6 @@ label.select:after {
 [.api]
 .Properties
 |===
-|[field]#license.id# [type]#[String]#
-|Your License ID. You can find your License ID by logging into your account at https://account.cleanspeak.com/account/.
-
 |[field]#database.url# [type]#[String]# [required]#Required#
 |A JDBC URL for your database.
 

@@ -44,6 +44,13 @@ CleanSpeak supports the following two databases.
 * MySQL 8 or newer
 * PostgreSQL 10 or newer
 
+=== Search
+
+CleanSpeak supports the following two search engine options:
+
+* OpenSearch 2.x
+* ElasticSearch >= 7.6.1
+
 === Availability
 If you're planning your architecture for high availability, we recommend separating CleanSpeak and the database onto different servers. CleanSpeak is comprised of a database, ElasticSearch/OpenSearch, and one web service (CleanSpeak Application). Each of these components communicates through a network connection so they can run on the same server or separate servers to accommodate availability requirements.
 
