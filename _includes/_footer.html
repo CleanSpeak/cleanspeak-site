@@ -9,6 +9,7 @@
             <li class="footer-nav-links"><a href="/contact" class="footer-link-text">Contact Us</a></li>
           </ul>
         </div>
+        {% if include.hide_old_links == nil %}
         <div class="newsletter-column w-col w-col-6 w-col-medium-6 w-col-small-6">
           <div class="newsletter-text">Join Our Newsletter</div>
           <div class="form-wrapper w-form">
@@ -23,9 +24,11 @@
           </div>
           <div class="social-network-footer-div w-hidden-small w-hidden-tiny"><a href="https://www.facebook.com/cleanspeak" class="social-link w-inline-block w-clearfix"><img src="/images/facebook-icon_1facebook-icon.png" alt="facebook" width="22"></a><a href="https://twitter.com/getcleanspeak" class="social-link w-inline-block w-clearfix"><img src="/images/twitter-icon_1twitter-icon.png" alt="twitter" width="22"></a><a href="https://www.linkedin.com/company/cleanspeak" class="social-link w-inline-block w-clearfix"><img src="/images/linkedin-icon_1linkedin-icon.png" alt="linkedin" width="22"></a><a href="https://www.youtube.com/channel/UCSOTz3IH2VZSmwrOHXnFVuw" class="social-link w-inline-block w-clearfix"><img src="/images/youtube-icon_1youtube-icon.png" alt="youtube" width="22"></a><a href="https://github.com/cleanspeak" class="social-link w-inline-block w-clearfix"><img src="/images/github-icon_1github-icon.png" alt="google plus" width="22"></a></div>
         </div>
+        {% endif %}
       </div>
     </div>
   </div>
+  {% if include.hide_old_links == nil %}
   <div class="bottom-footer-container w-container">
     <div class="w-row">
       <div class="w-col w-col-6">
@@ -38,6 +41,7 @@
       </div>
     </div>
   </div>
+  {% endif %}
 </footer>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="/js/webflow.js" type="text/javascript"></script>
