@@ -13,6 +13,17 @@ Hide Stuff here
 // REMEMBER TO ADD MIGRATIONS TO upgrades-patches
 
 [role=release-note]
+== Version 4.0.1
+_Released Tuesday, July 23rd, 2024_
+
+=== Fixed
+* Corrected missing `/api` prefix on API keys page and ensured existing API key permissions function properly regardless of whether the deprecated or new endpoints are used.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/80[GitHub Issue #80]
+* Added missing `/status`, `/api/status`, and `/prometheus/metrics` endpoints to API keys page.
+* Corrected HTTP status codes on `/status` and `/api/status` endpoints when API key lacks permission to call that endpoint and when CleanSpeak is not licensed respectively.
+* The `/content/item/compatibility` endpoint, which was removed from CleanSpeak 3.30.0, has been removed from the API keys page. If permission for that endpoint was the last permission an API key had, the API key should either be removed in the UI or have new permission(s) added.
+
+[role=release-note]
 == Version 4.0.0
 _Released Friday, July 12th, 2024_
 
