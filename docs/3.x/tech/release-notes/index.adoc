@@ -13,6 +13,19 @@ Hide Stuff here
 // REMEMBER TO ADD MIGRATIONS TO upgrades-patches
 
 [role=release-note]
+== Version 4.0.2
+_Released Friday, August 9th, 2024_
+
+=== Fixed
+* Work around Machine learning/Perspective language auto detection issue by requiring locales to be selected when configuring a CleanSpeak Application.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/80[GitHub Issue #80]
+** NOTE that not all languages and models are compatible.
+** Any existing CleanSpeak applications that used Machine learning models prior to 4.0.2 will have English selected as the locale by default. After the upgrade, other languages can be selected as appropriate.
+
+=== Enhancements
+* CleanSpeak now validates the combination of enabled Machine learning models and languages from the application page and the link:../../../3.x/tech/apis/applications[applications API] to ensure content can be checked without errors.
+
+[role=release-note]
 == Version 4.0.1
 _Released Tuesday, July 23rd, 2024_
 
