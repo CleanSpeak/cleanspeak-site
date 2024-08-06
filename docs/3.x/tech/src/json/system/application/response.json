@@ -231,6 +231,7 @@
           }
         },
         "enabled": false,
+        "locales": ["en"],
         "identityAttackConfig": {
           "enabled": false,
           "rules": {

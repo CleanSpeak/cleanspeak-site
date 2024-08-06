@@ -239,6 +239,9 @@ Specifically, this feature will catch any blacklist word even if separated by a 
 |[field]#application.moderationConfiguration.mlFilterConfiguration.enabled# [type]#[Boolean]# [optional]#optional# [default]#Defaults to `false`# [since]#Available since `4.0.0`#
 |A flag to enable Machine Learning.
 
+|[field]#application.moderationConfiguration.mlFilterConfiguration.locales# [type]#[Array<String>]# [required]#Required# [since]#Available since `4.0.2`#
+|The selected locales will be sent to the Machine Learning engine to evaluate content for the selected models.
+
 |[field]#application.moderationConfiguration.mlFilterConfiguration.``[model]``Config.enabled# [type]#[Boolean]# [optional]#optional# [default]#Defaults to `false`# [since]#Available since `4.0.0`#
 |A flag to enable a particular Machine Learning model. In lieu of `[model]`, use 1 or more of the following values:
 
