@@ -260,16 +260,16 @@ Specifically, this feature will catch any blacklist word even if separated by a 
 * `threat` - describes an intention to inflict pain, injury, or violence against an individual or group
 
 |[field]#application.moderationConfiguration.mlFilterConfiguration.``[model]``Config.rules.mild# [type]#<<Quality Filter Rule>># [optional]#optional# [since]#Available since `4.0.0`#
-|See the `enabled` field for what to use for `[model]`. This configures, for the `mild` level, the set of things to do in the event the filter finds a match with a score greater than that in the rule. (It will pick the highest one).
+|See the `enabled` field for valid `[model]` values. This configures, for the `mild` level, the set of things to do in the event the filter finds a match with a score greater than that in the rule. (It will pick the highest one). The default scores can be referenced in the sample "Retrieve an Application" response.
 
 |[field]#application.moderationConfiguration.mlFilterConfiguration.``[model]``Config.rules.medium# [type]#<<Quality Filter Rule>># [optional]#optional# [since]#Available since `4.0.0`#
-|See the `enabled` field for what to use for `[model]`. This configures, for the `medium` level, the set of things to do in the event the filter finds a match with a score greater than that in the rule. (It will pick the highest one).
+|See the `enabled` field for valid `[model]` values. This configures, for the `medium` level, the set of things to do in the event the filter finds a match with a score greater than that in the rule. (It will pick the highest one). The default scores can be referenced in the sample "Retrieve an Application" response.
 
 |[field]#application.moderationConfiguration.mlFilterConfiguration.``[model]``Config.rules.high# [type]#<<Quality Filter Rule>># [optional]#optional# [since]#Available since `4.0.0`#
-|See the `enabled` field for what to use for `[model]`. This configures, for the `high` level, the set of things to do in the event the filter finds a match with a score greater than that in the rule. (It will pick the highest one).
+|See the `enabled` field for valid `[model]` values. This configures, for the `high` level, the set of things to do in the event the filter finds a match with a score greater than that in the rule. (It will pick the highest one). The default scores can be referenced in the sample "Retrieve an Application" response.
 
 |[field]#application.moderationConfiguration.mlFilterConfiguration.``[model]``Config.rules.severe# [type]#<<Quality Filter Rule>># [optional]#optional# [since]#Available since `4.0.0`#
-|See the `enabled` field for what to use for `[model]`. This configures, for the `severe` level, the set of things to do in the event the filter finds a match with a score greater than that in the rule. (It will pick the highest one).
+|See the `enabled` field for valid `[model]` values. This configures, for the `severe` level, the set of things to do in the event the filter finds a match with a score greater than that in the rule. (It will pick the highest one). The default scores can be referenced in the sample "Retrieve an Application" response.
 
 |[field]#application.moderationConfiguration.videoFilterConfiguration.enabled# [type]#[Boolean]# [optional]#optional# [default]#Defaults to `false`# [since]#Available since `3.28.0`#
 |A flag to enable the video filter

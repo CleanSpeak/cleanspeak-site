@@ -24,6 +24,13 @@ _Released Friday, August 9th, 2024_
 
 === Enhancements
 * CleanSpeak now validates the combination of enabled Machine learning models and languages from the application page and the link:../../../3.x/tech/apis/applications[applications API] to ensure content can be checked without errors.
+* Improved default Machine Learning score <-> CleanSpeak severity mappings for the following models.
+** Identity Attack
+** Insult
+** Profanity
+** Severe Toxicity
+** Toxicity
+** If you have "Expert Mode" enabled on your CleanSpeak instance under Settings->System->Filter, then the scores you have already configured will be preserved. Otherwise, the score mappings will be updated with this release.
 
 [role=release-note]
 == Version 4.0.1
