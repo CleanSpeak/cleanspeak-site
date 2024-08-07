@@ -30,7 +30,7 @@ _Released Friday, August 9th, 2024_
 ** Profanity
 ** Severe Toxicity
 ** Toxicity
-** If you have "Expert Mode" enabled on your CleanSpeak instance under Settings->System->Filter, then the scores you have already configured will be preserved. Otherwise, the score mappings will be updated with this release.
+** If you have "Expert Mode" enabled on your CleanSpeak instance under Settings->System->Filter, then the score <-> CleanSpeak severity mappings you have already configured will be preserved. Otherwise, mappings will be updated with this release.
 
 [role=release-note]
 == Version 4.0.1
