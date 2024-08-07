@@ -17,13 +17,13 @@ Hide Stuff here
 _Released Friday, August 9th, 2024_
 
 === Fixed
-* Work around Machine learning/Perspective language auto detection issue by requiring locales to be selected when configuring a CleanSpeak Application.
+* Work around Machine Learning/Perspective language auto detection issue by requiring locales to be selected when configuring a CleanSpeak Application.
 ** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/81[GitHub Issue #81]
 ** NOTE that not all languages and models are compatible. See enhancement below for details.
-** Any existing CleanSpeak applications that used Machine learning models prior to 4.0.2 will have English selected as the locale by default. After the upgrade, other languages can be selected as appropriate.
+** Any existing CleanSpeak applications that used Machine Learning models prior to 4.0.2 will have English selected as the locale by default. After the upgrade, other languages can be selected as appropriate.
 
 === Enhancements
-* CleanSpeak now validates the combination of enabled Machine learning models and languages from the application page and the link:../../../3.x/tech/apis/applications[applications API] to ensure content can be checked without errors.
+* CleanSpeak now validates the combination of enabled Machine Learning models and languages from the application page and the link:../../../3.x/tech/apis/applications[applications API] to ensure content can be checked without errors.
 * Improved default Machine Learning score <-> CleanSpeak severity mappings for the following models.
 ** Identity Attack
 ** Insult
@@ -58,7 +58,7 @@ CleanSpeak 4.0 changes the services/applications used. For more detailed informa
 
 
 === Enhancements
-* Machine learning models are now incorporated into CleanSpeak. These can be utilized on both the `/api/content/item/filter` endpoint or the moderation endpoint using a configured application. Use of these ML models is available for an additional cost
+* Machine Learning models are now incorporated into CleanSpeak. These can be utilized on both the `/api/content/item/filter` endpoint or the moderation endpoint using a configured application. Use of these ML models is available for an additional cost
 * A new `/api/health` endpoint is available for health checks, which can be helpful for Kubernetes use cases. It performs a more fundamental (e.g. just app server and database query response) check that's less likely to be noisy under load than `/api/status`
 * Update the System > About panel in the admin UI to display
 ** Actual licensed features
