@@ -1,0 +1,74 @@
+---
+layout: doc
+title: CleanSpeak Minor Version Upgrade (4.x to 4.x)
+description: Learn how to upgrade and patch CleanSpeak using our bundles and migration scripts
+---
+
+== CleanSpeak Minor Version Upgrade (4.x to 4.x)
+
+To download or check on the latest updates, please visit your https://account.cleanspeak.com/account/[CleanSpeak Account] and find the Download link for your license.
+
+* <<Linux, Linux>>
+* <<Windows, Windows>>
+* <<Database, Database>>
+
+=== Linux
+
+Updating your application is easy if you installed using the RPM or Debian packages. All you need to do is to issue an update command to the dpkg or rpm program and specify the new package file. Here is an example:
+
+[source,shell]
+.Red Hat
+----
+$ sudo rpm -U cleanspeak-app-<version>.rpm
+----
+
+[source,shell]
+.Debian
+----
+$ sudo dpkg -i cleanspeak-app-<version>.deb
+----
+
+[NOTE]
+====
+Running the update script will shut down the CleanSpeak service if it is running. The service (now named `cleanspeak-app`) will need to be restarted after the update is finished.
+====
+
+=== Windows
+
+On Windows, the steps required are different. Follow these steps to upgrade your version on Windows:
+
+1. Download the webapp only bundle
+2. Shut-down your CleanSpeak server
+3. Rename the CLEANSPEAK_HOME/web directory to something meaningful like web-2009-06-07 (this is helpful in case you need to revert to this version of the application)
+4. Extract the update bundle to the CLEANSPEAK_HOME directory. This will place a new directory called web in the directory
+5. Start the service using the new, native HTTP server method. See link:../../../4.x/tech/tutorials/start-and-stop[Start and Stop CleanSpeak] for more details on how to start CleanSpeak 4.0 on Windows.
+
+=== Database
+
+[NOTE]
+====
+In most cases, you will not need to upgrade you database manually using the information below. CleanSpeak ships with a system called Maintenance Mode. When you restart CleanSpeak after installing a new bundle using the steps above, CleanSpeak will automatically upgrade your database.
+
+You should always backup your database prior to using Maintenance Mode.
+====
+
+Depending on your current version and the new version you will be updating to you might need to execute one or more SQL scripts to update your database. These scripts are located in the migrations folder inside the Database Schema ZIP file. This file can be downloaded by logging into your https://account.cleanspeak.com/account/[CleanSpeak Account] and find the Download link for your license, there you will find a package under Database Downloads.
+
+[WARNING]
+====
+When upgrading your database from a previous version, be sure to only run the scripts located in the migrations folder, the base files mysql.sql and postgresql.sql should only be used during a clean installation when no database schema is present.
+====
+
+Inside of the database schema zip file, you will find the following CleanSpeak 4.x migrations, run in this order, starting with the first migration that is
+greater than the version you are coming from, and ending with the version that is less than or equal to the target version.
+
+[source]
+----
+cleanspeak-database-schema
+  |
+  migrations
+    |
+    mysql | postgresql
+      |
+      |- 4.0.0.sql
+----

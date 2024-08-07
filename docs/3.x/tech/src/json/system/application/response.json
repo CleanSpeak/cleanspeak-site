@@ -231,24 +231,25 @@
           }
         },
         "enabled": false,
+        "locales": ["en"],
         "identityAttackConfig": {
           "enabled": false,
           "rules": {
             "mild": {
               "action": "allow",
-              "score": 40
+              "score": 35
             },
             "medium": {
               "action": "allow",
-              "score": 50
+              "score": 45
             },
             "high": {
               "action": "allow",
-              "score": 60
+              "score": 55
             },
             "severe": {
               "action": "allow",
-              "score": 70
+              "score": 61
             }
           }
         },
@@ -257,19 +258,19 @@
           "rules": {
             "mild": {
               "action": "allow",
-              "score": 40
+              "score": 50
             },
             "medium": {
               "action": "allow",
-              "score": 50
+              "score": 60
             },
             "high": {
               "action": "allow",
-              "score": 60
+              "score": 70
             },
             "severe": {
               "action": "allow",
-              "score": 70
+              "score": 80
             }
           }
         },
@@ -320,19 +321,19 @@
           "rules": {
             "mild": {
               "action": "allow",
-              "score": 40
+              "score": 30
             },
             "medium": {
               "action": "allow",
-              "score": 50
+              "score": 40
             },
             "high": {
               "action": "allow",
-              "score": 60
+              "score": 50
             },
             "severe": {
               "action": "allow",
-              "score": 70
+              "score": 60
             }
           }
         },
@@ -383,19 +384,19 @@
           "rules": {
             "mild": {
               "action": "allow",
-              "score": 40
+              "score": 5
             },
             "medium": {
               "action": "allow",
-              "score": 50
+              "score": 10
             },
             "high": {
               "action": "allow",
-              "score": 60
+              "score": 20
             },
             "severe": {
               "action": "allow",
-              "score": 70
+              "score": 25
             }
           }
         },
@@ -425,19 +426,19 @@
           "rules": {
             "mild": {
               "action": "allow",
-              "score": 40
+              "score": 50
             },
             "medium": {
               "action": "allow",
-              "score": 50
+              "score": 60
             },
             "high": {
               "action": "allow",
-              "score": 60
+              "score": 70
             },
             "severe": {
               "action": "allow",
-              "score": 70
+              "score": 79
             }
           }
         }
