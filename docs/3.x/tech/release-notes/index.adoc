@@ -14,7 +14,7 @@ Hide Stuff here
 
 [role=release-note]
 == Version 4.0.2
-_Released Friday, August 9th, 2024_
+_Released Tuesday, August 13th, 2024_
 
 === Fixed
 * Work around Machine Learning/Perspective language auto detection issue by requiring locales to be selected when configuring a CleanSpeak Application.
