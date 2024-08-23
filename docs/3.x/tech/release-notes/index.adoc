@@ -13,6 +13,24 @@ Hide Stuff here
 // REMEMBER TO ADD MIGRATIONS TO upgrades-patches
 
 [role=release-note]
+== Version 4.1.0
+_Released Monday, August 26th, 2024_
+
+=== Enhancements
+* Added new Machine Learning models:
+** Incoherent
+** Spam
+** Unsubstantial
+
+[role=release-note]
+== Version 4.0.3
+_Released Monday, August 26th, 2024_
+
+=== Fixed
+* Weekly reports, when run from the cleanspeak/cleanspeak-app Docker image 4.0.2, work properly again. If you do not use the Docker image, then there are no other fixes/enhancements/changes to this release.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/82[GitHub Issue #82]
+
+[role=release-note]
 == Version 4.0.2
 _Released Tuesday, August 13th, 2024_
 
@@ -269,14 +287,14 @@ _Released Tuesday November 9th, 2021_
 _Released Monday August 17th, 2021_
 
 === Fixed
-* A missing JDK module in the docker image may cause a runtime failure. This fix only affects version `3.31.1`.
+* A missing JDK module in the Docker image may cause a runtime failure. This fix only affects version `3.31.1`.
 
 [role=release-note]
 == Version 3.31.1
 _Released Monday August 16th, 2021_
 
 === Fixed
-* Updated docker images to use new build strategy and correct the user owning the CleanSpeak process.
+* Updated Docker images to use new build strategy and correct the user owning the CleanSpeak process.
 
 [role=release-note]
 == Version 3.31.0

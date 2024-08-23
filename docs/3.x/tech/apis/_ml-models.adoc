@@ -1,0 +1,16 @@
+* `affinity` - references shared interests, motivations or outlooks between the content author and another individual, group or entity
+* `compassion` - identifies with or shows concern, empathy, or support for the feelings/emotions of others
+* `curiosity` - attempts to clarify or ask follow-up questions to better understand another person or idea
+* `identityAttack` - negative or hateful comments targeting someone because of their identity
+* `incoherent` - [since]#Available since `4.1.0`# - difficult to understand, nonsensical, may also pick up run-on sentences with no punctuation
+* `insult` - insulting, inflammatory, or negative comment towards a person or a group of people
+* `nuance` - incorporates multiple points of view in an attempt to provide a full picture or contribute useful detail and/or context
+* `personalStory`- includes a personal experience or story as a source of support for the statements made in the comment
+* `profanity` - swear words, curse words, or other obscene or profane language
+* `reasoning` - makes specific or well-reasoned points to provide a fuller understanding of the topic without disrespect or provocation
+* `respect` - shows deference or appreciation to others, or acknowledges the validity of another person
+* `severeToxicity` - very specific and volatile hate speech, usually referencing catch phrases of recognized hate groups
+* `spam` - [since]#Available since `4.1.0`# - irrelevant and unsolicited commercial content
+* `toxicity` - a rude, disrespectful, or unreasonable comment that is likely to make people leave a discussion
+* `threat` - describes an intention to inflict pain, injury, or violence against an individual or group
+* `unsubstantial` - [since]#Available since `4.1.0`# - trivial or short comments, e.g. lol, yes, ok
