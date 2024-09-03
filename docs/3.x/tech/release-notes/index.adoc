@@ -14,7 +14,7 @@ Hide Stuff here
 
 [role=release-note]
 == Version 4.1.0
-_Released Monday, August 26th, 2024_
+_Released Tuesday, September 3rd, 2024_
 
 === Enhancements
 * Added new Machine Learning models:
@@ -22,12 +22,8 @@ _Released Monday, August 26th, 2024_
 ** Spam
 ** Unsubstantial
 
-[role=release-note]
-== Version 4.0.3
-_Released Monday, August 26th, 2024_
-
 === Fixed
-* Weekly reports, when run from the cleanspeak/cleanspeak-app Docker image 4.0.2, work properly again. If you do not use the Docker image, then there are no other fixes/enhancements/changes to this release.
+* Weekly reports, when run from the cleanspeak/cleanspeak-app Docker image 4.0.2, work properly again.
 ** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/82[GitHub Issue #82]
 
 [role=release-note]
