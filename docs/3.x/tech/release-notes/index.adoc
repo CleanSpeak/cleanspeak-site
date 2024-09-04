@@ -14,7 +14,11 @@ Hide Stuff here
 
 [role=release-note]
 == Version 4.1.0
-_Released Tuesday, September 3rd, 2024_
+_Released Wednesday, September 4th, 2024_
+
+=== Security
+* Fix downgrade vulnerability with user sessions.
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/83[GitHub Issue #83]
 
 === Enhancements
 * Added new Machine Learning models:
