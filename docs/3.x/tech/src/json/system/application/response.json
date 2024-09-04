@@ -253,6 +253,27 @@
             }
           }
         },
+        "incoherentConfig": {
+          "enabled": false,
+          "rules": {
+            "mild": {
+              "action": "allow",
+              "score": 74
+            },
+            "medium": {
+              "action": "allow",
+              "score": 84
+            },
+            "high": {
+              "action": "allow",
+              "score": 94
+            },
+            "severe": {
+              "action": "allow",
+              "score": 99
+            }
+          }
+        },
         "insultConfig": {
           "enabled": false,
           "rules": {
@@ -400,6 +421,27 @@
             }
           }
         },
+        "spamConfig": {
+          "enabled": false,
+          "rules": {
+            "mild": {
+              "action": "allow",
+              "score": 70
+            },
+            "medium": {
+              "action": "allow",
+              "score": 80
+            },
+            "high": {
+              "action": "allow",
+              "score": 90
+            },
+            "severe": {
+              "action": "allow",
+              "score": 97
+            }
+          }
+        },
         "threatConfig": {
           "enabled": false,
           "rules": {
@@ -439,6 +481,27 @@
             "severe": {
               "action": "allow",
               "score": 79
+            }
+          }
+        },
+        "unsubstantialConfig": {
+          "enabled": false,
+          "rules": {
+            "mild": {
+              "action": "allow",
+              "score": 79
+            },
+            "medium": {
+              "action": "allow",
+              "score": 79
+            },
+            "high": {
+              "action": "allow",
+              "score": 89
+            },
+            "severe": {
+              "action": "allow",
+              "score": 99
             }
           }
         }
