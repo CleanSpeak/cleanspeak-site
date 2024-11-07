@@ -13,6 +13,13 @@ Hide Stuff here
 // REMEMBER TO ADD MIGRATIONS TO upgrades-patches
 
 [role=release-note]
+== Version 4.2.0
+_Released Friday, November 8th, 2024_
+
+=== Fixed
+* Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/84[GitHub Issue #84]
+
+[role=release-note]
 == Version 4.1.0
 _Released Wednesday, September 4th, 2024_
 
