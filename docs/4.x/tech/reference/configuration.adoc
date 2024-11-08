@@ -167,7 +167,7 @@ When in the `development` runtime mode, maintenance mode will interactively assi
 |The absolute maximum length of a CleanSpeak user's session before they must login again, formatted as a Java duration (see https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/Duration.html#parse(java.lang.CharSequence)[format]).
 
 |[field]#cleanspeak-app.silent-mode# [type]#[String]# [default]#Defaults to `false`#
-|Determines if CleanSpeak should use Silent Mode during the startup process. Silent Mode automatically applies all database migrations during startup such that you do not need to run them manually. This is the preferred mode when in production.
+|Determines if CleanSpeak should use Silent Mode during the startup process. Silent Mode automatically applies all database migrations during startup such that you do not need to run them manually. This is the preferred mode when in production. If `database.url`, `database.root.username`, and `database.username` are set, then the default for `silent-mode` is `true`.
 
 |[field]#cleanspeak-webservice.silent-mode# [type]#[String]# [deprecated]#Deprecated#
 |Determines if CleanSpeak should use Silent Mode during the startup process. Deprecated in favor of `cleanspeak-app.silent-mode`.

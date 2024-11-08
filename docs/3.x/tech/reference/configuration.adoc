@@ -160,7 +160,7 @@ The possible values are:
 When in the `development` runtime mode, maintenance mode will interactively assist you configuring the database and connecting to Elasticsearch if configured. Once you move CleanSpeak into production, it is recommended that you modify the runtime mode to `production`. When in production runtime mode maintenance mode will no longer be available to you which means you can be certain that your system will be sitting waiting for human input to start the upgrade process. When in `production` mode you will either need to leverage Silent Mode to automatically apply database migrations, or you will need to apply the database migrations yourself (either by hand or via a script of some sort).
 
 |[field]#cleanspeak-management-interface.silent-mode# [type]#[String]# [default]#Defaults to `false`#
-|Determines if CleanSpeak should use Silent Mode during the startup process. Silent Mode automatically applies all database migrations during startup such that you do not need to run them manually. This is the preferred mode when in production.
+|Determines if CleanSpeak should use Silent Mode during the startup process. Silent Mode automatically applies all database migrations during startup such that you do not need to run them manually. This is the preferred mode when in production. If `database.url`, `database.root.username`, and `database.username` are set, then the default for `silent-mode` is `true`.
 
 |[field]#cleanspeak-search-engine.transport-port# [type]#[Integer]#
 |The port that the search engine will use for optimized TCP communications instead of HTTP communications.
