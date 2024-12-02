@@ -133,7 +133,7 @@ def self.download_image(image_uri)
   image_uri = image_uri.sub(/\[siteurl\]/, "https://www.inversoft.com/blog").sub(/http:\/\/www\.inversoft\.com/, "https://www.inversoft.com")
   begin
     url_stream = open(image_uri)
-    new_location = "images/blog/#{url_stream.base_uri.to_s.split("/")[-1]}"
+    new_location = "images/blog-archive/#{url_stream.base_uri.to_s.split("/")[-1]}"
     IO.copy_stream(url_stream, new_location)
     "/#{new_location}"
   rescue Exception => e

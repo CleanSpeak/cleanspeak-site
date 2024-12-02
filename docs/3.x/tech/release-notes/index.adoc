@@ -216,7 +216,7 @@ include::docs/3.x/tech/release-notes/__database-migration-warning.adoc[]
 ** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/49[GitHub Issue #49]
 * Add `-Dlog4j2.formatMsgNoLookups=true` to the VM options shipped with the `cleanspeak-search-engine` Elasticsearch package.
 ** Please note, this is only being done for good measure. Other mitigation steps are in place and are outlined in more detail in the blog post linked below.
-** See https://cleanspeak.com/blog/2021/12/10/log4j-cleanspeak for additional information.
+** See https://cleanspeak.com/blog-archive/2021/12/10/log4j-cleanspeak for additional information.
 ** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/48[GitHub Issue #48]
 
 === Fixed

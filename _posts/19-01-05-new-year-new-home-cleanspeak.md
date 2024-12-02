@@ -2,7 +2,7 @@
 layout: blog-post
 title: "New Year, New Home: CleanSpeak.com!"
 author: Bryan Giese
-author_image: "/images/blog/BugfrogMoab.jpeg"
+author_image: "/images/blog-archive/BugfrogMoab.jpeg"
 excerpt_separator: "<!--more-->"
 categories:
 - CleanSpeak
@@ -29,7 +29,7 @@ In addition, we can filter and moderate input most companies never consider a ri
 
 ### Profanity Delivered - Papa John's
 
-{% include _image.html src="/images/blog/pizza-box-full-shadowed-240.jpg" alt="Papa John's case study" class="float-left img-thumbnail " style="width:200px;margin-right:10px;"  figure=false %}
+{% include _image.html src="/images/blog-archive/pizza-box-full-shadowed-240.jpg" alt="Papa John's case study" class="float-left img-thumbnail " style="width:200px;margin-right:10px;"  figure=false %}
 
 An employee's mistake unintentionally allowed Papa John's to deliver offensive remarks on a customer’s receipt. Again. As soon as it hit social media it became a publicity nightmare. Now they use CleanSpeak to protect their internal system from offensive content and have dramatically reduced their issues and risk.
 
@@ -37,7 +37,7 @@ An employee's mistake unintentionally allowed Papa John's to deliver offensive r
 
 ### Billing Statement Insults - Massive Media Co.
 
-{% include _image.html src="/images/blog/media-bill-shadowed-240.jpg" alt="Massive Media Company case study" class="float-left" style="width:200px;margin-right:10px;" figure=false %}
+{% include _image.html src="/images/blog-archive/media-bill-shadowed-240.jpg" alt="Massive Media Company case study" class="float-left" style="width:200px;margin-right:10px;" figure=false %}
 
 A customer support representative gets frustrated with an angry customer and edits their account. Read how insults in a billing statement at a well-known media conglomerate cost millions to recover from the bad PR and lawsuits. Now they save millions using CleanSpeak's enterprise-scale filtering and moderation and the risk of frustrated employee input is eliminated.
 

@@ -2,7 +2,7 @@
 layout: blog-post
 title: How Game Developers Can Keep Hate and Extremism Off Their Platforms
 author: Blair Ewalt
-author_image: "/images/blog/blair.jpg"
+author_image: "/images/blog-archive/blair.jpg"
 excerpt_separator: "<!--more-->"
 categories:
 - Online Community
@@ -31,7 +31,7 @@ Hate speech might be defined as any form of expression that expresses or incites
 ### Hate Speech and Extremism in Gaming
 Organizations that have platforms that rely on user-generated content are struggling to maintain customer safety and trust. Hate speech and extremism are hard to monitor and censor due to the massive quantities of text, images, videos, and content being created daily. 
 
-[According to the aforementioned Preply study](https://preply.com/en/blog/hate-speech-and-bullying-in-video-games/),
+[According to the aforementioned Preply study](https://preply.com/en/blog-archive/hate-speech-and-bullying-in-video-games/),
 Over 90% of gamers have experienced or witnessed emotional abuse or bullying on gaming platforms, and more than half admitted to bullying others.
 Nearly 7 in 10 have considered quitting due to what they’ve witnessed.
 More than two in five have experienced racism, and more than one in three have experienced hate speech on gaming platforms.

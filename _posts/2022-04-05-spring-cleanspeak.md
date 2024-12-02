@@ -2,7 +2,7 @@
 layout: blog-post
 title: "Spring Framework CVE: How it affects CleanSpeak (TLDR: It doesn't)"
 author: Dan Moore
-author_image: "/images/blog/mooreds.jpg"
+author_image: "/images/blog-archive/mooreds.jpg"
 excerpt_separator: "<!--more-->"
 categories:
 - News
@@ -28,7 +28,7 @@ To learn more about the CVE, you can:
 
 * visit the [CVE description](https://nvd.nist.gov/vuln/detail/CVE-2022-22965)
 * visit the [VMWare CVE description](https://tanzu.vmware.com/security/cve-2022-22965)
-* review a [detailed report about the vulnerability](https://spring.io/blog/2022/03/31/spring-framework-rce-early-announcement)
+* review a [detailed report about the vulnerability](https://spring.io/blog-archive/2022/03/31/spring-framework-rce-early-announcement)
 * participate in the [HackerNews discussion](https://news.ycombinator.com/item?id=30871128)
 
 ## A bit more about security and CleanSpeak

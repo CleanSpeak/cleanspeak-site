@@ -2,7 +2,7 @@
 layout: blog-post
 title: CleanSpeak achieves SOC2 Type II certification
 author: Don Bergal
-author_image: "/images/blog/Don.jpg"
+author_image: "/images/blog-archive/Don.jpg"
 excerpt_separator: "<!--more-->"
 categories:
 - News

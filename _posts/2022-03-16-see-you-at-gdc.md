@@ -2,7 +2,7 @@
 layout: blog-post
 title: We’ll See You At GDC!
 author: Blair Ewalt
-author_image: "/images/blog/blair.jpg"
+author_image: "/images/blog-archive/blair.jpg"
 excerpt_separator: "<!--more-->"
 categories:
 - CleanSpeak

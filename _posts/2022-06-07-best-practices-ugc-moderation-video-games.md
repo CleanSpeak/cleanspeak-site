@@ -2,7 +2,7 @@
 layout: blog-post
 title: Best Practices for Moderating User-Generated Content in Video Games
 author: Idowu Odesanmi
-author_image: "/images/blog/Iwodu.png"
+author_image: "/images/blog-archive/Iwodu.png"
 excerpt_separator: "<!--more-->"
 categories:
 - Online Community
@@ -33,7 +33,7 @@ Note that *platforms*, *forums*, and *applications* are used interchangeably thr
 
 When your platform relies solely on content generated within your organization, you have complete control over the type of content, how it’s used, and what’s accessible to users. Conversely, accepting UGC on your forum means you are outsourcing this control to users. The anonymity that the digital environment provides can encourage users to abuse the privilege of making UGC. This is why regulating content that’s created by users and shared on your forum is important.
 
-UGC moderation involves [screening and filtering images, text, and other types of content](https://imagga.com/blog/content-moderation-for-ugc-platforms-guide-solutions-infographic-statistics/#:~:text=Content%20moderation%20is%20the%20process,audio%2C%20text%2C%20and%20livestream.) to make sure it meets your platform’s standards.
+UGC moderation involves [screening and filtering images, text, and other types of content](https://imagga.com/blog-archive/content-moderation-for-ugc-platforms-guide-solutions-infographic-statistics/#:~:text=Content%20moderation%20is%20the%20process,audio%2C%20text%2C%20and%20livestream.) to make sure it meets your platform’s standards.
 
 There are several types of problematic content you need to guard against when you allow UGC in your online application:
 
@@ -59,7 +59,7 @@ The following are actions you can take to hold UGC to an appropriate standard.
 
 The first and probably most important task you need to undertake is to create a set of community moderation guidelines. A clear, concise, and accessible set of guidelines will communicate to established community members and new users how they are expected to interact with others and with the tools on the platform. Your guidelines should capture the beliefs and personality of the community without being too forceful or restrictive. They should also spell out required safety measures, privacy and security concerns, and penalties for violations.
 
-You should [keep a few things in mind](https://personifycorp.com/blog/how-to-create-online-community-guidelines/) when drafting your community guidelines:
+You should [keep a few things in mind](https://personifycorp.com/blog-archive/how-to-create-online-community-guidelines/) when drafting your community guidelines:
 
 * Take care with your tone and choice of words
 * Explain how to report violations
@@ -137,7 +137,7 @@ Human-moderated UGC is content that’s moderated, screened, and filtered out by
 
 Both techniques have advantages and disadvantages in key areas:
 
-* **Ethical issues:** With human moderators, evidence shows that [people who are constantly exposed to harmful content suffer psychologically](https://imagga.com/blog/content-moderation-for-ugc-platforms-guide-solutions-infographic-statistics/#:~:text=Evidence%20keeps%20piling%20up). This is not a problem with AI monitoring.
+* **Ethical issues:** With human moderators, evidence shows that [people who are constantly exposed to harmful content suffer psychologically](https://imagga.com/blog-archive/content-moderation-for-ugc-platforms-guide-solutions-infographic-statistics/#:~:text=Evidence%20keeps%20piling%20up). This is not a problem with AI monitoring.
 
 * **Cost:** Real-time manual moderation is expensive and almost impossible to set up and run. 
 

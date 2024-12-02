@@ -99,7 +99,7 @@ def build_blog_post_list_layout(html_doc, script_directory)
   list = main.at_css(".post-list")
   list.add_previous_sibling("{% for post in paginator.posts %}\n")
   list.add_next_sibling("\n{% endfor %}")
-  File.open("#{script_directory}/blog/index.html", "w", :encoding => "UTF-8") do |f|
+  File.open("#{script_directory}/blog-archive/index.html", "w", :encoding => "UTF-8") do |f|
     f.puts("---\nlayout: default\ntitle: #{title_text}\ndescription: #{description_text}\n---\n")
     f.puts(main.to_s.gsub(/%7B/, "{").gsub(/%7D/, "}")) # Handle the escaping of { } characters in anchor tags by Nokogiri
   end

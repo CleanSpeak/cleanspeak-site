@@ -2,14 +2,14 @@
 layout: blog-post
 title: 'Savant Build Tool: Plugins'
 author: Brian Pontarelli
-author_image: "/images/blog/head-shot-bw-square.jpg"
+author_image: "/images/blog-archive/head-shot-bw-square.jpg"
 excerpt_separator: "<!--more-->"
 categories:
 - Technology
 tags:
 - Savant
 ---
-<p style="text-align: center;"><img class="wp-image-6502 aligncenter" src="/images/blog/Plug-Outlet-Savants.jpg" alt="Savant Plugins" width="384" height="343"></p>
+<p style="text-align: center;"><img class="wp-image-6502 aligncenter" src="/images/blog-archive/Plug-Outlet-Savants.jpg" alt="Savant Plugins" width="384" height="343"></p>
 <p>Savant is a bit different than other build tools. Savant doesn't allow plugins to define build targets. This was a major design decision that we made based on our use of various build tools over the past 10 years.</p>
 <p>Here's the reason we decided not to allow plugins to define build targets. Let's say that we are using the Java, Groovy and JRuby plugins and that our project has source code in all three languages. Let's also assume we have tests written in all three languages. The Java plugin defines two build targets: compile and test. These targets compile the Java source code in the directory src/main/java and src/test/java and then execute the tests.</p>
 <p>Now, let's assume that our Groovy and JRuby plugins also define these exact same targets. However, our project's Groovy classes use our Java classes and our JRuby classes use our Groovy classes. How do we ensure that our plugins are executed in the correct order?</p>

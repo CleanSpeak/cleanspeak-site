@@ -2,14 +2,14 @@
 layout: blog-post
 title: 'Savant Build Tool: License Management'
 author: Brian Pontarelli
-author_image: "/images/blog/head-shot-bw-square.jpg"
+author_image: "/images/blog-archive/head-shot-bw-square.jpg"
 excerpt_separator: "<!--more-->"
 categories:
 - Technology
 tags:
 - Savant
 ---
-<p><img class="alignright size-full wp-image-6483" src="/images/blog/license-audit-glass1.jpg" alt="Magnify Glass on Licenses" width="322" height="384">In our first blog post, we briefly touched on the concept of licenses in Savant. Project licenses are a concept that is often overlooked in software development, but is extremely important. The legal nature of software licenses, both open and closed, can impact how a library, tool or product is used and deployed.</p>
+<p><img class="alignright size-full wp-image-6483" src="/images/blog-archive/license-audit-glass1.jpg" alt="Magnify Glass on Licenses" width="322" height="384">In our first blog post, we briefly touched on the concept of licenses in Savant. Project licenses are a concept that is often overlooked in software development, but is extremely important. The legal nature of software licenses, both open and closed, can impact how a library, tool or product is used and deployed.</p>
 <p>Most build tools allow projects to define their license, but it is often a free form text field in the project definition file. This causes a number of problems. First, these are impossible to parse reliably. Second, it is usually optional. This means that with most build tools it is impossible to correctly determine what licenses your software is currently using. Any lawyers reading this are probably starting to sweat and shift uncomfortably in their chairs.</p>
 <p>Savant is built and maintained by Inversoft. Inversoft has a number of products that are commercially licensed. All of our products are on-premise and therefore downloaded by our customers and installed on their servers. This means that we need to be extremely meticulous about our use of open source licenses. If we were to use a library that was licensed under the <a href="http://www.gnu.org/copyleft/gpl.html">GPL</a>, it could have drastic ramifications on our products.</p>
 <p><!--more--></p>
