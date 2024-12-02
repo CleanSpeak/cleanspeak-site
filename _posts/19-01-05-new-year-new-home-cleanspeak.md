@@ -10,7 +10,7 @@ categories:
 tags:
 - Updates
 - CleanSpeak
-image: blog/welcome-to-cleanspeak-2019-2.jpg
+image: blog-archive/welcome-to-cleanspeak-2019-2.jpg
 ---
 Since 2007 CleanSpeak has been the best profanity filter & moderation platform trusted by companies like Comcast, Ubisoft, YouNow, Fiverr and many more. All this time you’ve been able to find us at Inversoft.com, our parent company whose talented developers build both CleanSpeak and [FusionAuth, a free web-scale authentication and user identity management platform](https://fusionauth.io 'Fusionauth Home'). As of 2019, we stand proudly at our own URL - [**CleanSpeak.com!**](https://cleanspeak.com "CleanSpeak Home") Why the change?
 <!--more-->

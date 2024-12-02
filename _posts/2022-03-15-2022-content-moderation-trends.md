@@ -12,7 +12,7 @@ tags:
 - Online Safety
 - Security 
 - applications
-image: blog/content-moderation-trends.png
+image: blog-archive/content-moderation-trends.png
 ---
 
 _These content moderation trends include relevant topics to content moderation in 2022 for social networks and other businesses._

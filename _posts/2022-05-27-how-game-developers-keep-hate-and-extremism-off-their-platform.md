@@ -11,7 +11,7 @@ tags:
 - Online Safety
 - Gaming
 - Online Bullying
-image: blog/combatting-hate-extremism-hero.png
+image: blog-archive/combatting-hate-extremism-hero.png
 ---
 
 _The following is an excerpt from CleanSpeak’s new whitepaper: Combatting Hate & Extremism on Your Gaming Platform. The link to the full whitepaper can be found at the bottom of the article._

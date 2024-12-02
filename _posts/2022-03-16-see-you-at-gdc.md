@@ -9,7 +9,7 @@ categories:
 - Conferences
 tags:
 - user generated content
-image: blog/gdc.png
+image: blog-archive/gdc.png
 ---
 
 _The Game Developers Conference brings the game development community together. This year there will be thousands of attendees in San Francisco, CA the week of March 21st.

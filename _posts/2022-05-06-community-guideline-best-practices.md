@@ -11,7 +11,7 @@ tags:
 - Online Safety
 - Community Guidelines
 - Best Practices
-image: blog/Community-Guideline.png
+image: blog-archive/Community-Guideline.png
 ---
 
 _Community guidelines are the rules of the road on how to behave. Your community guidelines will help mold your community to your vision, and in turn promote a healthy discourse as well as user retention and growth._

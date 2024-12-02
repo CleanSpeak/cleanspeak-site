@@ -9,7 +9,7 @@ categories:
 tags:
 - Updates
 - CleanSpeak
-image: blog/soc2-type2.png
+image: blog-archive/soc2-type2.png
 ---
 
 The CleanSpeak team is proud to announce that we have completed the rigorous audit process and have now earned SOC2 Type II certification for our entire organization, including the CleanSpeak product.

@@ -9,7 +9,7 @@ categories:
 tags:
 - Updates
 - CleanSpeak
-image: blog/spring4shell/spring-update-cleanspeak.png
+image: blog-archive/spring4shell/spring-update-cleanspeak.png
 ---
 
 The recent announcement of [CVE-2022-22965](https://nvd.nist.gov/vuln/detail/CVE-2022-22965), where "a Spring MVC or Spring WebFlux application running on JDK 9+ may be vulnerable to remote code execution (RCE) via data binding," has some folks asking if CleanSpeak is affected. This CVE is also known as the "Spring4Shell" vulnerability.

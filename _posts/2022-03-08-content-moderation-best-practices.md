@@ -12,7 +12,7 @@ tags:
 - Online Safety
 - Profanity Filter
 - Best Practices
-image: blog/Content-moderation-techniques.png
+image: blog-archive/Content-moderation-techniques.png
 ---
 
 _These profanity filtering and content moderation best practices include key platform requirements and essential tools for enterprise-scale advanced filtering systems._
