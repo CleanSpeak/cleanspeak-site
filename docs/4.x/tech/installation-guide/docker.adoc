@@ -16,7 +16,7 @@ curl -o .env https://raw.githubusercontent.com/CleanSpeak/cleanspeak-containers/
 docker-compose up
 ```
 
-The stock `.env` file will contain the following values, and you will want to modify the `DATABASE_PASSWORD` and ensure the `POSTGRES_USER` and `POSTGRES_PASSWORD` values are correct. You will also need to ensure that you add your license key to the `LICENSE_ID` variable. You may also override any of these values using environment variables.
+The stock `.env` file will contain the following values, and you will want to modify the `DATABASE_PASSWORD` and ensure the `POSTGRES_USER` and `POSTGRES_PASSWORD` values are correct. You may also override any of these values using environment variables.
 ```
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=postgres
@@ -26,8 +26,6 @@ DATABASE_PASSWORD=hkaLBM3RVnyYeYeqE3WI1w2e4Avpy0Wd5O3s3
 ES_JAVA_OPTS=-Xms256m -Xmx256m
 
 CLEANSPEAK_APP_MEMORY=256M
-
-LICENSE_ID=
 ```
 
 == Docker Services
@@ -53,7 +51,6 @@ All of the environment variables are options. If not provided, a default will be
 * `DATABASE_URL`
 * `DATABASE_ROOT_USER`
 * `SEARCH_SERVERS`
-* `LICENSE_ID`
 
 These four variables, when configured correctly, will allow CleanSpeak to silently configure itself and go directly to the setup wizard. If they are omitted, CleanSpeak will start up in Maintenance mode and require you to configure the database and search engine interactively.
 
@@ -111,9 +108,6 @@ Setting this environment variable will override the `cleanspeak-*.memory` in the
 |A comma separated listed of URLs to connect to one or more search servers.
 
 Setting this environment variable will override the `cleanspeak.search-servers` in the Configuration file. See the link:../reference/configuration[Configuration Reference] for more information.
-
-|LICENSE_ID [optional]#Optional#
-|Your License ID. You can find your License ID by logging into your account at https://account.cleanspeak.com/account/.
 
 |===
 
