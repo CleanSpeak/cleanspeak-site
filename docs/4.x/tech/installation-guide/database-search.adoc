@@ -112,3 +112,14 @@ If you are installing PostgreSQL on a platform that does not support RPM or DEB 
 == Search Installation
 
 OpenSearch has a great write up at https://opensearch.org/docs/latest/install-and-configure/install-opensearch/index/ that describes the various ways to run OpenSearch. You can also use managed services like https://aws.amazon.com/opensearch-service/[AWS OpenSearch Service].
+
+CleanSpeak generally expects no authentication to be configured on ElasticSearch/OpenSearch and thus it should be secured at the network layer. The simplest way to configure OpenSearch to do this is to add the following to `opensearch.yml`:
+
+```yaml
+plugins.security.disabled: true
+```
+
+If you wish to use TLS or auth, you may, but keep the following in mind:
+
+* You must obtain a trusted certificate and configure it with OpenSearch OR add a self signed certificate to CleanSpeak's JVM trust store.
+* The CleanSpeak `search.servers` property must be configured with those credentials as noted in RFC 1738. For example, https://someUser@somePassword:yourSearchServer
