@@ -13,6 +13,16 @@ Hide Stuff here
 // REMEMBER TO ADD MIGRATIONS TO upgrades-patches
 
 [role=release-note]
+== Version 4.2.1
+_Released Friday, December 20th, 2024_
+
+=== Fixed
+* Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/85[GitHub Issue #85]
+
+=== Internal
+* Upgraded logback logging framework from `1.4.14` to `1.5.14`
+
+[role=release-note]
 == Version 4.2.0
 _Released Friday, November 8th, 2024_
 
