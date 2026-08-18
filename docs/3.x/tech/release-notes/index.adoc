@@ -16,6 +16,9 @@ Hide Stuff here
 == Version 4.2.3
 _Released Wednesday, August 18th, 2026_
 
+=== Fixed
+* Fixed security issue with moderation
+
 === Internal
 * JDK `17.0.8.1+1` -> `25.0.3_9`
 * com.inversoft:inversoft-api-authentication `0.28.0` -> `0.33.0`
