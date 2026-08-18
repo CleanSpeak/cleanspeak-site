@@ -13,6 +13,35 @@ Hide Stuff here
 // REMEMBER TO ADD MIGRATIONS TO upgrades-patches
 
 [role=release-note]
+== Version 4.2.3
+_Released Wednesday, August 18th, 2026_
+
+=== Internal
+* JDK `17.0.8.1+1` -> `25.0.3_9`
+* com.inversoft:inversoft-api-authentication `0.28.0` -> `0.33.0`
+* com.inversoft:inversoft-cache `0.6.0` -> `0.6.1`
+* com.inversoft:inversoft-config `0.9.14` -> `0.10.1`
+* com.inversoft:inversoft-database `0.10.0` -> `0.10.3`
+* com.inversoft:inversoft-license `4.5.1` -> `4.15.0`
+* com.inversoft:inversoft-maintenance-mode `0.23.1` -> `0.25.3`
+* com.inversoft:inversoft-scheduler `0.3.0` -> `0.4.0`
+* com.inversoft:inversoft-search-engine `5.4.0` -> `6.0.1`
+* com.inversoft:inversoft-support `0.14.0` -> `0.15.2`
+* com.inversoft:jackson5 `3.0.1` -> `3.1.0`
+* io.fusionauth:java-http `0.3.4` -> `1.4.1`
+* jackson `2.15.3` -> `2.21.5`
+* jakarta.mail `2.0.1` -> `2.1.3`
+* logback logging framework `1.5.14` -> `1.5.19`
+* org.apache.commons:commons-lang3 `3.14.0` -> `3.18.0`
+* org.postgresql:postgresql `42.7.2` -> `42.7.11`
+* org.primeframework:prime-email `0.21.0` -> `0.22.0`
+* prime-mvc `4.23.0` -> `5.11.2`
+
+=== Fixed
+* OIDC authentication issues in CleanSpeak 4.0.0-4.2.1
+** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/86[GitHub Issue #86]
+
+[role=release-note]
 == Version 4.2.2
 _Released Wednesday, February 19th, 2025_
 
