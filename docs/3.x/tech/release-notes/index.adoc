@@ -40,10 +40,6 @@ _Released Wednesday, August 18th, 2026_
 * org.primeframework:prime-email `0.21.0` -> `0.22.0`
 * prime-mvc `4.23.0` -> `5.11.2`
 
-=== Fixed
-* OIDC authentication issues in CleanSpeak 4.0.0-4.2.1
-** Resolves https://github.com/CleanSpeak/cleanspeak-issues/issues/86[GitHub Issue #86]
-
 [role=release-note]
 == Version 4.2.2
 _Released Wednesday, February 19th, 2025_
