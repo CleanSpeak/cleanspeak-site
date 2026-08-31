@@ -13,6 +13,16 @@ Hide Stuff here
 // REMEMBER TO ADD MIGRATIONS TO upgrades-patches
 
 [role=release-note]
+== Version 4.2.4
+_Released Monday, August 31st, 2026_
+
+=== Fixed
+* Fixed HTTP server misconfiguration that resulted in connection problems with `Connection: keep-alive` HTTP requests.
+
+=== Internal
+* JDK `25.0.3_9` -> `25.0.4_7`
+
+[role=release-note]
 == Version 4.2.3
 _Released Wednesday, August 18th, 2026_
 
