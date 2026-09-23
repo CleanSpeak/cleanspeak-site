@@ -1,13 +1,9 @@
 name: cache-invalidate
 
 on:
-  # Run every 10 minutes, July 8 thru July 9
-  # This is only for the site rollout and should be removed after 2024-07-09
-  schedule:
-    - cron: '*/10 * 8-9 7 *'
   push:
     branches:
-      - master
+      - main
   workflow_dispatch:
 
 jobs:
@@ -15,10 +11,10 @@ jobs:
     runs-on: cleanspeak-standard
     steps:
       - name: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: set aws credentials
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@v6
         with:
           role-to-assume: ${{ secrets.ACTIONS_RUNNER_ROLE_PROD }}
           role-session-name: github-actions
