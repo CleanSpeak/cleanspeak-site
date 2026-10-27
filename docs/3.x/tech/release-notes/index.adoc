@@ -13,6 +13,21 @@ Hide Stuff here
 // REMEMBER TO ADD MIGRATIONS TO upgrades-patches
 
 [role=release-note]
+== Version 4.2.5
+_Released Tuesday, October 28th, 2026_
+
+=== Security
+* Fixed multiple security vulnerabilities that could result in account takeover, privilege escalation, authentication bypass, or exposure of sensitive information. We have no evidence or customer reports indicating these vulnerabilities have been exploited. We recommend all customers update as soon as possible.
+
+=== Internal
+* JDK `25.0.4_7` -> `25.0.4_1+1`
+* com.google.guava:guava:guava:jar `32.1.2-jre` -> `33.7.1-jre`
+* com.fasterxml.jackson.core:jackson-core, jackson-databind `2.21.5` -> `2.21.7`
+* io.fusionauth:java-http `1.4.2` -> `1.4.4`
+* org.freemarker:freemarker `2.3.32` -> `2.3.35`
+* org.primeframework:prime-mvc `5.11.2` -> `5.12.0`
+
+[role=release-note]
 == Version 4.2.4
 _Released Monday, August 31st, 2026_
 
