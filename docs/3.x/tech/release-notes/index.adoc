@@ -13,8 +13,19 @@ Hide Stuff here
 // REMEMBER TO ADD MIGRATIONS TO upgrades-patches
 
 [role=release-note]
+== Version 4.2.6
+_Released Wednesday, October 28th, 2026_
+
+=== Security
+* Fixed security vulnerability that could result in authentication bypass. We have no evidence or customer reports indicating this vulnerability have been exploited. We recommend all customers update as soon as possible.
+
+=== Internal
+* com.google.guava:guava:guava:jar `33.7.1-jre` -> `33.7.2-jre`
+* io.fusionauth:java-http `1.4.4` -> `1.4.5`
+
+[role=release-note]
 == Version 4.2.5
-_Released Tuesday, October 28th, 2026_
+_Released Tuesday, October 27th, 2026_
 
 === Security
 * Fixed multiple security vulnerabilities that could result in account takeover, privilege escalation, authentication bypass, or exposure of sensitive information. We have no evidence or customer reports indicating these vulnerabilities have been exploited. We recommend all customers update as soon as possible.
