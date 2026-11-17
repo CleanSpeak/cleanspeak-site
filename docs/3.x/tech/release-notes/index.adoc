@@ -13,6 +13,16 @@ Hide Stuff here
 // REMEMBER TO ADD MIGRATIONS TO upgrades-patches
 
 [role=release-note]
+== Version 4.2.7
+_Released Tuesday, November 17th, 2026_
+
+=== Security
+* RPM, DEB, and ZIP installs now check the signature on the JDK when downloading.
+
+=== Internal
+* JDK `25.0.4_1+1` -> `25.0.5+8`
+
+[role=release-note]
 == Version 4.2.6
 _Released Wednesday, October 28th, 2026_
 
